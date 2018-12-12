@@ -12,6 +12,7 @@ const notesReducer = (state = {}, action) => {
     case RECEIVE_ALL_NOTES:
       return action.notes;
     case RECEIVE_SINGLE_NOTE:
+      debugger
       return merge({}, state, {
         [action.note.id]: action.note
       })

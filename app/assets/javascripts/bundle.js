@@ -86,6 +86,96 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/note_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/note_actions.js ***!
+  \******************************************/
+/*! exports provided: RECEIVE_ALL_NOTES, RECEIVE_SINGLE_NOTE, DELETE_NOTE, RECEIVE_NOTE_ERRORS, receiveAllNotes, fetchAllNotes, receiveSingleNote, fetchSingleNote, createNote, updateNote, receiveDeleteNote, deleteNote, receiveNoteErrors */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_NOTES", function() { return RECEIVE_ALL_NOTES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SINGLE_NOTE", function() { return RECEIVE_SINGLE_NOTE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_NOTE", function() { return DELETE_NOTE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_NOTE_ERRORS", function() { return RECEIVE_NOTE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllNotes", function() { return receiveAllNotes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllNotes", function() { return fetchAllNotes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSingleNote", function() { return receiveSingleNote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSingleNote", function() { return fetchSingleNote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNote", function() { return createNote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateNote", function() { return updateNote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveDeleteNote", function() { return receiveDeleteNote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteNote", function() { return deleteNote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveNoteErrors", function() { return receiveNoteErrors; });
+/* harmony import */ var _util_note_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/note_api_util */ "./frontend/util/note_api_util.js");
+
+var RECEIVE_ALL_NOTES = "RECEIVE_ALL_NOTES";
+var RECEIVE_SINGLE_NOTE = "RECEIVE_SINGLE_NOTE";
+var DELETE_NOTE = "DELETE_NOTE";
+var RECEIVE_NOTE_ERRORS = "RECEIVE_NOTE_ERRORS";
+var receiveAllNotes = function receiveAllNotes(notes) {
+  return {
+    type: RECEIVE_ALL_NOTES,
+    notes: notes
+  };
+};
+var fetchAllNotes = function fetchAllNotes() {
+  return function (dispatch) {
+    return _util_note_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllNotes"]().then(function (notes) {
+      return dispatch(receiveAllNotes(notes));
+    });
+  };
+};
+var receiveSingleNote = function receiveSingleNote(note) {
+  return {
+    type: RECEIVE_SINGLE_NOTE,
+    note: note
+  };
+};
+var fetchSingleNote = function fetchSingleNote(noteId) {
+  return function (dispatch) {
+    return _util_note_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSingleNote"](noteId).then(function (note) {
+      return dispatch(receiveSingleNote(note));
+    });
+  };
+};
+var createNote = function createNote(note) {
+  return function (dispatch) {
+    return _util_note_api_util__WEBPACK_IMPORTED_MODULE_0__["createNote"](note).then(function (note) {
+      return dispatch(receiveSingleNote(note));
+    });
+  };
+};
+var updateNote = function updateNote(note) {
+  return function (dispatch) {
+    return _util_note_api_util__WEBPACK_IMPORTED_MODULE_0__["updateNote"](note).then(function (note) {
+      return dispatch(receiveSingleNote(note));
+    });
+  };
+};
+var receiveDeleteNote = function receiveDeleteNote(noteId) {
+  return {
+    type: DELETE_NOTE,
+    noteId: noteId
+  };
+};
+var deleteNote = function deleteNote(noteId) {
+  return function (dispatch) {
+    return _util_note_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteNote"](noteId).then(function (note) {
+      return dispatch(receiveDeleteNote(note.id));
+    });
+  };
+};
+var receiveNoteErrors = function receiveNoteErrors(errors) {
+  return {
+    type: RECEIVE_NOTE_ERRORS,
+    errors: errors
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -169,19 +259,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _tests_test_user_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tests/test_user_auth */ "./frontend/tests/test_user_auth.js");
+/* harmony import */ var _tests_test_notes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tests/test_notes */ "./frontend/tests/test_notes.js");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+ // import { testUserAuth } from "./tests/test_user_auth";
 
 
 
 
 document.addEventListener("DOMContentLoaded", function () {
   var store = setupStoreWithUserLogin();
-  Object(_tests_test_user_auth__WEBPACK_IMPORTED_MODULE_2__["testUserAuth"])(store);
+  Object(_tests_test_notes__WEBPACK_IMPORTED_MODULE_2__["testNotes"])(store);
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_4__["default"], {
     store: store
@@ -426,7 +517,6 @@ function (_React$Component) {
         email: this.state.email,
         password: this.state.password
       };
-      debugger;
       this.props.processForm(user);
     }
   }, {
@@ -837,10 +927,13 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _notes_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./notes_reducer */ "./frontend/reducers/notes_reducer.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  notes: _notes_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 }));
 
 /***/ }),
@@ -856,11 +949,89 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
+/* harmony import */ var _note_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./note_errors_reducer */ "./frontend/reducers/note_errors_reducer.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  notes: _note_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 }));
+
+/***/ }),
+
+/***/ "./frontend/reducers/note_errors_reducer.js":
+/*!**************************************************!*\
+  !*** ./frontend/reducers/note_errors_reducer.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/note_actions */ "./frontend/actions/note_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_note_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_NOTE_ERRORS"]:
+      return action.errors;
+
+    case _actions_note_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SINGLE_NOTE"]:
+    case _actions_note_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_NOTES"]:
+      return [];
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./frontend/reducers/notes_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/notes_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/note_actions */ "./frontend/actions/note_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var notesReducer = function notesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_NOTES"]:
+      return action.notes;
+
+    case _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SINGLE_NOTE"]:
+      debugger;
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.note.id, action.note));
+
+    case _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__["DELETE_NOTE"]:
+      var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
+      delete newState[action.noteId];
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (notesReducer);
 
 /***/ }),
 
@@ -1023,36 +1194,41 @@ var configureStore = function configureStore() {
 
 /***/ }),
 
-/***/ "./frontend/tests/test_user_auth.js":
-/*!******************************************!*\
-  !*** ./frontend/tests/test_user_auth.js ***!
-  \******************************************/
-/*! exports provided: testUserAuth */
+/***/ "./frontend/tests/test_notes.js":
+/*!**************************************!*\
+  !*** ./frontend/tests/test_notes.js ***!
+  \**************************************/
+/*! exports provided: testNotes */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "testUserAuth", function() { return testUserAuth; });
-/* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "testNotes", function() { return testNotes; });
+/* harmony import */ var _util_note_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/note_api_util */ "./frontend/util/note_api_util.js");
+/* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/note_actions */ "./frontend/actions/note_actions.js");
 
 
-var testUserAuth = function testUserAuth(store) {
-  // testSessionApiUtil();
-  testRedux();
+var testNotes = function testNotes(store) {
+  // testNotesApiUtil();
+  testNotesRedux();
   setupStoreTesting(store);
 };
 
-var testSessionApiUtil = function testSessionApiUtil() {
-  window.login = _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["login"];
-  window.signup = _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signup"];
-  window.logout = _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["logout"];
+var testNotesApiUtil = function testNotesApiUtil() {
+  window.fetchAllNotes = _util_note_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllNotes"];
+  window.fetchSingleNote = _util_note_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSingleNote"];
+  window.createNote = _util_note_api_util__WEBPACK_IMPORTED_MODULE_0__["createNote"];
+  window.updateNote = _util_note_api_util__WEBPACK_IMPORTED_MODULE_0__["updateNote"];
+  window.deleteNote = _util_note_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteNote"];
 };
 
-var testRedux = function testRedux() {
-  window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"];
-  window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["signup"];
-  window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["logout"];
+var testNotesRedux = function testNotesRedux() {
+  window.fetchAllNotes = _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__["fetchAllNotes"];
+  window.fetchSingleNote = _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__["fetchSingleNote"];
+  window.createNote = _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__["createNote"];
+  window.updateNote = _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__["updateNote"];
+  window.deleteNote = _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__["deleteNote"];
+  window.receiveNoteErrors = _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__["receiveNoteErrors"];
 };
 
 var setupStoreTesting = function setupStoreTesting(store) {
@@ -1063,6 +1239,59 @@ var setupStoreTesting = function setupStoreTesting(store) {
 var user = {
   email: "josh@gmail.com",
   password: "password"
+};
+
+/***/ }),
+
+/***/ "./frontend/util/note_api_util.js":
+/*!****************************************!*\
+  !*** ./frontend/util/note_api_util.js ***!
+  \****************************************/
+/*! exports provided: fetchAllNotes, fetchSingleNote, createNote, updateNote, deleteNote */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllNotes", function() { return fetchAllNotes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSingleNote", function() { return fetchSingleNote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNote", function() { return createNote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateNote", function() { return updateNote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteNote", function() { return deleteNote; });
+var fetchAllNotes = function fetchAllNotes() {
+  return $.ajax({
+    url: "/api/notes",
+    method: "GET"
+  });
+};
+var fetchSingleNote = function fetchSingleNote(noteId) {
+  return $.ajax({
+    url: "/api/notes/".concat(noteId),
+    method: "GET"
+  });
+};
+var createNote = function createNote(note) {
+  return $.ajax({
+    url: "/api/notes",
+    method: "POST",
+    data: {
+      note: note
+    }
+  });
+};
+var updateNote = function updateNote(note) {
+  return $.ajax({
+    url: "/api/notes/".concat(note.id),
+    method: "PATCH",
+    data: {
+      note: note
+    }
+  });
+};
+var deleteNote = function deleteNote(noteId) {
+  return $.ajax({
+    url: "/api/notes/".concat(noteId),
+    method: "DELETE"
+  });
 };
 
 /***/ }),

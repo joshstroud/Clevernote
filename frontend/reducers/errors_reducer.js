@@ -3,7 +3,7 @@ import {
 } from 'redux';
 
 import session from './session_errors_reducer';
-import notes from './notes_errors_reducer';
+import notes from './note_errors_reducer';
 
 export default combineReducers({
   session,

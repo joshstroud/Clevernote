@@ -14,7 +14,7 @@ export const receiveAllNotes = notes => {
 
 export const fetchAllNotes = () => dispatch => {
   return NoteApiUtil.fetchAllNotes()
-    .then(notes => dispatch(receiveNotes(notes)));
+    .then(notes => dispatch(receiveAllNotes(notes)));
 };
 
 export const receiveSingleNote = note => {
@@ -31,12 +31,12 @@ export const fetchSingleNote = (noteId) => dispatch => {
 
 export const createNote = (note) => dispatch => {
   return NoteApiUtil.createNote(note)
-    .then(note => dispatch(receiveNote(note)));
+    .then(note => dispatch(receiveSingleNote(note)));
 };
 
 export const updateNote = (note) => dispatch => {
   return NoteApiUtil.updateNote(note)
-    .then(note => dispatch(receiveNote(note)));
+    .then(note => dispatch(receiveSingleNote(note)));
 };
 
 export const receiveDeleteNote = noteId => {
