@@ -4,11 +4,9 @@ import { Link } from "react-router-dom";
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: "",
-      password: ""
-    };
+    this.state = { email: "", password: "", demoLoginAnimationInterval: null };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   update(field) {
@@ -20,7 +18,11 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
+    const user = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    debugger;
     this.props.processForm(user);
   }
 
@@ -75,6 +77,85 @@ class SessionForm extends React.Component {
     );
   }
 
+  demoLogin(e) {
+    // const user = {
+    //   email: "demo@demo.com",
+    //   password: "password"
+    // };
+    // this.props.processForm(user);
+
+    this.setState({
+      demoLoginAnimationInterval: window.setInterval(
+        this.animateDemoLogin.bind(this),
+        90
+      )
+    });
+  }
+
+  animateDemoLogin() {
+    if (
+      this.state.email === "demo@demo.com" &&
+      this.state.password === "password"
+    ) {
+      const user = {
+        email: "demo@demo.com",
+        password: "password"
+      };
+      clearInterval(this.state.demoLoginAnimationInterval);
+      this.props.processForm(user);
+    } else {
+      this.updateDemoLoginAnimation();
+    }
+  }
+
+  updateDemoLoginAnimation() {
+    const demoEmail = "demo@demo.com";
+    const demoPassword = "password";
+    let newEmail = this.state.email;
+    let newPassword = this.state.password;
+
+    if (newEmail.length < demoEmail.length) {
+      newEmail += demoEmail[newEmail.length];
+    }
+    if (newPassword.length < demoPassword.length) {
+      newPassword += demoPassword[newPassword.length];
+    }
+
+    this.setState({ email: newEmail, password: newPassword });
+  }
+
+  renderDemoLoginButton() {
+    let demoLoginButton = null;
+
+    if (this.props.formType === "Sign In") {
+      demoLoginButton = (
+        <div>
+          <button className="demo-sign-in-button" onClick={this.demoLogin}>
+            Sign in with Demo
+          </button>
+          <div className="horizontal-text">or</div>
+        </div>
+      );
+    }
+    return demoLoginButton;
+  }
+
+  renderTermsOfService() {
+    if (this.props.formType === "Continue") {
+      return (
+        <div>
+          <p className="terms-of-service">
+            By creating an account, you are agreeing to our{" "}
+            <span className="ToS-link">Terms of Service </span>
+            and <span className="ToS-link">Privacy Policy</span>.
+          </p>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
       <div className="window-wrapper">
@@ -83,41 +164,36 @@ class SessionForm extends React.Component {
             <img src={window.images.sessionEvernoteLogo} alt="" />
             <p className="tagline">Remember everything important.</p>
           </div>
-          <ol className="login-form-list">
-            <form onSubmit={this.handleSubmit} className="login-form">
-              <div className="input-wrapper">
-                <input
-                  type="text"
-                  value={this.state.email}
-                  onChange={this.update("email")}
-                  placeholder="Email"
-                  className="text-input"
-                />
-              </div>
-              {this.renderFirstError()}
-              <div className="input-wrapper">
-                <input
-                  type="password"
-                  value={this.state.password}
-                  onChange={this.update("password")}
-                  className="text-input"
-                  placeholder="Password"
-                />
-              </div>
-              {this.renderSecondError()}
-
+          {this.renderDemoLoginButton()}
+          <form onSubmit={this.handleSubmit} className="login-form">
+            <div className="input-wrapper">
               <input
-                className="btn-session-submit"
-                type="submit"
-                value={this.props.formType}
+                type="text"
+                value={this.state.email}
+                onChange={this.update("email")}
+                placeholder="Email"
+                className="text-input"
               />
-            </form>
-          </ol>
-          <p className="terms-of-service">
-            By creating an account, you are agreeing to our{" "}
-            <span className="ToS-link">Terms of Service </span>
-            and <span className="ToS-link">Privacy Policy</span>.
-          </p>
+            </div>
+            {this.renderFirstError()}
+            <div className="input-wrapper">
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+                className="text-input"
+                placeholder="Password"
+              />
+            </div>
+            {this.renderSecondError()}
+
+            <input
+              className="btn-session-submit"
+              type="submit"
+              value={this.props.formType}
+            />
+          </form>
+          {this.renderTermsOfService()}
           {this.renderSwitchForm()}
         </section>
       </div>
