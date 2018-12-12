@@ -24,10 +24,29 @@ class SessionForm extends React.Component {
     this.props.processForm(user);
   }
 
-  renderErrors() {
+  renderFirstError() {
+    if (
+      this.props.errors.length > 0 &&
+      this.props.errors[0].includes("Password")
+    ) {
+      return null;
+    }
+
+    return <div className="session-errors">{this.props.errors[0]}</div>;
+  }
+
+  renderSecondError() {
+    let errorsToRender = this.props.errors.slice(1);
+    if (
+      this.props.errors.length > 0 &&
+      this.props.errors[0].includes("Password")
+    ) {
+      errorsToRender = this.props.errors;
+    }
+
     return (
-      <ul>
-        {this.props.errors.map((error, i) => (
+      <ul className="session-errors">
+        {errorsToRender.map((error, i) => (
           <li key={`error-${i}`}>{error}</li>
         ))}
       </ul>
@@ -36,21 +55,21 @@ class SessionForm extends React.Component {
 
   renderSwitchForm() {
     let description = "Don't have an account?";
-    let url = "/login";
+    let url = "/signup";
     let linkText = "Create account";
 
-    if (this.formtype === "Continue") {
+    if (this.props.formType === "Continue") {
       description = "Already have an account?";
-      url = "/signup";
+      url = "/login";
       linkText = "Sign in";
     }
 
     return (
       <div className="switch-wrapper">
-        Don't have an account?
+        {description}
         <br />
-        <Link to="/login" className="switch-link">
-          Create account
+        <Link to={url} className="switch-link">
+          {linkText}
         </Link>
       </div>
     );
@@ -75,7 +94,7 @@ class SessionForm extends React.Component {
                   className="text-input"
                 />
               </div>
-              <div className="session-errors">{this.renderErrors()}</div>
+              {this.renderFirstError()}
               <div className="input-wrapper">
                 <input
                   type="password"
@@ -85,6 +104,8 @@ class SessionForm extends React.Component {
                   placeholder="Password"
                 />
               </div>
+              {this.renderSecondError()}
+
               <input
                 className="btn-session-submit"
                 type="submit"

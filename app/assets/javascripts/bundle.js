@@ -424,9 +424,28 @@ function (_React$Component) {
       this.props.processForm(user);
     }
   }, {
-    key: "renderErrors",
-    value: function renderErrors() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
+    key: "renderFirstError",
+    value: function renderFirstError() {
+      if (this.props.errors.length > 0 && this.props.errors[0].includes("Password")) {
+        return null;
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "session-errors"
+      }, this.props.errors[0]);
+    }
+  }, {
+    key: "renderSecondError",
+    value: function renderSecondError() {
+      var errorsToRender = this.props.errors.slice(1);
+
+      if (this.props.errors.length > 0 && this.props.errors[0].includes("Password")) {
+        errorsToRender = this.props.errors;
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "session-errors"
+      }, errorsToRender.map(function (error, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: "error-".concat(i)
         }, error);
@@ -436,21 +455,21 @@ function (_React$Component) {
     key: "renderSwitchForm",
     value: function renderSwitchForm() {
       var description = "Don't have an account?";
-      var url = "/login";
+      var url = "/signup";
       var linkText = "Create account";
 
-      if (this.formtype === "Continue") {
+      if (this.props.formType === "Continue") {
         description = "Already have an account?";
-        url = "/signup";
+        url = "/login";
         linkText = "Sign in";
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "switch-wrapper"
-      }, "Don't have an account?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/login",
+      }, description, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: url,
         className: "switch-link"
-      }, "Create account"));
+      }, linkText));
     }
   }, {
     key: "render",
@@ -479,9 +498,7 @@ function (_React$Component) {
         onChange: this.update("email"),
         placeholder: "Email",
         className: "text-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "session-errors"
-      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), this.renderFirstError(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
@@ -489,7 +506,7 @@ function (_React$Component) {
         onChange: this.update("password"),
         className: "text-input",
         placeholder: "Password"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), this.renderSecondError(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "btn-session-submit",
         type: "submit",
         value: this.props.formType
