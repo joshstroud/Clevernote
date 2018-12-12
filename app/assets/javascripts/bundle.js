@@ -401,10 +401,11 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionForm).call(this, props));
     _this.state = {
       email: "",
-      password: ""
+      password: "",
+      demoLoginAnimationInterval: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.demoSignIn = _this.demoSignIn.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.demoLogin = _this.demoLogin.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -477,13 +478,51 @@ function (_React$Component) {
       }, linkText));
     }
   }, {
-    key: "demoSignIn",
-    value: function demoSignIn(e) {
-      var user = {
-        email: this.state.email,
-        password: this.state.password
-      };
-      this.props.processForm(user);
+    key: "demoLogin",
+    value: function demoLogin(e) {
+      // const user = {
+      //   email: "demo@demo.com",
+      //   password: "password"
+      // };
+      // this.props.processForm(user);
+      this.setState({
+        demoLoginAnimationInterval: window.setInterval(this.animateDemoLogin.bind(this), 90)
+      });
+    }
+  }, {
+    key: "animateDemoLogin",
+    value: function animateDemoLogin() {
+      if (this.state.email === "demo@demo.com" && this.state.password === "password") {
+        var user = {
+          email: "demo@demo.com",
+          password: "password"
+        };
+        clearInterval(this.state.demoLoginAnimationInterval);
+        this.props.processForm(user);
+      } else {
+        this.updateDemoLoginAnimation();
+      }
+    }
+  }, {
+    key: "updateDemoLoginAnimation",
+    value: function updateDemoLoginAnimation() {
+      var demoEmail = "demo@demo.com";
+      var demoPassword = "password";
+      var newEmail = this.state.email;
+      var newPassword = this.state.password;
+
+      if (newEmail.length < demoEmail.length) {
+        newEmail += demoEmail[newEmail.length];
+      }
+
+      if (newPassword.length < demoPassword.length) {
+        newPassword += demoPassword[newPassword.length];
+      }
+
+      this.setState({
+        email: newEmail,
+        password: newPassword
+      });
     }
   }, {
     key: "renderDemoLoginButton",
@@ -493,13 +532,28 @@ function (_React$Component) {
       if (this.props.formType === "Sign In") {
         demoLoginButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "demo-sign-in-button",
-          onClick: this.demoSignIn
+          onClick: this.demoLogin
         }, "Sign in with Demo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "horizontal-text"
         }, "or"));
       }
 
       return demoLoginButton;
+    }
+  }, {
+    key: "renderTermsOfService",
+    value: function renderTermsOfService() {
+      if (this.props.formType === "Continue") {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "terms-of-service"
+        }, "By creating an account, you are agreeing to our", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "ToS-link"
+        }, "Terms of Service "), "and ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "ToS-link"
+        }, "Privacy Policy"), "."));
+      } else {
+        return null;
+      }
     }
   }, {
     key: "render",
@@ -538,13 +592,7 @@ function (_React$Component) {
         className: "btn-session-submit",
         type: "submit",
         value: this.props.formType
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "terms-of-service"
-      }, "By creating an account, you are agreeing to our", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "ToS-link"
-      }, "Terms of Service "), "and ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "ToS-link"
-      }, "Privacy Policy"), "."), this.renderSwitchForm()));
+      })), this.renderTermsOfService(), this.renderSwitchForm()));
     }
   }]);
 
