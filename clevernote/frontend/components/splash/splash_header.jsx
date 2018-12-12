@@ -1,25 +1,26 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SplashHeader = props => {
   return (
     <header className="global-header">
-      <a href="#">
+      <Link to="/">
         <img
           className="global-logo"
           src={window.images.evernoteLogo}
           alt="Evernote logo"
         />
-      </a>
+      </Link>
       <nav className="utility-nav">
         <ul>
           <li>
-            <a href="#">Sign up</a>
+            <Link to="/signup">Sign up</Link>
           </li>
           <li>or</li>
           <li>
-            <a href="#" className="button-outline">
+            <Link to="/login" className="button-outline">
               Log in
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

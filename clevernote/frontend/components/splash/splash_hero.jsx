@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SplashHero = props => {
   return (
@@ -9,9 +10,9 @@ const SplashHero = props => {
           Evernote helps you capture and prioritize ideas, projects, and to-do
           lists, so nothing falls through the cracks.
         </div>
-        <a href="#" className="button-primary white">
+        <Link to="/signup" className="button-primary white">
           Sign up for free
-        </a>
+        </Link>
       </div>
       <img src={window.images.homepageHero} alt />
     </section>
