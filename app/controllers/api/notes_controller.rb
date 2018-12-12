@@ -5,8 +5,7 @@ class Api::NotesController < ApplicationController
   end
 
   def show
-    # what's syntax again?
-    @note = Note.find_by(id: params[:note][:id])
+    @note = Note.find_by(id: params[:id])
     if @note
       render :show
     else
@@ -17,7 +16,7 @@ class Api::NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
 
-    if @note
+    if @note.save
       render :show
     else 
       render json: @note.errors.full_messages, status: 422
@@ -25,12 +24,11 @@ class Api::NotesController < ApplicationController
   end
 
   def update
-    @note = Note.find_by(id: params[:note][:id])
-
+    @note = Note.find_by(id: params[:id])
     unless @note
       render json: ["Note does not exist"], status: 404 
     end
-    
+
     if @note.update_attributes(note_params)
       render :show
     else
@@ -39,13 +37,18 @@ class Api::NotesController < ApplicationController
   end
 
   def destroy
-    @note = Note.find_by(id: params[:note][:id])
-    @note.destroy
-    render :show
+    @note = Note.find_by(id: params[:id])
+    if @note
+      @note.destroy
+      render :show
+    else
+      render json: ["Note does not exist"], status: 404 
+    end
     # What should a delete return?
   end
 
-  private note_params
+  private
+  def note_params
     params.require(:note).permit(:title, :body, :author_id, :notebook_id)
   end
 end
