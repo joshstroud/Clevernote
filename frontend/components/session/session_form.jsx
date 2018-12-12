@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -33,43 +34,71 @@ class SessionForm extends React.Component {
     );
   }
 
+  renderSwitchForm() {
+    let description = "Don't have an account?";
+    let url = "/login";
+    let linkText = "Create account";
+
+    if (this.formtype === "Continue") {
+      description = "Already have an account?";
+      url = "/signup";
+      linkText = "Sign in";
+    }
+
+    return (
+      <div className="switch-wrapper">
+        Don't have an account?
+        <br />
+        <Link to="/login" className="switch-link">
+          Create account
+        </Link>
+      </div>
+    );
+  }
+
   render() {
     return (
-      <div className="login-form-container">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          Welcome to Clevernote!
-          <br />
-          Please {this.props.formType} or {this.props.navLink}
-          {this.renderErrors()}
-          <div className="login-form">
-            <br />
-            <label>
-              Email:
-              <input
-                type="text"
-                value={this.state.email}
-                onChange={this.update("email")}
-                className="login-input"
-              />
-            </label>
-            <br />
-            <label>
-              Password:
-              <input
-                type="password"
-                value={this.state.password}
-                onChange={this.update("password")}
-                className="login-input"
-              />
-            </label>
-            <br />
-            <input
-              className="session-submit"
-              type="submit"
-              value={this.props.formType}
-            />
+      <div className="window-wrapper">
+        <section className="form-wrapper">
+          <div className="heading">
+            <img src={window.images.sessionEvernoteLogo} alt="" />
+            <p className="tagline">Remember everything important.</p>
           </div>
-        </form>
+          <ol className="login-form-list">
+            <form onSubmit={this.handleSubmit} className="login-form">
+              <div className="input-wrapper">
+                <input
+                  type="text"
+                  value={this.state.email}
+                  onChange={this.update("email")}
+                  placeholder="Email"
+                  className="text-input"
+                />
+              </div>
+              <div className="session-errors">{this.renderErrors()}</div>
+              <div className="input-wrapper">
+                <input
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.update("password")}
+                  className="text-input"
+                  placeholder="Password"
+                />
+              </div>
+              <input
+                className="btn-session-submit"
+                type="submit"
+                value={this.props.formType}
+              />
+            </form>
+          </ol>
+          <p className="terms-of-service">
+            By creating an account, you are agreeing to our{" "}
+            <span className="ToS-link">Terms of Service </span>
+            and <span className="ToS-link">Privacy Policy</span>.
+          </p>
+          {this.renderSwitchForm()}
+        </section>
       </div>
     );
   }

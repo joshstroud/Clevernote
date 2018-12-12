@@ -1,0 +1,153 @@
+.window-wrapper {
+  background: url("https://i.imgur.com/dY3qIWk.png");
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.form-wrapper {
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 512px;
+  margin: 0px auto 28px auto;
+  padding: 62.12px 99px 48px;
+  width: 314px;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  text-align: left;
+}
+
+.heading {
+  text-align: center;
+  color: #aaaaaa;
+}
+
+.tagline {
+  color: #333333;
+  font-size: 16px;
+  font-family: -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif,
+    helvetica,
+    arial,
+    sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 44px;
+  margin-top: 7px;
+}
+
+.text-input {
+  border-radius: 7px;
+  line-height: 1.1875;
+  width: 314px;
+  margin: 3px 0px;
+  color: #333333;
+  border: 1px solid #e6e6e6;
+  padding: 12px 16px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+
+.btn-session-submit {
+  margin-top: 9px;
+  margin-bottom: 11px;
+  width: 100%;
+  background-color: #00a82d;
+  border-color: #00a82d;
+  min-height: 44px;
+  border-radius: 7px;
+  font-family: -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif,
+    helvetica,
+    arial,
+    sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: white;
+  font-size: 16px;
+  padding-left: 21.333px;
+  padding-right: 21.333px;
+}
+
+.btn-session-submit:hover {
+  background-color: #008f26;
+  border-color: #008f26;
+  cursor: pointer;
+}
+
+.terms-of-service {
+  text-align: center;
+  width: 280px;
+  font-size: 12px;
+  color: #a6a6a6;
+  padding-left: 16px;
+}
+
+.ToS-link {
+  color: rgb(0, 168, 45);
+  cursor: pointer;
+}
+
+.session-errors {
+  color: #cc4539;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.switch-wrapper {
+  font-family: -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif,
+    helvetica,
+    arial,
+    sans-serif;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 34px;
+  color: rgb(115, 115, 115);
+}
+
+.switch-link {
+  color: rgb(0, 168, 45);
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  margin-top: 12px;
+
+}
+
+.switch-link:hover {
+  color: #008f26;
+}
