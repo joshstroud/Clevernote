@@ -211,9 +211,9 @@ var setupStoreWithUserLogin = function setupStoreWithUserLogin() {
 
 /***/ }),
 
-/***/ "./frontend/components/App.jsx":
+/***/ "./frontend/components/app.jsx":
 /*!*************************************!*\
-  !*** ./frontend/components/App.jsx ***!
+  !*** ./frontend/components/app.jsx ***!
   \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -292,7 +292,7 @@ var MainApp = function MainApp() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App */ "./frontend/components/App.jsx");
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app */ "./frontend/components/app.jsx");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
@@ -305,7 +305,7 @@ var Root = function Root(_ref) {
   var store = _ref.store;
   return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
     store: store
-  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_app__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Root);
@@ -404,6 +404,7 @@ function (_React$Component) {
       password: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.demoSignIn = _this.demoSignIn.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -420,7 +421,11 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      var user = Object.assign({}, this.state);
+      var user = {
+        email: this.state.email,
+        password: this.state.password
+      };
+      debugger;
       this.props.processForm(user);
     }
   }, {
@@ -472,6 +477,31 @@ function (_React$Component) {
       }, linkText));
     }
   }, {
+    key: "demoSignIn",
+    value: function demoSignIn(e) {
+      var user = {
+        email: this.state.email,
+        password: this.state.password
+      };
+      this.props.processForm(user);
+    }
+  }, {
+    key: "renderDemoLoginButton",
+    value: function renderDemoLoginButton() {
+      var demoLoginButton = null;
+
+      if (this.props.formType === "Sign In") {
+        demoLoginButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "demo-sign-in-button",
+          onClick: this.demoSignIn
+        }, "Sign in with Demo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "horizontal-text"
+        }, "or"));
+      }
+
+      return demoLoginButton;
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -485,9 +515,7 @@ function (_React$Component) {
         alt: ""
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "tagline"
-      }, "Remember everything important.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
-        className: "login-form-list"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "Remember everything important.")), this.renderDemoLoginButton(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "login-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -510,7 +538,7 @@ function (_React$Component) {
         className: "btn-session-submit",
         type: "submit",
         value: this.props.formType
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "terms-of-service"
       }, "By creating an account, you are agreeing to our", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "ToS-link"
