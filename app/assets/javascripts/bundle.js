@@ -630,15 +630,19 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "note-show-nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "note-show-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "note-show-fullscreen-button"
       }, "FS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-current-notebook"
-      }, "My Notebook"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "| My Notebook")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "note-show-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "note-show-share-button"
       }, "Share"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "options-button"
-      }, "\u2699"));
+      }, "\u2699")));
     }
   }]);
 
