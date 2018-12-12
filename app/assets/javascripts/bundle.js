@@ -572,7 +572,13 @@ function (_Component) {
   _createClass(NoteShowEditor, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Note Show Editor");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "note-show-editor-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.images.noteShowEditorPlaceholder,
+        alt: "",
+        className: "note-show-editor-placeholder"
+      }));
     }
   }]);
 
