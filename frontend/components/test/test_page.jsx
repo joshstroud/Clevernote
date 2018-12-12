@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import AllNotesIndexContainer from "../notes_index/all_notes_index_container";
 import NoteShowContainer from "../note_show/note_show_container";
 
-class MainSection extends Component {
+// Use this component for testing components in isolation
+
+class TestPage extends Component {
   render() {
     return (
       <div>
-        <AllNotesIndexContainer />
         <NoteShowContainer />
       </div>
     );
   }
 }
 
-export default MainSection;
+export default TestPage;

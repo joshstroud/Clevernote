@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import NoteShow from "./note_show";
+import SideNav from "./side_nav";
 
 const mapStateToProps = (state, ownProps) => {
   return {};
@@ -12,4 +12,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NoteShow);
+)(SideNav);
