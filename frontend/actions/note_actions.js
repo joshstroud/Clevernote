@@ -13,7 +13,7 @@ export const receiveAllNotes = notes => {
 };
 
 export const fetchAllNotes = () => dispatch => {
-  return NoteApiUtil.fetchNotes()
+  return NoteApiUtil.fetchAllNotes()
     .then(notes => dispatch(receiveNotes(notes)));
 };
 
@@ -25,7 +25,7 @@ export const receiveSingleNote = note => {
 }
 
 export const fetchSingleNote = (noteId) => dispatch => {
-  return NoteApiUtil.fetchNote(noteId)
+  return NoteApiUtil.fetchSingleNote(noteId)
     .then(note => dispatch(receiveSingleNote(note)));
 };
 
