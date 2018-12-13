@@ -5,7 +5,7 @@ import NoteShowContainer from "../note_show/note_show_container";
 class MainSection extends Component {
   render() {
     return (
-      <div>
+      <div className="main-section-wrapper">
         <AllNotesIndexContainer />
         <NoteShowContainer />
       </div>
