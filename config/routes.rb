@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resources :notes, only: [:index, :show, :create, :update, :destroy]
   end
 
+  get '*unmatched_route', to: 'application#not_found'
+
   root "static_pages#root"
 end

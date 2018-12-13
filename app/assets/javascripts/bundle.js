@@ -379,7 +379,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _test_login_greeting_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../test/login_greeting_container */ "./frontend/components/test/login_greeting_container.jsx");
 /* harmony import */ var _main_section__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main_section */ "./frontend/components/main_page/main_section.jsx");
-/* harmony import */ var _side_nav_side_nav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../side_nav/side_nav */ "./frontend/components/side_nav/side_nav.jsx");
+/* harmony import */ var _side_nav_side_nav_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../side_nav/side_nav_container */ "./frontend/components/side_nav/side_nav_container.jsx");
 
 
 
@@ -388,7 +388,7 @@ __webpack_require__.r(__webpack_exports__);
 var MainPage = function MainPage() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
     className: "main-page-wrapper"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_nav_side_nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_section__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_nav_side_nav_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_section__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MainPage);
