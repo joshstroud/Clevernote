@@ -66,3 +66,14 @@
 .side-nav-row:hover {
   background-color: #333;
 }
+
+.side-nav-category-selected {
+  color: #e6e6e6;
+  background-color: #404040;
+  font-weight: 600;
+}
+
+.side-nav-category-selected.side-nav-row:hover {
+  background-color: #404040;
+
+}

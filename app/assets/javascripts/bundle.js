@@ -1355,6 +1355,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _side_nav_notebook_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./side_nav_notebook_index */ "./frontend/components/side_nav/side_nav_notebook_index.jsx");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1376,18 +1377,54 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var SideNav =
 /*#__PURE__*/
 function (_Component) {
   _inherits(SideNav, _Component);
 
-  function SideNav() {
+  function SideNav(props) {
+    var _this;
+
     _classCallCheck(this, SideNav);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SideNav).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SideNav).call(this, props));
+
+    var username = _this.props.currentUserEmail.substring(0, _this.props.currentUserEmail.indexOf("@"));
+
+    var selectedCategory = _this.findSelectedCategory();
+
+    _this.state = {
+      username: username,
+      selectedCategory: selectedCategory
+    };
+    return _this;
   }
 
   _createClass(SideNav, [{
+    key: "findSelectedCategory",
+    value: function findSelectedCategory() {
+      var path = this.props.history.location.pathname; // matchProfile = matchPath(, {
+      //   path: "/app/notes/",
+      //   exact: "true"
+      // });
+
+      if (path === "/app/notes") {
+        return "All Notes";
+      }
+    }
+  }, {
+    key: "setSelected",
+    value: function setSelected(category) {
+      var className = "side-nav-row";
+
+      if (this.state.selectedCategory === category) {
+        className += " side-nav-category-selected";
+      }
+
+      return className;
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -1396,22 +1433,22 @@ function (_Component) {
         className: "side-nav-user-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "side-nav-user"
-      }, "Demo User \u25BC")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.username, " \u25BC")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "side-nav-create-button-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "side-nav-create-button"
       }, " + New Note")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "side-nav-row"
+        className: this.setSelected(null)
       }, "Shortcuts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "side-nav-row"
+        className: this.setSelected("All Notes")
       }, "All Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "side-nav-row"
+        className: this.setSelected("Notebooks")
       }, "Notebooks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "side-nav-row"
+        className: this.setSelected(null)
       }, "Shared with Me"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "side-nav-row"
+        className: this.setSelected("Tags")
       }, "Tags"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "side-nav-row"
+        className: this.setSelected(null)
       }, "Trash"));
     }
   }]);
@@ -1433,19 +1470,26 @@ function (_Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _side_nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./side_nav */ "./frontend/components/side_nav/side_nav.jsx");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
+/* harmony import */ var _side_nav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./side_nav */ "./frontend/components/side_nav/side_nav.jsx");
+/* harmony import */ var _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/dummy_data */ "./frontend/util/dummy_data.js");
+
+
 
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    currentUserEmail: state.entities.users[state.session.id].email,
+    notebooks: _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyNotebooks"]
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {};
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_side_nav__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_side_nav__WEBPACK_IMPORTED_MODULE_2__["default"])));
 
 /***/ }),
 
@@ -2111,6 +2155,36 @@ var setupStoreTesting = function setupStoreTesting(store) {
 var user = {
   email: "josh@gmail.com",
   password: "password"
+};
+
+/***/ }),
+
+/***/ "./frontend/util/dummy_data.js":
+/*!*************************************!*\
+  !*** ./frontend/util/dummy_data.js ***!
+  \*************************************/
+/*! exports provided: dummyNotebooks */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dummyNotebooks", function() { return dummyNotebooks; });
+var dummyNotebooks = {
+  1: {
+    id: 1,
+    title: "My First Notebook",
+    ownerId: 3
+  },
+  2: {
+    id: 2,
+    title: "My Second Notebook",
+    ownerId: 3
+  },
+  3: {
+    id: 3,
+    title: "My Third Notebook",
+    ownerId: 3
+  }
 };
 
 /***/ }),
