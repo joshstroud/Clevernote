@@ -1,12 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", password: "", demoLoginAnimationInterval: null };
+    this.state = {
+      email: "",
+      password: "",
+      demoLoginAnimationInterval: null,
+      switchForms: false
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.switchForms = this.switchForms.bind(this);
   }
 
   update(field) {
@@ -51,28 +57,6 @@ class SessionForm extends React.Component {
           <li key={`error-${i}`}>{error}</li>
         ))}
       </ul>
-    );
-  }
-
-  renderSwitchForm() {
-    let description = "Don't have an account?";
-    let url = "/signup";
-    let linkText = "Create account";
-
-    if (this.props.formType === "Continue") {
-      description = "Already have an account?";
-      url = "/login";
-      linkText = "Sign in";
-    }
-
-    return (
-      <div className="switch-wrapper">
-        {description}
-        <br />
-        <Link to={url} className="switch-link">
-          {linkText}
-        </Link>
-      </div>
     );
   }
 
@@ -137,6 +121,39 @@ class SessionForm extends React.Component {
       );
     }
     return demoLoginButton;
+  }
+
+  switchForms(e) {
+    this.props.clearErrors();
+    this.setState({
+      switchForms: true
+    });
+  }
+
+  renderSwitchForm() {
+    let description = "Don't have an account?";
+    let url = "/signup";
+    let linkText = "Create account";
+
+    if (this.props.formType === "Continue") {
+      description = "Already have an account?";
+      url = "/login";
+      linkText = "Sign in";
+    }
+
+    if (this.state.switchForms) {
+      return <Redirect to={url} />;
+    }
+
+    return (
+      <div className="switch-wrapper">
+        {description}
+        <br />
+        <button className="switch-button" onClick={this.switchForms}>
+          {linkText}
+        </button>
+      </div>
+    );
   }
 
   renderTermsOfService() {
