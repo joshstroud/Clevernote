@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
 
+  def not_found
+    redirect_to root_path
+  end
+
   private
 
   def current_user
