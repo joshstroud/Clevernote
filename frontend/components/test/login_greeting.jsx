@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router";
 
 const LoginGreeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <nav className="login-signup">
-      <Link to="/login">Login</Link>
-      &nbsp;or&nbsp;
-      <Link to="/signup">Sign up!</Link>
+      <Redirect to="/" />
     </nav>
   );
   const personalGreeting = () => (

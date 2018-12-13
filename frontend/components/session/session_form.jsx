@@ -160,7 +160,7 @@ class SessionForm extends React.Component {
       <div className="window-wrapper">
         <section className="form-wrapper">
           <div className="heading">
-            <img src={window.images.sessionEvernoteLogo} alt="" />
+            <img src={window.images.sessionClevernoteLogo} alt="" />
             <p className="tagline">Remember everything important.</p>
           </div>
           {this.renderDemoLoginButton()}

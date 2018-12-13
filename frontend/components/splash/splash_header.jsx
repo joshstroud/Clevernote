@@ -7,7 +7,7 @@ const SplashHeader = props => {
       <Link to="/">
         <img
           className="global-logo"
-          src={window.images.homeEvernoteLogo}
+          src={window.images.homeClevernoteLogo}
           alt="Evernote logo"
         />
       </Link>
