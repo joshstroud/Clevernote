@@ -1520,15 +1520,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _splash_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./splash_header */ "./frontend/components/splash/splash_header.jsx");
 /* harmony import */ var _splash_hero__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./splash_hero */ "./frontend/components/splash/splash_hero.jsx");
+/* harmony import */ var _splash_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./splash_footer */ "./frontend/components/splash/splash_footer.jsx");
+
 
 
 
 
 var SplashContainer = function SplashContainer() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_splash_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_splash_hero__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_splash_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_splash_hero__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_splash_footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SplashContainer);
+
+/***/ }),
+
+/***/ "./frontend/components/splash/splash_footer.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/splash/splash_footer.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+
+
+var SplashFooter = function SplashFooter(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+    className: "splash-footer"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Made with love by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "http://josh-stroud.com"
+  }, "Josh Stroud")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SplashFooter);
 
 /***/ }),
 
@@ -1550,6 +1581,8 @@ __webpack_require__.r(__webpack_exports__);
 var SplashHeader = function SplashHeader(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "global-header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "global-header-wrapper"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -1563,7 +1596,7 @@ var SplashHeader = function SplashHeader(props) {
   }, "Sign up")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "or"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/login",
     className: "button-outline"
-  }, "Log in")))));
+  }, "Log in"))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SplashHeader);
@@ -1586,10 +1619,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SplashHero = function SplashHero(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
+    className: "splash-content-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     className: "hero top-sign-up green pattern-background"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "content"
+    className: "hero-content"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Feel organized without the effort"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "description"
   }, "Evernote helps you capture and prioritize ideas, projects, and to-do lists, so nothing falls through the cracks."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1597,8 +1632,8 @@ var SplashHero = function SplashHero(props) {
     className: "button-primary white"
   }, "Sign up for free")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: window.images.homepageHero,
-    alt: true
-  }));
+    className: "hero-image"
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SplashHero);

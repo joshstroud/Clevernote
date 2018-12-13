@@ -1,13 +1,15 @@
 import React from "react";
 import SplashHeader from "./splash_header";
 import SplashHero from "./splash_hero";
+import SplashFooter from "./splash_footer";
 
 const SplashContainer = () => {
   return (
-    <main>
+    <div className="splash-container">
       <SplashHeader />
       <SplashHero />
-    </main>
+      <SplashFooter />
+    </div>
   );
 };
 

@@ -1,0 +1,17 @@
+.splash-footer {
+  font-family: Arial;
+  background: white;
+  color: #888b8d;
+  margin: 0 auto;
+  padding: 100px 60px;
+  text-align: center;
+  font-size: 40px
+}
+
+.splash-footer a {
+  color: #00A82D
+}
+
+.splash-footer:visited {
+  color: #00A82D
+}
