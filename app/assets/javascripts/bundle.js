@@ -1348,7 +1348,29 @@ function (_Component) {
   _createClass(SideNav, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, "Side Nav"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "side-nav-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "side-nav-user-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "side-nav-user"
+      }, "Demo User \u25BC")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "side-nav-create-button-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "side-nav-create-button"
+      }, " + New Note")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "side-nav-row"
+      }, "Shortcuts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "side-nav-row"
+      }, "All Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "side-nav-row"
+      }, "Notebooks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "side-nav-row"
+      }, "Shared with Me"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "side-nav-row"
+      }, "Tags"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "side-nav-row"
+      }, "Trash"));
     }
   }]);
 
@@ -1356,6 +1378,32 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (SideNav);
+
+/***/ }),
+
+/***/ "./frontend/components/side_nav/side_nav_container.jsx":
+/*!*************************************************************!*\
+  !*** ./frontend/components/side_nav/side_nav_container.jsx ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _side_nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./side_nav */ "./frontend/components/side_nav/side_nav.jsx");
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_side_nav__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -1612,6 +1660,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _note_show_note_show_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../note_show/note_show_container */ "./frontend/components/note_show/note_show_container.jsx");
 /* harmony import */ var _notes_index_all_notes_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../notes_index/all_notes_index_container */ "./frontend/components/notes_index/all_notes_index_container.jsx");
 /* harmony import */ var _main_page_main_section__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../main_page/main_section */ "./frontend/components/main_page/main_section.jsx");
+/* harmony import */ var _side_nav_side_nav_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../side_nav/side_nav_container */ "./frontend/components/side_nav/side_nav_container.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1633,6 +1682,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
  // Use this component for testing components in isolation
 
 var TestPage =
@@ -1649,7 +1699,7 @@ function (_Component) {
   _createClass(TestPage, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_page_main_section__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_nav_side_nav_container__WEBPACK_IMPORTED_MODULE_4__["default"], null));
     }
   }]);
 
