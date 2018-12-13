@@ -852,7 +852,17 @@ function (_Component) {
   _createClass(NotesIndex, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Note Index", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "notes-index-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "notes-index-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        id: "notes-index-header-title"
+      }, "All Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "notes-index-header-footer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "3 Notes"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "notes-index-items-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
     }
   }]);
 

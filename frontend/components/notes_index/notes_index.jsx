@@ -4,14 +4,25 @@ import NotesIndexItem from "./notes_index_item";
 class NotesIndex extends Component {
   render() {
     return (
-      <div>
-        Note Index
-        <ul>
+      <section className="notes-index-wrapper">
+        <header className="notes-index-header">
+          <h1 id="notes-index-header-title">All Notes</h1>
+          <div id="notes-index-header-footer">
+            <div>3 Notes</div>
+          </div>
+        </header>
+        <div className="notes-index-items-wrapper">
           <NotesIndexItem />
           <NotesIndexItem />
           <NotesIndexItem />
-        </ul>
-      </div>
+          <NotesIndexItem />
+          <NotesIndexItem />
+          <NotesIndexItem />
+          <NotesIndexItem />
+          <NotesIndexItem />
+          <NotesIndexItem />
+        </div>
+      </section>
     );
   }
 }
