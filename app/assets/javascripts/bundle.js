@@ -344,7 +344,7 @@ var App = function App() {
     component: _session_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     path: "/app",
-    component: _test_test_page__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _main_page_main_page__WEBPACK_IMPORTED_MODULE_7__["default"]
   }));
 };
 
@@ -371,11 +371,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var MainApp = function MainApp() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_nav_side_nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_section__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+var MainPage = function MainPage() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
+    className: "main-page-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_nav_side_nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_section__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (MainApp);
+/* harmony default export */ __webpack_exports__["default"] = (MainPage);
 
 /***/ }),
 

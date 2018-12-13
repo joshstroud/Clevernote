@@ -3,9 +3,9 @@ import LoginGreetingContainer from "../test/login_greeting_container";
 import MainSection from "./main_section";
 import SideNav from "../side_nav/side_nav";
 
-const MainApp = () => {
+const MainPage = () => {
   return (
-    <main>
+    <main className="main-page-wrapper">
       {/* <LoginGreetingContainer /> */}
       <SideNav />
       <MainSection />
@@ -13,4 +13,4 @@ const MainApp = () => {
   );
 };
 
-export default MainApp;
+export default MainPage;
