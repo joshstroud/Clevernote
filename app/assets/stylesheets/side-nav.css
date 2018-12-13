@@ -41,6 +41,10 @@
   overflow: hidden;
 }
 
+.side-nav-user:hover {
+  color: rgb(226, 233, 246);
+}
+
 .side-nav-create-button-row {
   background-color: #008f26;
   border-radius: 5px;
@@ -75,5 +79,4 @@
 
 .side-nav-category-selected.side-nav-row:hover {
   background-color: #404040;
-
 }
