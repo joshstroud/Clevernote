@@ -255,6 +255,27 @@ var logout = function logout() {
 
 /***/ }),
 
+/***/ "./frontend/actions/ui_actions.js":
+/*!****************************************!*\
+  !*** ./frontend/actions/ui_actions.js ***!
+  \****************************************/
+/*! exports provided: SELECT_NOTE, selectNote */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SELECT_NOTE", function() { return SELECT_NOTE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectNote", function() { return selectNote; });
+var SELECT_NOTE = "SELECT_NOTE";
+var selectNote = function selectNote(noteId) {
+  return {
+    type: SELECT_NOTE,
+    noteId: noteId
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/clevernote.jsx":
 /*!*********************************!*\
   !*** ./frontend/clevernote.jsx ***!
@@ -809,7 +830,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _notes_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notes_index */ "./frontend/components/notes_index/notes_index.jsx");
 /* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/note_actions */ "./frontend/actions/note_actions.js");
-/* harmony import */ var _util_selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/selectors */ "./frontend/util/selectors.js");
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
 
 
 
@@ -818,7 +839,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     notes: state.entities.notes,
-    title: "All Notes"
+    title: "All Notes",
+    selectedNoteId: state.ui.selectedNoteId
   };
 };
 
@@ -826,6 +848,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchAllNotes: function fetchAllNotes() {
       return dispatch(Object(_actions_note_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllNotes"])());
+    },
+    selectNote: function selectNote(noteId) {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_3__["selectNote"])(noteId));
     }
   };
 };
@@ -902,7 +927,9 @@ function (_Component) {
       var noteIndexItems = Object.keys(this.props.notes).map(function (noteId) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: noteId,
-          note: _this.props.notes[noteId]
+          note: _this.props.notes[noteId],
+          selectedNoteId: _this.props.selectedNoteId,
+          selectNote: _this.props.selectNote
         });
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -952,13 +979,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -967,24 +994,64 @@ var NotesIndexItem =
 function (_Component) {
   _inherits(NotesIndexItem, _Component);
 
-  function NotesIndexItem() {
+  function NotesIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, NotesIndexItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(NotesIndexItem).apply(this, arguments));
-  }
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NotesIndexItem).call(this, props));
+    _this.state = {
+      selected: _this.props.selectedNoteId === _this.props.note.id
+    };
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  } // snippet is 80 characters
+
 
   _createClass(NotesIndexItem, [{
     key: "noteSnippet",
-    // 80 characters
     value: function noteSnippet() {
       var noteText = this.props.note.title + " " + this.props.note.body;
       return noteText.substring(0, 79);
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevState.selected && this.props.note.id !== this.props.selectedNoteId) {
+        this.setState({
+          selected: false
+        });
+      } else if (!prevState.selected && this.props.note.id === this.props.selectedNoteId) {
+        this.setState({
+          selected: true
+        });
+      }
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      this.props.selectNote(this.props.note.id);
+      this.setState({
+        selected: true
+      });
+    }
+  }, {
+    key: "computeClassName",
+    value: function computeClassName() {
+      var className = "notes-index-item-wrapper";
+
+      if (this.state.selected) {
+        className += " notes-index-item-selected";
+      }
+
+      return className;
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "notes-index-item-wrapper"
+        className: this.computeClassName(),
+        onClick: this.handleClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notes-index-item-title"
       }, this.props.note.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2010,15 +2077,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
 /* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
 /* harmony import */ var _errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./errors_reducer */ "./frontend/reducers/errors_reducer.js");
+/* harmony import */ var _ui_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ui_reducer */ "./frontend/reducers/ui_reducer.js");
 
- // import ui from './ui_reducer';
+
 
 
 
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   session: _session_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 
@@ -2091,6 +2160,44 @@ var sessionReducer = function sessionReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (sessionReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/ui_reducer.js":
+/*!*****************************************!*\
+  !*** ./frontend/reducers/ui_reducer.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var defaultUIState = {
+  selectedNoteId: null
+};
+
+var ui = function ui() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultUIState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["SELECT_NOTE"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        selectedNoteId: action.noteId
+      });
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ui);
 
 /***/ }),
 
@@ -2348,32 +2455,6 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var AuthRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(Auth));
 var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(Protected));
-
-/***/ }),
-
-/***/ "./frontend/util/selectors.js":
-/*!************************************!*\
-  !*** ./frontend/util/selectors.js ***!
-  \************************************/
-/*! exports provided: currentUserNotes */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentUserNotes", function() { return currentUserNotes; });
-// not used, since backend only returns notes for given user
-var currentUserNotes = function currentUserNotes(state) {
-  var notes = state.entities.notes;
-  debugger;
-  var filteredKeys = Object.keys(notes).filter(function (key) {
-    notes[key].authorId === state.session.id;
-  });
-  var filteredNotes = filteredKeys.reduce(function (obj, key) {
-    obj[key] = notes[key];
-    return obj;
-  }, {});
-  return filteredNotes;
-};
 
 /***/ }),
 

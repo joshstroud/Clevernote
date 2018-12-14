@@ -21,7 +21,14 @@ class NotesIndex extends Component {
 
   renderNoteIndexItems() {
     const noteIndexItems = Object.keys(this.props.notes).map(noteId => {
-      return <NotesIndexItem key={noteId} note={this.props.notes[noteId]} />;
+      return (
+        <NotesIndexItem
+          key={noteId}
+          note={this.props.notes[noteId]}
+          selectedNoteId={this.props.selectedNoteId}
+          selectNote={this.props.selectNote}
+        />
+      );
     });
 
     return <div className="notes-index-items-wrapper">{noteIndexItems}</div>;

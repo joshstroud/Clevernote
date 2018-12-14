@@ -28,6 +28,10 @@
     sans-serif;
 }
 
+.notes-index-item-wrapper:hover {
+  background: #f2f2f2;
+}
+
 .notes-index-item-title {
   overflow: hidden;
   white-space: nowrap;
@@ -49,4 +53,8 @@
 .notes-index-item-last-updated {
   font-size: 12px;
   color: #a6a6a6;
+}
+
+.notes-index-item-wrapper.notes-index-item-selected {
+  background: #f2f2f2;
 }
