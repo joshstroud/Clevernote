@@ -1001,11 +1001,14 @@ function (_Component) {
     value: function updateSelectedNote() {
       var paramSelectedNoteId = this.props.match.params.noteId;
 
-      if (this.props.selectedNoteId === null || paramSelectedNoteId && this.props.selectedNoteId !== this.props.routeNoteId) {
+      if (this.props.selectedNoteId === null || paramSelectedNoteId && this.props.selectedNoteId !== this.props.routeNoteId || paramSelectedNoteId === null) {
         if (this.props.routeNoteId && this.props.notes[this.props.routeNoteId]) {
           this.props.selectNote(this.props.routeNoteId);
-        } else {
-          this.props.selectNote(Object.keys(this.props.notes)[0]);
+        } else if (Object.keys(this.props.notes)[0]) {
+          debugger;
+          var firstNoteId = Object.keys(this.props.notes)[0];
+          this.props.selectNote(firstNoteId);
+          this.props.history.push("".concat(this.props.path, "/").concat(firstNoteId));
         }
       }
     }
