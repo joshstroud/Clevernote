@@ -12,3 +12,7 @@ export const currentUserNotes = (state) => {
 
   return filteredNotes;
 }
+
+export const selectTagsForNoteId = (state) => {
+
+}

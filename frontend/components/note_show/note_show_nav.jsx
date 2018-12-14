@@ -11,7 +11,7 @@ class NoteShowNav extends Component {
           </div>
         </div>
         <div className="note-show-left">
-          <button className="note-show-share-button">Share</button>
+          {/* <button className="note-show-share-button">Share</button> */}
           <button className="options-button">⚙</button>
         </div>
       </header>

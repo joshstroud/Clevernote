@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 
-class NoteShowTag extends Component {
-  render() {
-    return <button className="note-show-tag">Tag</button>;
-  }
-}
+const NoteShowTag = ({ tag }) => {
+  return <button className="note-show-tag">{tag.name}</button>;
+};
 
 export default NoteShowTag;

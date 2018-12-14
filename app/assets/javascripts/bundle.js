@@ -540,11 +540,14 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "note-show-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        notebook: this.props.notebooks[1]
+        notebook: this.props.notebook
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_editor__WEBPACK_IMPORTED_MODULE_2__["default"], {
         note: this.props.note,
         updateNote: this.props.updateNote
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_tag_list__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_tag_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        tagginsg: this.props.taggings,
+        tags: this.props.tags
+      }));
     }
   }]);
 
@@ -574,9 +577,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  console.log(_util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyNotebooks"]);
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
-    notebooks: _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyNotebooks"]
+    notebook: _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyNotebooks"][1],
+    tags: _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyTags"]
   };
 };
 
@@ -776,8 +781,6 @@ function (_Component) {
       }, "| ", this.props.notebook.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "note-show-share-button"
-      }, "Share"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "options-button"
       }, "\u2699")));
     }
@@ -801,48 +804,14 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
-
-var NoteShowTag =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(NoteShowTag, _Component);
-
-  function NoteShowTag() {
-    _classCallCheck(this, NoteShowTag);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(NoteShowTag).apply(this, arguments));
-  }
-
-  _createClass(NoteShowTag, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "note-show-tag"
-      }, "Tag");
-    }
-  }]);
-
-  return NoteShowTag;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+var NoteShowTag = function NoteShowTag(_ref) {
+  var tag = _ref.tag;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "note-show-tag"
+  }, tag.name);
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (NoteShowTag);
 
@@ -893,13 +862,25 @@ function (_Component) {
   }
 
   _createClass(NoteShowTagList, [{
+    key: "renderTags",
+    value: function renderTags() {
+      var _this = this;
+
+      return Object.keys(this.props.tags).map(function (tagId) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_tag__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: tagId,
+          tag: _this.props.tags[tagId]
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-show-tag-list-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "nav-show-add-tag-button"
-      }, "\u2795"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_tag__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_tag__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_tag__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      }, "\u2795"), this.renderTags());
     }
   }]);
 
@@ -2416,12 +2397,14 @@ var user = {
 /*!*************************************!*\
   !*** ./frontend/util/dummy_data.js ***!
   \*************************************/
-/*! exports provided: dummyNotebooks */
+/*! exports provided: dummyNotebooks, dummyTaggings, dummyTags */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dummyNotebooks", function() { return dummyNotebooks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dummyTaggings", function() { return dummyTaggings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dummyTags", function() { return dummyTags; });
 var dummyNotebooks = {
   1: {
     id: 1,
@@ -2437,6 +2420,45 @@ var dummyNotebooks = {
     id: 3,
     title: "My Third Notebook",
     ownerId: 3
+  }
+};
+var dummyTaggings = {
+  1: {
+    id: 1,
+    tagId: 1,
+    noteId: 1
+  },
+  2: {
+    id: 2,
+    tagId: 2,
+    noteId: 1
+  },
+  3: {
+    id: 3,
+    tagId: 2,
+    noteId: 2
+  },
+  4: {
+    id: 4,
+    tagId: 3,
+    noteId: 2
+  }
+};
+var dummyTags = {
+  1: {
+    id: 1,
+    name: "my-first-tag",
+    taggingId: [1]
+  },
+  2: {
+    id: 1,
+    name: "my-second-tag",
+    taggingId: [2, 3]
+  },
+  3: {
+    id: 3,
+    name: "my-third-tag",
+    taggingId: [4]
   }
 };
 

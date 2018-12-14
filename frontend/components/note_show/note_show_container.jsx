@@ -1,12 +1,18 @@
 import { connect } from "react-redux";
 import NoteShow from "./note_show";
 import { updateNote } from "../../actions/note_actions";
-import { dummyNotebooks } from "../../util/dummy_data";
+import {
+  dummyNotebooks,
+  dummyTaggings,
+  dummyTags
+} from "../../util/dummy_data";
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(dummyNotebooks);
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
-    notebooks: dummyNotebooks
+    notebook: dummyNotebooks[1],
+    tags: dummyTags
   };
 };
 
