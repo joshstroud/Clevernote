@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NotesIndexItem from "./notes_index_item";
 import { withRouter } from "react-router-dom";
+import { sortNotesByLastUpdate } from "../../util/note_util";
 
 class NotesIndex extends Component {
   constructor(props) {
@@ -26,7 +27,6 @@ class NotesIndex extends Component {
       if (this.props.routeNoteId && this.props.notes[this.props.routeNoteId]) {
         this.props.selectNote(this.props.routeNoteId);
       } else if (Object.keys(this.props.notes)[0]) {
-        debugger;
         const firstNoteId = Object.keys(this.props.notes)[0];
         this.props.history.push(`${this.props.path}/${firstNoteId}`);
       }
@@ -43,11 +43,11 @@ class NotesIndex extends Component {
   }
 
   renderNoteIndexItems() {
-    const noteIndexItems = Object.keys(this.props.notes).map(noteId => {
+    const noteIndexItems = sortNotesByLastUpdate(this.props.notes).map(note => {
       return (
         <NotesIndexItem
-          key={noteId}
-          note={this.props.notes[noteId]}
+          key={note.id}
+          note={note}
           selectedNoteId={this.props.selectedNoteId}
           selectNote={this.props.selectNote}
           history={this.props.history}

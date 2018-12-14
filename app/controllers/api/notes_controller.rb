@@ -5,6 +5,7 @@ class Api::NotesController < ApplicationController
     end
 
     @notes = current_user.notes
+    # @notes = Note.sorted_user_notes(current_user)
     render :index
   end
 

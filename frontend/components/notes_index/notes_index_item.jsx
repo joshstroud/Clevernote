@@ -6,8 +6,7 @@ class NotesIndexItem extends Component {
     super(props);
 
     this.state = {
-      selected: this.props.selectedNoteId === this.props.note.id,
-      shouldRedirect: false
+      selected: this.props.selectedNoteId === this.props.note.id
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -36,6 +35,7 @@ class NotesIndexItem extends Component {
       !prevState.selected &&
       this.props.note.id === this.props.selectedNoteId
     ) {
+      debugger;
       this.setState({ selected: true });
     }
   }

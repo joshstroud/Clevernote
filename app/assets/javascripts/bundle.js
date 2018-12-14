@@ -953,6 +953,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _notes_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notes_index_item */ "./frontend/components/notes_index/notes_index_item.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _util_note_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/note_util */ "./frontend/util/note_util.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -970,6 +971,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1005,7 +1007,6 @@ function (_Component) {
         if (this.props.routeNoteId && this.props.notes[this.props.routeNoteId]) {
           this.props.selectNote(this.props.routeNoteId);
         } else if (Object.keys(this.props.notes)[0]) {
-          debugger;
           var firstNoteId = Object.keys(this.props.notes)[0];
           this.props.history.push("".concat(this.props.path, "/").concat(firstNoteId));
         }
@@ -1027,10 +1028,10 @@ function (_Component) {
     value: function renderNoteIndexItems() {
       var _this = this;
 
-      var noteIndexItems = Object.keys(this.props.notes).map(function (noteId) {
+      var noteIndexItems = Object(_util_note_util__WEBPACK_IMPORTED_MODULE_3__["sortNotesByLastUpdate"])(this.props.notes).map(function (note) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: noteId,
-          note: _this.props.notes[noteId],
+          key: note.id,
+          note: note,
           selectedNoteId: _this.props.selectedNoteId,
           selectNote: _this.props.selectNote,
           history: _this.props.history,
@@ -1108,8 +1109,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NotesIndexItem).call(this, props));
     _this.state = {
-      selected: _this.props.selectedNoteId === _this.props.note.id,
-      shouldRedirect: false
+      selected: _this.props.selectedNoteId === _this.props.note.id
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -1136,6 +1136,7 @@ function (_Component) {
           selected: false
         });
       } else if (!prevState.selected && this.props.note.id === this.props.selectedNoteId) {
+        debugger;
         this.setState({
           selected: true
         });
@@ -2590,6 +2591,26 @@ var deleteNote = function deleteNote(noteId) {
     url: "/api/notes/".concat(noteId),
     method: "DELETE"
   });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/note_util.js":
+/*!************************************!*\
+  !*** ./frontend/util/note_util.js ***!
+  \************************************/
+/*! exports provided: sortNotesByLastUpdate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sortNotesByLastUpdate", function() { return sortNotesByLastUpdate; });
+var sortNotesByLastUpdate = function sortNotesByLastUpdate(notes) {
+  var notesArr = Object.values(notes);
+  notesArr.sort(function (a, b) {
+    return new Date(b.updated_at) - new Date(a.updated_at);
+  });
+  return notesArr;
 };
 
 /***/ }),
