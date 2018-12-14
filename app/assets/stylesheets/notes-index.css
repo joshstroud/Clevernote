@@ -47,6 +47,6 @@
 
 .notes-index-items-wrapper {
   /* Fix this! Want a fluid height, not fixed height */
-  height: 800px;
+  max-height: calc(100% - 129px);
   overflow-y: scroll;
 }
