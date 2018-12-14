@@ -976,7 +976,7 @@ function (_Component) {
     key: "noteSnippet",
     // 80 characters
     value: function noteSnippet() {
-      var noteText = this.props.note.title + this.props.note.body;
+      var noteText = this.props.note.title + " " + this.props.note.body;
       return noteText.substring(0, 79);
     }
   }, {
@@ -990,7 +990,7 @@ function (_Component) {
         className: "notes-index-item-snippet"
       }, this.noteSnippet()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notes-index-item-last-updated"
-      }, "Yesterday"));
+      }, this.props.note.time_since_update));
     }
   }]);
 
