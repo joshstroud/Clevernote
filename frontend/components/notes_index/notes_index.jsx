@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NotesIndexItem from "./notes_index_item";
+import { withRouter } from "react-router-dom";
 
 class NotesIndex extends Component {
   constructor(props) {
@@ -8,6 +9,26 @@ class NotesIndex extends Component {
 
   componentDidMount() {
     this.props.fetchAllNotes();
+  }
+
+  componentDidUpdate() {
+    this.updateSelectedNote();
+  }
+
+  updateSelectedNote() {
+    let paramSelectedNoteId = this.props.match.params.noteId;
+
+    if (
+      this.props.selectedNoteId === null ||
+      (paramSelectedNoteId &&
+        this.props.selectedNoteId !== this.props.routeNoteId)
+    ) {
+      if (this.props.routeNoteId && this.props.notes[this.props.routeNoteId]) {
+        this.props.selectNote(this.props.routeNoteId);
+      } else {
+        this.props.selectNote(Object.keys(this.props.notes)[0]);
+      }
+    }
   }
 
   renderNumberOfNotes() {
@@ -27,6 +48,8 @@ class NotesIndex extends Component {
           note={this.props.notes[noteId]}
           selectedNoteId={this.props.selectedNoteId}
           selectNote={this.props.selectNote}
+          history={this.props.history}
+          path={this.props.path}
         />
       );
     });

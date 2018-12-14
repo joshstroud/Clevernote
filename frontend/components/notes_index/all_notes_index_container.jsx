@@ -4,11 +4,13 @@ import { fetchAllNotes } from "../../actions/note_actions";
 import { selectNote } from "../../actions/ui_actions";
 import { withRouter } from "react-router";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     notes: state.entities.notes,
     title: "All Notes",
-    selectedNoteId: state.ui.selectedNoteId
+    selectedNoteId: state.ui.selectedNoteId,
+    routeNoteId: ownProps.match.params.noteId,
+    path: "/app/notes"
   };
 };
 

@@ -476,7 +476,6 @@ function (_Component) {
         path: "/app/notes",
         component: _notes_index_all_notes_index_container__WEBPACK_IMPORTED_MODULE_1__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
-        exact: true,
         path: "/app/notes/:noteId",
         component: _notes_index_all_notes_index_container__WEBPACK_IMPORTED_MODULE_1__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Redirect"], {
@@ -583,7 +582,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log(_util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyNotebooks"]);
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
     notebook: _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyNotebooks"][1],
@@ -917,11 +915,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     notes: state.entities.notes,
     title: "All Notes",
-    selectedNoteId: state.ui.selectedNoteId
+    selectedNoteId: state.ui.selectedNoteId,
+    routeNoteId: ownProps.match.params.noteId,
+    path: "/app/notes"
   };
 };
 
@@ -952,6 +952,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _notes_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notes_index_item */ "./frontend/components/notes_index/notes_index_item.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -973,6 +974,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var NotesIndex =
 /*#__PURE__*/
 function (_Component) {
@@ -988,6 +990,24 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchAllNotes();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.updateSelectedNote();
+    }
+  }, {
+    key: "updateSelectedNote",
+    value: function updateSelectedNote() {
+      var paramSelectedNoteId = this.props.match.params.noteId;
+
+      if (this.props.selectedNoteId === null || paramSelectedNoteId && this.props.selectedNoteId !== this.props.routeNoteId) {
+        if (this.props.routeNoteId && this.props.notes[this.props.routeNoteId]) {
+          this.props.selectNote(this.props.routeNoteId);
+        } else {
+          this.props.selectNote(Object.keys(this.props.notes)[0]);
+        }
+      }
     }
   }, {
     key: "renderNumberOfNotes",
@@ -1010,7 +1030,9 @@ function (_Component) {
           key: noteId,
           note: _this.props.notes[noteId],
           selectedNoteId: _this.props.selectedNoteId,
-          selectNote: _this.props.selectNote
+          selectNote: _this.props.selectNote,
+          history: _this.props.history,
+          path: _this.props.path
         });
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1050,6 +1072,7 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1070,6 +1093,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
 var NotesIndexItem =
 /*#__PURE__*/
 function (_Component) {
@@ -1082,7 +1106,8 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NotesIndexItem).call(this, props));
     _this.state = {
-      selected: _this.props.selectedNoteId === _this.props.note.id
+      selected: _this.props.selectedNoteId === _this.props.note.id,
+      shouldRedirect: false
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -1117,10 +1142,14 @@ function (_Component) {
   }, {
     key: "handleClick",
     value: function handleClick(e) {
-      this.props.selectNote(this.props.note.id);
-      this.setState({
-        selected: true
-      });
+      if (this.props.selectedNoteId != this.props.note.id) {
+        this.props.selectNote(this.props.note.id);
+        this.setState({
+          selected: true,
+          shouldRedirect: true
+        });
+        this.props.history.push("".concat(this.props.path, "/").concat(this.props.note.id));
+      }
     }
   }, {
     key: "computeClassName",
@@ -1136,6 +1165,9 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      // if (this.state.shouldRedirect) {
+      //   return <Redirect to={`${this.props.path}/${this.props.note.id}`} />;
+      // }
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.computeClassName(),
         onClick: this.handleClick

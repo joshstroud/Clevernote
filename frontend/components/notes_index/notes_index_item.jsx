@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 class NotesIndexItem extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { selected: this.props.selectedNoteId === this.props.note.id };
+    this.state = {
+      selected: this.props.selectedNoteId === this.props.note.id,
+      shouldRedirect: false
+    };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -37,8 +41,11 @@ class NotesIndexItem extends Component {
   }
 
   handleClick(e) {
-    this.props.selectNote(this.props.note.id);
-    this.setState({ selected: true });
+    if (this.props.selectedNoteId != this.props.note.id) {
+      this.props.selectNote(this.props.note.id);
+      this.setState({ selected: true, shouldRedirect: true });
+      this.props.history.push(`${this.props.path}/${this.props.note.id}`);
+    }
   }
 
   computeClassName() {
@@ -50,6 +57,10 @@ class NotesIndexItem extends Component {
   }
 
   render() {
+    // if (this.state.shouldRedirect) {
+    //   return <Redirect to={`${this.props.path}/${this.props.note.id}`} />;
+    // }
+
     return (
       <div className={this.computeClassName()} onClick={this.handleClick}>
         <div className="notes-index-item-title">{this.props.note.title}</div>

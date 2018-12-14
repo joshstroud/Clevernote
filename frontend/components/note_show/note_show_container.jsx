@@ -8,7 +8,6 @@ import {
 } from "../../util/dummy_data";
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(dummyNotebooks);
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
     notebook: dummyNotebooks[1],
