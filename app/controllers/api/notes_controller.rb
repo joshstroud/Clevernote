@@ -1,6 +1,10 @@
 class Api::NotesController < ApplicationController
   def index
-    @notes = Note.all
+    unless current_user
+      render json: ["You are not logged in"], status: 404
+    end
+
+    @notes = current_user.notes
     render :index
   end
 

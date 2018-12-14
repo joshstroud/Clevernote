@@ -808,15 +808,25 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _notes_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notes_index */ "./frontend/components/notes_index/notes_index.jsx");
+/* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/note_actions */ "./frontend/actions/note_actions.js");
+/* harmony import */ var _util_selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/selectors */ "./frontend/util/selectors.js");
+
+
 
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    notes: state.entities.notes
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    fetchAllNotes: function fetchAllNotes() {
+      return dispatch(Object(_actions_note_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllNotes"])());
+    }
+  };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_notes_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
@@ -861,13 +871,44 @@ var NotesIndex =
 function (_Component) {
   _inherits(NotesIndex, _Component);
 
-  function NotesIndex() {
+  function NotesIndex(props) {
     _classCallCheck(this, NotesIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(NotesIndex).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(NotesIndex).call(this, props));
   }
 
   _createClass(NotesIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchAllNotes();
+    }
+  }, {
+    key: "renderNumberOfNotes",
+    value: function renderNumberOfNotes() {
+      var numNotes = Object.keys(this.props.notes).length;
+
+      if (numNotes) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, numNotes, " Notes");
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: "renderNoteIndexItems",
+    value: function renderNoteIndexItems() {
+      var _this = this;
+
+      var noteIndexItems = Object.keys(this.props.notes).map(function (noteId) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: noteId,
+          note: _this.props.notes[noteId]
+        });
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "notes-index-items-wrapper"
+      }, noteIndexItems);
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -878,9 +919,7 @@ function (_Component) {
         id: "notes-index-header-title"
       }, "All Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "notes-index-header-footer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "3 Notes"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "notes-index-items-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+      }, this.renderNumberOfNotes())), this.renderNoteIndexItems());
     }
   }]);
 
@@ -934,15 +973,22 @@ function (_Component) {
   }
 
   _createClass(NotesIndexItem, [{
+    key: "noteSnippet",
+    // 80 characters
+    value: function noteSnippet() {
+      var noteText = this.props.note.title + this.props.note.body;
+      return noteText.substring(0, 79);
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notes-index-item-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notes-index-item-title"
-      }, "Note Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.note.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notes-index-item-snippet"
-      }, "Evernote is great for taking notes, tracking tasks, managing projects, and staying organized."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.noteSnippet()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notes-index-item-last-updated"
       }, "Yesterday"));
     }
@@ -2301,6 +2347,32 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var AuthRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(Auth));
 var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(Protected));
+
+/***/ }),
+
+/***/ "./frontend/util/selectors.js":
+/*!************************************!*\
+  !*** ./frontend/util/selectors.js ***!
+  \************************************/
+/*! exports provided: currentUserNotes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentUserNotes", function() { return currentUserNotes; });
+// not used, since backend only returns notes for given user
+var currentUserNotes = function currentUserNotes(state) {
+  var notes = state.entities.notes;
+  debugger;
+  var filteredKeys = Object.keys(notes).filter(function (key) {
+    notes[key].authorId === state.session.id;
+  });
+  var filteredNotes = filteredKeys.reduce(function (obj, key) {
+    obj[key] = notes[key];
+    return obj;
+  }, {});
+  return filteredNotes;
+};
 
 /***/ }),
 

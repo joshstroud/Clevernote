@@ -1,12 +1,18 @@
 import { connect } from "react-redux";
 import NotesIndex from "./notes_index";
+import { fetchAllNotes } from "../../actions/note_actions";
+import { currentUserNotes } from "../../util/selectors";
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return {
+    notes: state.entities.notes
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    fetchAllNotes: () => dispatch(fetchAllNotes())
+  };
 };
 
 export default connect(
