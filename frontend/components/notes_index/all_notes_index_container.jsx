@@ -5,7 +5,8 @@ import { currentUserNotes } from "../../util/selectors";
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    notes: state.entities.notes
+    notes: state.entities.notes,
+    title: "All Notes"
   };
 };
 

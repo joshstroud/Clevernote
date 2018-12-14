@@ -817,7 +817,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    notes: state.entities.notes
+    notes: state.entities.notes,
+    title: "All Notes"
   };
 };
 
@@ -917,7 +918,7 @@ function (_Component) {
         className: "notes-index-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "notes-index-header-title"
-      }, "All Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "notes-index-header-footer"
       }, this.renderNumberOfNotes())), this.renderNoteIndexItems());
     }

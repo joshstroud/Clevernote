@@ -31,7 +31,7 @@ class NotesIndex extends Component {
     return (
       <section className="notes-index-wrapper">
         <header className="notes-index-header">
-          <h1 id="notes-index-header-title">All Notes</h1>
+          <h1 id="notes-index-header-title">{this.props.title}</h1>
           <div id="notes-index-header-footer">{this.renderNumberOfNotes()}</div>
         </header>
         {this.renderNoteIndexItems()}
