@@ -7,16 +7,19 @@ class NoteShowEditor extends Component {
     super(props);
     if (props.note) {
       this.state = {
-        body: props.note.body
+        body: props.note.body,
+        title: props.note.title
       };
     } else {
       this.state = {
-        body: ""
+        body: "",
+        title: ""
       };
     }
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleEditorChange = this.handleEditorChange.bind(this);
     this.saveNote = this.saveNote.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -24,28 +27,48 @@ class NoteShowEditor extends Component {
       (!prevProps.note && this.props.note) ||
       (prevProps.note && prevProps.note.body !== this.props.note.body)
     ) {
-      this.setState({ body: this.props.note.body });
+      this.setState({
+        body: this.props.note.body,
+        title: this.props.note.title
+      });
     }
   }
 
-  handleChange(value) {
+  handleEditorChange(value) {
     this.setState({ body: value });
   }
 
   saveNote(e) {
     e.preventDefault();
     debugger;
-    const updatedNote = merge({}, this.props.note, { body: this.state.body });
+    const updatedNote = merge({}, this.props.note, {
+      body: this.state.body,
+      title: this.state.title
+    });
 
     this.props.updateNote(updatedNote);
+  }
+
+  handleTitleChange(e) {
+    e.preventDefault();
+    this.setState({ title: e.target.value });
   }
 
   render() {
     return (
       <div className="note-show-editor-wrapper">
+        <input
+          type="text"
+          className="note-show-editor-title"
+          value={this.state.title}
+          onChange={this.handleTitleChange}
+        />
         <button onClick={this.saveNote}>Save</button>
 
-        <ReactQuill value={this.state.body} onChange={this.handleChange} />
+        <ReactQuill
+          value={this.state.body}
+          onChange={this.handleEditorChange}
+        />
       </div>
     );
   }

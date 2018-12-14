@@ -630,16 +630,19 @@ function (_Component) {
 
     if (props.note) {
       _this.state = {
-        body: props.note.body
+        body: props.note.body,
+        title: props.note.title
       };
     } else {
       _this.state = {
-        body: ""
+        body: "",
+        title: ""
       };
     }
 
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleEditorChange = _this.handleEditorChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.saveNote = _this.saveNote.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleTitleChange = _this.handleTitleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -648,13 +651,14 @@ function (_Component) {
     value: function componentDidUpdate(prevProps, prevState) {
       if (!prevProps.note && this.props.note || prevProps.note && prevProps.note.body !== this.props.note.body) {
         this.setState({
-          body: this.props.note.body
+          body: this.props.note.body,
+          title: this.props.note.title
         });
       }
     }
   }, {
-    key: "handleChange",
-    value: function handleChange(value) {
+    key: "handleEditorChange",
+    value: function handleEditorChange(value) {
       this.setState({
         body: value
       });
@@ -665,20 +669,34 @@ function (_Component) {
       e.preventDefault();
       debugger;
       var updatedNote = lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, this.props.note, {
-        body: this.state.body
+        body: this.state.body,
+        title: this.state.title
       });
       this.props.updateNote(updatedNote);
+    }
+  }, {
+    key: "handleTitleChange",
+    value: function handleTitleChange(e) {
+      e.preventDefault();
+      this.setState({
+        title: e.target.value
+      });
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-editor-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "note-show-editor-title",
+        value: this.state.title,
+        onChange: this.handleTitleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.saveNote
       }, "Save"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_quill__WEBPACK_IMPORTED_MODULE_1___default.a, {
         value: this.state.body,
-        onChange: this.handleChange
+        onChange: this.handleEditorChange
       }));
     }
   }]);

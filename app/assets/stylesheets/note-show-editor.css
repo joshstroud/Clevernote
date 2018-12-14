@@ -1,3 +1,18 @@
+.note-show-wrapper {}
+
 .ql-container {
   height: 240px;
+}
+
+.note-show-editor-title {
+  display: block;
+  font-size: 34px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 8px 40px 4px;
+  outline: none;
+  z-index: 1;
+  cursor: text;
+  font-weight: 300;
+  border: none;
 }
