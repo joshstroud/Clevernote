@@ -529,7 +529,12 @@ function (_Component) {
   _createClass(NoteShow, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_nav__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_editor__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_tag_list__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "note-show-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_nav__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_editor__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        note: this.props.note,
+        updateNote: this.props.updateNote
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_tag_list__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
   }]);
 
@@ -551,15 +556,23 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _note_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./note_show */ "./frontend/components/note_show/note_show.jsx");
+/* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/note_actions */ "./frontend/actions/note_actions.js");
+
 
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    note: state.entities.notes[state.ui.selectedNoteId]
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    updateNote: function updateNote(note) {
+      return dispatch(Object(_actions_note_actions__WEBPACK_IMPORTED_MODULE_2__["updateNote"])(note));
+    }
+  };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_note_show__WEBPACK_IMPORTED_MODULE_1__["default"]));
@@ -579,6 +592,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_quill__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-quill */ "./node_modules/react-quill/lib/index.js");
 /* harmony import */ var react_quill__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_quill__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -600,6 +615,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
 var NoteShowEditor =
 /*#__PURE__*/
 function (_Component) {
@@ -611,14 +627,32 @@ function (_Component) {
     _classCallCheck(this, NoteShowEditor);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NoteShowEditor).call(this, props));
-    _this.state = {
-      body: ""
-    };
+
+    if (props.note) {
+      _this.state = {
+        body: props.note.body
+      };
+    } else {
+      _this.state = {
+        body: ""
+      };
+    }
+
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.saveNote = _this.saveNote.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(NoteShowEditor, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (!prevProps.note && this.props.note || prevProps.note && prevProps.note.body !== this.props.note.body) {
+        this.setState({
+          body: this.props.note.body
+        });
+      }
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(value) {
       this.setState({
@@ -626,11 +660,23 @@ function (_Component) {
       });
     }
   }, {
+    key: "saveNote",
+    value: function saveNote(e) {
+      e.preventDefault();
+      debugger;
+      var updatedNote = lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, this.props.note, {
+        body: this.state.body
+      });
+      this.props.updateNote(updatedNote);
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-editor-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_quill__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.saveNote
+      }, "Save"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_quill__WEBPACK_IMPORTED_MODULE_1___default.a, {
         value: this.state.body,
         onChange: this.handleChange
       }));
@@ -1027,8 +1073,14 @@ function (_Component) {
   _createClass(NotesIndexItem, [{
     key: "noteSnippet",
     value: function noteSnippet() {
-      var noteText = this.props.note.title + " " + this.props.note.body;
-      return noteText.substring(0, 79);
+      var noteText = "<div>" + this.props.note.title + " " + this.props.note.body + "</div>";
+      var plaintext = $(noteText).text().substring(0, 79);
+
+      if (noteText.length > 80) {
+        plaintext += "...";
+      }
+
+      return plaintext;
     }
   }, {
     key: "componentDidUpdate",

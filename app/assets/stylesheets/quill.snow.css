@@ -1,3 +1,7 @@
+/* ***************************************************
+**** Don't edit this! Use note-show.editor instead ****
+/*  *************************************************** 
+
 /*!
  * Quill Editor v1.2.6
  * https://quilljs.com/
@@ -8,7 +12,7 @@
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 13px;
-  height: 100%;
+  /* height: 100%; */
   margin: 0px;
   position: relative;
 }

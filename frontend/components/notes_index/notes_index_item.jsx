@@ -10,8 +10,16 @@ class NotesIndexItem extends Component {
 
   // snippet is 80 characters
   noteSnippet() {
-    const noteText = this.props.note.title + " " + this.props.note.body;
-    return noteText.substring(0, 79);
+    const noteText =
+      "<div>" + this.props.note.title + " " + this.props.note.body + "</div>";
+    let plaintext = $(noteText)
+      .text()
+      .substring(0, 79);
+
+    if (noteText.length > 80) {
+      plaintext += "...";
+    }
+    return plaintext;
   }
 
   componentDidUpdate(prevProps, prevState) {

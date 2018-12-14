@@ -6,11 +6,14 @@ import NoteShowTagList from "./note_show_tag_list";
 class NoteShow extends Component {
   render() {
     return (
-      <div>
+      <section className="note-show-wrapper">
         <NoteShowNav />
-        <NoteShowEditor />
+        <NoteShowEditor
+          note={this.props.note}
+          updateNote={this.props.updateNote}
+        />
         <NoteShowTagList />
-      </div>
+      </section>
     );
   }
 }

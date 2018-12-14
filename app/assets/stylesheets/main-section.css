@@ -1,3 +1,4 @@
 .main-section-wrapper {
   display: flex;
+  flex: 1;
 }
