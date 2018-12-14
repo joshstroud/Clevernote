@@ -1007,7 +1007,6 @@ function (_Component) {
         } else if (Object.keys(this.props.notes)[0]) {
           debugger;
           var firstNoteId = Object.keys(this.props.notes)[0];
-          this.props.selectNote(firstNoteId);
           this.props.history.push("".concat(this.props.path, "/").concat(firstNoteId));
         }
       }
@@ -1602,13 +1601,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -1626,7 +1625,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SideNav).call(this, props));
 
-    var username = _this.props.currentUserEmail.substring(0, _this.props.currentUserEmail.indexOf("@"));
+    var username = _this.props.currentUser.email.substring(0, _this.props.currentUser.email.indexOf("@"));
 
     var selectedCategory = _this.findSelectedCategory();
 
@@ -1634,6 +1633,7 @@ function (_Component) {
       username: username,
       selectedCategory: selectedCategory
     };
+    _this.createNewNote = _this.createNewNote.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1661,6 +1661,22 @@ function (_Component) {
       return className;
     }
   }, {
+    key: "createNewNote",
+    value: function createNewNote(e) {
+      console.log("click");
+      var blankNote = {
+        title: "",
+        body: "",
+        author_id: this.props.currentUser.id,
+        notebook_id: 1 // fix this hard coding when I add notebooks
+
+      };
+      var that = this;
+      this.props.createNote(blankNote).then(function (res) {
+        that.props.history.push("".concat(that.props.path, "/").concat(res.note.id));
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -1670,10 +1686,11 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "side-nav-user"
       }, this.state.username, " \u25BC")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "side-nav-create-button-row"
+        className: "side-nav-create-button-row",
+        onClick: this.createNewNote
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "side-nav-create-button"
-      }, " + New Note")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "+ New Note")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.setSelected(null)
       }, "Shortcuts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.setSelected("All Notes")
@@ -1719,6 +1736,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
 /* harmony import */ var _side_nav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./side_nav */ "./frontend/components/side_nav/side_nav.jsx");
 /* harmony import */ var _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/dummy_data */ "./frontend/util/dummy_data.js");
+/* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/note_actions */ "./frontend/actions/note_actions.js");
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+
+
 
 
 
@@ -1726,13 +1747,18 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    currentUserEmail: state.entities.users[state.session.id].email,
-    notebooks: _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyNotebooks"]
+    currentUser: state.entities.users[state.session.id],
+    notebooks: _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyNotebooks"],
+    path: "/app/notes"
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    createNote: function createNote(note) {
+      return dispatch(Object(_actions_note_actions__WEBPACK_IMPORTED_MODULE_4__["createNote"])(note));
+    }
+  };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_side_nav__WEBPACK_IMPORTED_MODULE_2__["default"])));

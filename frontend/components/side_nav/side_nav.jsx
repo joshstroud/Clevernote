@@ -6,9 +6,9 @@ class SideNav extends Component {
   constructor(props) {
     super(props);
 
-    const username = this.props.currentUserEmail.substring(
+    const username = this.props.currentUser.email.substring(
       0,
-      this.props.currentUserEmail.indexOf("@")
+      this.props.currentUser.email.indexOf("@")
     );
 
     const selectedCategory = this.findSelectedCategory();
@@ -17,6 +17,8 @@ class SideNav extends Component {
       username,
       selectedCategory
     };
+
+    this.createNewNote = this.createNewNote.bind(this);
   }
 
   findSelectedCategory() {
@@ -40,14 +42,33 @@ class SideNav extends Component {
     return className;
   }
 
+  createNewNote(e) {
+    console.log("click");
+
+    const blankNote = {
+      title: "",
+      body: "",
+      author_id: this.props.currentUser.id,
+      notebook_id: 1
+      // fix this hard coding when I add notebooks
+    };
+    const that = this;
+    this.props.createNote(blankNote).then(res => {
+      that.props.history.push(`${that.props.path}/${res.note.id}`);
+    });
+  }
+
   render() {
     return (
       <section className="side-nav-wrapper">
         <div className="side-nav-user-row">
           <div className="side-nav-user">{this.state.username} ▼</div>
         </div>
-        <div className="side-nav-create-button-row">
-          <div className="side-nav-create-button"> + New Note</div>
+        <div
+          className="side-nav-create-button-row"
+          onClick={this.createNewNote}
+        >
+          <div className="side-nav-create-button">+ New Note</div>
         </div>
         <div className={this.setSelected(null)}>Shortcuts</div>
         <div className={this.setSelected("All Notes")}>

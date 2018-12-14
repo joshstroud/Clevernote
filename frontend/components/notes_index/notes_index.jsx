@@ -17,7 +17,6 @@ class NotesIndex extends Component {
 
   updateSelectedNote() {
     let paramSelectedNoteId = this.props.match.params.noteId;
-
     if (
       this.props.selectedNoteId === null ||
       (paramSelectedNoteId &&
@@ -29,7 +28,6 @@ class NotesIndex extends Component {
       } else if (Object.keys(this.props.notes)[0]) {
         debugger;
         const firstNoteId = Object.keys(this.props.notes)[0];
-        this.props.selectNote(firstNoteId);
         this.props.history.push(`${this.props.path}/${firstNoteId}`);
       }
     }
