@@ -40,7 +40,6 @@ class NoteShowEditor extends Component {
 
   saveNote(e) {
     e.preventDefault();
-    debugger;
     const updatedNote = merge({}, this.props.note, {
       body: this.state.body,
       title: this.state.title
