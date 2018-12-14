@@ -2,8 +2,9 @@ import { connect } from "react-redux";
 import NotesIndex from "./notes_index";
 import { fetchAllNotes } from "../../actions/note_actions";
 import { selectNote } from "../../actions/ui_actions";
+import { withRouter } from "react-router";
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
     notes: state.entities.notes,
     title: "All Notes",
@@ -18,7 +19,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NotesIndex);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(NotesIndex)
+);

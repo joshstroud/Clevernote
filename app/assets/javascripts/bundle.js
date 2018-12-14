@@ -401,6 +401,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _test_login_greeting_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../test/login_greeting_container */ "./frontend/components/test/login_greeting_container.jsx");
 /* harmony import */ var _main_section__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main_section */ "./frontend/components/main_page/main_section.jsx");
 /* harmony import */ var _side_nav_side_nav_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../side_nav/side_nav_container */ "./frontend/components/side_nav/side_nav_container.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
 
 
 
@@ -429,6 +431,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _notes_index_all_notes_index_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../notes_index/all_notes_index_container */ "./frontend/components/notes_index/all_notes_index_container.jsx");
 /* harmony import */ var _note_show_note_show_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../note_show/note_show_container */ "./frontend/components/note_show/note_show_container.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -451,6 +454,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var MainSection =
 /*#__PURE__*/
 function (_Component) {
@@ -464,17 +468,21 @@ function (_Component) {
 
   _createClass(MainSection, [{
     key: "render",
-    value: function render() {
+    value: function render(props) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-section-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_all_notes_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_note_show_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+        exact: true,
+        to: "/notes",
+        component: _notes_index_all_notes_index_container__WEBPACK_IMPORTED_MODULE_1__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_note_show_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
 
   return MainSection;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (MainSection);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(MainSection));
 
 /***/ }),
 
@@ -531,7 +539,9 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "note-show-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_nav__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_editor__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        notebook: this.props.notebooks[1]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_editor__WEBPACK_IMPORTED_MODULE_2__["default"], {
         note: this.props.note,
         updateNote: this.props.updateNote
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_tag_list__WEBPACK_IMPORTED_MODULE_3__["default"], null));
@@ -557,13 +567,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _note_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./note_show */ "./frontend/components/note_show/note_show.jsx");
 /* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/note_actions */ "./frontend/actions/note_actions.js");
+/* harmony import */ var _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/dummy_data */ "./frontend/util/dummy_data.js");
+
 
 
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    note: state.entities.notes[state.ui.selectedNoteId]
+    note: state.entities.notes[state.ui.selectedNoteId],
+    notebooks: _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyNotebooks"]
   };
 };
 
@@ -667,7 +680,6 @@ function (_Component) {
     key: "saveNote",
     value: function saveNote(e) {
       e.preventDefault();
-      debugger;
       var updatedNote = lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, this.props.note, {
         body: this.state.body,
         title: this.state.title
@@ -752,7 +764,7 @@ function (_Component) {
 
   _createClass(NoteShowNav, [{
     key: "render",
-    value: function render() {
+    value: function render(props) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "note-show-nav"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -761,7 +773,7 @@ function (_Component) {
         className: "note-show-fullscreen-button"
       }, "FS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-current-notebook"
-      }, "| My Notebook")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "| ", this.props.notebook.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "note-show-share-button"
@@ -911,12 +923,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _notes_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notes_index */ "./frontend/components/notes_index/notes_index.jsx");
 /* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/note_actions */ "./frontend/actions/note_actions.js");
 /* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
 
 
 
 
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
+
+var mapStateToProps = function mapStateToProps(state) {
   return {
     notes: state.entities.notes,
     title: "All Notes",
@@ -935,7 +949,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_notes_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_notes_index__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
 /***/ }),
 
@@ -2133,7 +2147,6 @@ var notesReducer = function notesReducer() {
       return action.notes;
 
     case _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SINGLE_NOTE"]:
-      debugger;
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.note.id, action.note));
 
     case _actions_note_actions__WEBPACK_IMPORTED_MODULE_1__["DELETE_NOTE"]:
