@@ -8,7 +8,7 @@ class UserDropdown extends React.Component {
   }
 
   signOut(e) {
-    this.props.closeDropdown();
+    this.props.closeUIElements();
     this.props.logout();
     this.props.history.push("/");
   }
@@ -23,7 +23,7 @@ class UserDropdown extends React.Component {
       ? getUsernameFromUser(this.props.currentUser)
       : "";
     return (
-      <div className="dropdown-background" onClick={this.props.closeDropdown}>
+      <div className="dropdown-background" onClick={this.props.closeUIElements}>
         <div
           className="dropdown-menu user-dropdown-menu"
           onClick={e => e.stopPropagation()}

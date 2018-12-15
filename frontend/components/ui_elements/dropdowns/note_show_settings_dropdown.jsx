@@ -12,7 +12,7 @@ class NoteShowSettingsDropdown extends React.Component {
 
   moveNoteToNotebook(e) {
     console.log("Move note to notebook action");
-    this.props.closeDropdown();
+    this.props.closeUIElements();
   }
 
   duplicateNote(e) {
@@ -21,25 +21,21 @@ class NoteShowSettingsDropdown extends React.Component {
     noteCopy.title += " copy";
 
     const that = this;
-    this.props.createNote(noteCopy).then(action => {
-      that.props.history.push(`${that.props.path}/${action.note.id}`);
-    });
-    this.props.closeDropdown();
+    this.props
+      .createNote(noteCopy)
+      .then(action =>
+        that.props.history.push(`${that.props.path}/${action.note.id}`)
+      );
+    this.props.closeUIElements();
   }
 
   deleteNote(e) {
     // console.log("Delete note action");
     const that = this;
-    this.props.deleteNote(this.props.selectedNoteId).then(
-      action => {
-        that.props.history.push(that.props.path);
-        debugger;
-      },
-      err => {
-        debugger;
-      }
-    );
-    this.props.closeDropdown();
+    this.props
+      .deleteNote(this.props.selectedNoteId)
+      .then(action => that.props.history.push(that.props.path));
+    this.props.closeUIElements();
   }
 
   render() {
@@ -48,7 +44,7 @@ class NoteShowSettingsDropdown extends React.Component {
     }
 
     return (
-      <div className="dropdown-background" onClick={this.props.closeDropdown}>
+      <div className="dropdown-background" onClick={this.props.closeUIElements}>
         <div
           className="dropdown-menu note-show-settings-dropdown-menu"
           onClick={e => e.stopPropagation()}

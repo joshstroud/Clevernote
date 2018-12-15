@@ -22,7 +22,7 @@ function Dropdown({ dropdown }) {
   //     component = null;
   // }
   // return (
-  //   <div className="dropdown-background" onClick={closeDropdown}>
+  //   <div className="dropdown-background" onClick={closeUIElements}>
   //     <div className={menuClass} onClick={e => e.stopPropagation()}>
   //       {component}
   //     </div>

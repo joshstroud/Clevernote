@@ -1,5 +1,5 @@
 import React from "react";
-import { closeDropdown } from "../../../actions/ui_actions";
+import { closeUIElements } from "../../../actions/ui_actions";
 import { connect } from "react-redux";
 import { logout } from "../../../actions/session_actions";
 import { withRouter } from "react-router-dom";
@@ -13,14 +13,14 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.entities.users[state.session.id],
     history: ownProps.history,
     selectedNoteId: state.ui.selectedNoteId,
-    path: "/app/notes"
+    rootPath: "/app/notes"
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout()),
-    closeDropdown: () => dispatch(closeDropdown()),
+    closeUIElements: () => dispatch(closeUIElements()),
     deleteNote: noteId => dispatch(deleteNote(noteId)),
     createNote: note => dispatch(createNote(note))
   };
