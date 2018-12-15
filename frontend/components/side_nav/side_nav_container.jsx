@@ -5,6 +5,7 @@ import { dummyNotebooks } from "../../util/dummy_data";
 import { createNote } from "../../actions/note_actions";
 import { selectNote } from "../../actions/ui_actions";
 import { openDropdown } from "../../actions/ui_actions";
+import { logout } from "../../actions/session_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -17,7 +18,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     createNote: note => dispatch(createNote(note)),
-    openDropdown: component => dispatch(openDropdown(component))
+    openDropdown: component => dispatch(openDropdown(component)),
+    logout: () => dispatch(logout())
   };
 };
 

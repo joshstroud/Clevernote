@@ -1,9 +1,7 @@
 import React from "react";
-import { closeDropdown } from "../../actions/ui_actions";
-import { connect } from "react-redux";
-import { getUsernameFromUser } from "../../util/user_util";
+import UserDropdown from "./user_dropdown";
 
-function Dropdown({ dropdown, currentUser, closeDropdown }) {
+function Dropdown({ dropdown, currentUser, closeDropdown, history, logout }) {
   if (!dropdown) {
     return null;
   }
@@ -12,7 +10,14 @@ function Dropdown({ dropdown, currentUser, closeDropdown }) {
 
   switch (dropdown) {
     case "side-nav-user":
-      component = <UserDropdown currentUser={currentUser} />;
+      component = (
+        <UserDropdown
+          currentUser={currentUser}
+          closeDropdown={closeDropdown}
+          history={history}
+          logout={logout}
+        />
+      );
       menuClass += " user-dropdown-menu";
       break;
     default:
@@ -28,33 +33,4 @@ function Dropdown({ dropdown, currentUser, closeDropdown }) {
   );
 }
 
-const UserDropdown = ({ currentUser }) => {
-  const username = getUsernameFromUser(currentUser);
-  return (
-    <ul>
-      <li className="user-dropdown-header">Account</li>
-      <li className="user-dropdown-main-account">Img {username}</li>
-      <li className="dropdown-row dropdown-line-break-above">
-        Sign out {username}
-      </li>
-    </ul>
-  );
-};
-
-const mapStateToProps = state => {
-  return {
-    dropdown: state.ui.dropdown,
-    currentUser: state.entities.users[state.session.id]
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    closeDropdown: () => dispatch(closeDropdown())
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Dropdown);
+export default Dropdown;
