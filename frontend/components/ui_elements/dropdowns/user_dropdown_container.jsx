@@ -1,9 +1,9 @@
 import React from "react";
-import { closeDropdown } from "../../actions/ui_actions";
+import { closeDropdown } from "../../../actions/ui_actions";
 import { connect } from "react-redux";
-import Dropdown from "./dropdown";
-import { logout } from "../../actions/session_actions";
+import { logout } from "../../../actions/session_actions";
 import { withRouter } from "react-router-dom";
+import UserDropdown from "./user_dropdown";
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -24,5 +24,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Dropdown)
+  )(UserDropdown)
 );

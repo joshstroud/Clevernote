@@ -21,14 +21,14 @@ class NotesIndex extends Component {
     if (
       this.props.selectedNoteId === null ||
       (paramSelectedNoteId &&
-        this.props.selectedNoteId !== this.props.routeNoteId) ||
-      paramSelectedNoteId === null
+        this.props.selectedNoteId !== paramSelectedNoteId) ||
+      Number.isNaN(paramSelectedNoteId)
     ) {
-      if (this.props.routeNoteId && this.props.notes[this.props.routeNoteId]) {
-        this.props.selectNote(this.props.routeNoteId);
-      } else if (Object.keys(this.props.notes)[0]) {
-        const firstNoteId = Object.keys(this.props.notes)[0];
-        this.props.history.push(`${this.props.path}/${firstNoteId}`);
+      const mostRecentNote = sortNotesByLastUpdate(this.props.notes)[0];
+      if (paramSelectedNoteId && this.props.notes[paramSelectedNoteId]) {
+        this.props.selectNote(paramSelectedNoteId);
+      } else if (mostRecentNote) {
+        this.props.history.push(`${this.props.path}/${mostRecentNote.id}`);
       }
     }
   }

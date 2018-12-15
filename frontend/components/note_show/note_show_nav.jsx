@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NoteShowSettingsDropdownContainer from "../ui_elements/note_show_settings_dropdown_container";
+import NoteShowSettingsDropdownContainer from "../ui_elements/dropdowns/note_show_settings_dropdown_container";
 
 class NoteShowNav extends Component {
   constructor(props) {

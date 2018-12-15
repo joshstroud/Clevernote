@@ -23,6 +23,10 @@ class NoteShowEditor extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (!this.props.note) {
+      return;
+    }
+
     if (
       (!prevProps.note && this.props.note) ||
       (prevProps.note && prevProps.note.body !== this.props.note.body)

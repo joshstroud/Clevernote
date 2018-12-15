@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SideNavNotebooKIndex from "./side_nav_notebook_index";
 import { matchPath } from "react-router";
-import UserDropdownContainer from "../ui_elements/user_dropdown_container";
+import UserDropdownContainer from "../ui_elements/dropdowns/user_dropdown_container";
 import { getUsernameFromUser } from "../../util/user_util";
 
 class SideNav extends Component {
