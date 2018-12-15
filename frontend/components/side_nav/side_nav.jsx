@@ -46,7 +46,7 @@ class SideNav extends Component {
     console.log("click");
 
     const blankNote = {
-      title: "",
+      title: "Untitled",
       body: "",
       author_id: this.props.currentUser.id,
       notebook_id: 1

@@ -1690,7 +1690,7 @@ function (_Component) {
     value: function createNewNote(e) {
       console.log("click");
       var blankNote = {
-        title: "",
+        title: "Untitled",
         body: "",
         author_id: this.props.currentUser.id,
         notebook_id: 1 // fix this hard coding when I add notebooks

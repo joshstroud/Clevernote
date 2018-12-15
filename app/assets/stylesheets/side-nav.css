@@ -40,6 +40,8 @@
   line-height: 19px;
   text-overflow: ellipsis;
   overflow: hidden;
+  cursor: pointer;
+
 }
 
 .side-nav-user:hover {
