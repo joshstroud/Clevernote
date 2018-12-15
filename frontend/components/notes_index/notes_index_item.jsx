@@ -35,7 +35,6 @@ class NotesIndexItem extends Component {
       !prevState.selected &&
       this.props.note.id === this.props.selectedNoteId
     ) {
-      debugger;
       this.setState({ selected: true });
     }
   }

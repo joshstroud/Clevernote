@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
     notes: state.entities.notes,
     title: "All Notes",
     selectedNoteId: state.ui.selectedNoteId,
-    routeNoteId: ownProps.match.params.noteId,
+    routeNoteId: Number(ownProps.match.params.noteId),
     path: "/app/notes"
   };
 };

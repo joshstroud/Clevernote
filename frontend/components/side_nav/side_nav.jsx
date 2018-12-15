@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import SideNavNotebooKIndex from "./side_nav_notebook_index";
 import { matchPath } from "react-router";
+import Dropdown from "../ui_elements/dropdown";
+import { getUsernameFromUser } from "../../util/user_util";
 
 class SideNav extends Component {
   constructor(props) {
     super(props);
 
-    const username = this.props.currentUser.email.substring(
-      0,
-      this.props.currentUser.email.indexOf("@")
-    );
+    const username = getUsernameFromUser(this.props.currentUser);
 
     const selectedCategory = this.findSelectedCategory();
 
@@ -19,6 +18,7 @@ class SideNav extends Component {
     };
 
     this.createNewNote = this.createNewNote.bind(this);
+    this.openUserDropdown = this.openUserDropdown.bind(this);
   }
 
   findSelectedCategory() {
@@ -58,12 +58,18 @@ class SideNav extends Component {
     });
   }
 
+  openUserDropdown(e) {
+    this.props.openDropdown("side-nav-user");
+  }
+
   render() {
     return (
       <section className="side-nav-wrapper">
-        <div className="side-nav-user-row">
+        <div className="side-nav-user-row" onClick={this.openUserDropdown}>
           <div className="side-nav-user">{this.state.username} ▼</div>
         </div>
+        <Dropdown />
+
         <div
           className="side-nav-create-button-row"
           onClick={this.createNewNote}

@@ -18,7 +18,7 @@ function mapDispatchToProps(state) {
   };
 }
 
-class TestPage extends Component {
+class TestDropdown extends Component {
   constructor(props) {
     super(props);
 
@@ -42,4 +42,4 @@ class TestPage extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TestPage);
+)(TestDropdown);

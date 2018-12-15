@@ -259,18 +259,35 @@ var logout = function logout() {
 /*!****************************************!*\
   !*** ./frontend/actions/ui_actions.js ***!
   \****************************************/
-/*! exports provided: SELECT_NOTE, selectNote */
+/*! exports provided: SELECT_NOTE, OPEN_DROPDOWN, CLOSE_DROPDOWN, selectNote, openDropdown, closeDropdown */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SELECT_NOTE", function() { return SELECT_NOTE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OPEN_DROPDOWN", function() { return OPEN_DROPDOWN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLOSE_DROPDOWN", function() { return CLOSE_DROPDOWN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectNote", function() { return selectNote; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openDropdown", function() { return openDropdown; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeDropdown", function() { return closeDropdown; });
 var SELECT_NOTE = "SELECT_NOTE";
+var OPEN_DROPDOWN = "OPEN_DROPDOWN";
+var CLOSE_DROPDOWN = "CLOSE_DROPDOWN";
 var selectNote = function selectNote(noteId) {
   return {
     type: SELECT_NOTE,
     noteId: noteId
+  };
+};
+var openDropdown = function openDropdown(component) {
+  return {
+    type: OPEN_DROPDOWN,
+    component: component
+  };
+};
+var closeDropdown = function closeDropdown(component) {
+  return {
+    type: CLOSE_DROPDOWN
   };
 };
 
@@ -402,6 +419,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_section__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main_section */ "./frontend/components/main_page/main_section.jsx");
 /* harmony import */ var _side_nav_side_nav_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../side_nav/side_nav_container */ "./frontend/components/side_nav/side_nav_container.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _test_test_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../test/test_page */ "./frontend/components/test/test_page.jsx");
+
 
 
 
@@ -409,6 +428,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var MainPage = function MainPage() {
+  if (false) {}
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
     className: "main-page-wrapper"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_nav_side_nav_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_section__WEBPACK_IMPORTED_MODULE_2__["default"], null));
@@ -920,7 +941,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     notes: state.entities.notes,
     title: "All Notes",
     selectedNoteId: state.ui.selectedNoteId,
-    routeNoteId: ownProps.match.params.noteId,
+    routeNoteId: Number(ownProps.match.params.noteId),
     path: "/app/notes"
   };
 };
@@ -1001,7 +1022,7 @@ function (_Component) {
   }, {
     key: "updateSelectedNote",
     value: function updateSelectedNote() {
-      var paramSelectedNoteId = this.props.match.params.noteId;
+      var paramSelectedNoteId = Number(this.props.match.params.noteId);
 
       if (this.props.selectedNoteId === null || paramSelectedNoteId && this.props.selectedNoteId !== this.props.routeNoteId || paramSelectedNoteId === null) {
         if (this.props.routeNoteId && this.props.notes[this.props.routeNoteId]) {
@@ -1136,7 +1157,6 @@ function (_Component) {
           selected: false
         });
       } else if (!prevState.selected && this.props.note.id === this.props.selectedNoteId) {
-        debugger;
         this.setState({
           selected: true
         });
@@ -1592,6 +1612,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _side_nav_notebook_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./side_nav_notebook_index */ "./frontend/components/side_nav/side_nav_notebook_index.jsx");
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
+/* harmony import */ var _ui_elements_dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ui_elements/dropdown */ "./frontend/components/ui_elements/dropdown.jsx");
+/* harmony import */ var _util_user_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/user_util */ "./frontend/util/user_util.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1614,6 +1636,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
+
 var SideNav =
 /*#__PURE__*/
 function (_Component) {
@@ -1625,8 +1649,7 @@ function (_Component) {
     _classCallCheck(this, SideNav);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SideNav).call(this, props));
-
-    var username = _this.props.currentUser.email.substring(0, _this.props.currentUser.email.indexOf("@"));
+    var username = Object(_util_user_util__WEBPACK_IMPORTED_MODULE_4__["getUsernameFromUser"])(_this.props.currentUser);
 
     var selectedCategory = _this.findSelectedCategory();
 
@@ -1635,6 +1658,7 @@ function (_Component) {
       selectedCategory: selectedCategory
     };
     _this.createNewNote = _this.createNewNote.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.openUserDropdown = _this.openUserDropdown.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1678,15 +1702,21 @@ function (_Component) {
       });
     }
   }, {
+    key: "openUserDropdown",
+    value: function openUserDropdown(e) {
+      this.props.openDropdown("side-nav-user");
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "side-nav-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "side-nav-user-row"
+        className: "side-nav-user-row",
+        onClick: this.openUserDropdown
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "side-nav-user"
-      }, this.state.username, " \u25BC")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.username, " \u25BC")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_elements_dropdown__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "side-nav-create-button-row",
         onClick: this.createNewNote
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1746,6 +1776,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     currentUser: state.entities.users[state.session.id],
@@ -1758,6 +1789,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     createNote: function createNote(note) {
       return dispatch(Object(_actions_note_actions__WEBPACK_IMPORTED_MODULE_4__["createNote"])(note));
+    },
+    openDropdown: function openDropdown(component) {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_5__["openDropdown"])(component));
     }
   };
 };
@@ -2055,6 +2089,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _notes_index_all_notes_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../notes_index/all_notes_index_container */ "./frontend/components/notes_index/all_notes_index_container.jsx");
 /* harmony import */ var _main_page_main_section__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../main_page/main_section */ "./frontend/components/main_page/main_section.jsx");
 /* harmony import */ var _side_nav_side_nav_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../side_nav/side_nav_container */ "./frontend/components/side_nav/side_nav_container.jsx");
+/* harmony import */ var _ui_elements_dropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ui_elements/dropdown */ "./frontend/components/ui_elements/dropdown.jsx");
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2065,13 +2102,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -2079,28 +2117,139 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
  // Use this component for testing components in isolation
 
+
+
+
+function mapStateToProps(state) {
+  return {};
+}
+
+function mapDispatchToProps(state) {
+  return {
+    openDropdown: function openDropdown(component) {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_6__["openDropdown"])(component));
+    }
+  };
+}
+
 var TestPage =
 /*#__PURE__*/
 function (_Component) {
   _inherits(TestPage, _Component);
 
-  function TestPage() {
+  function TestPage(props) {
+    var _this;
+
     _classCallCheck(this, TestPage);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(TestPage).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TestPage).call(this, props));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(TestPage, [{
+    key: "handleClick",
+    value: function handleClick(e) {
+      this.props.openDropdown("nav-user");
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_nav_side_nav_container__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleClick
+      }, "Open Dropdown"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_elements_dropdown__WEBPACK_IMPORTED_MODULE_5__["default"], null));
     }
   }]);
 
   return TestPage;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (TestPage);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_7__["connect"])(mapStateToProps, mapDispatchToProps)(TestPage));
+
+/***/ }),
+
+/***/ "./frontend/components/ui_elements/dropdown.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/ui_elements/dropdown.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _util_user_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/user_util */ "./frontend/util/user_util.js");
+
+
+
+
+
+function Dropdown(_ref) {
+  var dropdown = _ref.dropdown,
+      currentUser = _ref.currentUser,
+      closeDropdown = _ref.closeDropdown;
+
+  if (!dropdown) {
+    return null;
+  }
+
+  var component;
+  var menuClass = "dropdown-menu";
+
+  switch (dropdown) {
+    case "side-nav-user":
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(UserDropdown, {
+        currentUser: currentUser
+      });
+      menuClass += " user-dropdown-menu";
+      break;
+
+    default:
+      component = null;
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dropdown-background",
+    onClick: closeDropdown
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: menuClass,
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    }
+  }, component));
+}
+
+var UserDropdown = function UserDropdown(_ref2) {
+  var currentUser = _ref2.currentUser;
+  var username = Object(_util_user_util__WEBPACK_IMPORTED_MODULE_3__["getUsernameFromUser"])(currentUser);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "user-dropdown-header"
+  }, "Account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "user-dropdown-main-account"
+  }, "Img ", username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "dropdown-row dropdown-line-break-above"
+  }, "Sign out ", username));
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    dropdown: state.ui.dropdown,
+    currentUser: state.entities.users[state.session.id]
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    closeDropdown: function closeDropdown() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeDropdown"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(Dropdown));
 
 /***/ }),
 
@@ -2348,6 +2497,16 @@ var ui = function ui() {
     case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["SELECT_NOTE"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
         selectedNoteId: action.noteId
+      });
+
+    case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_DROPDOWN"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        dropdown: action.component
+      });
+
+    case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_DROPDOWN"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        dropdown: null
       });
 
     default:
@@ -2712,6 +2871,22 @@ var logout = function logout() {
     method: 'DELETE',
     url: '/api/session'
   });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/user_util.js":
+/*!************************************!*\
+  !*** ./frontend/util/user_util.js ***!
+  \************************************/
+/*! exports provided: getUsernameFromUser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUsernameFromUser", function() { return getUsernameFromUser; });
+var getUsernameFromUser = function getUsernameFromUser(user) {
+  return user.email.substring(0, user.email.indexOf("@"));
 };
 
 /***/ }),

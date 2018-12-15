@@ -4,6 +4,7 @@ import SideNav from "./side_nav";
 import { dummyNotebooks } from "../../util/dummy_data";
 import { createNote } from "../../actions/note_actions";
 import { selectNote } from "../../actions/ui_actions";
+import { openDropdown } from "../../actions/ui_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -15,7 +16,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createNote: note => dispatch(createNote(note))
+    createNote: note => dispatch(createNote(note)),
+    openDropdown: component => dispatch(openDropdown(component))
   };
 };
 

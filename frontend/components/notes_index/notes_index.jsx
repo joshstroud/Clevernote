@@ -17,7 +17,7 @@ class NotesIndex extends Component {
   }
 
   updateSelectedNote() {
-    let paramSelectedNoteId = this.props.match.params.noteId;
+    let paramSelectedNoteId = Number(this.props.match.params.noteId);
     if (
       this.props.selectedNoteId === null ||
       (paramSelectedNoteId &&
