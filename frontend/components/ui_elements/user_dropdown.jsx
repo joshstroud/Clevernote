@@ -22,7 +22,7 @@ class UserDropdown extends React.Component {
         <li className="user-dropdown-main-account">Img {username}</li>
 
         <li
-          className="dropdown-row dropdown-line-break-above"
+          className="user-dropdown-row dropdown-line-break-above"
           onClick={this.signOut}
         >
           Sign out {username}

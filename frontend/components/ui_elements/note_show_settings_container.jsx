@@ -14,7 +14,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  console.log(logout);
   return {
     logout: () => dispatch(logout()),
     closeDropdown: () => dispatch(closeDropdown())

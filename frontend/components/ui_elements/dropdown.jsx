@@ -1,5 +1,6 @@
 import React from "react";
 import UserDropdown from "./user_dropdown";
+import NoteShowSettingsDropdown from "./note_show_settings_dropdown";
 
 function Dropdown({ dropdown, currentUser, closeDropdown, history, logout }) {
   if (!dropdown) {
@@ -19,6 +20,15 @@ function Dropdown({ dropdown, currentUser, closeDropdown, history, logout }) {
         />
       );
       menuClass += " user-dropdown-menu";
+      break;
+    case "note-show-settings":
+      component = (
+        <NoteShowSettingsDropdown
+          closeDropdown={closeDropdown}
+          history={history}
+        />
+      );
+      menuClass += " note-show-settings-dropdown-menu";
       break;
     default:
       component = null;

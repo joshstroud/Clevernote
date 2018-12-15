@@ -8,13 +8,16 @@ class NoteShow extends Component {
     return (
       <section className="note-show-wrapper">
         {/* Hardcode notebook data for now. Add real data and then pass in real data */}
-        <NoteShowNav notebook={this.props.notebook} />
+        <NoteShowNav
+          notebook={this.props.notebook}
+          openDropdown={this.props.openDropdown}
+        />
         <NoteShowEditor
           note={this.props.note}
           updateNote={this.props.updateNote}
         />
         <NoteShowTagList
-          tagginsg={this.props.taggings}
+          taggings={this.props.taggings}
           tags={this.props.tags}
         />
       </section>

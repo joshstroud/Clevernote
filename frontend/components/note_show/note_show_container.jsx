@@ -6,6 +6,7 @@ import {
   dummyTaggings,
   dummyTags
 } from "../../util/dummy_data";
+import { openDropdown } from "../../actions/ui_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -17,7 +18,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateNote: note => dispatch(updateNote(note))
+    updateNote: note => dispatch(updateNote(note)),
+    openDropdown: component => dispatch(openDropdown(component))
   };
 };
 

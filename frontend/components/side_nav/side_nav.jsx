@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SideNavNotebooKIndex from "./side_nav_notebook_index";
 import { matchPath } from "react-router";
-import DropdownContainer from "../ui_elements/dropdown_container";
+import UserDropdownContainer from "../ui_elements/user_dropdown_container";
 import { getUsernameFromUser } from "../../util/user_util";
 
 class SideNav extends Component {
@@ -43,8 +43,6 @@ class SideNav extends Component {
   }
 
   createNewNote(e) {
-    console.log("click");
-
     const blankNote = {
       title: "Untitled",
       body: "",
@@ -68,7 +66,7 @@ class SideNav extends Component {
         <div className="side-nav-user-row" onClick={this.openUserDropdown}>
           <div className="side-nav-user">{this.state.username} ▼</div>
         </div>
-        <DropdownContainer />
+        <UserDropdownContainer />
 
         <div
           className="side-nav-create-button-row"
