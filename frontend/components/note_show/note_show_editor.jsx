@@ -29,7 +29,9 @@ class NoteShowEditor extends Component {
 
     if (
       (!prevProps.note && this.props.note) ||
-      (prevProps.note && prevProps.note.body !== this.props.note.body)
+      (prevProps.note &&
+        (prevProps.note.title !== this.props.note.title ||
+          prevProps.note.body) !== this.props.note.body)
     ) {
       this.setState({
         body: this.props.note.body,
