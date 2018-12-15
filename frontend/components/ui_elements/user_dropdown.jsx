@@ -8,7 +8,6 @@ class UserDropdown extends React.Component {
   }
 
   signOut(e) {
-    debugger;
     this.props.closeDropdown();
     this.props.logout();
     this.props.history.push("/");

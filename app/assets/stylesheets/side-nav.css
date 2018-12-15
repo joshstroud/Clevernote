@@ -49,7 +49,7 @@
 }
 
 .side-nav-create-button-row {
-  background-color: #008f26;
+  /* background-color: #008f26; */
   border-radius: 5px;
   padding: 0 6px;
   margin: 12px 12px;
@@ -57,6 +57,15 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+
+.side-nav-create-button {
+  display: flex;
+  align-items: center;
+}
+
+.side-nav-create-button div {
+  margin-left: 10px;
 }
 
 .side-nav-row {
@@ -68,6 +77,24 @@
   background-color: #1a1a1a;
   cursor: pointer;
   color: #ccc;
+  display: flex;
+
+  align-items: center;
+}
+
+.side-nav-row span {
+  height: 32px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 14px;
+  color: #ccc;
+  text-align: left;
+  max-width: 185px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 3px;
+  margin-left: 3px;
 }
 
 .side-nav-row:hover {

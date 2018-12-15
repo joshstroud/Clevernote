@@ -767,7 +767,7 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ui_elements_note_show_settings_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ui_elements/note_show_settings_container */ "./frontend/components/ui_elements/note_show_settings_container.jsx");
+/* harmony import */ var _ui_elements_note_show_settings_dropdown_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ui_elements/note_show_settings_dropdown_container */ "./frontend/components/ui_elements/note_show_settings_dropdown_container.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -825,7 +825,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "options-button",
         onClick: this.showSettings
-      }, "\u2699"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_elements_note_show_settings_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+      }, "\u2699"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_elements_note_show_settings_dropdown_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
     }
   }]);
 
@@ -1738,29 +1738,80 @@ function (_Component) {
         onClick: this.createNewNote
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "side-nav-create-button"
-      }, "+ New Note")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: this.setSelected(null)
-      }, "Shortcuts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "30",
+        height: "30",
+        viewBox: "0 0 30 30",
+        class: "add-note-icon",
+        "data-event-off": "click"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
+        fill: "none"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M0 0h30v30H0z"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("circle", {
+        cx: "15",
+        cy: "15",
+        r: "14",
+        fill: "#00A82D"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("rect", {
+        width: "14",
+        height: "2",
+        x: "8",
+        y: "14",
+        fill: "#FFF",
+        rx: "1"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("rect", {
+        width: "2",
+        height: "14",
+        x: "14",
+        y: "8",
+        fill: "#FFF",
+        rx: "1"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "New Note"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.setSelected("All Notes")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         width: "24",
         height: "24",
-        viewBox: "0 0 24 24",
-        class: ""
+        viewBox: "0 0 24 24"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
         fill: "#ccc",
-        id: "34a",
-        d: "M12 4c.177 0 .323.092.449.21.126.116.241.267.358.441.23.35.458.799.68 1.26.222.461.438.934.633 1.312.196.38.396.67.466.723.07.052.397.163.803.24.405.077.9.147 1.389.225.488.078.966.165 1.355.286.193.06.364.128.508.218.145.09.277.207.333.388.056.181.015.359-.052.521a2.37 2.37 0 0 1-.29.492c-.247.337-.586.703-.936 1.066-.351.364-.714.724-.998 1.035-.284.31-.487.604-.513.685-.025.081-.026.441.03.868.054.426.146.94.226 1.45.079.51.148 1.013.157 1.438.005.213-.004.405-.042.578-.037.173-.105.34-.25.45-.144.11-.312.124-.48.108a2.142 2.142 0 0 1-.534-.135c-.382-.14-.819-.365-1.257-.602-.439-.237-.879-.485-1.25-.672-.371-.187-.698-.3-.786-.3-.089 0-.416.113-.787.3-.37.187-.81.436-1.25.672-.438.237-.874.461-1.256.602-.191.07-.368.12-.534.135-.168.016-.336.003-.48-.107-.146-.11-.213-.278-.25-.452a2.505 2.505 0 0 1-.042-.578c.01-.425.078-.929.157-1.439.08-.51.171-1.023.227-1.45.055-.426.054-.786.029-.867-.025-.08-.228-.374-.512-.685-.284-.311-.647-.671-.998-1.034-.352-.364-.69-.73-.935-1.067a2.404 2.404 0 0 1-.29-.493c-.067-.162-.108-.34-.05-.52.055-.182.186-.299.33-.389.145-.09.316-.158.51-.219.388-.121.867-.208 1.355-.286.488-.078.983-.148 1.388-.224.406-.077.734-.189.804-.241.069-.053.27-.343.466-.722.194-.379.411-.851.633-1.313.222-.46.45-.91.68-1.259.115-.174.23-.325.357-.441.126-.116.272-.208.45-.208z"
-      })), "All Notes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "14a",
+        d: "M16 16h2v-1h-2a.997.997 0 0 0-1 1v3h1v-3zM8 4h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm1.5 4a.5.5 0 0 0 0 1h5a.5.5 0 1 0 0-1h-5zm0 3a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm0 3a.5.5 0 1 0 0 1h3a.5.5 0 1 0 0-1h-3z"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "All Notes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.setSelected("Notebooks")
-      }, "Notebooks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: this.setSelected(null)
-      }, "Shared with Me"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        fill: "#ccc",
+        d: "M9 4h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9V4zM6 4h2v15H6V4zm5.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-4z"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Notebooks")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.setSelected("Tags")
-      }, "Tags"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        fill: "#ccc",
+        id: "10a",
+        d: "M10.265 9.005a2 2 0 1 0 3.47 0H18v9.5a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-9.5h4.265zM9.5 16a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm0-2a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm4.235-4.995H18l-4.982-4.606a1.5 1.5 0 0 0-2.036 0L6 9.005h4.265a2 2 0 0 1 3.47 0z"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Tags")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.setSelected(null)
-      }, "Trash"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        fill: "#ccc",
+        id: "8a",
+        d: "M5 7.496a.5.5 0 0 1 .5-.5L8.996 7V5.25c0-.69.305-1.25 1.008-1.25H14c.703 0 1 .556 1 1.247v1.75H18.5a.5.5 0 1 1 0 1h-13a.5.5 0 0 1-.5-.5zm5.25-2.001a.25.25 0 0 0-.25.25v1.002c0 .138.112.25.25.25h3.5a.25.25 0 0 0 .25-.25V5.745a.25.25 0 0 0-.25-.25h-3.5zm6.205 12.567c0 .69-.57.935-1.273.935H8.818c-.703 0-1.273-.56-1.273-1.25l-.548-8.748H17l-.546 9.063z"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Trash")));
     }
   }]);
 
@@ -2212,7 +2263,9 @@ function Dropdown(_ref) {
       currentUser = _ref.currentUser,
       closeDropdown = _ref.closeDropdown,
       history = _ref.history,
-      logout = _ref.logout;
+      logout = _ref.logout,
+      deleteNote = _ref.deleteNote,
+      selectedNoteId = _ref.selectedNoteId;
 
   if (!dropdown) {
     return null;
@@ -2235,7 +2288,9 @@ function Dropdown(_ref) {
     case "note-show-settings":
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_settings_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
         closeDropdown: closeDropdown,
-        history: history
+        history: history,
+        deleteNote: deleteNote,
+        selectedNoteId: selectedNoteId
       });
       menuClass += " note-show-settings-dropdown-menu";
       break;
@@ -2256,52 +2311,6 @@ function Dropdown(_ref) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Dropdown);
-
-/***/ }),
-
-/***/ "./frontend/components/ui_elements/note_show_settings_container.jsx":
-/*!**************************************************************************!*\
-  !*** ./frontend/components/ui_elements/note_show_settings_container.jsx ***!
-  \**************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dropdown */ "./frontend/components/ui_elements/dropdown.jsx");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-
-
-
-
-
-
-
-var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {
-    dropdown: state.ui.dropdown,
-    currentUser: state.entities.users[state.session.id],
-    history: ownProps.history
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    logout: function logout() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["logout"])());
-    },
-    closeDropdown: function closeDropdown() {
-      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeDropdown"])());
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(_dropdown__WEBPACK_IMPORTED_MODULE_3__["default"])));
 
 /***/ }),
 
@@ -2358,7 +2367,7 @@ function (_React$Component) {
   _createClass(NoteShowSettingsDropdown, [{
     key: "moveNoteToNotebook",
     value: function moveNoteToNotebook(e) {
-      console.log("Move to action");
+      console.log("Move note to notebook action");
       this.props.closeDropdown();
     }
   }, {
@@ -2372,6 +2381,8 @@ function (_React$Component) {
     value: function deleteNote(e) {
       console.log("Delete note action");
       this.props.closeDropdown();
+      debugger;
+      this.props.deleteNote(this.props.selectedNoteId);
     }
   }, {
     key: "render",
@@ -2393,6 +2404,58 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (NoteShowSettingsDropdown);
+
+/***/ }),
+
+/***/ "./frontend/components/ui_elements/note_show_settings_dropdown_container.jsx":
+/*!***********************************************************************************!*\
+  !*** ./frontend/components/ui_elements/note_show_settings_dropdown_container.jsx ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dropdown */ "./frontend/components/ui_elements/dropdown.jsx");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/note_actions */ "./frontend/actions/note_actions.js");
+
+
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    dropdown: state.ui.dropdown,
+    currentUser: state.entities.users[state.session.id],
+    history: ownProps.history,
+    selectedNoteId: state.ui.selectedNoteId
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["logout"])());
+    },
+    closeDropdown: function closeDropdown() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeDropdown"])());
+    },
+    deleteNote: function deleteNote(noteId) {
+      return dispatch(Object(_actions_note_actions__WEBPACK_IMPORTED_MODULE_6__["deleteNote"])(noteId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(_dropdown__WEBPACK_IMPORTED_MODULE_3__["default"])));
 
 /***/ }),
 
@@ -2447,7 +2510,6 @@ function (_React$Component) {
   _createClass(UserDropdown, [{
     key: "signOut",
     value: function signOut(e) {
-      debugger;
       this.props.closeDropdown();
       this.props.logout();
       this.props.history.push("/");

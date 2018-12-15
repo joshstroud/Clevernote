@@ -2,7 +2,15 @@ import React from "react";
 import UserDropdown from "./user_dropdown";
 import NoteShowSettingsDropdown from "./note_show_settings_dropdown";
 
-function Dropdown({ dropdown, currentUser, closeDropdown, history, logout }) {
+function Dropdown({
+  dropdown,
+  currentUser,
+  closeDropdown,
+  history,
+  logout,
+  deleteNote,
+  selectedNoteId
+}) {
   if (!dropdown) {
     return null;
   }
@@ -26,6 +34,8 @@ function Dropdown({ dropdown, currentUser, closeDropdown, history, logout }) {
         <NoteShowSettingsDropdown
           closeDropdown={closeDropdown}
           history={history}
+          deleteNote={deleteNote}
+          selectedNoteId={selectedNoteId}
         />
       );
       menuClass += " note-show-settings-dropdown-menu";

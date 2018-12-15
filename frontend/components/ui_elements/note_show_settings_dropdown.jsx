@@ -11,7 +11,7 @@ class NoteShowSettingsDropdown extends React.Component {
   }
 
   moveNoteToNotebook(e) {
-    console.log("Move to action");
+    console.log("Move note to notebook action");
     this.props.closeDropdown();
   }
 
@@ -23,18 +23,29 @@ class NoteShowSettingsDropdown extends React.Component {
   deleteNote(e) {
     console.log("Delete note action");
     this.props.closeDropdown();
+    debugger;
+    this.props.deleteNote(this.props.selectedNoteId);
   }
 
   render() {
     return (
       <ul>
-        <li className="note-show-settings-dropdown-row" onClick={this.moveNoteToNotebook}>
+        <li
+          className="note-show-settings-dropdown-row"
+          onClick={this.moveNoteToNotebook}
+        >
           Move to...
         </li>
-        <li className="note-show-settings-dropdown-row" onClick={this.duplicateNote}>
+        <li
+          className="note-show-settings-dropdown-row"
+          onClick={this.duplicateNote}
+        >
           Duplicate note
         </li>
-        <li className="note-show-settings-dropdown-row" onClick={this.deleteNote}>
+        <li
+          className="note-show-settings-dropdown-row"
+          onClick={this.deleteNote}
+        >
           Delete note
         </li>
       </ul>
