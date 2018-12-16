@@ -1,11 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import NotesIndexItem from "./notes_index_item";
+import { findDOMNode } from "react-dom";
 import { withRouter } from "react-router-dom";
 import { sortNotesByLastUpdate } from "../../util/note_util";
 
 class NotesIndex extends Component {
   constructor(props) {
     super(props);
+
+    // this.selectedNoteIndexItemRef = createRef();
   }
 
   componentDidMount() {
@@ -17,6 +20,15 @@ class NotesIndex extends Component {
   }
 
   updateSelectedNote() {
+    const $containerNode = $(".notes-index-items-wrapper");
+
+    if (
+      this.selectedNoteIndexItemRef &&
+      $containerNode.scrollTop !== this.selectedNoteIndexItemRef.offsetTop
+    ) {
+      $containerNote.scrollTop(this.state.selectedNoteIndexItemRef.offsetTop);
+    }
+
     let paramSelectedNoteId = Number(this.props.match.params.noteId);
     if (
       this.props.selectedNoteId === null ||
@@ -44,16 +56,27 @@ class NotesIndex extends Component {
 
   renderNoteIndexItems() {
     const noteIndexItems = sortNotesByLastUpdate(this.props.notes).map(note => {
-      return (
+      // let indexItemRef = createRef();
+      // if (note.id === this.props.selectedNoteId) {
+      //   indexItemRef = createRef();
+      // }
+      const indexItem = (
         <NotesIndexItem
           key={note.id}
           note={note}
+          ref={ref => this.indexItemRef}
           selectedNoteId={this.props.selectedNoteId}
           selectNote={this.props.selectNote}
           history={this.props.history}
           path={this.props.path}
         />
       );
+
+      if (note.id === this.props.selectedNoteId) {
+        this.selectedNoteIndexItemRef = this.indexItemRef;
+      }
+
+      return indexItem;
     });
 
     return <div className="notes-index-items-wrapper">{noteIndexItems}</div>;

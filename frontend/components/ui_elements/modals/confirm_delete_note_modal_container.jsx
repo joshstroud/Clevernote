@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     modal: state.ui.dropdown,
     history: ownProps.history,
-    notebookName: "Hardcoded Notebook",
+    noteTitle: state.entities.notes[state.ui.selectedNoteId].title,
     selectedNoteId: state.ui.selectedNoteId,
     path: "/app/notes"
 

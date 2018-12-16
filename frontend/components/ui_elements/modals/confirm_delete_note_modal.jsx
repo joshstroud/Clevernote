@@ -8,7 +8,7 @@ class UserDropdown extends React.Component {
   }
 
   deleteNote(e) {
-    const that = t;
+    const that = that;
     this.props
       .deleteNote(this.props.selectedNoteId)
       .then(action => that.props.history.push(that.props.path));
@@ -21,7 +21,7 @@ class UserDropdown extends React.Component {
         <header>
           <div className="confirm-delete-modal-wrapper">
             <div className="confirm-delete-modal-header">
-              <div>Delete Note</div>
+              <div>Delete note</div>
               <svg
                 width="13"
                 height="13"
@@ -40,7 +40,7 @@ class UserDropdown extends React.Component {
           </div>
         </header>
         <div className="confirm-delete-modal-message">
-          {this.props.notebookName} will be deleted.
+          {this.props.noteTitle} will be deleted.
         </div>
         <div className="confirm-delete-modal-button-wrapper">
           <div className="confirm-delete-modal-button-row">

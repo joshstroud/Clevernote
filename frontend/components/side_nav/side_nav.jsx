@@ -83,7 +83,7 @@ class SideNav extends Component {
               width="30"
               height="30"
               viewBox="0 0 30 30"
-              className="add-note-icon"
+              className="side-nav-create-button-icon"
               data-event-off="click"
             >
               <g fill="none">
