@@ -1758,7 +1758,7 @@ function (_Component) {
         width: "30",
         height: "30",
         viewBox: "0 0 30 30",
-        class: "add-note-icon",
+        className: "add-note-icon",
         "data-event-off": "click"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
         fill: "none"
