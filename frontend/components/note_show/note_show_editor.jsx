@@ -62,15 +62,22 @@ class NoteShowEditor extends Component {
   render() {
     return (
       <div className="note-show-editor-wrapper">
-        <input
-          type="text"
-          className="note-show-editor-title"
-          value={this.state.title}
-          onChange={this.handleTitleChange}
-        />
-        <button onClick={this.saveNote}>Save</button>
-
+        <div className="note-show-editor-title-row">
+          <input
+            type="text"
+            className="note-show-editor-title"
+            value={this.state.title}
+            onChange={this.handleTitleChange}
+          />
+          <button
+            onClick={this.saveNote}
+            className="confirm-delete-modal-submit-button note-show-save-button"
+          >
+            Save
+          </button>
+        </div>
         <ReactQuill
+          className="note-show-quill"
           value={this.state.body}
           onChange={this.handleEditorChange}
         />

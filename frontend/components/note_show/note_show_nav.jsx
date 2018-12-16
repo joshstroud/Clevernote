@@ -59,11 +59,7 @@ class NoteShowNav extends Component {
                 d="M3 2v10h7a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zM2 1h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2V1zm2 1v10h1V2H4zm2 3v1h4V5H6z"
               />
             </svg>
-            <Link
-              className="note-show-notebook-title"
-              tooltiptext={this.props.notebook.title}
-              to="/app/notes"
-            >
+            <Link className="note-show-notebook-title" to="/app/notes">
               {this.props.notebook.title}
             </Link>
           </div>
@@ -71,7 +67,6 @@ class NoteShowNav extends Component {
         <div className="note-show-right">
           {/* <button className="note-show-share-button">Share</button> */}
           <svg
-            tabindex="0"
             width="32"
             height="32"
             viewBox="0 0 32 32"

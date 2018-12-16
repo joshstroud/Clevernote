@@ -6,6 +6,7 @@
 }
 
 .note-show-tag {
+  border-style: none;
   padding: 0 12px;
   max-width: none;
   height: 28px;
@@ -25,4 +26,31 @@
   align-items: center;
   white-space: nowrap;
   outline: none;
+}
+
+.nav-show-add-tag-button {
+  flex-shrink: 0;
+  margin: 0 10px 0 15px;
+  fill: #c3c3c3;
+  cursor: pointer;
+}
+
+.nav-show-add-tag-button:hover {
+  fill: #B0BC96;
+}
+
+.tag-angle-down {
+  display: inline-block;
+  padding: 2.5px;
+  margin: 4px 0 3px 3px;
+  cursor: pointer;
+  font-size: 9px;
+}
+
+.note-show-add-tag-input {
+  min-width: 100px;
+  outline: 0;
+  border: 0;
+  box-sizing: content-box;
+  width: 100%;
 }
