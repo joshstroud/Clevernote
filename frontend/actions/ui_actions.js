@@ -1,6 +1,7 @@
 export const SELECT_NOTE = "SELECT_NOTE";
 export const OPEN_DROPDOWN = "OPEN_DROPDOWN";
-export const CLOSE_DROPDOWN = "CLOSE_DROPDOWN";
+export const OPEN_MODAL = "OPEN_MODAL";
+export const CLOSE_UI_ELEMENTS = "CLOSE_UI_ELEMENTS";
 
 export const selectNote = (noteId) => {
   return {
@@ -16,8 +17,15 @@ export const openDropdown = (component) => {
   }
 }
 
-export const closeDropdown = (component) => {
+export const openModal = (component) => {
   return {
-    type: CLOSE_DROPDOWN
+    type: OPEN_MODAL,
+    component
+  }
+}
+
+export const closeUIElements = (component) => {
+  return {
+    type: CLOSE_UI_ELEMENTS
   }
 }

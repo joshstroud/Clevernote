@@ -259,20 +259,23 @@ var logout = function logout() {
 /*!****************************************!*\
   !*** ./frontend/actions/ui_actions.js ***!
   \****************************************/
-/*! exports provided: SELECT_NOTE, OPEN_DROPDOWN, CLOSE_DROPDOWN, selectNote, openDropdown, closeDropdown */
+/*! exports provided: SELECT_NOTE, OPEN_DROPDOWN, OPEN_MODAL, CLOSE_UI_ELEMENTS, selectNote, openDropdown, openModal, closeUIElements */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SELECT_NOTE", function() { return SELECT_NOTE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OPEN_DROPDOWN", function() { return OPEN_DROPDOWN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLOSE_DROPDOWN", function() { return CLOSE_DROPDOWN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OPEN_MODAL", function() { return OPEN_MODAL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLOSE_UI_ELEMENTS", function() { return CLOSE_UI_ELEMENTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectNote", function() { return selectNote; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openDropdown", function() { return openDropdown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeDropdown", function() { return closeDropdown; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openModal", function() { return openModal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeUIElements", function() { return closeUIElements; });
 var SELECT_NOTE = "SELECT_NOTE";
 var OPEN_DROPDOWN = "OPEN_DROPDOWN";
-var CLOSE_DROPDOWN = "CLOSE_DROPDOWN";
+var OPEN_MODAL = "OPEN_MODAL";
+var CLOSE_UI_ELEMENTS = "CLOSE_UI_ELEMENTS";
 var selectNote = function selectNote(noteId) {
   return {
     type: SELECT_NOTE,
@@ -285,9 +288,15 @@ var openDropdown = function openDropdown(component) {
     component: component
   };
 };
-var closeDropdown = function closeDropdown(component) {
+var openModal = function openModal(component) {
   return {
-    type: CLOSE_DROPDOWN
+    type: OPEN_MODAL,
+    component: component
+  };
+};
+var closeUIElements = function closeUIElements(component) {
+  return {
+    type: CLOSE_UI_ELEMENTS
   };
 };
 
@@ -420,6 +429,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _side_nav_side_nav_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../side_nav/side_nav_container */ "./frontend/components/side_nav/side_nav_container.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _test_test_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../test/test_page */ "./frontend/components/test/test_page.jsx");
+/* harmony import */ var _ui_elements_modals_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../ui_elements/modals/modal */ "./frontend/components/ui_elements/modals/modal.jsx");
+
 
 
 
@@ -432,7 +443,7 @@ var MainPage = function MainPage() {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
     className: "main-page-wrapper"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_nav_side_nav_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_section__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_elements_modals_modal__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_nav_side_nav_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main_section__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MainPage);
@@ -963,7 +974,6 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     notes: state.entities.notes,
     title: "All Notes",
     selectedNoteId: state.ui.selectedNoteId,
-    routeNoteId: Number(ownProps.match.params.noteId),
     path: "/app/notes"
   };
 };
@@ -2283,7 +2293,7 @@ function Dropdown(_ref) {// if (!dropdown) {
   //     component = null;
   // }
   // return (
-  //   <div className="dropdown-background" onClick={closeDropdown}>
+  //   <div className="dropdown-background" onClick={closeUIElements}>
   //     <div className={menuClass} onClick={e => e.stopPropagation()}>
   //       {component}
   //     </div>
@@ -2355,7 +2365,7 @@ function (_React$Component) {
     key: "moveNoteToNotebook",
     value: function moveNoteToNotebook(e) {
       console.log("Move note to notebook action");
-      this.props.closeDropdown();
+      this.props.closeUIElements();
     }
   }, {
     key: "duplicateNote",
@@ -2365,22 +2375,20 @@ function (_React$Component) {
       noteCopy.title += " copy";
       var that = this;
       this.props.createNote(noteCopy).then(function (action) {
-        that.props.history.push("".concat(that.props.path, "/").concat(action.note.id));
+        return that.props.history.push("".concat(that.props.path, "/").concat(action.note.id));
       });
-      this.props.closeDropdown();
+      this.props.closeUIElements();
     }
   }, {
     key: "deleteNote",
     value: function deleteNote(e) {
       // console.log("Delete note action");
-      var that = this;
-      this.props.deleteNote(this.props.selectedNoteId).then(function (action) {
-        that.props.history.push(that.props.path);
-        debugger;
-      }, function (err) {
-        debugger;
-      });
-      this.props.closeDropdown();
+      var that = this; // this.props
+      //   .deleteNote(this.props.selectedNoteId)
+      //   .then(action => that.props.history.push(that.props.path));
+
+      this.props.closeUIElements();
+      this.props.openModal("confirm-delete-note");
     }
   }, {
     key: "render",
@@ -2391,7 +2399,7 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "dropdown-background",
-        onClick: this.props.closeDropdown
+        onClick: this.props.closeUIElements
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "dropdown-menu note-show-settings-dropdown-menu",
         onClick: function onClick(e) {
@@ -2449,7 +2457,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     currentUser: state.entities.users[state.session.id],
     history: ownProps.history,
     selectedNoteId: state.ui.selectedNoteId,
-    path: "/app/notes"
+    rootPath: "/app/notes"
   };
 };
 
@@ -2458,8 +2466,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"])());
     },
-    closeDropdown: function closeDropdown() {
-      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeDropdown"])());
+    closeUIElements: function closeUIElements() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeUIElements"])());
     },
     deleteNote: function deleteNote(noteId) {
       return dispatch(Object(_actions_note_actions__WEBPACK_IMPORTED_MODULE_5__["deleteNote"])(noteId));
@@ -2476,7 +2484,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return createNote;
     }(function (note) {
       return dispatch(createNote(note));
-    })
+    }),
+    openModal: function openModal(component) {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["openModal"])(component));
+    }
   };
 };
 
@@ -2535,7 +2546,7 @@ function (_React$Component) {
   _createClass(UserDropdown, [{
     key: "signOut",
     value: function signOut(e) {
-      this.props.closeDropdown();
+      this.props.closeUIElements();
       this.props.logout();
       this.props.history.push("/");
     }
@@ -2550,7 +2561,7 @@ function (_React$Component) {
       var username = currentUser ? Object(_util_user_util__WEBPACK_IMPORTED_MODULE_0__["getUsernameFromUser"])(this.props.currentUser) : "";
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "dropdown-background",
-        onClick: this.props.closeDropdown
+        onClick: this.props.closeUIElements
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "dropdown-menu user-dropdown-menu",
         onClick: function onClick(e) {
@@ -2610,13 +2621,212 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"])());
     },
-    closeDropdown: function closeDropdown() {
-      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeDropdown"])());
+    closeUIElements: function closeUIElements() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeUIElements"])());
     }
   };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(_user_dropdown__WEBPACK_IMPORTED_MODULE_5__["default"])));
+
+/***/ }),
+
+/***/ "./frontend/components/ui_elements/modals/confirm_delete_note_modal.jsx":
+/*!******************************************************************************!*\
+  !*** ./frontend/components/ui_elements/modals/confirm_delete_note_modal.jsx ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _util_user_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../util/user_util */ "./frontend/util/user_util.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
+
+
+var UserDropdown =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(UserDropdown, _React$Component);
+
+  function UserDropdown(props) {
+    var _this;
+
+    _classCallCheck(this, UserDropdown);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserDropdown).call(this, props));
+    _this.deleteNote = _this.deleteNote.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(UserDropdown, [{
+    key: "deleteNote",
+    value: function deleteNote(e) {
+      var that = this;
+      this.props.deleteNote(this.props.selectedNoteId).then(function (action) {
+        return that.props.history.push(that.props.path);
+      });
+      this.props.closeUIElements();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "confirm-delete-modal"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("header", null, "Delete Note"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "confirm-delete-modal-message"
+      }, this.props.notebookName, " will be deleted."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "confirm-delete-modal-button-row"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "confirm-delete-modal-cancel-button",
+        onClick: this.props.closeUIElements
+      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "confirm-delete-modal-submit-button",
+        onClick: this.deleteNote
+      }, "Submit")));
+    }
+  }]);
+
+  return UserDropdown;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (UserDropdown);
+
+/***/ }),
+
+/***/ "./frontend/components/ui_elements/modals/confirm_delete_note_modal_container.jsx":
+/*!****************************************************************************************!*\
+  !*** ./frontend/components/ui_elements/modals/confirm_delete_note_modal_container.jsx ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/note_actions */ "./frontend/actions/note_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _confirm_delete_note_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./confirm_delete_note_modal */ "./frontend/components/ui_elements/modals/confirm_delete_note_modal.jsx");
+
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    modal: state.ui.dropdown,
+    history: ownProps.history,
+    notebookName: "Hardcoded Notebook",
+    selectedNoteId: state.ui.selectedNoteId,
+    path: "/app/notes" // fix hardcoding above
+
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    closeUIElements: function closeUIElements() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeUIElements"])());
+    },
+    deleteNote: function deleteNote(noteId) {
+      return dispatch(Object(_actions_note_actions__WEBPACK_IMPORTED_MODULE_3__["deleteNote"])(noteId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(_confirm_delete_note_modal__WEBPACK_IMPORTED_MODULE_5__["default"])));
+
+/***/ }),
+
+/***/ "./frontend/components/ui_elements/modals/modal.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/ui_elements/modals/modal.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _confirm_delete_note_modal_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./confirm_delete_note_modal_container */ "./frontend/components/ui_elements/modals/confirm_delete_note_modal_container.jsx");
+
+
+
+
+
+function Modal(_ref) {
+  var modal = _ref.modal,
+      closeUIElements = _ref.closeUIElements;
+
+  if (!modal) {
+    return null;
+  }
+
+  var component;
+
+  switch (modal) {
+    case "confirm-delete-note":
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_confirm_delete_note_modal_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+      break;
+
+    default:
+      return null;
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-background",
+    onClick: closeUIElements
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-child",
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    }
+  }, component));
+}
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    modal: state.ui.modal
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    closeUIElements: function closeUIElements() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeUIElements"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(Modal));
 
 /***/ }),
 
@@ -2871,9 +3081,15 @@ var ui = function ui() {
         dropdown: action.component
       });
 
-    case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_DROPDOWN"]:
+    case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
-        dropdown: null
+        modal: action.component
+      });
+
+    case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_UI_ELEMENTS"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        dropdown: null,
+        modal: null
       });
 
     default:

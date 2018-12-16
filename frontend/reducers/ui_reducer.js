@@ -1,7 +1,8 @@
 import {
   SELECT_NOTE,
   OPEN_DROPDOWN,
-  CLOSE_DROPDOWN
+  OPEN_MODAL,
+  CLOSE_UI_ELEMENTS
 } from '../actions/ui_actions';
 
 import merge from 'lodash/merge';
@@ -21,9 +22,14 @@ const ui = (state = defaultUIState, action) => {
       return merge({}, state, {
         dropdown: action.component
       })
-    case CLOSE_DROPDOWN:
+    case OPEN_MODAL:
       return merge({}, state, {
-        dropdown: null
+        modal: action.component
+      })
+    case CLOSE_UI_ELEMENTS:
+      return merge({}, state, {
+        dropdown: null,
+        modal: null
       })
     default:
       return state;

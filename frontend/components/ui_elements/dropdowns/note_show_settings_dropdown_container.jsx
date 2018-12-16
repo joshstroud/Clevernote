@@ -1,5 +1,5 @@
 import React from "react";
-import { closeUIElements } from "../../../actions/ui_actions";
+import { closeUIElements, openModal } from "../../../actions/ui_actions";
 import { connect } from "react-redux";
 import { logout } from "../../../actions/session_actions";
 import { withRouter } from "react-router-dom";
@@ -22,7 +22,8 @@ const mapDispatchToProps = dispatch => {
     logout: () => dispatch(logout()),
     closeUIElements: () => dispatch(closeUIElements()),
     deleteNote: noteId => dispatch(deleteNote(noteId)),
-    createNote: note => dispatch(createNote(note))
+    createNote: note => dispatch(createNote(note)),
+    openModal: component => dispatch(openModal(component))
   };
 };
 

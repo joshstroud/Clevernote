@@ -32,10 +32,11 @@ class NoteShowSettingsDropdown extends React.Component {
   deleteNote(e) {
     // console.log("Delete note action");
     const that = this;
-    this.props
-      .deleteNote(this.props.selectedNoteId)
-      .then(action => that.props.history.push(that.props.path));
+    // this.props
+    //   .deleteNote(this.props.selectedNoteId)
+    //   .then(action => that.props.history.push(that.props.path));
     this.props.closeUIElements();
+    this.props.openModal("confirm-delete-note");
   }
 
   render() {
