@@ -87,7 +87,7 @@ class SessionForm extends React.Component {
       this.state.password === "password"
     ) {
       const user = {
-        email: "demo@demo.com",
+        email: "Demo@demo.com",
         password: "password"
       };
       clearInterval(this.state.demoLoginAnimationInterval);

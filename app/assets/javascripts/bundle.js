@@ -1537,7 +1537,7 @@ function (_React$Component) {
     value: function animateDemoLogin() {
       if (this.state.email === "demo@demo.com" && this.state.password === "password") {
         var user = {
-          email: "demo@demo.com",
+          email: "Demo@demo.com",
           password: "password"
         };
         clearInterval(this.state.demoLoginAnimationInterval);
