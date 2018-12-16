@@ -1,0 +1,30 @@
+.note-show-settings-dropdown-menu {
+  padding: 12px 0;
+  position: absolute;
+  top: 16.5px;
+  left: calc(100vw - 182.4px);
+  z-index: 1000;
+  width: 160px;
+}
+
+.note-show-settings-dropdown-row {
+  padding: 6px 30px 6px 20px;
+  display: block;
+  text-align: left;
+  color: #666;
+  font-size: 14px;
+  font-family: -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  cursor: pointer;
+}
+
+.not-show-settings-dropdown-row:hover {}

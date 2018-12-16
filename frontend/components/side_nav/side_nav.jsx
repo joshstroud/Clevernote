@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import SideNavNotebooKIndex from "./side_nav_notebook_index";
-import { matchPath } from "react-router";
 import UserDropdownContainer from "../ui_elements/dropdowns/user_dropdown_container";
 import { getUsernameFromUser } from "../../util/user_util";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 class SideNav extends Component {
   constructor(props) {
@@ -64,7 +64,12 @@ class SideNav extends Component {
     return (
       <section className="side-nav-wrapper">
         <div className="side-nav-user-row" onClick={this.openUserDropdown}>
-          <div className="side-nav-user">{this.state.username} ▼</div>
+          <div className="side-nav-user-avatar" />
+          <div className="side-nav-user">{this.state.username}</div>
+          <FontAwesomeIcon
+            className="side-nav-chevron-down"
+            icon={faChevronDown}
+          />
         </div>
         <UserDropdownContainer />
 

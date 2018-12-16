@@ -63,8 +63,12 @@ class NotesIndex extends Component {
     return (
       <section className="notes-index-wrapper">
         <header className="notes-index-header">
-          <h1 id="notes-index-header-title">{this.props.title}</h1>
-          <div id="notes-index-header-footer">{this.renderNumberOfNotes()}</div>
+          <div className="notes-index-header-wrapper">
+            <h1 id="notes-index-header-title">{this.props.title}</h1>
+          </div>
+          <div id="notes-index-header-footer">
+            <div>{this.renderNumberOfNotes()}</div>
+          </div>
         </header>
         {this.renderNoteIndexItems()}
       </section>
