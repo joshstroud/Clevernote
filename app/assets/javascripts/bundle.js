@@ -1074,8 +1074,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _notes_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notes_index_item */ "./frontend/components/notes_index/notes_index_item.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _util_note_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/note_util */ "./frontend/util/note_util.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _util_note_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/note_util */ "./frontend/util/note_util.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1099,6 +1101,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var NotesIndex =
 /*#__PURE__*/
 function (_Component) {
@@ -1107,7 +1110,7 @@ function (_Component) {
   function NotesIndex(props) {
     _classCallCheck(this, NotesIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(NotesIndex).call(this, props));
+    return _possibleConstructorReturn(this, _getPrototypeOf(NotesIndex).call(this, props)); // this.selectedNoteIndexItemRef = createRef();
   }
 
   _createClass(NotesIndex, [{
@@ -1123,10 +1126,16 @@ function (_Component) {
   }, {
     key: "updateSelectedNote",
     value: function updateSelectedNote() {
+      var $containerNode = $(".notes-index-items-wrapper");
+
+      if (this.selectedNoteIndexItemRef && $containerNode.scrollTop !== this.selectedNoteIndexItemRef.offsetTop) {
+        $containerNote.scrollTop(this.state.selectedNoteIndexItemRef.offsetTop);
+      }
+
       var paramSelectedNoteId = Number(this.props.match.params.noteId);
 
       if (this.props.selectedNoteId === null || paramSelectedNoteId && this.props.selectedNoteId !== paramSelectedNoteId || Number.isNaN(paramSelectedNoteId)) {
-        var mostRecentNote = Object(_util_note_util__WEBPACK_IMPORTED_MODULE_3__["sortNotesByLastUpdate"])(this.props.notes)[0];
+        var mostRecentNote = Object(_util_note_util__WEBPACK_IMPORTED_MODULE_4__["sortNotesByLastUpdate"])(this.props.notes)[0];
 
         if (paramSelectedNoteId && this.props.notes[paramSelectedNoteId]) {
           this.props.selectNote(paramSelectedNoteId);
@@ -1151,15 +1160,28 @@ function (_Component) {
     value: function renderNoteIndexItems() {
       var _this = this;
 
-      var noteIndexItems = Object(_util_note_util__WEBPACK_IMPORTED_MODULE_3__["sortNotesByLastUpdate"])(this.props.notes).map(function (note) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      var noteIndexItems = Object(_util_note_util__WEBPACK_IMPORTED_MODULE_4__["sortNotesByLastUpdate"])(this.props.notes).map(function (note) {
+        // let indexItemRef = createRef();
+        // if (note.id === this.props.selectedNoteId) {
+        //   indexItemRef = createRef();
+        // }
+        var indexItem = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: note.id,
           note: note,
+          ref: function ref(_ref) {
+            return _this.indexItemRef;
+          },
           selectedNoteId: _this.props.selectedNoteId,
           selectNote: _this.props.selectNote,
           history: _this.props.history,
           path: _this.props.path
         });
+
+        if (note.id === _this.props.selectedNoteId) {
+          _this.selectedNoteIndexItemRef = _this.indexItemRef;
+        }
+
+        return indexItem;
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notes-index-items-wrapper"
@@ -1834,7 +1856,7 @@ function (_Component) {
         width: "30",
         height: "30",
         viewBox: "0 0 30 30",
-        className: "add-note-icon",
+        className: "side-nav-create-button-icon",
         "data-event-off": "click"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
         fill: "none"
@@ -2717,7 +2739,7 @@ function (_React$Component) {
   _createClass(UserDropdown, [{
     key: "deleteNote",
     value: function deleteNote(e) {
-      var that = t;
+      var that = that;
       this.props.deleteNote(this.props.selectedNoteId).then(function (action) {
         return that.props.history.push(that.props.path);
       });
@@ -2732,7 +2754,7 @@ function (_React$Component) {
         className: "confirm-delete-modal-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "confirm-delete-modal-header"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "Delete Note"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("svg", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "Delete note"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("svg", {
         width: "13",
         height: "13",
         viewBox: "0 0 13 13",
@@ -2745,7 +2767,7 @@ function (_React$Component) {
         d: "M7.728 6.314l4.95-4.95L11.263-.05 6.313 4.9 1.365-.05-.05 1.364l4.95 4.95-4.95 4.95 1.414 1.414 4.95-4.95 4.95 4.95 1.414-1.415-4.95-4.95z"
       }))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "confirm-delete-modal-message"
-      }, this.props.notebookName, " will be deleted."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, this.props.noteTitle, " will be deleted."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "confirm-delete-modal-button-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "confirm-delete-modal-button-row"
@@ -2793,7 +2815,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     modal: state.ui.dropdown,
     history: ownProps.history,
-    notebookName: "Hardcoded Notebook",
+    noteTitle: state.entities.notes[state.ui.selectedNoteId].title,
     selectedNoteId: state.ui.selectedNoteId,
     path: "/app/notes" // fix hardcoding above
 

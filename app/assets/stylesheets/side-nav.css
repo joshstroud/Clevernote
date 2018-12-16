@@ -75,6 +75,11 @@
   margin-left: 10px;
 }
 
+.side-nav-create-button-icon:hover {
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.15);
+}
+
 .side-nav-row {
   height: 32px;
   font-size: 14px;
@@ -110,12 +115,16 @@
 }
 
 .side-nav-category-selected {
-  color: #351818;
   background-color: #404040;
   font-weight: 600;
 }
 
+.side-nav-category-selected span {
+  color: #e6e6e6;
+}
+
 .side-nav-category-selected.side-nav-row:hover {
+
   background-color: #404040;
 }
 
