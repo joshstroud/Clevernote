@@ -748,6 +748,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var titleValue = this.state.title === "Untitled" ? "" : this.state.title;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-editor-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -755,15 +756,17 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "note-show-editor-title",
-        value: this.state.title,
-        onChange: this.handleTitleChange
+        value: titleValue,
+        onChange: this.handleTitleChange,
+        placeholder: "Title"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.saveNote,
         className: "confirm-delete-modal-submit-button note-show-save-button"
       }, "Save")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_quill__WEBPACK_IMPORTED_MODULE_1___default.a, {
         className: "note-show-quill",
         value: this.state.body,
-        onChange: this.handleEditorChange
+        onChange: this.handleEditorChange,
+        placeholder: "Start writing"
       }));
     }
   }]);

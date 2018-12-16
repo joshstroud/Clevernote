@@ -60,14 +60,17 @@ class NoteShowEditor extends Component {
   }
 
   render() {
+    const titleValue = this.state.title === "Untitled" ? "" : this.state.title;
+
     return (
       <div className="note-show-editor-wrapper">
         <div className="note-show-editor-title-row">
           <input
             type="text"
             className="note-show-editor-title"
-            value={this.state.title}
+            value={titleValue}
             onChange={this.handleTitleChange}
+            placeholder="Title"
           />
           <button
             onClick={this.saveNote}
@@ -80,6 +83,7 @@ class NoteShowEditor extends Component {
           className="note-show-quill"
           value={this.state.body}
           onChange={this.handleEditorChange}
+          placeholder="Start writing"
         />
       </div>
     );
