@@ -1770,7 +1770,7 @@ function (_Component) {
       //   exact: "true"
       // });
 
-      if (path === "/app/notes") {
+      if (/app\/notes\/(\d+)?/.test(path)) {
         return "All Notes";
       }
     }
