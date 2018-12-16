@@ -21,3 +21,71 @@
 .note-show-left {
   display: flex;
 }
+
+.note-show-fullscreen-button {
+  background-color: transparent;
+  border-style: none;
+  color: inherit;
+  font-size: 1em;
+
+  display: inline-block;
+  vertical-align: middle;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.note-show-fullscreen-button:hover {
+  opacity: 0.7;
+}
+
+.note-show-header-divide {
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+  margin-right: 5px;
+}
+
+.note-show-current-notebook {
+  display: flex;
+  align-items: center;
+
+}
+
+.note-show-notebook-icon {
+  margin-right: 5px;
+}
+
+.note-show-notebook-title {
+  -webkit-text-fill-color: initial;
+  font-size: 13px;
+  color: #7a8083;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  max-width: 195px;
+  cursor: pointer;
+}
+
+.note-show-notebook-title:hover {
+  text-decoration: underline;
+}
+
+.note-show-options-button {
+  fill: #7a8083;
+  cursor: pointer;
+  float: right;
+  height: 16px;
+  width: 16px;
+  margin: 2px 0;
+}
+
+.note-show-options-button:hover {
+  fill: #00a82d;
+}

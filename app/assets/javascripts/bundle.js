@@ -783,6 +783,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ui_elements_dropdowns_note_show_settings_dropdown_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ui_elements/dropdowns/note_show_settings_dropdown_container */ "./frontend/components/ui_elements/dropdowns/note_show_settings_dropdown_container.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -800,6 +801,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -833,14 +835,60 @@ function (_Component) {
         className: "note-show-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "note-show-fullscreen-button"
-      }, "FS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        width: "20",
+        height: "20",
+        viewBox: "0 0 20 20",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
+        fill: "none"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M0 0h20v20H0z"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M3.405 4.4v1.997a.7.7 0 0 1-1.4 0V2.774a.69.69 0 0 1 .19-.572A.694.694 0 0 1 2.713 2h3.693a.7.7 0 1 1 0 1.399h-2.02l4.222 4.216a.7.7 0 1 1-.991.991L3.405 4.4zM12.6 17a.7.7 0 1 1 0-1.398h2.019l-4.243-4.239a.7.7 0 1 1 .991-.99L15.6 14.6v-1.996a.7.7 0 0 1 1.4 0V16.3a.7.7 0 0 1-.7.699h-3.7z",
+        fill: "#000",
+        opacity: ".34"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        width: "20",
+        height: "20",
+        viewBox: "0 0 20 20",
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "note-show-header-divide"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
+        fill: "none"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M0 0h20v20H0z"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        fill: "#CCC",
+        d: "M10 18h1V2h-1z"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-current-notebook"
-      }, "| ", this.props.notebook.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "note-show-notebook-icon",
+        width: "14",
+        height: "14",
+        viewBox: "0 0 14 14"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        fill: "#7a8083",
+        d: "M3 2v10h7a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zM2 1h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2V1zm2 1v10h1V2H4zm2 3v1h4V5H6z"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "note-show-notebook-title",
+        tooltiptext: this.props.notebook.title,
+        to: "/app/notes"
+      }, this.props.notebook.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "options-button",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        tabindex: "0",
+        width: "32",
+        height: "32",
+        viewBox: "0 0 32 32",
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "note-show-options-button",
         onClick: this.showSettings
-      }, "\u2699"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_elements_dropdowns_note_show_settings_dropdown_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M25 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_elements_dropdowns_note_show_settings_dropdown_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
     }
   }]);
 
