@@ -70,13 +70,17 @@
   word-break: break-word;
 }
 
-.confirm-delete-modal-button-row {
+.confirm-delete-modal-button-wrapper {
   border-top: 1px solid #ededed;
   padding: 20px 25px;
+}
+
+.confirm-delete-modal-button-row {
   display: flex;
   width: 100%;
   justify-content: flex-start;
   font: 400 11px system-ui;
+  flex-direction: row-reverse;
 }
 
 .confirm-delete-modal-submit-button {

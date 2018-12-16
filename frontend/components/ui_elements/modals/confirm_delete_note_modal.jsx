@@ -8,7 +8,7 @@ class UserDropdown extends React.Component {
   }
 
   deleteNote(e) {
-    const that = this;
+    const that = t;
     this.props
       .deleteNote(this.props.selectedNoteId)
       .then(action => that.props.history.push(that.props.path));
@@ -22,19 +22,21 @@ class UserDropdown extends React.Component {
         <div className="confirm-delete-modal-message">
           {this.props.notebookName} will be deleted.
         </div>
-        <div className="confirm-delete-modal-button-row">
-          <button
-            className="confirm-delete-modal-cancel-button"
-            onClick={this.props.closeUIElements}
-          >
-            Cancel
-          </button>
-          <button
-            className="confirm-delete-modal-submit-button"
-            onClick={this.deleteNote}
-          >
-            Submit
-          </button>
+        <div className="confirm-delete-modal-button-wrapper">
+          <div className="confirm-delete-modal-button-row">
+            <button
+              className="confirm-delete-modal-submit-button"
+              onClick={this.deleteNote}
+            >
+              Continue
+            </button>
+            <button
+              className="confirm-delete-modal-cancel-button"
+              onClick={this.props.closeUIElements}
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     );

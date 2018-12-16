@@ -2682,7 +2682,7 @@ function (_React$Component) {
   _createClass(UserDropdown, [{
     key: "deleteNote",
     value: function deleteNote(e) {
-      var that = this;
+      var that = t;
       this.props.deleteNote(this.props.selectedNoteId).then(function (action) {
         return that.props.history.push(that.props.path);
       });
@@ -2696,14 +2696,16 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("header", null, "Delete Note"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "confirm-delete-modal-message"
       }, this.props.notebookName, " will be deleted."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "confirm-delete-modal-button-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "confirm-delete-modal-button-row"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "confirm-delete-modal-cancel-button",
-        onClick: this.props.closeUIElements
-      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "confirm-delete-modal-submit-button",
         onClick: this.deleteNote
-      }, "Submit")));
+      }, "Continue"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "confirm-delete-modal-cancel-button",
+        onClick: this.props.closeUIElements
+      }, "Cancel"))));
     }
   }]);
 
