@@ -56,12 +56,22 @@
   border-radius: 4px;
 }
 
-.confirm-delete-modal header {
+.confirm-delete-modal-wrapper {
   padding: 20px 25px 18px;
   font-size: 18px;
   margin: 0;
   word-wrap: break-word;
   color: #333;
+}
+
+.confirm-delete-modal-header {
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .confirm-delete-modal-message {
@@ -169,4 +179,18 @@
   border: 1px solid #c3c3c3;
   background: Transparent;
   color: #999;
+}
+
+.modal-close {
+  color: #666;
+  -ms-flex-item-align: self-end;
+  align-self: self-end;
+  background-position: center;
+  width: 16px;
+  height: 26px;
+  vertical-align: middle;
+  cursor: pointer;
+  background-size: 12px;
+  -webkit-transition: all 0.08s ease-out;
+  transition: all 0.08s ease-out;
 }

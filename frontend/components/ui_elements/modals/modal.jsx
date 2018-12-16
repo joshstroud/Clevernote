@@ -15,8 +15,12 @@ function Modal({ modal, closeUIElements }) {
     default:
       return null;
   }
+
+  // disable clicking outside modal to close it, since Evernote default behavior is to not respond if we click out
+  // <div className="modal-background" onClick={closeUIElements}>
+
   return (
-    <div className="modal-background" onClick={closeUIElements}>
+    <div className="modal-background">
       <div className="modal-child" onClick={e => e.stopPropagation()}>
         {component}
       </div>
