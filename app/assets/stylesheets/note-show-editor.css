@@ -19,7 +19,15 @@
 
 .ql-container {}
 
-.note-show-quill {}
+.note-show-editing-area {
+  height: 100%;
+  width: calc(100vw - 587px);
+  /* border: 0; */
+}
+
+.ql-toolbar {
+  border: 0;
+}
 
 .note-show-editor-title {
   display: block;

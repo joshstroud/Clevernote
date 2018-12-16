@@ -20,6 +20,37 @@ class NoteShowEditor extends Component {
     this.handleEditorChange = this.handleEditorChange.bind(this);
     this.saveNote = this.saveNote.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
+
+    // quill editor options
+    this.modules = {
+      toolbar: [
+        [{ font: [] }],
+        [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+        ["bold", "italic", "underline", "strike"], // toggled buttons
+        [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+        ["blockquote", "code-block"],
+        [{ align: [] }],
+        [{ list: "ordered" }, { list: "bullet" }],
+        [{ script: "sub" }, { script: "super" }], // superscript/subscript
+        ["clean"], // remove formatting button
+
+        ["link", "image", "video", "formula"] // misc
+      ]
+    };
+
+    // this.formats = [
+    //   "header",
+    //   "bold",
+    //   "italic",
+    //   "underline",
+    //   "strike",
+    //   "blockquote",
+    //   "list",
+    //   "bullet",
+    //   "indent",
+    //   "link",
+    //   "image"
+    // ];
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -84,7 +115,11 @@ class NoteShowEditor extends Component {
           value={this.state.body}
           onChange={this.handleEditorChange}
           placeholder="Start writing"
-        />
+          theme="snow"
+          modules={this.modules}
+        >
+          <div className="note-show-editing-area" />
+        </ReactQuill>
       </div>
     );
   }

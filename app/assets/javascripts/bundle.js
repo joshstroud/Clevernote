@@ -702,7 +702,48 @@ function (_Component) {
 
     _this.handleEditorChange = _this.handleEditorChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.saveNote = _this.saveNote.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleTitleChange = _this.handleTitleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleTitleChange = _this.handleTitleChange.bind(_assertThisInitialized(_assertThisInitialized(_this))); // quill editor options
+
+    _this.modules = {
+      toolbar: [[{
+        font: []
+      }], [{
+        size: ["small", false, "large", "huge"]
+      }], // custom dropdown
+      ["bold", "italic", "underline", "strike"], // toggled buttons
+      [{
+        color: []
+      }, {
+        background: []
+      }], // dropdown with defaults from theme
+      ["blockquote", "code-block"], [{
+        align: []
+      }], [{
+        list: "ordered"
+      }, {
+        list: "bullet"
+      }], [{
+        script: "sub"
+      }, {
+        script: "super"
+      }], // superscript/subscript
+      ["clean"], // remove formatting button
+      ["link", "image", "video", "formula"] // misc
+      ]
+    }; // this.formats = [
+    //   "header",
+    //   "bold",
+    //   "italic",
+    //   "underline",
+    //   "strike",
+    //   "blockquote",
+    //   "list",
+    //   "bullet",
+    //   "indent",
+    //   "link",
+    //   "image"
+    // ];
+
     return _this;
   }
 
@@ -766,8 +807,12 @@ function (_Component) {
         className: "note-show-quill",
         value: this.state.body,
         onChange: this.handleEditorChange,
-        placeholder: "Start writing"
-      }));
+        placeholder: "Start writing",
+        theme: "snow",
+        modules: this.modules
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "note-show-editing-area"
+      })));
     }
   }]);
 
