@@ -20,7 +20,7 @@
 .note-show-editor-wrapper .note-show-quill .note-show-editing-area {
   height: calc(100% - 61px - 52px);
   line-height: 1.45 !important;
-  padding: 12px 40px 16px;
+  padding: 12px 40px 0px 16px;
 }
 
 .note-show-editor-title-row {
@@ -101,21 +101,6 @@
   }
 }
 
-/* 
-.note-show-quill.show-toolbar-animation .ql-toolbar.ql-snow,
-.note-show-quill.hide-toolbar-animation .ql-toolbar.ql-snow {
-  animation-duration: 0.15s;
-  animation-fill-mode: both;
-}
-
-.note-show-quill.show-toolbar-animation .ql-toolbar.ql-snow {
-  animation-name: toolbar-fade-in
-}
-
-.note-show-quill.hide-toolbar-animation .ql-toolbar.ql-snow {
-  animation-name: toolbar-fade-out
-} */
-
 .note-show-quill .ql-toolbar.ql-snow {
   display: flex;
   flex-wrap: nowrap;
@@ -133,6 +118,21 @@
 .note-show-quill .ql-toolbar.ql-snow .ql-formats {
   display: flex;
   flex-wrap: nowrap;
+}
+
+.note-show-quill .ql-snow.ql-toolbar button:hover,
+.note-show-quill .ql-snow .ql-toolbar button:hover,
+.note-show-quill .ql-snow.ql-toolbar button.ql-active,
+.note-show-quill .ql-snow .ql-toolbar button.ql-active,
+.note-show-quill .ql-snow.ql-toolbar .ql-picker-label:hover,
+.note-show-quill .ql-snow .ql-toolbar .ql-picker-label:hover,
+.note-show-quill .ql-snow.ql-toolbar .ql-picker-label.ql-active,
+.note-show-quill .ql-snow .ql-toolbar .ql-picker-label.ql-active,
+.note-show-quill .ql-snow.ql-toolbar .ql-picker-item:hover,
+.note-show-quill .ql-snow .ql-toolbar .ql-picker-item:hover,
+.note-show-quill .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
+.note-show-quill .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+  color: #00a82d;
 }
 
 
