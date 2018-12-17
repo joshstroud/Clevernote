@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import NotesIndex from "./notes_index";
-import { fetchAllNotes } from "../../actions/note_actions";
+import { fetchNotes } from "../../actions/note_actions";
 import { selectNote } from "../../actions/ui_actions";
 import { withRouter } from "react-router";
 
@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllNotes: () => dispatch(fetchAllNotes()),
+    fetchNotes: () => dispatch(fetchNotes()),
     selectNote: noteId => dispatch(selectNote(noteId))
   };
 };

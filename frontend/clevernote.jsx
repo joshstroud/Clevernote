@@ -4,11 +4,13 @@ import ReactDOM from "react-dom";
 import { testNotes } from "./tests/test_notes";
 import configureStore from "./store/store";
 import Root from "./components/root";
+import { testNotebooks } from "./tests/test_notebooks";
 
 document.addEventListener("DOMContentLoaded", () => {
   const store = setupStoreWithUserLogin();
 
-  testNotes(store);
+  // testNotes(store);
+  testNotebooks(store);
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, root);
 });

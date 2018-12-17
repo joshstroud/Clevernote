@@ -30,7 +30,7 @@ class Api::NotebooksController < ApplicationController
   end
 
   def update
-    @notebook = Notebook.find_by(id: params[:id])
+    @notebook = Notebook.find_by(id: params[:id].to_i)
 
     unless @notebook
       render json: ["Notebook does not exist"], status: 404 

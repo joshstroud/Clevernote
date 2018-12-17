@@ -12,7 +12,7 @@ class NotesIndex extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllNotes();
+    this.props.fetchNotes();
   }
 
   componentDidUpdate() {

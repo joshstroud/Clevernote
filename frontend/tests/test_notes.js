@@ -1,8 +1,8 @@
 import * as NotesApiUtil from "../util/note_api_util"
 
 import {
-  fetchAllNotes,
-  fetchSingleNote,
+  fetchNotes,
+  fetchNote,
   createNote,
   updateNote,
   deleteNote,
@@ -17,16 +17,16 @@ export const testNotes = (store) => {
 }
 
 const testNotesApiUtil = () => {
-  window.fetchAllNotes = NotesApiUtil.fetchAllNotes;
-  window.fetchSingleNote = NotesApiUtil.fetchSingleNote;
+  window.fetchNotes = NotesApiUtil.fetchNotes;
+  window.fetchNote = NotesApiUtil.fetchNote;
   window.createNote = NotesApiUtil.createNote;
   window.updateNote = NotesApiUtil.updateNote;
   window.deleteNote = NotesApiUtil.deleteNote;
 }
 
 const testNotesRedux = () => {
-  window.fetchAllNotes = fetchAllNotes;
-  window.fetchSingleNote = fetchSingleNote;
+  window.fetchNotes = fetchNotes;
+  window.fetchNote = fetchNote;
   window.createNote = createNote;
   window.updateNote = updateNote;
   window.deleteNote = deleteNote;
