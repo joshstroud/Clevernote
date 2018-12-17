@@ -39,7 +39,7 @@ steve_text = <<-HTML
 HTML
 
 
-Note.create(title: "Steve Jobs Wikipedia", body: steve_text, author_id: demo_user.id, notebook_id: 1)
+# Note.create(title: "Steve Jobs Wikipedia", body: steve_text, author_id: demo_user.id, notebook_id: 1)
 
 
 wallace_text = <<-HTML
@@ -89,7 +89,7 @@ wallace_text = <<-HTML
 <div class="callout"><b>More about this story:</b><br><br><a class="arc" href="https://www.theatlantic.com/national/archive/1857/11/editing-david-foster-wallaces-host/393512/" data-omni-click="r'article',r'',d,r'intext',r'20',r'303812'">"Editing David Foster Wallace's 'Host'"</a> The process behind our unusual April 2005 cover story. By Martha Spaulding </div>
 HTML
 
-Note.create(title: "Davig Foster Wallace Interviews John Zeigler", body: wallace_text, author_id: demo_user.id, notebook_id: 1)
+# Note.create(title: "David Foster Wallace Interviews John Zeigler", body: wallace_text, author_id: demo_user.id, notebook_id: 1)
 
 
 nytimes_text = <<-HTML
@@ -497,4 +497,4 @@ buzzfeed_text = <<-HTML
 <p><br></p>
 HTML
 
-Note.create(title: "21 ", body: buzzfeed_text, author_id: demo_user.id, notebook_id: 1)
+Note.create(title: "21 Pictures That Will Restore Your Faith In Humanity", body: buzzfeed_text, author_id: demo_user.id, notebook_id: 1)
