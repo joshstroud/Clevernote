@@ -18,8 +18,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     createNote: note => dispatch(createNote(note)),
-    openDropdown: component => dispatch(openDropdown(component)),
-    logout: () => dispatch(logout())
+    openDropdown: component => dispatch(openDropdown(component))
   };
 };
 

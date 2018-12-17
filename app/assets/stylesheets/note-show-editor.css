@@ -10,24 +10,132 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  height: calc(100% - 61px);
+}
+
+.note-show-editor-wrapper .note-show-quill {
+  height: 100%;
+}
+
+.note-show-editor-wrapper .note-show-quill .note-show-editing-area {
+  height: calc(100% - 61px - 52px);
+  line-height: 1.45 !important;
+  padding: 12px 40px 16px;
 }
 
 .note-show-editor-title-row {
   display: flex;
   align-items: center;
+  position: relative;
+  top: 78px;
+  margin-bottom: -33px;
 }
 
-.ql-container {}
+.note-show-editor-wrapper .ql-editor {
+  padding: 0;
+}
 
 .note-show-editing-area {
   height: 100%;
   width: calc(100vw - 587px);
   /* border: 0; */
+  position: relative;
+  top: 70px;
+  ;
 }
 
 .ql-toolbar {
   border: 0;
+  margin: 0 40px;
 }
+
+/* Quill Toolbar styling */
+
+.note-show-quill .ql-snow .ql-picker {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.note-show-quill .ql-snow .ql-bold,
+.note-show-quill .ql-snow .ql-italic,
+.note-show-quill .ql-snow .ql-underline,
+.note-show-quill .ql-snow .ql-strike,
+.note-show-quill .ql-snow .ql-blockquote,
+.note-show-quill .ql-snow .ql-code-block,
+.note-show-quill .ql-snow .ql-picker-label,
+.note-show-quill .ql-snow .ql-list,
+.note-show-quill .ql-snow .ql-script,
+.note-show-quill .ql-snow .ql-clean,
+.note-show-quill .ql-snow .ql-link,
+.note-show-quill .ql-snow .ql-video,
+.note-show-quill .ql-snow .ql-formula,
+.note-show-quill .ql-snow .ql-image {
+  height: 20px;
+}
+
+.note-show-quill .ql-toolbar.ql-snow {
+  border: 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.note-show-quill .note-show-editing-area.ql-container.ql-snow {
+  border: 0;
+}
+
+@keyframes toolbar-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes toolbar-fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 
+.note-show-quill.show-toolbar-animation .ql-toolbar.ql-snow,
+.note-show-quill.hide-toolbar-animation .ql-toolbar.ql-snow {
+  animation-duration: 0.15s;
+  animation-fill-mode: both;
+}
+
+.note-show-quill.show-toolbar-animation .ql-toolbar.ql-snow {
+  animation-name: toolbar-fade-in
+}
+
+.note-show-quill.hide-toolbar-animation .ql-toolbar.ql-snow {
+  animation-name: toolbar-fade-out
+} */
+
+.note-show-quill .ql-toolbar.ql-snow {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.note-show-quill.show-toolbar-animation .ql-toolbar.ql-snow {
+  opacity: 1;
+}
+
+.note-show-quill .ql-toolbar.ql-snow {
+  transition: opacity 0.12s;
+  opacity: 0;
+}
+
+.note-show-quill .ql-toolbar.ql-snow .ql-formats {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 
 .note-show-editor-title {
   display: block;
@@ -41,6 +149,7 @@
   cursor: text;
   font-weight: 300;
   border: none;
+
 }
 
 .note-show-save-button {

@@ -13,13 +13,16 @@ class NoteShowEditor extends Component {
     } else {
       this.state = {
         body: "",
-        title: ""
+        title: "",
+        focus: false
       };
     }
 
     this.handleEditorChange = this.handleEditorChange.bind(this);
     this.saveNote = this.saveNote.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleEditorFocus = this.handleEditorFocus.bind(this);
+    this.handleEditorBlur = this.handleEditorBlur.bind(this);
 
     // quill editor options
     this.modules = {
@@ -90,9 +93,21 @@ class NoteShowEditor extends Component {
     this.setState({ title: e.target.value });
   }
 
+  handleEditorFocus(e) {
+    this.setState({ focus: true });
+  }
+
+  handleEditorBlur(e) {
+    this.setState({ focus: false });
+  }
+
   render() {
     const titleValue = this.state.title === "Untitled" ? "" : this.state.title;
 
+    let editorClassName = "note-show-quill";
+    if (this.state.focus) {
+      editorClassName = "note-show-quill show-toolbar-animation";
+    }
     return (
       <div className="note-show-editor-wrapper">
         <div className="note-show-editor-title-row">
@@ -111,12 +126,14 @@ class NoteShowEditor extends Component {
           </button>
         </div>
         <ReactQuill
-          className="note-show-quill"
+          className={editorClassName}
           value={this.state.body}
           onChange={this.handleEditorChange}
           placeholder="Start writing"
           theme="snow"
           modules={this.modules}
+          onFocus={this.handleEditorFocus}
+          onBlur={this.handleEditorBlur}
         >
           <div className="note-show-editing-area" />
         </ReactQuill>

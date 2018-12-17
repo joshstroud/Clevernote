@@ -696,13 +696,16 @@ function (_Component) {
     } else {
       _this.state = {
         body: "",
-        title: ""
+        title: "",
+        focus: false
       };
     }
 
     _this.handleEditorChange = _this.handleEditorChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.saveNote = _this.saveNote.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleTitleChange = _this.handleTitleChange.bind(_assertThisInitialized(_assertThisInitialized(_this))); // quill editor options
+    _this.handleTitleChange = _this.handleTitleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleEditorFocus = _this.handleEditorFocus.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleEditorBlur = _this.handleEditorBlur.bind(_assertThisInitialized(_assertThisInitialized(_this))); // quill editor options
 
     _this.modules = {
       toolbar: [[{
@@ -787,9 +790,29 @@ function (_Component) {
       });
     }
   }, {
+    key: "handleEditorFocus",
+    value: function handleEditorFocus(e) {
+      this.setState({
+        focus: true
+      });
+    }
+  }, {
+    key: "handleEditorBlur",
+    value: function handleEditorBlur(e) {
+      this.setState({
+        focus: false
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var titleValue = this.state.title === "Untitled" ? "" : this.state.title;
+      var editorClassName = "note-show-quill";
+
+      if (this.state.focus) {
+        editorClassName = "note-show-quill show-toolbar-animation";
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-editor-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -804,12 +827,14 @@ function (_Component) {
         onClick: this.saveNote,
         className: "confirm-delete-modal-submit-button note-show-save-button"
       }, "Save")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_quill__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        className: "note-show-quill",
+        className: editorClassName,
         value: this.state.body,
         onChange: this.handleEditorChange,
         placeholder: "Start writing",
         theme: "snow",
-        modules: this.modules
+        modules: this.modules,
+        onFocus: this.handleEditorFocus,
+        onBlur: this.handleEditorBlur
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-editing-area"
       })));
@@ -1174,7 +1199,8 @@ function (_Component) {
       var $containerNode = $(".notes-index-items-wrapper");
 
       if (this.selectedNoteIndexItemRef && $containerNode.scrollTop !== this.selectedNoteIndexItemRef.offsetTop) {
-        $containerNote.scrollTop(this.state.selectedNoteIndexItemRef.offsetTop);
+        var node = Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["findDOMNode"])(this.selectedNoteIndexItemRef);
+        $containerNode.scrollTop(node.getBoundingClientRect().top);
       }
 
       var paramSelectedNoteId = Number(this.props.match.params.noteId);
@@ -1214,7 +1240,7 @@ function (_Component) {
           key: note.id,
           note: note,
           ref: function ref(_ref) {
-            return _this.indexItemRef;
+            return _this.indexItemRef = _ref;
           },
           selectedNoteId: _this.props.selectedNoteId,
           selectNote: _this.props.selectNote,
@@ -2020,9 +2046,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     openDropdown: function openDropdown(component) {
       return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_5__["openDropdown"])(component));
-    },
-    logout: function logout() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_6__["logout"])());
     }
   };
 };
