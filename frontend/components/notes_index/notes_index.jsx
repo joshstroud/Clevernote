@@ -26,7 +26,9 @@ class NotesIndex extends Component {
       this.selectedNoteIndexItemRef &&
       $containerNode.scrollTop !== this.selectedNoteIndexItemRef.offsetTop
     ) {
-      $containerNote.scrollTop(this.state.selectedNoteIndexItemRef.offsetTop);
+      const node = findDOMNode(this.selectedNoteIndexItemRef);
+
+      $containerNode.scrollTop(node.getBoundingClientRect().top);
     }
 
     let paramSelectedNoteId = Number(this.props.match.params.noteId);
@@ -64,7 +66,7 @@ class NotesIndex extends Component {
         <NotesIndexItem
           key={note.id}
           note={note}
-          ref={ref => this.indexItemRef}
+          ref={ref => (this.indexItemRef = ref)}
           selectedNoteId={this.props.selectedNoteId}
           selectNote={this.props.selectNote}
           history={this.props.history}
