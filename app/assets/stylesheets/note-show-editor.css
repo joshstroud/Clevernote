@@ -20,7 +20,7 @@
 .note-show-editor-wrapper .note-show-quill .note-show-editing-area {
   height: calc(100% - 61px - 52px);
   line-height: 1.45 !important;
-  padding: 12px 40px 0px 16px;
+  padding: 12px 40px 0 40px;
 }
 
 .note-show-editor-title-row {
