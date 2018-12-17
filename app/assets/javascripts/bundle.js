@@ -581,7 +581,8 @@ function (_Component) {
         openDropdown: this.props.openDropdown
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_editor__WEBPACK_IMPORTED_MODULE_2__["default"], {
         note: this.props.note,
-        updateNote: this.props.updateNote
+        updateNote: this.props.updateNote,
+        selectedNoteId: this.props.selectedNoteId
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_tag_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
         taggings: this.props.taggings,
         tags: this.props.tags
@@ -620,7 +621,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
     notebook: _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyNotebooks"][1],
-    tags: _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyTags"]
+    tags: _util_dummy_data__WEBPACK_IMPORTED_MODULE_3__["dummyTags"],
+    selectedNoteId: state.ui.selectedNoteId
   };
 };
 
@@ -751,6 +753,18 @@ function (_Component) {
   }
 
   _createClass(NoteShowEditor, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var node = document.getElementsByClassName("ql-toolbar")[0];
+      node.addEventListener("mousedown", this.handleToolbarClick);
+    }
+  }, {
+    key: "handleToolbarClick",
+    value: function handleToolbarClick(e) {
+      console.log("click");
+      e.preventDefault();
+    }
+  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
       if (!this.props.note) {
@@ -762,6 +776,10 @@ function (_Component) {
           body: this.props.note.body,
           title: this.props.note.title
         });
+      }
+
+      if (prevProps.selectedNoteId !== this.props.selectedNoteId) {
+        $(".ql-editor").scrollTop(0);
       }
     }
   }, {

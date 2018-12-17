@@ -92,171 +92,6 @@ HTML
 # Note.create(title: "David Foster Wallace Interviews John Zeigler", body: wallace_text, author_id: demo_user.id, notebook_id: 1)
 
 
-nytimes_text = <<-HTML
-<h1 class=\"ql-align-center\"><strong style=\"font-size: 1.17em; text-align: left;\">VISUAL FEATURES</strong></h1>
-<p><a href=\"https://www.nytimes.com/interactive/2017/travel/places-to-visit.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\">1.00</a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/travel/places-to-visit.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">52 Places to Go in 2017</a></h4>
-<h5>JANUARY 4, 2017</h5>
-<p>There are thousands of getaways to explore this year. Here are some ideas to get you started.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/01/21/world/womens-march-pictures.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/women's-marches.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/01/21/world/womens-march-pictures.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Pictures From</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/01/21/world/womens-march-pictures.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Women’s Marches</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/01/21/world/womens-march-pictures.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">on Every Continent</a></h4>
-<h5>JANUARY 23, 2017</h5>
-<p>Crowds in hundreds of cities around the world gathered in conjunction with the Women’s March on Washington.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/02/22/world/middleeast/solomon-isis-front-line-iraq-diary.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/02/22/world/middleeast/solomon-isis-front-line-iraq-diary-1487708611496/solomon-isis-front-line-iraq-diary-1487708611496-master675.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/02/22/world/middleeast/solomon-isis-front-line-iraq-diary.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Tour a City Torn</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/02/22/world/middleeast/solomon-isis-front-line-iraq-diary.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">in Half by ISIS</a></h4>
-<h5>FEBRUARY 22, 2017</h5>
-<p>The Iraqi government recovered the eastern part of Mosul, a major victory against the Islamic State. A reporter visited the front line.</p>
-<p><br></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/02/24/travel/underground-railroad-slavery-harriet-tubman-byway-maryland.html\" target=\"_blank\"style=\"color: rgb(0, 0, 0);\">Harriet Tubman's</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/02/24/travel/underground-railroad-slavery-harriet-tubman-byway-maryland.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Path to Freedom</a></h4>
-<h5>FEBRUARY 24, 2017</h5>
-<p>How one woman transformed the marshy, wooded Chesapeake Bay region, first a gateway through which slave traders brought Africans, into a route to liberation.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/02/24/world/asia/north-korea-propaganda-photo.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/02/24/international-home/north-korea-propaganda-photo-1487891040109/north-korea-propaganda-photo-1487891040109-master675.png\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/02/24/world/asia/north-korea-propaganda-photo.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">What One Photo Tells</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/02/24/world/asia/north-korea-propaganda-photo.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Us About North Korea’s</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/02/24/world/asia/north-korea-propaganda-photo.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Nuclear Program</a></h4>
-<h5>FEBRUARY 24, 2017</h5>
-<p>Clues froma single propaganda photo reveal details about North Korea’s expanding weapons programs and internal politics.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/03/26/arts/music/before-and-after-chuck-berry-rock-n-roll.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/03/25/arts/music/before-and-after-chuck-berry-rock-n-roll-1490533006724/before-and-after-chuck-berry-rock-n-roll-1490533006724-master675.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/03/26/arts/music/before-and-after-chuck-berry-rock-n-roll.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Before &amp; After</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/03/26/arts/music/before-and-after-chuck-berry-rock-n-roll.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Chuck Berry</a></h4>
-<h5>MARCH 23, 2017</h5>
-<p>An audio guide to Chuck Berry's influential hits — from what came before to what came after. Listen to the sound of rock ’n’ roll being made.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/03/30/world/africa/the-road-to-nowhere-niger.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/03/30/world/africa/the-road-to-nowhere-niger-1490835347580/the-road-to-nowhere-niger-1490835347580-master675-v2.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/03/30/world/africa/the-road-to-nowhere-niger.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Fleeing Boko Haram,</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/03/30/world/africa/the-road-to-nowhere-niger.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Thousands Cling to</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/03/30/world/africa/the-road-to-nowhere-niger.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">a Road to Nowhere</a></h4>
-<h5>MARCH 30, 2017</h5>
-<p>Times journalists spent weeks documenting the stories of people living along a desert highway in Niger, interviewing more than 100 residents scattered by Boko Haram.</p>
-<p><a href=\"https://www.nytimes.com/2017/04/15/business/from-zombie-malls-to-bonobos-americas-retail-transformation.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/04/14/business/16RETAILVISUAL5/16RETAILVISUAL5-master675.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/2017/04/15/business/from-zombie-malls-to-bonobos-americas-retail-transformation.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">From ‘Zombie Malls’</a></h4>
-<h4><a href=\"https://www.nytimes.com/2017/04/15/business/from-zombie-malls-to-bonobos-americas-retail-transformation.html\" target=\"_blank\" style=\"color: rgb(0,0, 0);\">to Bonobos: What</a></h4>
-<h4><a href=\"https://www.nytimes.com/2017/04/15/business/from-zombie-malls-to-bonobos-americas-retail-transformation.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">America’s Retail</a></h4>
-<h4><a href=\"https://www.nytimes.com/2017/04/15/business/from-zombie-malls-to-bonobos-americas-retail-transformation.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Transformation Looks Like</a></h4>
-<h5>APRIL 15, 2017</h5>
-<p>Physical temples to commerce remain, but today the online experience is rapidly changing our relationship with shopping.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/05/17/sunday-review/nine-students-four-years-later.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/nine-students.png\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/05/17/sunday-review/nine-students-four-years-later.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Nine Students,</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/05/17/sunday-review/nine-students-four-years-later.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Four Years Later</a></h4>
-<h5>MAY 17, 2017</h5>
-<p>We caught up with students we had met as freshmen to hear about the time that had passed.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/05/18/climate/antarctica-ice-melt-climate-change.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/antarctica-dispatches.gif\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/05/18/climate/antarctica-ice-melt-climate-change.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Antarctic Dispatches</a></h4>
-<h5>MAY 18, 2017</h5>
-<p>Some scientists fear that West Antarctica’s immense ice sheet may have entered the early stages of an unstoppable disintegration.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/06/08/arts/frank-lloyd-wright-at-150-moma-1496968350085/frank-lloyd-wright-at-150-moma-1496968350085-master675.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Frank Lloyd Wright</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Hated New York,</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Thought About Making</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">the Guggenheim Pink,</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">and Still Dreamed of</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Mile-High Skyscrapers</a></h4>
-<h5>JUNE 8, 2017</h5>
-<p>A review of “Frank Lloyd Wright at 150: Unpacking the Archive,” currently on display at the Museum of Modern Art.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/06/09/movies/the-25-best-films-of-the-21st-century.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/25-best-films.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/06/09/movies/the-25-best-films-of-the-21st-century.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">The 25 Best Films of the</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/06/09/movies/the-25-best-films-of-the-21st-century.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">21st Century — So Far.</a></h4>
-<h5>JUNE 9, 2017</h5>
-<p>A.O. Scott and Manohla Dargis rank the best films made since 2000.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/06/16/us/flint-prom-water-lead-crisis.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\">1.00</a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/06/16/us/flint-prom-water-lead-crisis.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Flint Holds a Glittering</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/06/16/us/flint-prom-water-lead-crisis.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Prom, Far From Flint</a></h4>
-<h5>JUNE 16, 2017</h5>
-<p>For students at Flint Northwestern High School, this year’s prom was a chance to set aside anxieties about Flint’s three-year-old water crisis, its poverty and its gun violence.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/07/05/world/asia/north-korea-building-boom-construction-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/north-korea-building-boom.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/07/05/world/asia/north-korea-building-boom-construction-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">North Korea’s Nuclear</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/07/05/world/asia/north-korea-building-boom-construction-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Push Is Just One</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/07/05/world/asia/north-korea-building-boom-construction-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Piece of a Nationwide</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/07/05/world/asia/north-korea-building-boom-construction-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Building Boom</a></h4>
-<h5>JULY 5, 2017</h5>
-<p>North Korea’s nuclear weapons program has led to increased sanctions and isolation. But these factors haven’t stopped the country from starting significant infrastructure projects.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/07/15/world/middleeast/mosul-before-after.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/07/15/world/middleeast/mosul-before-after-1500093130633/mosul-before-after-1500093130633-master675.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/07/15/world/middleeast/mosul-before-after.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Before and After</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/07/15/world/middleeast/mosul-before-after.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Satellite Images of</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/07/15/world/middleeast/mosul-before-after.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Mosul Reveal the</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/07/15/world/middleeast/mosul-before-after.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Devastation After the</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/07/15/world/middleeast/mosul-before-after.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Islamic State Was Forced Out</a></h4>
-<h5>JULY 15, 2017</h5>
-<p>After a nearly nine-month campaign to wrest Mosul, once Iraq’s second-largest city, from Islamic State control, images captured by DigitalGlobe reveal that vital parts of the city are now in ruins.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/07/17/sports/baseball/aaron-judge-launch-angle.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/07/13/sports/baseball/aaron-judge-launch-angle-1499979486227/aaron-judge-launch-angle-1499979486227-master675.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/07/17/sports/baseball/aaron-judge-launch-angle.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Aaron JudgeIs Baseball’s</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/07/17/sports/baseball/aaron-judge-launch-angle.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Most Powerful Hitter</a></h4>
-<h5>JULY 17, 2017</h5>
-<p>Aaron Judge combines his imposing body (6-7, 282 pounds) with a technically proficient swing to become baseball’s most powerful hitter.</p>
-<p><a href=\"https://www.nytimes.com/2017/08/01/world/middleeast/mosul-isis-survivors-rights.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/07/26/world/middleeast/xxmosul-ss-slide-GIZJ/xxmosul-ss-slide-GIZJ-master675.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/2017/08/01/world/middleeast/mosul-isis-survivors-rights.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">In Mosul, Revealing the</a></h4>
-<h4><a href=\"https://www.nytimes.com/2017/08/01/world/middleeast/mosul-isis-survivors-rights.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Last ISIS Stronghold</a></h4>
-<h5>AUGUST 1, 2017</h5>
-<p>A photojournalist for The New York Times documented the devastating toll within the Islamic State’s last holdout area in Mosul’s Old City.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/08/13/arts/eddie-murphy-ice-cream.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\">1.00</a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/08/13/arts/eddie-murphy-ice-cream.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Eight Little Things</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/08/13/arts/eddie-murphy-ice-cream.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">(Have You Seen This?)</a></h4>
-<h5>AUGUST 13, 2017</h5>
-<p>Breaking down one of the greatest bits of all time, line by line.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/08/21/science/eclipse-reader-photos.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/08/21/science/eclipse-reader-photos-1503286448313/eclipse-reader-photos-1503286448313-master675.png\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/08/21/science/eclipse-reader-photos.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">A Solar Eclipse's Journey</a></h4>
-<h5>AUGUST 21, 2017</h5>
-<p>Photos from the path of totality across the United States.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/08/22/world/asia/north-korea-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/08/16/world/asia/north-korea-nuclear-program-1503086760292/north-korea-nuclear-program-1503086760292-master675.png\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/08/22/world/asia/north-korea-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">This Missile Could</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/08/22/world/asia/north-korea-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Reach California. But</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/08/22/world/asia/north-korea-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Can North Korea Use It</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/08/22/world/asia/north-korea-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">With a Nuclear Weapon?</a></h4>
-<h5>AUGUST 22, 2017</h5>
-<p>Six systems that North Korea needs to master to achieve a long-sought goal: being able to reliably hit the United States.</p>
-<p><br></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/09/02/us/harvey-beaumont-flooding.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Town After Town</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/09/02/us/harvey-beaumont-flooding.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Under Waterin the</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/09/02/us/harvey-beaumont-flooding.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">100 Miles From</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/09/02/us/harvey-beaumont-flooding.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Houston to Beaumont</a></h4>
-<h5>SEPTEMBER 2, 2017</h5>
-<p>Hurricane Harvey left residents of many small towns stranded.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/09/14/science/cassini-saturn-images.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/09/16/insider/cassini-saturn-images-1505332179034/cassini-saturn-images-1505332179034-master675-v2.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/09/14/science/cassini-saturn-images.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">100 Images</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/09/14/science/cassini-saturn-images.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">From Cassini’s</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/09/14/science/cassini-saturn-images.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Mission to Saturn</a></h4>
-<h5>SEPTEMBER 14, 2017</h5>
-<p>NASA’s Cassini spacecraft burned up in Saturn’s atmosphere on Friday, after 20 years in space.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/10/20/climate/iceland-trees-reforestation.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/10/22/climate/22iceland-print/merlin-to-scoop-126602513-337561-master675.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/10/20/climate/iceland-trees-reforestation.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Vikings Razed the</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/10/20/climate/iceland-trees-reforestation.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Forests. Can Iceland</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/10/20/climate/iceland-trees-reforestation.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Regrow Them?</a></h4>
-<h5>OCTOBER 20, 2017</h5>
-<p>The country lost most of its trees long ago. Despite years of replanting, it isn’t making much progress.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/11/09/world/asia/xi-propaganda.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/xi-jinping-face.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/11/09/world/asia/xi-propaganda.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Why Xi Jinping’s</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/11/09/world/asia/xi-propaganda.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">(Airbrushed) Face Is</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/11/09/world/asia/xi-propaganda.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Plastered All Over China</a></h4>
-<h5>NOVEMBER 9, 2017</h5>
-<p>President Xi Jinping is using tried-and-true methods to craft a personality cult reminiscent of Mao.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/12/04/world/middleeast/saudi-missile-defense.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/12/04/world/middleeast/saudi-missile-defense-1512079146046/saudi-missile-defense-1512079146046-master675-v3.png\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/12/04/world/middleeast/saudi-missile-defense.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Did American</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/12/04/world/middleeast/saudi-missile-defense.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Missile Defense Fail</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/12/04/world/middleeast/saudi-missile-defense.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">in Saudi Arabia?</a></h4>
-<h5>DECEMBER 4, 2017</h5>
-<p>Saudi Arabia and President Trump said a missile fired from Yemen was shot down. But photos and videos from the scene tell a different story.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/12/16/nyregion/rethinking-rikers.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/11/10/nyregion/rikes-images-slide-5M1A/rikes-images-slide-5M1A-master675.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/12/16/nyregion/rethinking-rikers.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Rethinking Rikers</a></h4>
-<h5>DECEMBER 16, 2017</h5>
-<p>New York City is trying to push the limits of what is possible at its sprawling jail complex, following in the footsteps of Chicago’s Cook County Jail. Take a look inside both jails in 360 video.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/12/21/world/asia/how-the-rohingya-escaped.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/how-rohingya-escaped.jpg\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/12/21/world/asia/how-the-rohingya-escaped.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">How 655,000 Rohingya</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/12/21/world/asia/how-the-rohingya-escaped.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Muslims Escaped</a></h4>
-<h5>DECEMBER 21, 2017</h5>
-<p>Roughly two-thirds of the Rohingya Muslims in Myanmar fled this year as soldiers shot them, raped them and torched their homes.</p>
-<p><a href=\"https://www.nytimes.com/interactive/2017/12/22/nyregion/what-would-it-take-to-fix-new-yorks-subway.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/subway-cropped.gif\"></a></p>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/12/22/nyregion/what-would-it-take-to-fix-new-yorks-subway.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">What Would It Take to</a></h4>
-<h4><a href=\"https://www.nytimes.com/interactive/2017/12/22/nyregion/what-would-it-take-to-fix-new-yorks-subway.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Fix New York’s Subway?</a></h4>
-<h5>DECEMBER 22, 2017</h5>
-<p>We asked experts what they thought it would take to improve New York City’s subway system. Here are six suggestions.</p>
-<p><br></p>
-HTML
-
-Note.create(title: "NYTimes: 2017 in Pictures", body: nytimes_text, author_id: demo_user.id, notebook_id: 1)
-
 
 buzzfeed_text = <<-HTML
 <h1>People aren't always awful. Sometimes, they're maybe even just a little bit wonderful.&nbsp;Here are 21 pictures to remind you of that fact.</h1>
@@ -498,3 +333,171 @@ buzzfeed_text = <<-HTML
 HTML
 
 Note.create(title: "21 Pictures That Will Restore Your Faith In Humanity", body: buzzfeed_text, author_id: demo_user.id, notebook_id: 1)
+
+
+nytimes_text = <<-HTML
+<h1 class=\"ql-align-center\"><strong style=\"font-size: 1.17em; text-align: left;\">VISUAL FEATURES</strong></h1>
+<p><a href=\"https://www.nytimes.com/interactive/2017/travel/places-to-visit.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\">1.00</a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/travel/places-to-visit.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">52 Places to Go in 2017</a></h4>
+<h5>JANUARY 4, 2017</h5>
+<p>There are thousands of getaways to explore this year. Here are some ideas to get you started.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/01/21/world/womens-march-pictures.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/women's-marches.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/01/21/world/womens-march-pictures.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Pictures From</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/01/21/world/womens-march-pictures.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Women’s Marches</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/01/21/world/womens-march-pictures.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">on Every Continent</a></h4>
+<h5>JANUARY 23, 2017</h5>
+<p>Crowds in hundreds of cities around the world gathered in conjunction with the Women’s March on Washington.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/02/22/world/middleeast/solomon-isis-front-line-iraq-diary.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/02/22/world/middleeast/solomon-isis-front-line-iraq-diary-1487708611496/solomon-isis-front-line-iraq-diary-1487708611496-master675.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/02/22/world/middleeast/solomon-isis-front-line-iraq-diary.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Tour a City Torn</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/02/22/world/middleeast/solomon-isis-front-line-iraq-diary.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">in Half by ISIS</a></h4>
+<h5>FEBRUARY 22, 2017</h5>
+<p>The Iraqi government recovered the eastern part of Mosul, a major victory against the Islamic State. A reporter visited the front line.</p>
+<p><br></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/02/24/travel/underground-railroad-slavery-harriet-tubman-byway-maryland.html\" target=\"_blank\"style=\"color: rgb(0, 0, 0);\">Harriet Tubman's</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/02/24/travel/underground-railroad-slavery-harriet-tubman-byway-maryland.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Path to Freedom</a></h4>
+<h5>FEBRUARY 24, 2017</h5>
+<p>How one woman transformed the marshy, wooded Chesapeake Bay region, first a gateway through which slave traders brought Africans, into a route to liberation.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/02/24/world/asia/north-korea-propaganda-photo.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/02/24/international-home/north-korea-propaganda-photo-1487891040109/north-korea-propaganda-photo-1487891040109-master675.png\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/02/24/world/asia/north-korea-propaganda-photo.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">What One Photo Tells</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/02/24/world/asia/north-korea-propaganda-photo.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Us About North Korea’s</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/02/24/world/asia/north-korea-propaganda-photo.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Nuclear Program</a></h4>
+<h5>FEBRUARY 24, 2017</h5>
+<p>Clues froma single propaganda photo reveal details about North Korea’s expanding weapons programs and internal politics.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/03/26/arts/music/before-and-after-chuck-berry-rock-n-roll.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/03/25/arts/music/before-and-after-chuck-berry-rock-n-roll-1490533006724/before-and-after-chuck-berry-rock-n-roll-1490533006724-master675.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/03/26/arts/music/before-and-after-chuck-berry-rock-n-roll.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Before &amp; After</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/03/26/arts/music/before-and-after-chuck-berry-rock-n-roll.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Chuck Berry</a></h4>
+<h5>MARCH 23, 2017</h5>
+<p>An audio guide to Chuck Berry's influential hits — from what came before to what came after. Listen to the sound of rock ’n’ roll being made.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/03/30/world/africa/the-road-to-nowhere-niger.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/03/30/world/africa/the-road-to-nowhere-niger-1490835347580/the-road-to-nowhere-niger-1490835347580-master675-v2.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/03/30/world/africa/the-road-to-nowhere-niger.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Fleeing Boko Haram,</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/03/30/world/africa/the-road-to-nowhere-niger.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Thousands Cling to</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/03/30/world/africa/the-road-to-nowhere-niger.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">a Road to Nowhere</a></h4>
+<h5>MARCH 30, 2017</h5>
+<p>Times journalists spent weeks documenting the stories of people living along a desert highway in Niger, interviewing more than 100 residents scattered by Boko Haram.</p>
+<p><a href=\"https://www.nytimes.com/2017/04/15/business/from-zombie-malls-to-bonobos-americas-retail-transformation.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/04/14/business/16RETAILVISUAL5/16RETAILVISUAL5-master675.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/2017/04/15/business/from-zombie-malls-to-bonobos-americas-retail-transformation.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">From ‘Zombie Malls’</a></h4>
+<h4><a href=\"https://www.nytimes.com/2017/04/15/business/from-zombie-malls-to-bonobos-americas-retail-transformation.html\" target=\"_blank\" style=\"color: rgb(0,0, 0);\">to Bonobos: What</a></h4>
+<h4><a href=\"https://www.nytimes.com/2017/04/15/business/from-zombie-malls-to-bonobos-americas-retail-transformation.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">America’s Retail</a></h4>
+<h4><a href=\"https://www.nytimes.com/2017/04/15/business/from-zombie-malls-to-bonobos-americas-retail-transformation.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Transformation Looks Like</a></h4>
+<h5>APRIL 15, 2017</h5>
+<p>Physical temples to commerce remain, but today the online experience is rapidly changing our relationship with shopping.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/05/17/sunday-review/nine-students-four-years-later.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/nine-students.png\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/05/17/sunday-review/nine-students-four-years-later.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Nine Students,</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/05/17/sunday-review/nine-students-four-years-later.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Four Years Later</a></h4>
+<h5>MAY 17, 2017</h5>
+<p>We caught up with students we had met as freshmen to hear about the time that had passed.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/05/18/climate/antarctica-ice-melt-climate-change.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/antarctica-dispatches.gif\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/05/18/climate/antarctica-ice-melt-climate-change.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Antarctic Dispatches</a></h4>
+<h5>MAY 18, 2017</h5>
+<p>Some scientists fear that West Antarctica’s immense ice sheet may have entered the early stages of an unstoppable disintegration.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/06/08/arts/frank-lloyd-wright-at-150-moma-1496968350085/frank-lloyd-wright-at-150-moma-1496968350085-master675.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Frank Lloyd Wright</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Hated New York,</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Thought About Making</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">the Guggenheim Pink,</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">and Still Dreamed of</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/06/08/arts/frank-lloyd-wright-at-150-moma.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Mile-High Skyscrapers</a></h4>
+<h5>JUNE 8, 2017</h5>
+<p>A review of “Frank Lloyd Wright at 150: Unpacking the Archive,” currently on display at the Museum of Modern Art.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/06/09/movies/the-25-best-films-of-the-21st-century.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/25-best-films.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/06/09/movies/the-25-best-films-of-the-21st-century.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">The 25 Best Films of the</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/06/09/movies/the-25-best-films-of-the-21st-century.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">21st Century — So Far.</a></h4>
+<h5>JUNE 9, 2017</h5>
+<p>A.O. Scott and Manohla Dargis rank the best films made since 2000.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/06/16/us/flint-prom-water-lead-crisis.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\">1.00</a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/06/16/us/flint-prom-water-lead-crisis.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Flint Holds a Glittering</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/06/16/us/flint-prom-water-lead-crisis.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Prom, Far From Flint</a></h4>
+<h5>JUNE 16, 2017</h5>
+<p>For students at Flint Northwestern High School, this year’s prom was a chance to set aside anxieties about Flint’s three-year-old water crisis, its poverty and its gun violence.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/07/05/world/asia/north-korea-building-boom-construction-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/north-korea-building-boom.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/07/05/world/asia/north-korea-building-boom-construction-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">North Korea’s Nuclear</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/07/05/world/asia/north-korea-building-boom-construction-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Push Is Just One</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/07/05/world/asia/north-korea-building-boom-construction-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Piece of a Nationwide</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/07/05/world/asia/north-korea-building-boom-construction-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Building Boom</a></h4>
+<h5>JULY 5, 2017</h5>
+<p>North Korea’s nuclear weapons program has led to increased sanctions and isolation. But these factors haven’t stopped the country from starting significant infrastructure projects.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/07/15/world/middleeast/mosul-before-after.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/07/15/world/middleeast/mosul-before-after-1500093130633/mosul-before-after-1500093130633-master675.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/07/15/world/middleeast/mosul-before-after.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Before and After</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/07/15/world/middleeast/mosul-before-after.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Satellite Images of</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/07/15/world/middleeast/mosul-before-after.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Mosul Reveal the</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/07/15/world/middleeast/mosul-before-after.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Devastation After the</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/07/15/world/middleeast/mosul-before-after.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Islamic State Was Forced Out</a></h4>
+<h5>JULY 15, 2017</h5>
+<p>After a nearly nine-month campaign to wrest Mosul, once Iraq’s second-largest city, from Islamic State control, images captured by DigitalGlobe reveal that vital parts of the city are now in ruins.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/07/17/sports/baseball/aaron-judge-launch-angle.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/07/13/sports/baseball/aaron-judge-launch-angle-1499979486227/aaron-judge-launch-angle-1499979486227-master675.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/07/17/sports/baseball/aaron-judge-launch-angle.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Aaron JudgeIs Baseball’s</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/07/17/sports/baseball/aaron-judge-launch-angle.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Most Powerful Hitter</a></h4>
+<h5>JULY 17, 2017</h5>
+<p>Aaron Judge combines his imposing body (6-7, 282 pounds) with a technically proficient swing to become baseball’s most powerful hitter.</p>
+<p><a href=\"https://www.nytimes.com/2017/08/01/world/middleeast/mosul-isis-survivors-rights.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/07/26/world/middleeast/xxmosul-ss-slide-GIZJ/xxmosul-ss-slide-GIZJ-master675.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/2017/08/01/world/middleeast/mosul-isis-survivors-rights.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">In Mosul, Revealing the</a></h4>
+<h4><a href=\"https://www.nytimes.com/2017/08/01/world/middleeast/mosul-isis-survivors-rights.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Last ISIS Stronghold</a></h4>
+<h5>AUGUST 1, 2017</h5>
+<p>A photojournalist for The New York Times documented the devastating toll within the Islamic State’s last holdout area in Mosul’s Old City.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/08/13/arts/eddie-murphy-ice-cream.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\">1.00</a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/08/13/arts/eddie-murphy-ice-cream.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Eight Little Things</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/08/13/arts/eddie-murphy-ice-cream.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">(Have You Seen This?)</a></h4>
+<h5>AUGUST 13, 2017</h5>
+<p>Breaking down one of the greatest bits of all time, line by line.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/08/21/science/eclipse-reader-photos.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/08/21/science/eclipse-reader-photos-1503286448313/eclipse-reader-photos-1503286448313-master675.png\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/08/21/science/eclipse-reader-photos.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">A Solar Eclipse's Journey</a></h4>
+<h5>AUGUST 21, 2017</h5>
+<p>Photos from the path of totality across the United States.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/08/22/world/asia/north-korea-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/08/16/world/asia/north-korea-nuclear-program-1503086760292/north-korea-nuclear-program-1503086760292-master675.png\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/08/22/world/asia/north-korea-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">This Missile Could</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/08/22/world/asia/north-korea-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Reach California. But</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/08/22/world/asia/north-korea-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Can North Korea Use It</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/08/22/world/asia/north-korea-nuclear-weapons.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">With a Nuclear Weapon?</a></h4>
+<h5>AUGUST 22, 2017</h5>
+<p>Six systems that North Korea needs to master to achieve a long-sought goal: being able to reliably hit the United States.</p>
+<p><br></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/09/02/us/harvey-beaumont-flooding.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Town After Town</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/09/02/us/harvey-beaumont-flooding.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Under Waterin the</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/09/02/us/harvey-beaumont-flooding.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">100 Miles From</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/09/02/us/harvey-beaumont-flooding.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Houston to Beaumont</a></h4>
+<h5>SEPTEMBER 2, 2017</h5>
+<p>Hurricane Harvey left residents of many small towns stranded.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/09/14/science/cassini-saturn-images.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/09/16/insider/cassini-saturn-images-1505332179034/cassini-saturn-images-1505332179034-master675-v2.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/09/14/science/cassini-saturn-images.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">100 Images</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/09/14/science/cassini-saturn-images.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">From Cassini’s</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/09/14/science/cassini-saturn-images.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Mission to Saturn</a></h4>
+<h5>SEPTEMBER 14, 2017</h5>
+<p>NASA’s Cassini spacecraft burned up in Saturn’s atmosphere on Friday, after 20 years in space.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/10/20/climate/iceland-trees-reforestation.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/10/22/climate/22iceland-print/merlin-to-scoop-126602513-337561-master675.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/10/20/climate/iceland-trees-reforestation.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Vikings Razed the</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/10/20/climate/iceland-trees-reforestation.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Forests. Can Iceland</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/10/20/climate/iceland-trees-reforestation.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Regrow Them?</a></h4>
+<h5>OCTOBER 20, 2017</h5>
+<p>The country lost most of its trees long ago. Despite years of replanting, it isn’t making much progress.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/11/09/world/asia/xi-propaganda.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/xi-jinping-face.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/11/09/world/asia/xi-propaganda.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Why Xi Jinping’s</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/11/09/world/asia/xi-propaganda.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">(Airbrushed) Face Is</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/11/09/world/asia/xi-propaganda.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Plastered All Over China</a></h4>
+<h5>NOVEMBER 9, 2017</h5>
+<p>President Xi Jinping is using tried-and-true methods to craft a personality cult reminiscent of Mao.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/12/04/world/middleeast/saudi-missile-defense.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/12/04/world/middleeast/saudi-missile-defense-1512079146046/saudi-missile-defense-1512079146046-master675-v3.png\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/12/04/world/middleeast/saudi-missile-defense.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Did American</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/12/04/world/middleeast/saudi-missile-defense.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Missile Defense Fail</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/12/04/world/middleeast/saudi-missile-defense.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">in Saudi Arabia?</a></h4>
+<h5>DECEMBER 4, 2017</h5>
+<p>Saudi Arabia and President Trump said a missile fired from Yemen was shot down. But photos and videos from the scene tell a different story.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/12/16/nyregion/rethinking-rikers.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/images/2017/11/10/nyregion/rikes-images-slide-5M1A/rikes-images-slide-5M1A-master675.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/12/16/nyregion/rethinking-rikers.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Rethinking Rikers</a></h4>
+<h5>DECEMBER 16, 2017</h5>
+<p>New York City is trying to push the limits of what is possible at its sprawling jail complex, following in the footsteps of Chicago’s Cook County Jail. Take a look inside both jails in 360 video.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/12/21/world/asia/how-the-rohingya-escaped.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/how-rohingya-escaped.jpg\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/12/21/world/asia/how-the-rohingya-escaped.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">How 655,000 Rohingya</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/12/21/world/asia/how-the-rohingya-escaped.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Muslims Escaped</a></h4>
+<h5>DECEMBER 21, 2017</h5>
+<p>Roughly two-thirds of the Rohingya Muslims in Myanmar fled this year as soldiers shot them, raped them and torched their homes.</p>
+<p><a href=\"https://www.nytimes.com/interactive/2017/12/22/nyregion/what-would-it-take-to-fix-new-yorks-subway.html\" target=\"_blank\" style=\"color: rgb(50, 104, 145);\"><img src=\"https://static01.nyt.com/newsgraphics/2017/12/05/year-in-graphics/assets/subway-cropped.gif\"></a></p>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/12/22/nyregion/what-would-it-take-to-fix-new-yorks-subway.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">What Would It Take to</a></h4>
+<h4><a href=\"https://www.nytimes.com/interactive/2017/12/22/nyregion/what-would-it-take-to-fix-new-yorks-subway.html\" target=\"_blank\" style=\"color: rgb(0, 0, 0);\">Fix New York’s Subway?</a></h4>
+<h5>DECEMBER 22, 2017</h5>
+<p>We asked experts what they thought it would take to improve New York City’s subway system. Here are six suggestions.</p>
+<p><br></p>
+HTML
+
+
+
+Note.create(title: "NYTimes: 2017 in Pictures", body: nytimes_text, author_id: demo_user.id, notebook_id: 1)

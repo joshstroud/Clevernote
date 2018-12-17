@@ -56,6 +56,16 @@ class NoteShowEditor extends Component {
     // ];
   }
 
+  componentDidMount() {
+    const node = document.getElementsByClassName("ql-toolbar")[0];
+    node.addEventListener("mousedown", this.handleToolbarClick);
+  }
+
+  handleToolbarClick(e) {
+    console.log("click");
+    e.preventDefault();
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (!this.props.note) {
       return;
@@ -71,6 +81,10 @@ class NoteShowEditor extends Component {
         body: this.props.note.body,
         title: this.props.note.title
       });
+    }
+
+    if (prevProps.selectedNoteId !== this.props.selectedNoteId) {
+      $(".ql-editor").scrollTop(0);
     }
   }
 

@@ -15,6 +15,7 @@ class NoteShow extends Component {
         <NoteShowEditor
           note={this.props.note}
           updateNote={this.props.updateNote}
+          selectedNoteId={this.props.selectedNoteId}
         />
         <NoteShowTagList
           taggings={this.props.taggings}

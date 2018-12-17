@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
     notebook: dummyNotebooks[1],
-    tags: dummyTags
+    tags: dummyTags,
+    selectedNoteId: state.ui.selectedNoteId
   };
 };
 
