@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import AllNotesPage from "../note_show/all_notes_page";
+import AllNotesPage from "./all_notes_page";
 import NotebooksIndexContainer from "../notebooks_index/notebooks_index_container";
-import NotebookNotesIndexContainer from "../notes_index/notebook_notes_index_container";
+import NotebookNotesPage from "./notebook_notes_page";
 import { Route, withRouter, Switch, Redirect } from "react-router-dom";
 
 class MainSection extends Component {
@@ -17,8 +17,12 @@ class MainSection extends Component {
             component={NotebooksIndexContainer}
           />
           <Route
+            path="/app/notebooks/:notebookId/notes/:noteId"
+            component={NotebookNotesPage}
+          />
+          <Route
             path="/app/notebooks/:notebookId"
-            component={NotebookNotesIndexContainer}
+            component={NotebookNotesPage}
           />
           <Redirect to="/app/notes" />
         </Switch>

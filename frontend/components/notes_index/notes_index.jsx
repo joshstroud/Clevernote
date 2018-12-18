@@ -7,12 +7,11 @@ import { sortNotesByLastUpdate } from "../../util/note_util";
 class NotesIndex extends Component {
   constructor(props) {
     super(props);
-
-    // this.selectedNoteIndexItemRef = createRef();
   }
 
   componentDidMount() {
     this.props.fetchNotes();
+    this.props.fetchNotebooks();
   }
 
   componentDidUpdate() {
@@ -20,17 +19,25 @@ class NotesIndex extends Component {
   }
 
   updateSelectedNote() {
+    this.scrollToSelectedNote();
+    this.checkNoteRoute();
+  }
+
+  scrollToSelectedNote() {
     const $containerNode = $(".notes-index-items-wrapper");
 
     if (
       this.selectedNoteIndexItemRef &&
-      $containerNode.scrollTop !== this.selectedNoteIndexItemRef.offsetTop
+      $containerNode.scrollTop !== this.selectedNoteIndexItemRef.offsetTop &&
+      this.selectedNoteIndexItemRef.current
     ) {
       const node = findDOMNode(this.selectedNoteIndexItemRef);
 
       $containerNode.scrollTop(node.getBoundingClientRect().top);
     }
+  }
 
+  checkNoteRoute() {
     let paramSelectedNoteId = Number(this.props.match.params.noteId);
     if (
       this.props.selectedNoteId === null ||
@@ -42,6 +49,8 @@ class NotesIndex extends Component {
       if (paramSelectedNoteId && this.props.notes[paramSelectedNoteId]) {
         this.props.selectNote(paramSelectedNoteId);
       } else if (mostRecentNote) {
+        this.props.history.push(`${this.props.path}/${mostRecentNote.id}`);
+      } else if (mostRecentNote && this.props.path.includes("/notebooks/")) {
         this.props.history.push(`${this.props.path}/${mostRecentNote.id}`);
       }
     }

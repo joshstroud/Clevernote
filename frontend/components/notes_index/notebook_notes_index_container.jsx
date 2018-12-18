@@ -7,16 +7,17 @@ import { withRouter } from "react-router";
 import { selectNotesInNotebook } from "../../util/selectors";
 
 const mapStateToProps = (state, ownProps) => {
-  const selectedNotebook =
-    state.entities.notebooks[state.entities.notes[state.ui.selectedNoteId]];
+  const notebookId = ownProps.match.params.notebookId;
+  const selectedNotebook = state.entities.notebooks[notebookId];
 
-  debugger;
+  const title = selectedNotebook ? selectedNotebook.title : null;
+  const notes = selectNotesInNotebook(state, Number(notebookId));
   return {
-    notes: selectNotesInNotebook(state, selectedNotebook.id),
-    title:
-      state.entities.notebooks[state.entities.notes[state.ui.selectedNoteId]],
+    notes,
+    selectedNotebook,
+    path: `/app/notebooks/${notebookId}/notes`,
     selectedNoteId: state.ui.selectedNoteId,
-    path: `/app/notebooks/${selectedNotebook.id}`
+    title
   };
 };
 
@@ -28,7 +29,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NotesIndex);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(NotesIndex)
+);
