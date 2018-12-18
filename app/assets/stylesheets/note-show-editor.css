@@ -15,6 +15,7 @@
 
 .note-show-editor-wrapper .note-show-quill {
   height: 100%;
+  width: calc(100vw - 241px - 346px);
 }
 
 .note-show-editor-wrapper .note-show-quill .note-show-editing-area {

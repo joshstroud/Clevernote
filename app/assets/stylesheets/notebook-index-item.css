@@ -1,3 +1,38 @@
+.notebook-index-item-title-container {
+  color: #313131;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  flex-basis: 30%;
+}
+
+.notebook-index-item-notebook-icon {
+  margin-right: 5px;
+}
+
+.notebook-index-item-caret-right {
+  color: #9B9B9B;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.notebook-index-item-count {
+  font-weight: 200;
+  cursor: pointer;
+  margin: 0 5px;
+  color: #b3b3b3;
+}
+
+.notebook-index-item-title {
+  display: flex;
+  align-items: center;
+}
+
+.notebook-index-item-title-container:hover {
+  text-decoration: underline;
+}
+
 .notebook-index-item-row {
   display: flex;
   -webkit-box-pack: justify;
@@ -10,8 +45,19 @@
 
 .notebook-index-item-entry {
   padding: 0.5rem;
+  color: #777;
 }
 
-.notebook-index-item-row:nth-child(odd) {
+.notebook-index-item-row:nth-child(even) {
   background-color: #f8f8f8;
 }
+
+.notebook-index-item-row:hover {
+  background-color: #f2f2f2;
+}
+
+.notebook-index-item-created {}
+
+.notebook-index-item-updated {}
+
+.notebook-index-item-shared {}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import NotebookActionsDropdownContainer from "../ui_elements/dropdowns/notebook_actions_dropdown_container";
@@ -19,7 +19,10 @@ class NotebookIndexItem extends Component {
   render() {
     return (
       <div className="notebook-index-item-row">
-        <span className="notebook-index-item-title-container">
+        <Link
+          to={`/app/notebooks/${this.props.notebook.id}`}
+          className="notebook-index-item-title-container"
+        >
           <FontAwesomeIcon
             className="notebook-index-item-caret-right"
             icon={faCaretRight}
@@ -42,7 +45,7 @@ class NotebookIndexItem extends Component {
           <span className="notebook-index-item-count">
             ({this.props.notebook.num_notes})
           </span>
-        </span>
+        </Link>
 
         <div className="notebook-index-item-entry notebook-index-item-created">
           -

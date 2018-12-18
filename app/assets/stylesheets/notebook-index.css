@@ -64,6 +64,11 @@
 }
 
 .notebook-index-new-notebook-button {
+  background-color: transparent;
+  border-style: none;
+  color: inherit;
+  font-size: 1em;
+  margin: 0;
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
@@ -73,6 +78,12 @@
   float: right;
   cursor: pointer;
   outline: none;
+  display: flex;
+  align-items: flex-end;
+}
+
+.notebook-index-new-notebook-button:hover {
+  opacity: 0.8;
 }
 
 .notebook-index-list {
