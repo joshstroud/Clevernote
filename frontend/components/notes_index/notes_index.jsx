@@ -58,8 +58,10 @@ class NotesIndex extends Component {
 
   renderNumberOfNotes() {
     const numNotes = Object.keys(this.props.notes).length;
-    if (numNotes) {
+    if (numNotes > 0) {
       return <div>{numNotes} Notes</div>;
+    } else if (this.props.selectedNotebook) {
+      return <div>0 Notes</div>;
     } else {
       return null;
     }

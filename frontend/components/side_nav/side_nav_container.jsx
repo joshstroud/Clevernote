@@ -10,7 +10,7 @@ import { logout } from "../../actions/session_actions";
 const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.id],
-    notebooks: dummyNotebooks,
+    notebooks: state.entities.notebooks,
     path: "/app/notes"
   };
 };
