@@ -12,7 +12,6 @@ class NotebookIndexItem extends Component {
   }
 
   showActionsDropdown(e) {
-    console.log("showing actions dropdown");
     this.props.openDropdown("notebook-index-actions", this.props.notebook.id);
   }
 

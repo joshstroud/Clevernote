@@ -10,7 +10,6 @@ import { openDropdown } from "../../actions/ui_actions";
 import { findSelectedNotebook } from "../../util/selectors";
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(findSelectedNotebook(state));
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
     notebook: findSelectedNotebook(state),

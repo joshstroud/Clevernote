@@ -27,7 +27,6 @@ class NotebooksIndex extends Component {
           <button
             className="notebook-index-new-notebook-button"
             onClick={e => {
-              console.log("open modal");
               this.props.openCreateNotebookModal();
             }}
           >

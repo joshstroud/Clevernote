@@ -10,13 +10,13 @@ class NotebookActionsDropdown extends React.Component {
   }
 
   renameNotebook(e) {
-    console.log("Rename notebook action");
+    // console.log("Rename notebook action");
     this.props.closeUIElements();
     this.props.openModal("rename-notebook");
   }
 
   deleteNotebook(e) {
-    console.log("Delete notebook action");
+    // console.log("Delete notebook action");
     this.props.closeUIElements();
     this.props.deleteNotebook(this.props.notebook.id);
   }

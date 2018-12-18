@@ -11,7 +11,7 @@ class NoteShowSettingsDropdown extends React.Component {
   }
 
   moveNoteToNotebook(e) {
-    console.log("Move note to notebook action");
+    //console.log("Move note to notebook action");
     this.props.closeUIElements();
   }
 

@@ -77,7 +77,6 @@ class SideNav extends Component {
 
   toggleNotebookList(e) {
     e.preventDefault();
-    console.log("click");
     this.setState({ notebookListOpen: !this.state.notebookListOpen });
   }
 

@@ -62,12 +62,10 @@ class NoteShowEditor extends Component {
   }
 
   handleToolbarClick(e) {
-    console.log("click");
     e.preventDefault();
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.props.selectedNoteId);
     if (!this.props.note) {
       return;
     }
