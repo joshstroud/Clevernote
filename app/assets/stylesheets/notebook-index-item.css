@@ -1,0 +1,17 @@
+.notebook-index-item-row {
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+  width: 100%;
+}
+
+.notebook-index-item-entry {
+  padding: 0.5rem;
+}
+
+.notebook-index-item-row:nth-child(odd) {
+  background-color: #f8f8f8;
+}

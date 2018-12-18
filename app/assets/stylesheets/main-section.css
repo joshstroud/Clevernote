@@ -1,9 +1,11 @@
 .main-section-wrapper {
   display: flex;
+  width: 100%;
 }
 
 .main-notes-wrapper {
   display: flex;
   flex: 1;
   overflow: hidden;
+  width: 100%;
 }

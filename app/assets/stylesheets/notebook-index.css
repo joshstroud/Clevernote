@@ -1,0 +1,130 @@
+.notebook-index-wrapper {
+  font-family: -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  min-height: 220px;
+  padding: 0 30px;
+}
+
+.notebook-index-header {
+  display: flex;
+  width: 100%;
+  min-height: 80px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: auto;
+  font-size: 15px;
+  color: #313131;
+}
+
+.notebook-index-header-text {
+  -ms-flex: 1;
+  min-width: 200px;
+  font-size: 20px;
+  color: #333;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 12px;
+  -webkit-box-flex: 1;
+}
+
+.notebook-index-subheader-row {
+  display: block;
+  height: 25.3px;
+}
+
+.notebook-index-subheader-title {
+  display: inline-block;
+  margin: 10px 0;
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+  vertical-align: middle;
+
+}
+
+.notebook-index-new-notebook-button {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #00a82d;
+  padding: 0;
+  vertical-align: middle;
+  float: right;
+  cursor: pointer;
+  outline: none;
+}
+
+.notebook-index-list {
+  border-top: 2px solid #5b6b70;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.notebook-index-list-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+  background: #f8f8f8;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 20px;
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+  color: #bcbcbc;
+  text-transform: uppercase;
+}
+
+.notebook-index-list-header-title {
+  flex-basis: 30%;
+  color: #b3b3b3;
+  font-weight: 400;
+  padding: 0.5rem;
+}
+
+.notebook-index-list-header-created {
+
+  padding: 0.5rem;
+}
+
+.notebook-index-list-header-updated {
+
+  padding: 0.5rem;
+}
+
+.notebook-index-list-header-shared {
+
+  padding: 0.5rem;
+}
+
+.notebook-index-list-header-actions {
+
+  padding: 0.5rem;
+}
