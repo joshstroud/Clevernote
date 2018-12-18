@@ -1,4 +1,4 @@
-import pickBy from "lodash/pickby"
+import pickBy from "lodash.pickby"
 
 // not used, since backend only returns notes for given user
 export const currentUserNotes = (state) => {
