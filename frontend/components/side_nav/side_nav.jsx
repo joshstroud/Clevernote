@@ -3,6 +3,7 @@ import UserDropdownContainer from "../ui_elements/dropdowns/user_dropdown_contai
 import { getUsernameFromUser } from "../../util/user_util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 class SideNav extends Component {
   constructor(props) {
@@ -21,6 +22,12 @@ class SideNav extends Component {
     this.openUserDropdown = this.openUserDropdown.bind(this);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.findSelectedCategory() !== prevState.selectedCategory) {
+      this.setState({ selectedCategory: this.findSelectedCategory() });
+    }
+  }
+
   findSelectedCategory() {
     let path = this.props.history.location.pathname;
 
@@ -28,9 +35,10 @@ class SideNav extends Component {
     //   path: "/app/notes/",
     //   exact: "true"
     // });
-
     if (/app\/notes\/(\d+)?/.test(path)) {
       return "All Notes";
+    } else if (path.includes("app/notebooks")) {
+      return "Notebooks";
     }
   }
 
@@ -96,35 +104,39 @@ class SideNav extends Component {
             <div>New Note</div>
           </div>
         </div>
-        <div className={this.setSelected("All Notes")}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="#ccc"
-              id="14a"
-              d="M16 16h2v-1h-2a.997.997 0 0 0-1 1v3h1v-3zM8 4h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm1.5 4a.5.5 0 0 0 0 1h5a.5.5 0 1 0 0-1h-5zm0 3a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm0 3a.5.5 0 1 0 0 1h3a.5.5 0 1 0 0-1h-3z"
-            />
-          </svg>
-          <span>All Notes</span>
-        </div>
-        <div className={this.setSelected("Notebooks")}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="#ccc"
-              d="M9 4h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9V4zM6 4h2v15H6V4zm5.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-4z"
-            />
-          </svg>
-          <span>Notebooks</span>
-        </div>
+        <Link to="/app/notes/">
+          <div className={this.setSelected("All Notes")}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#ccc"
+                id="14a"
+                d="M16 16h2v-1h-2a.997.997 0 0 0-1 1v3h1v-3zM8 4h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm1.5 4a.5.5 0 0 0 0 1h5a.5.5 0 1 0 0-1h-5zm0 3a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm0 3a.5.5 0 1 0 0 1h3a.5.5 0 1 0 0-1h-3z"
+              />
+            </svg>
+            <span>All Notes</span>
+          </div>
+        </Link>
+        <Link to="/app/notebooks/">
+          <div className={this.setSelected("Notebooks")}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#ccc"
+                d="M9 4h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9V4zM6 4h2v15H6V4zm5.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-4z"
+              />
+            </svg>
+            <span>Notebooks</span>
+          </div>
+        </Link>
         <div className={this.setSelected("Tags")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
