@@ -58,10 +58,6 @@ class NotesIndex extends Component {
 
   renderNoteIndexItems() {
     const noteIndexItems = sortNotesByLastUpdate(this.props.notes).map(note => {
-      // let indexItemRef = createRef();
-      // if (note.id === this.props.selectedNoteId) {
-      //   indexItemRef = createRef();
-      // }
       const indexItem = (
         <NotesIndexItem
           key={note.id}

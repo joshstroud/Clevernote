@@ -1682,10 +1682,6 @@ function (_Component) {
       var _this = this;
 
       var noteIndexItems = Object(_util_note_util__WEBPACK_IMPORTED_MODULE_4__["sortNotesByLastUpdate"])(this.props.notes).map(function (note) {
-        // let indexItemRef = createRef();
-        // if (note.id === this.props.selectedNoteId) {
-        //   indexItemRef = createRef();
-        // }
         var indexItem = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: note.id,
           note: note,

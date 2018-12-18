@@ -1,3 +1,5 @@
+import pickBy from "lodash/pickby"
+
 // not used, since backend only returns notes for given user
 export const currentUserNotes = (state) => {
   const notes = state.entities.notes;
@@ -11,6 +13,13 @@ export const currentUserNotes = (state) => {
   }, {});
 
   return filteredNotes;
+}
+
+export const selectNotesInNotebook = (state, notebookId) => {
+  const notes = state.entities.notes;
+  return pickBy(notes, (value, key) => {
+    return value.notebook_id === notebookId
+  });
 }
 
 export const selectTagsForNoteId = (state) => {
