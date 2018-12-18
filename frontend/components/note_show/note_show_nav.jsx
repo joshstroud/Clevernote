@@ -13,6 +13,10 @@ class NoteShowNav extends Component {
     this.props.openDropdown("note-show-settings");
   }
 
+  renderNotebookTitle() {
+    return this.props.notebook ? this.props.notebook.title : null;
+  }
+
   render() {
     return (
       <header className="note-show-nav">
@@ -60,7 +64,7 @@ class NoteShowNav extends Component {
               />
             </svg>
             <Link className="note-show-notebook-title" to="/app/notes">
-              {this.props.notebook.title}
+              {this.renderNotebookTitle()}
             </Link>
           </div>
         </div>

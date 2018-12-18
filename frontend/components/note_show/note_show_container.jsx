@@ -7,11 +7,13 @@ import {
   dummyTags
 } from "../../util/dummy_data";
 import { openDropdown } from "../../actions/ui_actions";
+import { findSelectedNotebook } from "../../util/selectors";
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(findSelectedNotebook(state));
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
-    notebook: dummyNotebooks[1],
+    notebook: findSelectedNotebook(state),
     tags: dummyTags,
     selectedNoteId: state.ui.selectedNoteId
   };
