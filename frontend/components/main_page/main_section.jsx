@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import AllNotesIndexContainer from "../notes_index/all_notes_index_container";
-import NoteShowContainer from "../note_show/note_show_container";
+import AllNotesPage from "../note_show/all_notes_page";
+import NotebooksIndexContainer from "../notebooks_index/notebooks_index_container";
 import { Route, withRouter, Switch, Redirect } from "react-router-dom";
 
 class MainSection extends Component {
@@ -8,11 +8,15 @@ class MainSection extends Component {
     return (
       <div className="main-section-wrapper">
         <Switch>
-          <Route exact path="/app/notes" component={AllNotesIndexContainer} />
-          <Route path="/app/notes/:noteId" component={AllNotesIndexContainer} />
+          <Route exact path="/app/notes" component={AllNotesPage} />
+          <Route path="/app/notes/:noteId" component={AllNotesPage} />
+          <Route
+            exact
+            path="/app/notebooks"
+            component={NotebooksIndexContainer}
+          />
           <Redirect to="/app/notes" />
         </Switch>
-        <NoteShowContainer />
       </div>
     );
   }

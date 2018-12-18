@@ -1,5 +1,9 @@
 .main-section-wrapper {
   display: flex;
+}
+
+.main-notes-wrapper {
+  display: flex;
   flex: 1;
   overflow: hidden;
 }
