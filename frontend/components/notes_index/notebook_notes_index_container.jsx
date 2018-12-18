@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   const selectedNotebook =
     state.entities.notebooks[state.entities.notes[state.ui.selectedNoteId]];
 
+  debugger;
   return {
     notes: selectNotesInNotebook(state, selectedNotebook.id),
     title:
@@ -27,9 +28,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(NotesIndex)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NotesIndex);
