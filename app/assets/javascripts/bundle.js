@@ -1454,7 +1454,12 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notebook-index-subheader-title"
       }, "My notebook list"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "notebook-index-new-notebook-button"
+        className: "notebook-index-new-notebook-button",
+        onClick: function onClick(e) {
+          console.log("open modal");
+
+          _this.props.openCreateNotebookModal();
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         width: "24",
@@ -1522,6 +1527,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     openDropdown: function openDropdown(component, componentId) {
       return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__["openDropdown"])(component, componentId));
+    },
+    openCreateNotebookModal: function openCreateNotebookModal() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])("create-notebook"));
     }
   };
 };
@@ -3533,6 +3541,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function Modal(_ref) {
   var modal = _ref.modal,
       closeUIElements = _ref.closeUIElements;
@@ -3549,6 +3558,10 @@ function Modal(_ref) {
       break;
 
     case "rename-notebook":
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rename_notebook_modal_container__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+      break;
+
+    case "create-notebook":
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rename_notebook_modal_container__WEBPACK_IMPORTED_MODULE_4__["default"], null);
       break;
 
@@ -3648,7 +3661,6 @@ function (_React$Component) {
       var newNotebook = lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()(this.props.notebook, {
         title: this.state.title
       });
-      debugger;
       this.props.updateNotebook(newNotebook);
       this.props.closeUIElements();
     }

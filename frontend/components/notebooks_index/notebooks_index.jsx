@@ -24,7 +24,13 @@ class NotebooksIndex extends Component {
         </header>
         <div className="notebook-index-subheader-row">
           <div className="notebook-index-subheader-title">My notebook list</div>
-          <button className="notebook-index-new-notebook-button">
+          <button
+            className="notebook-index-new-notebook-button"
+            onClick={e => {
+              console.log("open modal");
+              this.props.openCreateNotebookModal();
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

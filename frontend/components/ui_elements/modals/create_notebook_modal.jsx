@@ -2,21 +2,21 @@ import { getUsernameFromUser } from "../../../util/user_util";
 import React from "react";
 import merge from "lodash/merge";
 
-class RenameNotebookModal extends React.Component {
+class CreateNotebookModal extends React.Component {
   constructor(props) {
     super(props);
-    this.renameNotebook = this.renameNotebook.bind(this);
+    this.createNotebook = this.createNotebook.bind(this);
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      title: this.props.notebook.title
+      title: ""
     };
   }
 
-  renameNotebook(e) {
+  createNotebook(e) {
     const that = that;
     const newNotebook = merge(this.props.notebook, { title: this.state.title });
-    this.props.updateNotebook(newNotebook);
+    this.props.createeNotebook(newNotebook);
     this.props.closeUIElements();
   }
 
@@ -47,6 +47,10 @@ class RenameNotebookModal extends React.Component {
                 />
               </svg>
             </div>
+            <div className="modal-text">
+              Notebooks are useful for grouping notes around a common topic.
+              They can be private or shared.
+            </div>
           </div>
         </header>
         <div className="confirm-delete-modal-message">
@@ -60,6 +64,7 @@ class RenameNotebookModal extends React.Component {
                 className="modal-input"
                 value={this.state.title}
                 onChange={this.handleChange}
+                placeholder="Notebook name"
               />
             </div>
           </div>
@@ -68,7 +73,7 @@ class RenameNotebookModal extends React.Component {
           <div className="confirm-delete-modal-button-row">
             <button
               className="confirm-delete-modal-submit-button"
-              onClick={this.renameNotebook}
+              onClick={this.createNotebook}
             >
               Continue
             </button>
@@ -85,4 +90,4 @@ class RenameNotebookModal extends React.Component {
   }
 }
 
-export default RenameNotebookModal;
+export default CreateNotebookModal;
