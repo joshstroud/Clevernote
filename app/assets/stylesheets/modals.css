@@ -56,7 +56,7 @@
   border-radius: 4px;
 }
 
-.confirm-delete-modal-wrapper {
+.modal-wrapper {
   padding: 20px 25px 18px;
   font-size: 18px;
   margin: 0;
@@ -64,7 +64,7 @@
   color: #333;
 }
 
-.confirm-delete-modal-header {
+.modal-header {
   display: flex;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
@@ -74,18 +74,18 @@
   align-items: center;
 }
 
-.confirm-delete-modal-message {
+.modal-message {
   padding: 10px 25px 25px;
   font-size: 14px;
   word-break: break-word;
 }
 
-.confirm-delete-modal-button-wrapper {
+.modal-button-wrapper {
   border-top: 1px solid #ededed;
   padding: 20px 25px;
 }
 
-.confirm-delete-modal-button-row {
+.modal-button-row {
   display: flex;
   width: 100%;
   justify-content: flex-start;
@@ -93,7 +93,7 @@
   flex-direction: row-reverse;
 }
 
-.confirm-delete-modal-submit-button {
+.modal-submit-button {
   margin: 0;
   cursor: pointer;
   background-color: #00a82d;
@@ -131,11 +131,11 @@
   user-select: none;
 }
 
-.confirm-delete-modal-submit-button:hover {
+.modal-submit-button:hover {
   background: #0e753d;
 }
 
-.confirm-delete-modal-cancel-button {
+.modal-cancel-button {
   all: unset;
   -webkit-text-fill-color: initial;
   cursor: pointer;
@@ -175,7 +175,7 @@
   margin: 0 10px 0 0;
 }
 
-.confirm-delete-modal-cancel-button:hover {
+.modal-cancel-button:hover {
   border: 1px solid #c3c3c3;
   background: Transparent;
   color: #999;
@@ -195,8 +195,8 @@
   transition: all 0.08s ease-out;
 }
 
-.modal-input {
-  font-size: 16px;
+.modal-background .modal-input-wrapper .modal-input {
+  font-size: 16px !important;
   border: none;
   font-size: 13px;
   outline: none;
@@ -211,7 +211,7 @@
   border-radius: 5px;
   height: 40px;
   background: rgba(255, 255, 255, .7);
-  width: 100%;
+  /* width: 100%; */
   padding: 0 8px;
   cursor: text;
   display: -webkit-box;
@@ -232,4 +232,16 @@
   margin-bottom: 5px;
   color: #7a8083;
   font-weight: 500;
+}
+
+.modal-text {
+  font-size: 13px;
+  color: #777;
+  max-width: 500px;
+  margin: 0 0 18px;
+  line-height: 1.5;
+}
+
+.modal-header-margin {
+  margin-bottom: 15px;
 }

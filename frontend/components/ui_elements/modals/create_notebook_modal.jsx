@@ -30,33 +30,30 @@ class CreateNotebookModal extends React.Component {
 
   render() {
     return (
-      <div className="confirm-delete-modal">
-        <header>
-          <div className="confirm-delete-modal-wrapper">
-            <div className="confirm-delete-modal-header">
-              <div>Create new notebook</div>
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 13 13"
-                xmlns="http://www.w3.org/2000/svg"
-                className="modal-close"
-                onClick={this.props.closeUIElements}
-              >
-                <path
-                  id="hover-darken"
-                  fill="#b3b3b3"
-                  d="M7.728 6.314l4.95-4.95L11.263-.05 6.313 4.9 1.365-.05-.05 1.364l4.95 4.95-4.95 4.95 1.414 1.414 4.95-4.95 4.95 4.95 1.414-1.415-4.95-4.95z"
-                />
-              </svg>
-            </div>
-            <div className="modal-text">
-              Notebooks are useful for grouping notes around a common topic.
-              They can be private or shared.
-            </div>
+      <div className="modal">
+        <div className="modal-wrapper">
+          <div className="modal-header modal-header-margin">
+            <div>Create new notebook</div>
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 13 13"
+              xmlns="http://www.w3.org/2000/svg"
+              className="modal-close"
+              onClick={this.props.closeUIElements}
+            >
+              <path
+                id="hover-darken"
+                fill="#b3b3b3"
+                d="M7.728 6.314l4.95-4.95L11.263-.05 6.313 4.9 1.365-.05-.05 1.364l4.95 4.95-4.95 4.95 1.414 1.414 4.95-4.95 4.95 4.95 1.414-1.415-4.95-4.95z"
+              />
+            </svg>
           </div>
-        </header>
-        <div className="confirm-delete-modal-message">
+          <p className="modal-text">
+            Notebooks are useful for grouping notes around a common topic. They
+            can be private or shared.
+          </p>
+
           <div className="modal-input-container">
             <div className="modal-label-wrapper">
               <label className="modal-label">Name</label>
@@ -72,16 +69,16 @@ class CreateNotebookModal extends React.Component {
             </div>
           </div>
         </div>
-        <div className="confirm-delete-modal-button-wrapper">
-          <div className="confirm-delete-modal-button-row">
+        <div className="modal-button-wrapper">
+          <div className="modal-button-row">
             <button
-              className="confirm-delete-modal-submit-button"
+              className="modal-submit-button"
               onClick={this.createNotebook}
             >
               Continue
             </button>
             <button
-              className="confirm-delete-modal-cancel-button"
+              className="modal-cancel-button"
               onClick={this.props.closeUIElements}
             >
               Cancel

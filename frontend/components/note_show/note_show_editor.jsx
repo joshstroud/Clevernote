@@ -134,7 +134,7 @@ class NoteShowEditor extends Component {
           />
           <button
             onClick={this.saveNote}
-            className="confirm-delete-modal-submit-button note-show-save-button"
+            className="modal-submit-button note-show-save-button"
           >
             Save
           </button>

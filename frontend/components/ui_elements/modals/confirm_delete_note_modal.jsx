@@ -17,10 +17,10 @@ class UserDropdown extends React.Component {
 
   render() {
     return (
-      <div className="confirm-delete-modal">
+      <div className="modal">
         <header>
-          <div className="confirm-delete-modal-wrapper">
-            <div className="confirm-delete-modal-header">
+          <div className="modal-wrapper">
+            <div className="modal-header">
               <div>Delete note</div>
               <svg
                 width="13"
@@ -39,19 +39,19 @@ class UserDropdown extends React.Component {
             </div>
           </div>
         </header>
-        <div className="confirm-delete-modal-message">
+        <div className="modal-message">
           {this.props.noteTitle} will be deleted.
         </div>
-        <div className="confirm-delete-modal-button-wrapper">
-          <div className="confirm-delete-modal-button-row">
+        <div className="modal-button-wrapper">
+          <div className="modal-button-row">
             <button
-              className="confirm-delete-modal-submit-button"
+              className="modal-submit-button"
               onClick={this.deleteNote}
             >
               Continue
             </button>
             <button
-              className="confirm-delete-modal-cancel-button"
+              className="modal-cancel-button"
               onClick={this.props.closeUIElements}
             >
               Cancel

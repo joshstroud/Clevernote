@@ -1008,7 +1008,7 @@ function (_Component) {
         placeholder: "Title"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.saveNote,
-        className: "confirm-delete-modal-submit-button note-show-save-button"
+        className: "modal-submit-button note-show-save-button"
       }, "Save")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_quill__WEBPACK_IMPORTED_MODULE_1___default.a, {
         className: editorClassName,
         value: this.state.body,
@@ -3432,11 +3432,11 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal"
+        className: "modal"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-wrapper"
+        className: "modal-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-header"
+        className: "modal-header"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "Delete note"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("svg", {
         width: "13",
         height: "13",
@@ -3449,16 +3449,16 @@ function (_React$Component) {
         fill: "#b3b3b3",
         d: "M7.728 6.314l4.95-4.95L11.263-.05 6.313 4.9 1.365-.05-.05 1.364l4.95 4.95-4.95 4.95 1.414 1.414 4.95-4.95 4.95 4.95 1.414-1.415-4.95-4.95z"
       }))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-message"
+        className: "modal-message"
       }, this.props.noteTitle, " will be deleted."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-button-wrapper"
+        className: "modal-button-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-button-row"
+        className: "modal-button-row"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "confirm-delete-modal-submit-button",
+        className: "modal-submit-button",
         onClick: this.deleteNote
       }, "Continue"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "confirm-delete-modal-cancel-button",
+        className: "modal-cancel-button",
         onClick: this.props.closeUIElements
       }, "Cancel"))));
     }
@@ -3598,11 +3598,11 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-wrapper"
+        className: "modal"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-header"
+        className: "modal-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "modal-header modal-header-margin"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "Create new notebook"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("svg", {
         width: "13",
         height: "13",
@@ -3614,11 +3614,9 @@ function (_React$Component) {
         id: "hover-darken",
         fill: "#b3b3b3",
         d: "M7.728 6.314l4.95-4.95L11.263-.05 6.313 4.9 1.365-.05-.05 1.364l4.95 4.95-4.95 4.95 1.414 1.414 4.95-4.95 4.95 4.95 1.414-1.415-4.95-4.95z"
-      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
         className: "modal-text"
-      }, "Notebooks are useful for grouping notes around a common topic. They can be private or shared."))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-message"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "Notebooks are useful for grouping notes around a common topic. They can be private or shared."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "modal-input-container"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "modal-label-wrapper"
@@ -3633,14 +3631,14 @@ function (_React$Component) {
         onChange: this.handleChange,
         placeholder: "Notebook name"
       })))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-button-wrapper"
+        className: "modal-button-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-button-row"
+        className: "modal-button-row"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "confirm-delete-modal-submit-button",
+        className: "modal-submit-button",
         onClick: this.createNotebook
       }, "Continue"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "confirm-delete-modal-cancel-button",
+        className: "modal-cancel-button",
         onClick: this.props.closeUIElements
       }, "Cancel"))));
     }
@@ -3855,11 +3853,11 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal"
+        className: "modal"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-wrapper"
+        className: "modal-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-header"
+        className: "modal-header"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "Rename Notebook"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("svg", {
         width: "13",
         height: "13",
@@ -3872,7 +3870,7 @@ function (_React$Component) {
         fill: "#b3b3b3",
         d: "M7.728 6.314l4.95-4.95L11.263-.05 6.313 4.9 1.365-.05-.05 1.364l4.95 4.95-4.95 4.95 1.414 1.414 4.95-4.95 4.95 4.95 1.414-1.415-4.95-4.95z"
       }))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-message"
+        className: "modal-message"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "modal-input-container"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -3887,14 +3885,14 @@ function (_React$Component) {
         value: this.state.title,
         onChange: this.handleChange
       })))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-button-wrapper"
+        className: "modal-button-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "confirm-delete-modal-button-row"
+        className: "modal-button-row"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "confirm-delete-modal-submit-button",
+        className: "modal-submit-button",
         onClick: this.renameNotebook
       }, "Continue"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        className: "confirm-delete-modal-cancel-button",
+        className: "modal-cancel-button",
         onClick: this.props.closeUIElements
       }, "Cancel"))));
     }
