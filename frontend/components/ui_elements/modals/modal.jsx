@@ -2,6 +2,7 @@ import React from "react";
 import { closeUIElements } from "../../../actions/ui_actions";
 import { connect } from "react-redux";
 import ConfirmDeleteNoteModalContainer from "./confirm_delete_note_modal_container";
+import RenameNotebookModalContainer from "./rename_notebook_modal_container";
 
 function Modal({ modal, closeUIElements }) {
   if (!modal) {
@@ -11,6 +12,9 @@ function Modal({ modal, closeUIElements }) {
   switch (modal) {
     case "confirm-delete-note":
       component = <ConfirmDeleteNoteModalContainer />;
+      break;
+    case "rename-notebook":
+      component = <RenameNotebookModalContainer />;
       break;
     default:
       return null;

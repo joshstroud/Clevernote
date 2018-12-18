@@ -3107,6 +3107,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NotebookActionsDropdown).call(this, props));
     _this.deleteNotebook = _this.deleteNotebook.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.renameNotebook = _this.renameNotebook.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -3115,12 +3116,12 @@ function (_React$Component) {
     value: function renameNotebook(e) {
       console.log("Rename notebook action");
       this.props.closeUIElements();
+      this.props.openModal("rename-notebook");
     }
   }, {
     key: "deleteNotebook",
     value: function deleteNotebook(e) {
       console.log("Delete notebook action");
-      var that = this;
       this.props.closeUIElements();
       this.props.deleteNotebook(this.props.notebook.id);
     }
@@ -3198,6 +3199,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteNotebook: function deleteNotebook(notebookId) {
       return dispatch(Object(_actions_notebook_actions__WEBPACK_IMPORTED_MODULE_4__["deleteNotebook"])(notebookId));
+    },
+    openModal: function openModal(component) {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["openModal"])(component));
     }
   };
 };
@@ -3522,6 +3526,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _confirm_delete_note_modal_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./confirm_delete_note_modal_container */ "./frontend/components/ui_elements/modals/confirm_delete_note_modal_container.jsx");
+/* harmony import */ var _rename_notebook_modal_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./rename_notebook_modal_container */ "./frontend/components/ui_elements/modals/rename_notebook_modal_container.jsx");
+
 
 
 
@@ -3540,6 +3546,10 @@ function Modal(_ref) {
   switch (modal) {
     case "confirm-delete-note":
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_confirm_delete_note_modal_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+      break;
+
+    case "rename-notebook":
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rename_notebook_modal_container__WEBPACK_IMPORTED_MODULE_4__["default"], null);
       break;
 
     default:
@@ -3573,6 +3583,181 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(Modal));
+
+/***/ }),
+
+/***/ "./frontend/components/ui_elements/modals/rename_notebook_modal.jsx":
+/*!**************************************************************************!*\
+  !*** ./frontend/components/ui_elements/modals/rename_notebook_modal.jsx ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _util_user_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../util/user_util */ "./frontend/util/user_util.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
+
+
+
+var RenameNotebookModal =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(RenameNotebookModal, _React$Component);
+
+  function RenameNotebookModal(props) {
+    var _this;
+
+    _classCallCheck(this, RenameNotebookModal);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RenameNotebookModal).call(this, props));
+    _this.renameNotebook = _this.renameNotebook.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.state = {
+      title: _this.props.notebook.title
+    };
+    return _this;
+  }
+
+  _createClass(RenameNotebookModal, [{
+    key: "renameNotebook",
+    value: function renameNotebook(e) {
+      var that = that;
+      var newNotebook = lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()(this.props.notebook, {
+        title: this.state.title
+      });
+      debugger;
+      this.props.updateNotebook(newNotebook);
+      this.props.closeUIElements();
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(e) {
+      e.preventDefault();
+      this.setState({
+        title: e.target.value
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "confirm-delete-modal"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "confirm-delete-modal-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "confirm-delete-modal-header"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, "Rename Notebook"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("svg", {
+        width: "13",
+        height: "13",
+        viewBox: "0 0 13 13",
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "modal-close",
+        onClick: this.props.closeUIElements
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+        id: "hover-darken",
+        fill: "#b3b3b3",
+        d: "M7.728 6.314l4.95-4.95L11.263-.05 6.313 4.9 1.365-.05-.05 1.364l4.95 4.95-4.95 4.95 1.414 1.414 4.95-4.95 4.95 4.95 1.414-1.415-4.95-4.95z"
+      }))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "confirm-delete-modal-message"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "modal-input-container"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "modal-label-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        className: "modal-label"
+      }, "Name")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "modal-input-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+        type: "text",
+        className: "modal-input",
+        value: this.state.title,
+        onChange: this.handleChange
+      })))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "confirm-delete-modal-button-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "confirm-delete-modal-button-row"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "confirm-delete-modal-submit-button",
+        onClick: this.renameNotebook
+      }, "Continue"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "confirm-delete-modal-cancel-button",
+        onClick: this.props.closeUIElements
+      }, "Cancel"))));
+    }
+  }]);
+
+  return RenameNotebookModal;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (RenameNotebookModal);
+
+/***/ }),
+
+/***/ "./frontend/components/ui_elements/modals/rename_notebook_modal_container.jsx":
+/*!************************************************************************************!*\
+  !*** ./frontend/components/ui_elements/modals/rename_notebook_modal_container.jsx ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_notebook_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/notebook_actions */ "./frontend/actions/notebook_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _rename_notebook_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./rename_notebook_modal */ "./frontend/components/ui_elements/modals/rename_notebook_modal.jsx");
+
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    modal: state.ui.dropdown,
+    notebook: state.entities.notebooks[state.ui.componentId]
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    closeUIElements: function closeUIElements() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeUIElements"])());
+    },
+    updateNotebook: function updateNotebook(notebook) {
+      return dispatch(Object(_actions_notebook_actions__WEBPACK_IMPORTED_MODULE_3__["updateNotebook"])(notebook));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(_rename_notebook_modal__WEBPACK_IMPORTED_MODULE_5__["default"])));
 
 /***/ }),
 
