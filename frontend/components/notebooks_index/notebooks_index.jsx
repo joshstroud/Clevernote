@@ -2,7 +2,20 @@ import React, { Component } from "react";
 import NotebookIndexItem from "./notebook_index_item";
 
 class NotebooksIndex extends Component {
+  componentDidMount() {
+    this.props.fetchNotebooks();
+  }
+
   render() {
+    const notebookItems = Object.keys(this.props.notebooks).map(notebookId => {
+      return (
+        <NotebookIndexItem
+          key={notebookId}
+          notebook={this.props.notebooks[notebookId]}
+        />
+      );
+    });
+
     return (
       <section className="notebook-index-wrapper">
         <header className="notebook-index-header">
@@ -16,7 +29,6 @@ class NotebooksIndex extends Component {
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              class="vert-align"
             >
               <path
                 fill="#00a82d"
@@ -45,9 +57,7 @@ class NotebooksIndex extends Component {
               Actions
             </div>
           </header>
-          <NotebookIndexItem />
-          <NotebookIndexItem />
-          <NotebookIndexItem />
+          <div>{notebookItems}</div>
         </div>
       </section>
     );

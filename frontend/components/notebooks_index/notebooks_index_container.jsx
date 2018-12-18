@@ -1,15 +1,18 @@
 import { connect } from "react-redux";
 import NotebooksIndex from "./notebooks_index";
-import { fetchNotes } from "../../actions/note_actions";
-import { selectNote } from "../../actions/ui_actions";
+import { fetchNotebooks } from "../../actions/notebook_actions";
 import { withRouter } from "react-router";
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return {
+    notebooks: state.entities.notebooks
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    fetchNotebooks: notebooks => dispatch(fetchNotebooks(notebooks))
+  };
 };
 
 export default withRouter(

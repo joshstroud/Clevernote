@@ -17,7 +17,7 @@ class NotebookIndexItem extends Component {
               width="24"
               height="24"
               xmlns="http://www.w3.org/2000/svg"
-              class="notebook-index-item-notebook-icon"
+              className="notebook-index-item-notebook-icon"
               viewBox="0 0 24 24"
             >
               <path
@@ -25,7 +25,7 @@ class NotebookIndexItem extends Component {
                 d="M16 8.33c0-.18-.22-.33-.5-.33h-4c-.28 0-.5.15-.5.33v1.34c0 .18.22.33.5.33h4c.28 0 .5-.15.5-.33zM18 6v11a2 2 0 0 1-2 2H9V4h7a2 2 0 0 1 2 2zM6 4h2v15H6z"
               />
             </svg>
-            My Notebook
+            {this.props.notebook.title}
           </span>
           <span className="notebook-index-item-count">(4)</span>
         </span>
@@ -34,7 +34,7 @@ class NotebookIndexItem extends Component {
           -
         </div>
         <div className="notebook-index-item-entry notebook-index-item-updated">
-          5 hours ago
+          {this.props.notebook.time_since_update}
         </div>
         <div className="notebook-index-item-entry notebook-index-item-shared">
           Only you

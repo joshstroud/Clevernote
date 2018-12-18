@@ -1331,18 +1331,18 @@ function (_Component) {
         width: "24",
         height: "24",
         xmlns: "http://www.w3.org/2000/svg",
-        class: "notebook-index-item-notebook-icon",
+        className: "notebook-index-item-notebook-icon",
         viewBox: "0 0 24 24"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
         fill: "#4c4c4c",
         d: "M16 8.33c0-.18-.22-.33-.5-.33h-4c-.28 0-.5.15-.5.33v1.34c0 .18.22.33.5.33h4c.28 0 .5-.15.5-.33zM18 6v11a2 2 0 0 1-2 2H9V4h7a2 2 0 0 1 2 2zM6 4h2v15H6z"
-      })), "My Notebook"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      })), this.props.notebook.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "notebook-index-item-count"
       }, "(4)")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notebook-index-item-entry notebook-index-item-created"
       }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notebook-index-item-entry notebook-index-item-updated"
-      }, "5 hours ago"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.notebook.time_since_update), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notebook-index-item-entry notebook-index-item-shared"
       }, "Only you"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notebook-index-item-entry notebook-index-item-actions"
@@ -1411,8 +1411,21 @@ function (_Component) {
   }
 
   _createClass(NotebooksIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchNotebooks();
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
+      var notebookItems = Object.keys(this.props.notebooks).map(function (notebookId) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notebook_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: notebookId,
+          notebook: _this.props.notebooks[notebookId]
+        });
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "notebook-index-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
@@ -1429,8 +1442,7 @@ function (_Component) {
         xmlns: "http://www.w3.org/2000/svg",
         width: "24",
         height: "24",
-        viewBox: "0 0 24 24",
-        class: "vert-align"
+        viewBox: "0 0 24 24"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
         fill: "#00a82d",
         id: "69a",
@@ -1449,7 +1461,7 @@ function (_Component) {
         className: "notebook-index-list-header-column notebook-index-list-header-shared"
       }, "Shared With"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notebook-index-list-header-column notebook-index-list-header-actions"
-      }, "Actions")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notebook_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notebook_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notebook_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+      }, "Actions")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, notebookItems)));
     }
   }]);
 
@@ -1471,24 +1483,28 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _notebooks_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notebooks_index */ "./frontend/components/notebooks_index/notebooks_index.jsx");
-/* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/note_actions */ "./frontend/actions/note_actions.js");
-/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
-
+/* harmony import */ var _actions_notebook_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/notebook_actions */ "./frontend/actions/notebook_actions.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
 
 
 
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    notebooks: state.entities.notebooks
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    fetchNotebooks: function fetchNotebooks(notebooks) {
+      return dispatch(Object(_actions_notebook_actions__WEBPACK_IMPORTED_MODULE_2__["fetchNotebooks"])(notebooks));
+    }
+  };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_notebooks_index__WEBPACK_IMPORTED_MODULE_1__["default"])));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_notebooks_index__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
 /***/ }),
 
