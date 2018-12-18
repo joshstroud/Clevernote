@@ -20,7 +20,8 @@ const ui = (state = defaultUIState, action) => {
       })
     case OPEN_DROPDOWN:
       return merge({}, state, {
-        dropdown: action.component
+        dropdown: action.component,
+        componentId: action.componentId
       })
     case OPEN_MODAL:
       return merge({}, state, {

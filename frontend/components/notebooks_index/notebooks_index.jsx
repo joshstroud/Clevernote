@@ -12,6 +12,7 @@ class NotebooksIndex extends Component {
         <NotebookIndexItem
           key={notebookId}
           notebook={this.props.notebooks[notebookId]}
+          openDropdown={this.props.openDropdown}
         />
       );
     });

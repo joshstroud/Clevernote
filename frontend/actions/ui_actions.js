@@ -10,10 +10,11 @@ export const selectNote = (noteId) => {
   }
 }
 
-export const openDropdown = (component) => {
+export const openDropdown = (component, componentId = null) => {
   return {
     type: OPEN_DROPDOWN,
-    component
+    component,
+    componentId
   }
 }
 

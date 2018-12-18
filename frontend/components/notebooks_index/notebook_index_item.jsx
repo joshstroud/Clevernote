@@ -2,8 +2,20 @@ import React, { Component } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import NotebookActionsDropdownContainer from "../ui_elements/dropdowns/notebook_actions_dropdown_container";
 
 class NotebookIndexItem extends Component {
+  constructor(props) {
+    super(props);
+
+    this.showActionsDropdown = this.showActionsDropdown.bind(this);
+  }
+
+  showActionsDropdown(e) {
+    console.log("showing actions dropdown");
+    this.props.openDropdown("notebook-index-actions", this.props.notebook.id);
+  }
+
   render() {
     return (
       <div className="notebook-index-item-row">
@@ -47,10 +59,11 @@ class NotebookIndexItem extends Component {
             viewBox="0 0 32 32"
             xmlns="http://www.w3.org/2000/svg"
             className="note-show-options-button"
-            onClick={this.showSettings}
+            onClick={this.showActionsDropdown}
           >
             <path d="M25 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
           </svg>
+          <NotebookActionsDropdownContainer notebook={this.props.notebook} />
         </div>
       </div>
     );

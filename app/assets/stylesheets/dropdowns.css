@@ -8,3 +8,21 @@
   left: 0;
   z-index: 10;
 }
+
+.dropdown-background-relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown-background-relative .dropdown-menu.dropdown-relative-position {
+  position: absolute;
+  top: 18.5px;
+  left: -153px;
+  z-index: 1000;
+  width: 168px;
+}
+
+.dropdown-menu:focus {
+  outline: none;
+}

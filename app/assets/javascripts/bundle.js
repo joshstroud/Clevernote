@@ -375,9 +375,11 @@ var selectNote = function selectNote(noteId) {
   };
 };
 var openDropdown = function openDropdown(component) {
+  var componentId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   return {
     type: OPEN_DROPDOWN,
-    component: component
+    component: component,
+    componentId: componentId
   };
 };
 var openModal = function openModal(component) {
@@ -1282,6 +1284,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _ui_elements_dropdowns_notebook_actions_dropdown_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ui_elements/dropdowns/notebook_actions_dropdown_container */ "./frontend/components/ui_elements/dropdowns/notebook_actions_dropdown_container.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1292,13 +1295,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -1309,13 +1313,23 @@ var NotebookIndexItem =
 function (_Component) {
   _inherits(NotebookIndexItem, _Component);
 
-  function NotebookIndexItem() {
+  function NotebookIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, NotebookIndexItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(NotebookIndexItem).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NotebookIndexItem).call(this, props));
+    _this.showActionsDropdown = _this.showActionsDropdown.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(NotebookIndexItem, [{
+    key: "showActionsDropdown",
+    value: function showActionsDropdown(e) {
+      console.log("showing actions dropdown");
+      this.props.openDropdown("notebook-index-actions", this.props.notebook.id);
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1352,10 +1366,12 @@ function (_Component) {
         viewBox: "0 0 32 32",
         xmlns: "http://www.w3.org/2000/svg",
         className: "note-show-options-button",
-        onClick: this.showSettings
+        onClick: this.showActionsDropdown
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
         d: "M25 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm-9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
-      }))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_elements_dropdowns_notebook_actions_dropdown_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        notebook: this.props.notebook
+      })));
     }
   }]);
 
@@ -1423,7 +1439,8 @@ function (_Component) {
       var notebookItems = Object.keys(this.props.notebooks).map(function (notebookId) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notebook_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: notebookId,
-          notebook: _this.props.notebooks[notebookId]
+          notebook: _this.props.notebooks[notebookId],
+          openDropdown: _this.props.openDropdown
         });
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -1485,6 +1502,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _notebooks_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notebooks_index */ "./frontend/components/notebooks_index/notebooks_index.jsx");
 /* harmony import */ var _actions_notebook_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/notebook_actions */ "./frontend/actions/notebook_actions.js");
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+
 
 
 
@@ -1500,6 +1519,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchNotebooks: function fetchNotebooks(notebooks) {
       return dispatch(Object(_actions_notebook_actions__WEBPACK_IMPORTED_MODULE_2__["fetchNotebooks"])(notebooks));
+    },
+    openDropdown: function openDropdown(component, componentId) {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__["openDropdown"])(component, componentId));
     }
   };
 };
@@ -3040,6 +3062,150 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/ui_elements/dropdowns/notebook_actions_dropdown.jsx":
+/*!*********************************************************************************!*\
+  !*** ./frontend/components/ui_elements/dropdowns/notebook_actions_dropdown.jsx ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _util_user_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../util/user_util */ "./frontend/util/user_util.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
+
+
+var NotebookActionsDropdown =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(NotebookActionsDropdown, _React$Component);
+
+  function NotebookActionsDropdown(props) {
+    var _this;
+
+    _classCallCheck(this, NotebookActionsDropdown);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NotebookActionsDropdown).call(this, props));
+    _this.deleteNotebook = _this.deleteNotebook.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(NotebookActionsDropdown, [{
+    key: "renameNotebook",
+    value: function renameNotebook(e) {
+      console.log("Rename notebook action");
+      this.props.closeUIElements();
+    }
+  }, {
+    key: "deleteNotebook",
+    value: function deleteNotebook(e) {
+      console.log("Delete notebook action");
+      var that = this;
+      this.props.closeUIElements();
+      this.props.deleteNotebook(this.props.notebook.id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.props.dropdown === "notebook-index-actions" && this.props.notebook.id === this.props.selectedComponentId) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: "dropdown-background-relative"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: "dropdown-menu dropdown-relative-position",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          tabIndex: "0",
+          onBlur: this.props.closeUIElements,
+          ref: function ref(input) {
+            return input && input.focus();
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+          className: "note-show-settings-dropdown-row",
+          onClick: this.renameNotebook
+        }, "Rename notebook"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+          className: "note-show-settings-dropdown-row",
+          onClick: this.deleteNotebook
+        }, "Delete notebook"))));
+      } else {
+        return null;
+      }
+    }
+  }]);
+
+  return NotebookActionsDropdown;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (NotebookActionsDropdown);
+
+/***/ }),
+
+/***/ "./frontend/components/ui_elements/dropdowns/notebook_actions_dropdown_container.jsx":
+/*!*******************************************************************************************!*\
+  !*** ./frontend/components/ui_elements/dropdowns/notebook_actions_dropdown_container.jsx ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _actions_notebook_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../actions/notebook_actions */ "./frontend/actions/notebook_actions.js");
+/* harmony import */ var _notebook_actions_dropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./notebook_actions_dropdown */ "./frontend/components/ui_elements/dropdowns/notebook_actions_dropdown.jsx");
+
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    dropdown: state.ui.dropdown,
+    selectedComponentId: state.ui.componentId,
+    notebook: ownProps.notebook
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    closeUIElements: function closeUIElements() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeUIElements"])());
+    },
+    deleteNotebook: function deleteNotebook(notebookId) {
+      return dispatch(Object(_actions_notebook_actions__WEBPACK_IMPORTED_MODULE_4__["deleteNotebook"])(notebookId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(_notebook_actions_dropdown__WEBPACK_IMPORTED_MODULE_5__["default"])));
+
+/***/ }),
+
 /***/ "./frontend/components/ui_elements/dropdowns/user_dropdown.jsx":
 /*!*********************************************************************!*\
   !*** ./frontend/components/ui_elements/dropdowns/user_dropdown.jsx ***!
@@ -3739,7 +3905,8 @@ var ui = function ui() {
 
     case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_DROPDOWN"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
-        dropdown: action.component
+        dropdown: action.component,
+        componentId: action.componentId
       });
 
     case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL"]:
