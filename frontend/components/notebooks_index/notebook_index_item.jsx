@@ -39,7 +39,9 @@ class NotebookIndexItem extends Component {
             </svg>
             {this.props.notebook.title}
           </span>
-          <span className="notebook-index-item-count">(4)</span>
+          <span className="notebook-index-item-count">
+            ({this.props.notebook.num_notes})
+          </span>
         </span>
 
         <div className="notebook-index-item-entry notebook-index-item-created">

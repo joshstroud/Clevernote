@@ -1352,7 +1352,7 @@ function (_Component) {
         d: "M16 8.33c0-.18-.22-.33-.5-.33h-4c-.28 0-.5.15-.5.33v1.34c0 .18.22.33.5.33h4c.28 0 .5-.15.5-.33zM18 6v11a2 2 0 0 1-2 2H9V4h7a2 2 0 0 1 2 2zM6 4h2v15H6z"
       })), this.props.notebook.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "notebook-index-item-count"
-      }, "(4)")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "(", this.props.notebook.num_notes, ")")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notebook-index-item-entry notebook-index-item-created"
       }, "-"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notebook-index-item-entry notebook-index-item-updated"
