@@ -3,7 +3,7 @@ import { closeUIElements } from "../../../actions/ui_actions";
 import { connect } from "react-redux";
 import ConfirmDeleteNoteModalContainer from "./confirm_delete_note_modal_container";
 import RenameNotebookModalContainer from "./rename_notebook_modal_container";
-import CreateNotebookModalContainer from "./rename_notebook_modal_container";
+import CreateNotebookModalContainer from "./create_notebook_modal_container";
 
 function Modal({ modal, closeUIElements }) {
   if (!modal) {

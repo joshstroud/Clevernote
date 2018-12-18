@@ -15,8 +15,11 @@ class CreateNotebookModal extends React.Component {
 
   createNotebook(e) {
     const that = that;
-    const newNotebook = merge(this.props.notebook, { title: this.state.title });
-    this.props.createeNotebook(newNotebook);
+    const newNotebook = {
+      owner_id: this.props.currentUserId,
+      title: this.state.title
+    };
+    this.props.createNotebook(newNotebook);
     this.props.closeUIElements();
   }
 
@@ -31,7 +34,7 @@ class CreateNotebookModal extends React.Component {
         <header>
           <div className="confirm-delete-modal-wrapper">
             <div className="confirm-delete-modal-header">
-              <div>Rename Notebook</div>
+              <div>Create new notebook</div>
               <svg
                 width="13"
                 height="13"
