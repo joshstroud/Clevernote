@@ -43,7 +43,8 @@ class NotesIndex extends Component {
       this.props.selectedNoteId === null ||
       (paramSelectedNoteId &&
         this.props.selectedNoteId !== paramSelectedNoteId) ||
-      Number.isNaN(paramSelectedNoteId)
+      Number.isNaN(paramSelectedNoteId) ||
+      Object.keys(this.props.notes).length === 0
     ) {
       const mostRecentNote = sortNotesByLastUpdate(this.props.notes)[0];
       if (paramSelectedNoteId && this.props.notes[paramSelectedNoteId]) {
@@ -52,6 +53,11 @@ class NotesIndex extends Component {
         this.props.history.push(`${this.props.path}/${mostRecentNote.id}`);
       } else if (mostRecentNote && this.props.path.includes("/notebooks/")) {
         this.props.history.push(`${this.props.path}/${mostRecentNote.id}`);
+      } else if (
+        Object.keys(this.props.notes).length === 0 &&
+        this.props.selectedNoteId
+      ) {
+        this.props.selectNote(null);
       }
     }
   }

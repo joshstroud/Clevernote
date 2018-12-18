@@ -1004,6 +1004,8 @@ function (_Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
+      console.log(this.props.selectedNoteId);
+
       if (!this.props.note) {
         return;
       }
@@ -1059,6 +1061,15 @@ function (_Component) {
       });
     }
   }, {
+    key: "computeWrapperClass",
+    value: function computeWrapperClass() {
+      if (this.props.selectedNoteId) {
+        return "note-show-editor-wrapper";
+      } else {
+        return "note-show-editor-wrapper editor-hidden";
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var titleValue = this.state.title === "Untitled" ? "" : this.state.title;
@@ -1069,7 +1080,7 @@ function (_Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "note-show-editor-wrapper"
+        className: this.computeWrapperClass()
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-editor-title-row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -1801,7 +1812,7 @@ function (_Component) {
     value: function checkNoteRoute() {
       var paramSelectedNoteId = Number(this.props.match.params.noteId);
 
-      if (this.props.selectedNoteId === null || paramSelectedNoteId && this.props.selectedNoteId !== paramSelectedNoteId || Number.isNaN(paramSelectedNoteId)) {
+      if (this.props.selectedNoteId === null || paramSelectedNoteId && this.props.selectedNoteId !== paramSelectedNoteId || Number.isNaN(paramSelectedNoteId) || Object.keys(this.props.notes).length === 0) {
         var mostRecentNote = Object(_util_note_util__WEBPACK_IMPORTED_MODULE_4__["sortNotesByLastUpdate"])(this.props.notes)[0];
 
         if (paramSelectedNoteId && this.props.notes[paramSelectedNoteId]) {
@@ -1810,6 +1821,8 @@ function (_Component) {
           this.props.history.push("".concat(this.props.path, "/").concat(mostRecentNote.id));
         } else if (mostRecentNote && this.props.path.includes("/notebooks/")) {
           this.props.history.push("".concat(this.props.path, "/").concat(mostRecentNote.id));
+        } else if (Object.keys(this.props.notes).length === 0 && this.props.selectedNoteId) {
+          this.props.selectNote(null);
         }
       }
     }

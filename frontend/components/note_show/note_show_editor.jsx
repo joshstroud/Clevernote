@@ -67,6 +67,7 @@ class NoteShowEditor extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    console.log(this.props.selectedNoteId);
     if (!this.props.note) {
       return;
     }
@@ -115,6 +116,14 @@ class NoteShowEditor extends Component {
     this.setState({ focus: false });
   }
 
+  computeWrapperClass() {
+    if (this.props.selectedNoteId) {
+      return "note-show-editor-wrapper";
+    } else {
+      return "note-show-editor-wrapper editor-hidden";
+    }
+  }
+
   render() {
     const titleValue = this.state.title === "Untitled" ? "" : this.state.title;
 
@@ -123,7 +132,7 @@ class NoteShowEditor extends Component {
       editorClassName = "note-show-quill show-toolbar-animation";
     }
     return (
-      <div className="note-show-editor-wrapper">
+      <div className={this.computeWrapperClass()}>
         <div className="note-show-editor-title-row">
           <input
             type="text"
