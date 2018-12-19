@@ -7,6 +7,12 @@ class Note < ApplicationRecord
 
   belongs_to :notebook
 
+  has_many :taggings
+
+  has_many :tags,
+    through: :taggings,
+    source: :tags
+
   def self.sorted_user_notes(user)
      Note.where(author_id: user.id).order(updated_at: :asc)
   end
