@@ -951,6 +951,7 @@ function (_Component) {
       };
     }
 
+    _this.autosaveTimeoutId = null;
     _this.handleEditorChange = _this.handleEditorChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.saveNote = _this.saveNote.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleTitleChange = _this.handleTitleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -1032,6 +1033,7 @@ function (_Component) {
   }, {
     key: "handleEditorChange",
     value: function handleEditorChange(value) {
+      this.startAutosaveTimer();
       this.setState({
         body: value
       });
@@ -1039,7 +1041,10 @@ function (_Component) {
   }, {
     key: "saveNote",
     value: function saveNote(e) {
-      e.preventDefault();
+      if (e) {
+        e.preventDefault();
+      }
+
       var updatedNote = lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, this.props.note, {
         body: this.state.body,
         title: this.state.title
@@ -1050,6 +1055,7 @@ function (_Component) {
     key: "handleTitleChange",
     value: function handleTitleChange(e) {
       e.preventDefault();
+      this.startAutosaveTimer();
       this.setState({
         title: e.target.value
       });
@@ -1060,6 +1066,15 @@ function (_Component) {
       this.setState({
         focus: true
       });
+    }
+  }, {
+    key: "startAutosaveTimer",
+    value: function startAutosaveTimer() {
+      if (this.autosaveTimeoutId) {
+        clearTimeout(this.autosaveTimeoutId);
+      }
+
+      this.autosaveTimeoutId = setTimeout(this.saveNote.bind(this), 500);
     }
   }, {
     key: "handleEditorBlur",
@@ -1097,10 +1112,7 @@ function (_Component) {
         value: titleValue,
         onChange: this.handleTitleChange,
         placeholder: "Title"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.saveNote,
-        className: "modal-submit-button note-show-save-button"
-      }, "Save")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_quill__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_quill__WEBPACK_IMPORTED_MODULE_1___default.a, {
         className: editorClassName,
         value: this.state.body,
         onChange: this.handleEditorChange,

@@ -19,16 +19,17 @@
 }
 
 .note-show-editor-wrapper .note-show-quill .note-show-editing-area {
-  height: calc(100% - 61px - 52px);
+  height: calc(100% - 61px - 29px);
   line-height: 1.45 !important;
-  padding: 12px 40px 0 40px;
+  padding: 0 40px 0 40px;
+  margin-top: -20px;
 }
 
 .note-show-editor-title-row {
   display: flex;
   align-items: center;
   position: relative;
-  top: 78px;
+  top: 50px;
   margin-bottom: -33px;
 }
 
