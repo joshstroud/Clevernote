@@ -1,20 +1,22 @@
 import { connect } from "react-redux";
 import NoteShow from "./note_show";
 import { updateNote } from "../../actions/note_actions";
-import {
-  dummyNotebooks,
-  dummyTaggings,
-  dummyTags
-} from "../../util/dummy_data";
+
 import { openDropdown } from "../../actions/ui_actions";
-import { findSelectedNotebookForNoteShow } from "../../util/selectors";
+import {
+  findSelectedNotebookForNoteShow,
+  findTagsForSelectedNote,
+  findTaggingsForSelectedNote
+} from "../../util/selectors";
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(findSelectedNotebookForNoteShow(state));
+  console.log(findTagsForSelectedNote(state));
+  console.log(findTaggingsForSelectedNote(state));
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
     notebook: findSelectedNotebookForNoteShow(state),
-    tags: dummyTags,
+    tags: findTagsForSelectedNote(state),
+    taggings: findTaggingsForSelectedNote(state),
     selectedNoteId: state.ui.selectedNoteId
   };
 };

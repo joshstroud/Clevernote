@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import NotesIndex from "./notes_index";
 import { fetchNotes } from "../../actions/note_actions";
 import { fetchNotebooks } from "../../actions/notebook_actions";
+import { fetchTags, fetchTaggings } from "../../actions/tag_actions";
 import { selectNote, selectNotebook } from "../../actions/ui_actions";
 import { withRouter } from "react-router";
 
@@ -19,7 +20,8 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchNotes: () => dispatch(fetchNotes()),
     fetchNotebooks: () => dispatch(fetchNotebooks()),
-
+    fetchTags: () => dispatch(fetchTags()),
+    fetchTaggings: () => dispatch(fetchTaggings()),
     selectNote: noteId => dispatch(selectNote(noteId)),
     selectNotebook: notebookId => dispatch(selectNotebook(notebookId))
   };

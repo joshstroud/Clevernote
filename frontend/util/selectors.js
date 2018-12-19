@@ -49,3 +49,44 @@ export const findSelectedOrDefaultNotebook = (state) => {
 
   return findSelectedNotebook(state) || defaultNotebook;
 }
+
+export const findTagsForSelectedNote = (state) => {
+  if (!state.ui.selectedNoteId) {
+    return null;
+  }
+
+  const taggingsForSelectedNote = findTaggingsForSelectedNote(state);
+
+  if (Object.keys(taggingsForSelectedNote).length === 0) {
+    return {};
+  }
+  return pickBy(state.entities.tags, (tag, tagId) => {
+
+    const tagExistsInTaggings =
+      Object.keys(pickBy(taggingsForSelectedNote, (tagging, taggingId) => {
+        return tagging.tag_id === tag.id;
+        // console.log(`taging tag id: ${tagging.tag_id}, tag id: ${tag.id}`)
+
+      })).length > 0;
+    // console.log(`tagExistsInTaggings: ${tagExistsInTaggings}`)
+
+    return tagExistsInTaggings;
+  })
+}
+
+export const findTaggingsForSelectedNote = (state) => {
+  if (!state.ui.selectedNoteId) {
+    return null;
+  }
+
+  // const currentSelectedNoteTags = findTagsForSelectedNote(state);
+  console.log(`${state.ui.selectedNoteId}`)
+  if (state.ui.selectedNoteId) {
+    return pickBy(state.entities.taggings, (tagging, taggingId) => {
+      // const taggingHasCurrentTag = pickBy(currentSelectedNoteTags, (tag, tagId) => tag.id === tagging.tag_id).length > 0
+      const taggingHasCurrentNote = tagging.note_id === state.ui.selectedNoteId
+      // console.log(`tagging note id: ${tagging.note_id}, ${taggingHasCurrentNote}`)
+      return taggingHasCurrentNote
+    })
+  }
+}

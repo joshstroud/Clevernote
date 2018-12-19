@@ -3,6 +3,9 @@ import NoteShowTag from "./note_show_tag";
 
 class NoteShowTagList extends Component {
   renderTags() {
+    if (!this.props.tags) {
+      return null;
+    }
     return Object.keys(this.props.tags).map(tagId => {
       return <NoteShowTag key={tagId} tag={this.props.tags[tagId]} />;
     });

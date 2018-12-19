@@ -15,6 +15,8 @@ class NotesIndex extends Component {
   componentDidMount() {
     this.props.fetchNotes();
     this.props.fetchNotebooks();
+    this.props.fetchTags();
+    this.props.fetchTaggings();
   }
 
   componentDidUpdate() {
@@ -72,7 +74,6 @@ class NotesIndex extends Component {
       !paramNotebookId &&
       this.props.selectedNotebookId !== ALL_NOTES_NOTEBOOK
     ) {
-      console.log(ALL_NOTES_NOTEBOOK);
       this.props.selectNotebook(ALL_NOTES_NOTEBOOK);
     }
   }
