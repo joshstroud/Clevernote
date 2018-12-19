@@ -3,7 +3,7 @@ import { closeUIElements, openModal } from "../../../actions/ui_actions";
 import { connect } from "react-redux";
 import { logout } from "../../../actions/session_actions";
 import { withRouter } from "react-router-dom";
-import { deleteNote } from "../../../actions/note_actions";
+import { deleteNote, updateNote } from "../../../actions/note_actions";
 import NoteShowSettingsDropdown from "./note_show_settings_dropdown";
 
 const mapStateToProps = (state, ownProps) => {
@@ -23,7 +23,8 @@ const mapDispatchToProps = dispatch => {
     closeUIElements: () => dispatch(closeUIElements()),
     deleteNote: noteId => dispatch(deleteNote(noteId)),
     createNote: note => dispatch(createNote(note)),
-    openModal: component => dispatch(openModal(component))
+    openModal: component => dispatch(openModal(component)),
+    updateNote: note => dispatch(updateNote(note))
   };
 };
 

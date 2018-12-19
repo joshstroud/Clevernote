@@ -13,6 +13,7 @@ class NoteShowSettingsDropdown extends React.Component {
   moveNoteToNotebook(e) {
     //console.log("Move note to notebook action");
     this.props.closeUIElements();
+    let note = this.props.selectedNote;
   }
 
   duplicateNote(e) {
@@ -51,12 +52,12 @@ class NoteShowSettingsDropdown extends React.Component {
           onClick={e => e.stopPropagation()}
         >
           <ul>
-            <li
+            {/* <li
               className="note-show-settings-dropdown-row"
               onClick={this.moveNoteToNotebook}
             >
               Move to...
-            </li>
+            </li> */}
             <li
               className="note-show-settings-dropdown-row"
               onClick={this.duplicateNote}

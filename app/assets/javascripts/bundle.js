@@ -3262,6 +3262,7 @@ function (_React$Component) {
     value: function moveNoteToNotebook(e) {
       //console.log("Move note to notebook action");
       this.props.closeUIElements();
+      var note = this.props.selectedNote;
     }
   }, {
     key: "duplicateNote",
@@ -3302,9 +3303,6 @@ function (_React$Component) {
           return e.stopPropagation();
         }
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-        className: "note-show-settings-dropdown-row",
-        onClick: this.moveNoteToNotebook
-      }, "Move to..."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         className: "note-show-settings-dropdown-row",
         onClick: this.duplicateNote
       }, "Duplicate note"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
@@ -3383,6 +3381,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     }),
     openModal: function openModal(component) {
       return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["openModal"])(component));
+    },
+    updateNote: function updateNote(note) {
+      return dispatch(Object(_actions_note_actions__WEBPACK_IMPORTED_MODULE_5__["updateNote"])(note));
     }
   };
 };
