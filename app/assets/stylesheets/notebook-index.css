@@ -114,14 +114,12 @@
 }
 
 .notebook-index-list-header-title {
-  flex-basis: 30%;
   color: #b3b3b3;
   font-weight: 400;
   padding: 0.5rem;
 }
 
 .notebook-index-list-header-created {
-
   padding: 0.5rem;
 }
 
@@ -138,4 +136,29 @@
 .notebook-index-list-header-actions {
 
   padding: 0.5rem;
+}
+
+.notebook-index-list-header-title,
+.notebook-index-item-title-container {
+  width: 400px;
+}
+
+.notebook-index-list-header-created,
+.notebook-index-item-created {
+  width: 160px;
+}
+
+.notebook-index-list-header-updated,
+.notebook-index-item-updated {
+  width: 160px;
+}
+
+.notebook-index-list-header-shared,
+.notebook-index-item-shared {
+  width: 120px;
+}
+
+.notebook-index-list-header-actions,
+.notebook-index-item-actions {
+  margin-left: auto;
 }

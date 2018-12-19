@@ -3,6 +3,8 @@ export const OPEN_DROPDOWN = "OPEN_DROPDOWN";
 export const OPEN_MODAL = "OPEN_MODAL";
 export const CLOSE_UI_ELEMENTS = "CLOSE_UI_ELEMENTS";
 export const SELECT_NOTEBOOK = "SELECT_NOTEBOOK";
+// export const START_LOADING_NOTE = "START_LOADING_NOTE";
+// export const END_LOADING_NOTE = "END_LOADING_NOTE";
 
 export const selectNote = (noteId) => {
   return {
