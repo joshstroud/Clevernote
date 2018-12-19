@@ -3,7 +3,11 @@ import { closeUIElements, openModal } from "../../../actions/ui_actions";
 import { connect } from "react-redux";
 import { logout } from "../../../actions/session_actions";
 import { withRouter } from "react-router-dom";
-import { deleteNote, updateNote } from "../../../actions/note_actions";
+import {
+  deleteNote,
+  updateNote,
+  createNote
+} from "../../../actions/note_actions";
 import NoteShowSettingsDropdown from "./note_show_settings_dropdown";
 
 const mapStateToProps = (state, ownProps) => {

@@ -3380,19 +3380,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     deleteNote: function deleteNote(noteId) {
       return dispatch(Object(_actions_note_actions__WEBPACK_IMPORTED_MODULE_5__["deleteNote"])(noteId));
     },
-    createNote: function (_createNote) {
-      function createNote(_x) {
-        return _createNote.apply(this, arguments);
-      }
-
-      createNote.toString = function () {
-        return _createNote.toString();
-      };
-
-      return createNote;
-    }(function (note) {
-      return dispatch(createNote(note));
-    }),
+    createNote: function createNote(note) {
+      return dispatch(Object(_actions_note_actions__WEBPACK_IMPORTED_MODULE_5__["createNote"])(note));
+    },
     openModal: function openModal(component) {
       return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["openModal"])(component));
     },
@@ -3458,7 +3448,8 @@ function (_React$Component) {
   _createClass(NotebookActionsDropdown, [{
     key: "renameNotebook",
     value: function renameNotebook(e) {
-      // console.log("Rename notebook action");
+      console.log("Rename notebook action");
+      debugger;
       this.props.closeUIElements();
       this.props.openModal("rename-notebook");
     }
