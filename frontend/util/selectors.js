@@ -26,14 +26,18 @@ export const selectTagsForNoteId = (state) => {
 
 }
 
+export const findSelectedNotebookForNoteShow = (state) => {
+  if (state.ui.selectedNoteId &&
+    Object.keys(state.entities.notes).length > 0 &&
+    Object.keys(state.entities.notebooks).length > 0) {
+    return state.entities.notebooks[state.entities.notes[state.ui.selectedNoteId].notebook_id]
+  } else {
+    return null;
+  }
+}
+
 export const findSelectedNotebook = (state) => {
-  // if (state.ui.selectedNoteId &&
-  //   Object.keys(state.entities.notes).length > 0 &&
-  //   Object.keys(state.entities.notebooks).length > 0) {
-  //   return state.entities.notebooks[state.entities.notes[state.ui.selectedNoteId].notebook_id]
-  // } else {
-  //   return null;
-  // }
+
   return state.entities.notebooks[state.ui.selectedNotebookId];
 }
 

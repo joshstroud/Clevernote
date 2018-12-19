@@ -13,8 +13,19 @@ class NoteShowNav extends Component {
     this.props.openDropdown("note-show-settings");
   }
 
-  renderNotebookTitle() {
-    return this.props.notebook ? this.props.notebook.title : null;
+  renderNotebookLink() {
+    if (this.props.notebook) {
+      return (
+        <Link
+          className="note-show-notebook-title"
+          to={`/app/notebook/${this.props.notebook.id}`}
+        >
+          {this.props.notebook.title}
+        </Link>
+      );
+    } else {
+      return null;
+    }
   }
 
   render() {
@@ -63,9 +74,7 @@ class NoteShowNav extends Component {
                 d="M3 2v10h7a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zM2 1h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2V1zm2 1v10h1V2H4zm2 3v1h4V5H6z"
               />
             </svg>
-            <Link className="note-show-notebook-title" to="/app/notes">
-              {this.renderNotebookTitle()}
-            </Link>
+            {this.renderNotebookLink()}
           </div>
         </div>
         <div className="note-show-right">
