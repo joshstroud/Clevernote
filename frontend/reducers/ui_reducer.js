@@ -3,13 +3,17 @@ import {
   SELECT_NOTEBOOK,
   OPEN_DROPDOWN,
   OPEN_MODAL,
-  CLOSE_UI_ELEMENTS
+  CLOSE_UI_ELEMENTS,
+  START_LOADING_NOTE,
+  END_LOADING_NOTE
 } from '../actions/ui_actions';
 
 import merge from 'lodash/merge';
 
 const defaultUIState = {
-  selectedNoteId: null
+  selectedNoteId: null,
+  selectedNotebookId: null,
+  loading_note: true
 };
 
 const ui = (state = defaultUIState, action) => {
@@ -37,6 +41,14 @@ const ui = (state = defaultUIState, action) => {
       return merge({}, state, {
         dropdown: null,
         modal: null
+      })
+    case START_LOADING_NOTE:
+      return merge({}, state, {
+        loading_note: true
+      })
+    case END_LOADING_NOTE:
+      return merge({}, state, {
+        loading_note: false
       })
     default:
       return state;
