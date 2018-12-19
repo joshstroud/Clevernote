@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_19_050942) do
+ActiveRecord::Schema.define(version: 2018_12_19_173336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,9 @@ ActiveRecord::Schema.define(version: 2018_12_19_050942) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "owner_id"
+    t.index ["name", "owner_id"], name: "index_tags_on_name_and_owner_id", unique: true
+    t.index ["owner_id"], name: "index_tags_on_owner_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -15,8 +15,8 @@ class User < ApplicationRecord
     foreign_key: :owner_id
 
   has_many :tags,
-    through: :notes,
-    source: :tags
+    foreign_key: :owner_id,
+    class_name: :Tag
   
   has_many :taggings,
     through: :tags,
