@@ -10,12 +10,12 @@ class Api::TaggingsController < ApplicationController
 
 
   def create
-    @taggings = Taggings.new(taggings_params)
+    @tagging = Tagging.new(tagging_params)
 
-    if @taggings.save
+    if @tagging.save
       render :show
     else
-      render json: @taggings.errors.full_messages, status: 422
+      render json: @tagging.errors.full_messages, status: 422
     end
   end
 
@@ -23,7 +23,7 @@ class Api::TaggingsController < ApplicationController
     @tagging = Tagging.find_by(id: params[:id])
 
     if @tagging
-      @taggings.destroy
+      @tagging.destroy
       render :show
     else
       render json: ["Tagging does not exist"], status: 404
@@ -31,7 +31,7 @@ class Api::TaggingsController < ApplicationController
   end
 
   private 
-  def taggings_params
-    params.require(:taggings).permit(:note_id, :tag_id)
+  def tagging_params
+    params.require(:tagging).permit(:note_id, :tag_id)
   end
 end
