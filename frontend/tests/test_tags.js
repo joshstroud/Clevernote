@@ -1,38 +1,40 @@
-import * as NotebookApiUtil from "../util/notebook_api_util"
+import * as TagApiUtil from "../util/tag_api_util"
 
-import {
-  fetchNotebooks,
-  fetchNotebookNotes,
-  receiveNotebook,
-  createNotebook,
-  updateNotebook,
-  deleteNotebook,
-  receiveNotebookErrors
-} from "../actions/notebook_actions"
+// import {
+//   fetchTags,
+//   fetchNotesWithTag,
+//   receiveTag,
+//   createTag,
+//   updateTag,
+//   deleteTag,
+//   receiveTagErrors
+// } from "../actions/Tag_actions"
 
-export const testNotebooks = (store) => {
-  // testNotebookApiUtil();
-  testNotebooksRedux();
+export const testTags = (store) => {
+  testTagApiUtil();
+  // testTagsRedux();
   setupStoreTesting(store);
 
 }
 
-const testNotebookApiUtil = () => {
-  window.fetchNotebooks = NotebookApiUtil.fetchNotebooks;
-  window.fetchNotebookNotes = NotebookApiUtil.fetchNotebookNotes;
-  window.createNotebook = NotebookApiUtil.createNotebook;
-  window.updateNotebook = NotebookApiUtil.updateNotebook;
-  window.deleteNotebook = NotebookApiUtil.deleteNotebook;
+const testTagApiUtil = () => {
+  window.fetchTags = TagApiUtil.fetchTags;
+  window.fetchNotesWithTag = TagApiUtil.fetchNotesWithTag;
+  window.createTag = TagApiUtil.createTag;
+  window.deleteTag = TagApiUtil.deleteTag;
+  window.fetchTaggings = TagApiUtil.fetchTaggings;
+  window.createTagging = TagApiUtil.createTagging;
+  window.deleteTagging = TagApiUtil.deleteTagging;
 }
 
-const testNotebooksRedux = () => {
-  window.fetchNotebooks = fetchNotebooks;
-  window.fetchNotebookNotes = fetchNotebookNotes;
-  window.receiveNotebook = receiveNotebook;
-  window.createNotebook = createNotebook;
-  window.updateNotebook = updateNotebook;
-  window.deleteNotebook = deleteNotebook;
-  window.receiveNotebookErrors = receiveNotebookErrors;
+const testTagsRedux = () => {
+  window.fetchTags = fetchTags;
+  window.fetchNotesWithTag = fetchNotesWithTag;
+  window.receiveTag = receiveTag;
+  window.createTag = createTag;
+  window.updateTag = updateTag;
+  window.deleteTag = deleteTag;
+  window.receiveTagErrors = receiveTagErrors;
 }
 
 const setupStoreTesting = (store) => {

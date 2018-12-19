@@ -5,12 +5,14 @@ import { testNotes } from "./tests/test_notes";
 import configureStore from "./store/store";
 import Root from "./components/root";
 import { testNotebooks } from "./tests/test_notebooks";
+import { testTags } from "./tests/test_tags";
 
 document.addEventListener("DOMContentLoaded", () => {
   const store = setupStoreWithUserLogin();
 
   // testNotes(store);
-  testNotebooks(store);
+  // testNotebooks(store);
+  testTags(store);
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, root);
 });

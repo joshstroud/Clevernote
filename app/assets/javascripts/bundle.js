@@ -438,6 +438,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _tests_test_notebooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tests/test_notebooks */ "./frontend/tests/test_notebooks.js");
+/* harmony import */ var _tests_test_tags__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tests/test_tags */ "./frontend/tests/test_tags.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -447,10 +448,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 document.addEventListener("DOMContentLoaded", function () {
   var store = setupStoreWithUserLogin(); // testNotes(store);
+  // testNotebooks(store);
 
-  Object(_tests_test_notebooks__WEBPACK_IMPORTED_MODULE_5__["testNotebooks"])(store);
+  Object(_tests_test_tags__WEBPACK_IMPORTED_MODULE_6__["testTags"])(store);
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_4__["default"], {
     store: store
@@ -4835,6 +4838,65 @@ var user = {
 
 /***/ }),
 
+/***/ "./frontend/tests/test_tags.js":
+/*!*************************************!*\
+  !*** ./frontend/tests/test_tags.js ***!
+  \*************************************/
+/*! exports provided: testTags */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "testTags", function() { return testTags; });
+/* harmony import */ var _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/tag_api_util */ "./frontend/util/tag_api_util.js");
+ // import {
+//   fetchTags,
+//   fetchNotesWithTag,
+//   receiveTag,
+//   createTag,
+//   updateTag,
+//   deleteTag,
+//   receiveTagErrors
+// } from "../actions/Tag_actions"
+
+var testTags = function testTags(store) {
+  testTagApiUtil(); // testTagsRedux();
+
+  setupStoreTesting(store);
+};
+
+var testTagApiUtil = function testTagApiUtil() {
+  window.fetchTags = _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTags"];
+  window.fetchNotesWithTag = _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchNotesWithTag"];
+  window.createTag = _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__["createTag"];
+  window.deleteTag = _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteTag"];
+  window.fetchTaggings = _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTaggings"];
+  window.createTagging = _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__["createTagging"];
+  window.deleteTagging = _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteTagging"];
+};
+
+var testTagsRedux = function testTagsRedux() {
+  window.fetchTags = fetchTags;
+  window.fetchNotesWithTag = fetchNotesWithTag;
+  window.receiveTag = receiveTag;
+  window.createTag = createTag;
+  window.updateTag = updateTag;
+  window.deleteTag = deleteTag;
+  window.receiveTagErrors = receiveTagErrors;
+};
+
+var setupStoreTesting = function setupStoreTesting(store) {
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+};
+
+var user = {
+  email: "josh@gmail.com",
+  password: "password"
+};
+
+/***/ }),
+
 /***/ "./frontend/util/dummy_data.js":
 /*!*************************************!*\
   !*** ./frontend/util/dummy_data.js ***!
@@ -5189,6 +5251,69 @@ var logout = function logout() {
   return $.ajax({
     method: 'DELETE',
     url: '/api/session'
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/tag_api_util.js":
+/*!***************************************!*\
+  !*** ./frontend/util/tag_api_util.js ***!
+  \***************************************/
+/*! exports provided: fetchTags, fetchNotesWithTag, createTag, deleteTag, fetchTaggings, createTagging, deleteTagging */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTags", function() { return fetchTags; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchNotesWithTag", function() { return fetchNotesWithTag; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTag", function() { return createTag; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteTag", function() { return deleteTag; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTaggings", function() { return fetchTaggings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTagging", function() { return createTagging; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteTagging", function() { return deleteTagging; });
+var fetchTags = function fetchTags() {
+  return $.ajax({
+    url: "/api/tags",
+    method: "GET"
+  });
+};
+var fetchNotesWithTag = function fetchNotesWithTag(tagId) {
+  return $.ajax({
+    url: "/api/tags/".concat(tagId),
+    method: "GET"
+  });
+};
+var createTag = function createTag(tag) {
+  return $.ajax({
+    url: "/api/tags",
+    method: "POST",
+    data: tag
+  });
+};
+var deleteTag = function deleteTag(tagId) {
+  return $.ajax({
+    url: "/api/tags/".concat(tagId),
+    method: "DELETE"
+  });
+};
+var fetchTaggings = function fetchTaggings() {
+  return $.ajax({
+    url: "/api/taggings",
+    method: "GET"
+  });
+};
+var createTagging = function createTagging(tagging) {
+  return $.ajax({
+    url: "/api/taggings",
+    method: "POST",
+    data: tagging
+  });
+};
+var deleteTagging = function deleteTagging(tagId) {
+  return $.ajax({
+    url: "/api/taggings/".concat(tagId),
+    method: "DELETE"
   });
 };
 
