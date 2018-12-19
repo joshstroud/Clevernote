@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :notes, only: [:index, :show, :create, :update, :destroy]
     resources :notebooks, only: [:index, :show, :create, :update, :destroy]
+    resources :tags, only: [:index, :show, :create, :destroy]
+    resources :taggings, only: [:index, :create, :destroy]
   end
 
   get '*unmatched_route', to: 'application#not_found'
