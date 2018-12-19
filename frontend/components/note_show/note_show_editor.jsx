@@ -18,6 +18,7 @@ class NoteShowEditor extends Component {
       };
     }
 
+    this.autosaveTimeoutId = null;
     this.handleEditorChange = this.handleEditorChange.bind(this);
     this.saveNote = this.saveNote.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -88,11 +89,15 @@ class NoteShowEditor extends Component {
   }
 
   handleEditorChange(value) {
+    this.startAutosaveTimer();
+
     this.setState({ body: value });
   }
 
   saveNote(e) {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     let updatedNote = merge({}, this.props.note, {
       body: this.state.body,
       title: this.state.title
@@ -103,11 +108,20 @@ class NoteShowEditor extends Component {
 
   handleTitleChange(e) {
     e.preventDefault();
+    this.startAutosaveTimer();
     this.setState({ title: e.target.value });
   }
 
   handleEditorFocus(e) {
     this.setState({ focus: true });
+  }
+
+  startAutosaveTimer() {
+    if (this.autosaveTimeoutId) {
+      clearTimeout(this.autosaveTimeoutId);
+    }
+
+    this.autosaveTimeoutId = setTimeout(this.saveNote.bind(this), 500);
   }
 
   handleEditorBlur(e) {
@@ -139,12 +153,12 @@ class NoteShowEditor extends Component {
             onChange={this.handleTitleChange}
             placeholder="Title"
           />
-          <button
+          {/* <button
             onClick={this.saveNote}
             className="modal-submit-button note-show-save-button"
           >
             Save
-          </button>
+          </button> */}
         </div>
         <ReactQuill
           className={editorClassName}
