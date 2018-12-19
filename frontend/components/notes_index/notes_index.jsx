@@ -2,7 +2,10 @@ import React, { Component, createRef } from "react";
 import NotesIndexItem from "./notes_index_item";
 import { findDOMNode } from "react-dom";
 import { withRouter } from "react-router-dom";
-import { sortNotesByLastUpdate } from "../../util/note_util";
+import {
+  sortNotesByLastUpdate,
+  ALL_NOTES_NOTEBOOK
+} from "../../util/note_util";
 
 class NotesIndex extends Component {
   constructor(props) {
@@ -47,6 +50,7 @@ class NotesIndex extends Component {
       Object.keys(this.props.notes).length === 0
     ) {
       const mostRecentNote = sortNotesByLastUpdate(this.props.notes)[0];
+
       if (paramSelectedNoteId && this.props.notes[paramSelectedNoteId]) {
         this.props.selectNote(paramSelectedNoteId);
       } else if (mostRecentNote) {
@@ -59,6 +63,17 @@ class NotesIndex extends Component {
       ) {
         this.props.selectNote(null);
       }
+    }
+
+    let paramNotebookId = Number(this.props.match.params.notebookId);
+    if (paramNotebookId && paramNotebookId !== this.props.selectedNotebookId) {
+      this.props.selectNotebook(paramNotebookId);
+    } else if (
+      !paramNotebookId &&
+      this.props.selectedNotebookId !== ALL_NOTES_NOTEBOOK
+    ) {
+      console.log(ALL_NOTES_NOTEBOOK);
+      this.props.selectNotebook(ALL_NOTES_NOTEBOOK);
     }
   }
 

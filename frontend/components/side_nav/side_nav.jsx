@@ -3,12 +3,14 @@ import UserDropdownContainer from "../ui_elements/dropdowns/user_dropdown_contai
 import { getUsernameFromUser } from "../../util/user_util";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideNavNotebookListItem from "./side_nav_notebook_list_item";
+import { ALL_NOTES_NOTEBOOK } from "../../util/note_util";
 import {
   faChevronDown,
   faCaretRight,
   faCaretDown
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { findSelectedOrDefaultNotebook } from "../../util/selectors";
 
 class SideNav extends Component {
   constructor(props) {
@@ -62,12 +64,18 @@ class SideNav extends Component {
       title: "Untitled",
       body: "",
       author_id: this.props.currentUser.id,
-      notebook_id: 1
-      // fix this hard coding when I add notebooks
+      notebook_id: this.props.defaultCreationNotebookId
     };
+
     const that = this;
     this.props.createNote(blankNote).then(res => {
-      that.props.history.push(`${that.props.path}/${res.note.id}`);
+      if (that.props.selectedNotebookId === -1) {
+        that.props.history.push(`/app/notes/${res.note.id}`);
+      } else {
+        that.props.history.push(
+          `/app/notebooks/${this.props.selectedNotebookId}/notes/${res.note.id}`
+        );
+      }
     });
   }
 

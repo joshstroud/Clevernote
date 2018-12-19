@@ -1,3 +1,5 @@
+export const ALL_NOTES_NOTEBOOK = -1
+
 export const sortNotesByLastUpdate = notes => {
   let notesArr = Object.values(notes);
 

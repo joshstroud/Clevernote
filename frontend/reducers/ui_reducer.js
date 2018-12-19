@@ -1,5 +1,6 @@
 import {
   SELECT_NOTE,
+  SELECT_NOTEBOOK,
   OPEN_DROPDOWN,
   OPEN_MODAL,
   CLOSE_UI_ELEMENTS
@@ -18,6 +19,11 @@ const ui = (state = defaultUIState, action) => {
       return merge({}, state, {
         selectedNoteId: action.noteId
       })
+    case SELECT_NOTEBOOK:
+      return merge({},
+        state, {
+          selectedNotebookId: action.notebookId
+        })
     case OPEN_DROPDOWN:
       return merge({}, state, {
         dropdown: action.component,

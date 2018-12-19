@@ -1,17 +1,22 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import SideNav from "./side_nav";
-import { dummyNotebooks } from "../../util/dummy_data";
 import { createNote } from "../../actions/note_actions";
-import { selectNote } from "../../actions/ui_actions";
 import { openDropdown } from "../../actions/ui_actions";
-import { logout } from "../../actions/session_actions";
+import { findSelectedOrDefaultNotebook } from "../../util/selectors";
 
 const mapStateToProps = (state, ownProps) => {
+  let defaultCreationNotebookId = null;
+  if (findSelectedOrDefaultNotebook(state)) {
+    defaultCreationNotebookId = findSelectedOrDefaultNotebook(state).id;
+  }
+
   return {
     currentUser: state.entities.users[state.session.id],
     notebooks: state.entities.notebooks,
-    path: "/app/notes"
+    path: ownProps.location.pathname,
+    defaultCreationNotebookId,
+    selectedNotebookId: state.ui.selectedNotebookId
   };
 };
 
