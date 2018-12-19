@@ -12,6 +12,7 @@ class Api::TaggingsController < ApplicationController
   def create
     @tagging = Tagging.new(tagging_params)
 
+      
     if @tagging.save
       render :show
     else

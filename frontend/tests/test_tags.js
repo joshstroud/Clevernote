@@ -1,18 +1,20 @@
 import * as TagApiUtil from "../util/tag_api_util"
 
-// import {
-//   fetchTags,
-//   fetchNotesWithTag,
-//   receiveTag,
-//   createTag,
-//   updateTag,
-//   deleteTag,
-//   receiveTagErrors
-// } from "../actions/Tag_actions"
+import {
+  fetchTags,
+  fetchNotesWithTag,
+  createTag,
+  deleteTag,
+  fetchTaggings,
+  createTagging,
+  deleteTagging,
+  receiveTagErrors,
+  receiveTaggingErrors
+} from "../actions/tag_actions"
 
 export const testTags = (store) => {
-  testTagApiUtil();
-  // testTagsRedux();
+  // testTagApiUtil();
+  testTagsRedux();
   setupStoreTesting(store);
 
 }
@@ -30,11 +32,13 @@ const testTagApiUtil = () => {
 const testTagsRedux = () => {
   window.fetchTags = fetchTags;
   window.fetchNotesWithTag = fetchNotesWithTag;
-  window.receiveTag = receiveTag;
   window.createTag = createTag;
-  window.updateTag = updateTag;
   window.deleteTag = deleteTag;
+  window.fetchTaggings = fetchTaggings;
+  window.createTagging = createTagging;
+  window.deleteTagging = deleteTagging;
   window.receiveTagErrors = receiveTagErrors;
+  window.receiveTaggingErrors = receiveTaggingErrors;
 }
 
 const setupStoreTesting = (store) => {
