@@ -798,7 +798,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _all_notes_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./all_notes_page */ "./frontend/components/main_page/all_notes_page.jsx");
 /* harmony import */ var _notebooks_index_notebooks_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../notebooks_index/notebooks_index_container */ "./frontend/components/notebooks_index/notebooks_index_container.jsx");
-/* harmony import */ var _tags_index_tags_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../tags_index/tags_index_container */ "./frontend/components/tags_index/tags_index_container.jsx");
+/* harmony import */ var _tags_index_tags_index_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../tags_index/tags_index_container */ "./frontend/components/tags_index/tags_index_container.jsx");
 /* harmony import */ var _notebook_notes_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./notebook_notes_page */ "./frontend/components/main_page/notebook_notes_page.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -862,7 +862,7 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
         exact: true,
         path: "/app/tags",
-        component: _tags_index_tags_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+        component: _tags_index_tags_index_container__WEBPACK_IMPORTED_MODULE_3__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Redirect"], {
         to: "/app/notes"
       })));
@@ -3303,6 +3303,27 @@ var SplashHero = function SplashHero(props) {
 
 /***/ }),
 
+/***/ "./frontend/components/tags_index/tag_index_item.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/tags_index/tag_index_item.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var TagIndexItem = function TagIndexItem(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Tag Index Item");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (TagIndexItem);
+
+/***/ }),
+
 /***/ "./frontend/components/tags_index/tags_index.jsx":
 /*!*******************************************************!*\
   !*** ./frontend/components/tags_index/tags_index.jsx ***!
@@ -3314,6 +3335,7 @@ var SplashHero = function SplashHero(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tag_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tag_index_item */ "./frontend/components/tags_index/tag_index_item.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3334,6 +3356,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var TagsIndex =
 /*#__PURE__*/
 function (_Component) {
@@ -3347,15 +3370,89 @@ function (_Component) {
 
   _createClass(TagsIndex, [{
     key: "componentDidMount",
-    value: function componentDidMount() {// this.props.fetchTags();
-      // this.props.fetchTaggings();
+    value: function componentDidMount() {
+      this.props.fetchTags();
+      this.props.fetchTaggings();
+    }
+  }, {
+    key: "sortTagsByFirstChar",
+    value: function sortTagsByFirstChar() {
+      var sortedTags = {};
+      Object.values(this.props.tags).forEach(function (tag) {
+        var firstChar = tag.name[0];
+
+        if (firstChar.match(/[0-9]/)) {
+          // if first character is a number, store in object as 0
+          firstChar = 0;
+        } else if (!firstChar.match(/[a-z]/i)) {
+          // if first char is not a letter (ie symbol), store in object as 1
+          firstChar = 1;
+        }
+
+        if (!sortedTags[firstChar]) {
+          sortedTags[firstChar] = [];
+        }
+
+        sortedTags[firstChar].push(tag);
+      });
+      return sortedTags;
+    }
+  }, {
+    key: "sortTagKeysAlphabetically",
+    value: function sortTagKeysAlphabetically(sortedTags) {
+      var sortedTagKeys = Object.keys(sortedTags).sort(function (a, b) {
+        if (a === a.toUpperCase() && b === b.toLowerCase()) {
+          return -1;
+        } else if (a === a.toLowerCase() && b === b.toUpperCase()) {
+          return 1;
+        } else if (a < b) {
+          return -1;
+        } else if (a > b) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+      return sortedTagKeys;
+    }
+  }, {
+    key: "renderTagCategories",
+    value: function renderTagCategories() {
+      var sortedTags = this.sortTagsByFirstChar();
+      var sortedTagKeys = this.sortTagKeysAlphabetically(sortedTags); // console.log(sortedTags);
+      // console.log(sortedTagKeys);
+
+      if (Object.keys(sortedTagKeys).length === 0) {
+        return null;
+      }
+
+      var tagCategories = sortedTagKeys.map(function (firstChar) {
+        var tagsForCategory = sortedTags[firstChar].map(function (tag) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, tag.name);
+        });
+
+        if (firstChar === "0") {
+          firstChar = "0 - 9";
+        } else if (firstChar === "1") {
+          firstChar = "#";
+        }
+
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, firstChar, tagsForCategory, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+      });
+      return tagCategories;
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "tags-index-wrapper"
-      }, "Here be tags");
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "tags-index-header-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tags-index-header"
+      }, "Tags")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tags-index-main-wrapper"
+      }, this.renderTagCategories()));
     }
   }]);
 
@@ -3380,6 +3477,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_tag_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/tag_actions */ "./frontend/actions/tag_actions.js");
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
 /* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var _util_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/selectors */ "./frontend/util/selectors.js");
+
 
 
 
@@ -3387,7 +3486,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  return {};
+  return {
+    tags: Object(_util_selectors__WEBPACK_IMPORTED_MODULE_5__["currentUserTags"])(state)
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -3395,8 +3496,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     openDropdown: function openDropdown(component, componentId) {
       return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__["openDropdown"])(component, componentId));
     },
-    fetchTags: dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTags"])()),
-    fetchTaggings: dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTaggings"])())
+    fetchTags: function fetchTags() {
+      return dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTags"])());
+    },
+    fetchTaggings: function fetchTaggings() {
+      return dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTaggings"])());
+    }
   };
 };
 
@@ -5771,15 +5876,15 @@ var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withR
 /*!************************************!*\
   !*** ./frontend/util/selectors.js ***!
   \************************************/
-/*! exports provided: currentUserNotes, currentUserNotebooks, selectNotesInNotebook, selectTagsForNoteId, findSelectedNotebookForNoteShow, findSelectedNotebook, findSelectedOrDefaultNotebook, findTagsForSelectedNote, findTaggingsForSelectedNote */
+/*! exports provided: currentUserNotes, currentUserNotebooks, currentUserTags, selectNotesInNotebook, findSelectedNotebookForNoteShow, findSelectedNotebook, findSelectedOrDefaultNotebook, findTagsForSelectedNote, findTaggingsForSelectedNote */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentUserNotes", function() { return currentUserNotes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentUserNotebooks", function() { return currentUserNotebooks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentUserTags", function() { return currentUserTags; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectNotesInNotebook", function() { return selectNotesInNotebook; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectTagsForNoteId", function() { return selectTagsForNoteId; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findSelectedNotebookForNoteShow", function() { return findSelectedNotebookForNoteShow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findSelectedNotebook", function() { return findSelectedNotebook; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findSelectedOrDefaultNotebook", function() { return findSelectedOrDefaultNotebook; });
@@ -5810,13 +5915,22 @@ var currentUserNotebooks = function currentUserNotebooks(state) {
     return notebook.owner_id === state.session.id;
   });
 };
+var currentUserTags = function currentUserTags(state) {
+  if (Object.keys(state.entities.tags).length === 0) {
+    return {};
+  }
+
+  var tags = state.entities.tags;
+  return lodash_pickby__WEBPACK_IMPORTED_MODULE_0___default()(tags, function (tag, tagId) {
+    return tag.owner_id === state.session.id;
+  });
+};
 var selectNotesInNotebook = function selectNotesInNotebook(state, notebookId) {
   var notes = state.entities.notes;
   return lodash_pickby__WEBPACK_IMPORTED_MODULE_0___default()(notes, function (value, key) {
     return value.notebook_id === notebookId;
   });
 };
-var selectTagsForNoteId = function selectTagsForNoteId(state) {};
 var findSelectedNotebookForNoteShow = function findSelectedNotebookForNoteShow(state) {
   if (state.ui.selectedNoteId && Object.keys(state.entities.notes).length > 0 && Object.keys(state.entities.notebooks).length > 0 && state.entities.notes[state.ui.selectedNoteId]) {
     return state.entities.notebooks[state.entities.notes[state.ui.selectedNoteId].notebook_id];

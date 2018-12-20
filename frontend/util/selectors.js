@@ -26,15 +26,22 @@ export const currentUserNotebooks = (state) => {
   })
 }
 
+export const currentUserTags = (state) => {
+  if (Object.keys(state.entities.tags).length === 0) {
+    return {};
+  }
+
+  const tags = state.entities.tags;
+
+  return pickBy(tags, (tag, tagId) => {
+    return tag.owner_id === state.session.id
+  })
+}
 export const selectNotesInNotebook = (state, notebookId) => {
   const notes = state.entities.notes;
   return pickBy(notes, (value, key) => {
     return value.notebook_id === notebookId
   });
-}
-
-export const selectTagsForNoteId = (state) => {
-
 }
 
 export const findSelectedNotebookForNoteShow = (state) => {
