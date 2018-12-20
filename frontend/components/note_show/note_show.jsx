@@ -21,6 +21,10 @@ class NoteShow extends Component {
           taggings={this.props.taggings}
           tags={this.props.tags}
           openDropdown={this.props.openDropdown}
+          createTagging={this.props.createTagging}
+          selectedNoteId={this.props.selectedNoteId}
+          fetchTags={this.props.fetchTags}
+          fetchTaggings={this.props.fetchTaggings}
         />
       </section>
     );

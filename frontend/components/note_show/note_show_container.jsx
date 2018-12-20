@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import NoteShow from "./note_show";
 import { updateNote } from "../../actions/note_actions";
-
+import { createTagging } from "../../actions/tag_actions";
 import { openDropdown } from "../../actions/ui_actions";
 import {
   findSelectedNotebookForNoteShow,
@@ -25,7 +25,10 @@ const mapDispatchToProps = dispatch => {
   return {
     updateNote: note => dispatch(updateNote(note)),
     openDropdown: (component, componentId) =>
-      dispatch(openDropdown(component, componentId))
+      dispatch(openDropdown(component, componentId)),
+    createTagging: tagging => dispatch(createTagging(tagging)),
+    fetchTags: () => dispatch(fetchTags()),
+    fetchTaggings: () => dispatch(fetchTaggings())
   };
 };
 

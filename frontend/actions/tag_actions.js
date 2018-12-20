@@ -87,8 +87,8 @@ export const receiveTagging = tagging => {
   };
 };
 
-export const createTagging = (tag) => dispatch => {
-  return TagApiUtil.createTagging(tag)
+export const createTagging = (tagging) => dispatch => {
+  return TagApiUtil.createTagging(tagging)
     .then(tagging => dispatch(receiveTagging(tagging)));
 };
 

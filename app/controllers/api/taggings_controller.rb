@@ -11,7 +11,13 @@ class Api::TaggingsController < ApplicationController
 
   def create
     @tagging = Tagging.new(tagging_params)
-
+    unless params[:tagging][:tag_id]
+      tag = Tag.find_by(name: params[:tagging][:name])
+      unless tag
+        tag = Tag.create(owner_id: current_user.id, name: params[:tagging][:name])
+      end
+       @tagging.tag_id = tag.id
+    end
       
     if @tagging.save
       render :show
