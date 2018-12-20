@@ -1,17 +1,18 @@
 import { getUsernameFromUser } from "../../../util/user_util";
 import React from "react";
 
-class UserDropdown extends React.Component {
+class ConfirmDeleteNoteModal extends React.Component {
   constructor(props) {
     super(props);
     this.deleteNote = this.deleteNote.bind(this);
   }
 
   deleteNote(e) {
-    const that = that;
-    this.props
-      .deleteNote(this.props.selectedNoteId)
-      .then(action => that.props.history.push(that.props.path));
+    const that = this;
+    this.props.deleteNote(this.props.selectedNoteId).then(action => {
+      console.log("history change");
+      that.props.history.push(that.props.path);
+    });
     this.props.closeUIElements();
   }
 
@@ -44,10 +45,7 @@ class UserDropdown extends React.Component {
         </div>
         <div className="modal-button-wrapper">
           <div className="modal-button-row">
-            <button
-              className="modal-submit-button"
-              onClick={this.deleteNote}
-            >
+            <button className="modal-submit-button" onClick={this.deleteNote}>
               Continue
             </button>
             <button
@@ -63,4 +61,4 @@ class UserDropdown extends React.Component {
   }
 }
 
-export default UserDropdown;
+export default ConfirmDeleteNoteModal;

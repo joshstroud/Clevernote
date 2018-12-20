@@ -3,6 +3,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      Notebook.create(title: "My First Notebook", owner_id: @user.id)
       login(@user)
       render "api/users/show"
     else

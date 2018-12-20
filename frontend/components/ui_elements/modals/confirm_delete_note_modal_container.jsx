@@ -6,12 +6,16 @@ import { withRouter } from "react-router-dom";
 import ConfirmDeleteNoteModal from "./confirm_delete_note_modal";
 
 const mapStateToProps = (state, ownProps) => {
+  let path = "/app/notes";
+  if (ownProps.location.pathname.includes("notebooks")) {
+    path: ownProps.location.pathname.match(/app\/notebooks\/\d+/g)[0];
+  }
   return {
     modal: state.ui.dropdown,
     history: ownProps.history,
     noteTitle: state.entities.notes[state.ui.selectedNoteId].title,
     selectedNoteId: state.ui.selectedNoteId,
-    path: "/app/notes"
+    path
 
     // fix hardcoding above
   };

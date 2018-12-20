@@ -15,6 +15,17 @@ export const currentUserNotes = (state) => {
   return filteredNotes;
 }
 
+export const currentUserNotebooks = (state) => {
+  if (Object.keys(state.entities.notebooks).length === 0) {
+    return {};
+  }
+  const notebooks = state.entities.notebooks;
+
+  return pickBy(notebooks, (notebook, notebookId) => {
+    return notebook.owner_id === state.session.id
+  })
+}
+
 export const selectNotesInNotebook = (state, notebookId) => {
   const notes = state.entities.notes;
   return pickBy(notes, (value, key) => {
@@ -29,7 +40,8 @@ export const selectTagsForNoteId = (state) => {
 export const findSelectedNotebookForNoteShow = (state) => {
   if (state.ui.selectedNoteId &&
     Object.keys(state.entities.notes).length > 0 &&
-    Object.keys(state.entities.notebooks).length > 0) {
+    Object.keys(state.entities.notebooks).length > 0 &&
+    state.entities.notes[state.ui.selectedNoteId]) {
     return state.entities.notebooks[state.entities.notes[state.ui.selectedNoteId].notebook_id]
   } else {
     return null;
@@ -44,7 +56,8 @@ export const findSelectedNotebook = (state) => {
 export const findSelectedOrDefaultNotebook = (state) => {
   let defaultNotebook = null;
   if (Object.keys(state.entities.notebooks).length > 0) {
-    defaultNotebook = state.entities.notebooks[Object.keys(state.entities.notebooks)[0]]
+    const notebooksArray = Object.values(state.entities.notebooks)
+    defaultNotebook = notebooksArray[notebooksArray.length - 1]
   }
 
   return findSelectedNotebook(state) || defaultNotebook;

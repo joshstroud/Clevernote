@@ -3,10 +3,11 @@ import NotebooksIndex from "./notebooks_index";
 import { fetchNotebooks } from "../../actions/notebook_actions";
 import { withRouter } from "react-router";
 import { openDropdown, openModal } from "../../actions/ui_actions";
+import { currentUserNotebooks } from "../../util/selectors";
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    notebooks: state.entities.notebooks
+    notebooks: currentUserNotebooks(state)
   };
 };
 

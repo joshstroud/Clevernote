@@ -1903,6 +1903,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_notebook_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/notebook_actions */ "./frontend/actions/notebook_actions.js");
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
 /* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var _util_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/selectors */ "./frontend/util/selectors.js");
+
 
 
 
@@ -1911,7 +1913,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    notebooks: state.entities.notebooks
+    notebooks: Object(_util_selectors__WEBPACK_IMPORTED_MODULE_5__["currentUserNotebooks"])(state)
   };
 };
 
@@ -2866,6 +2868,7 @@ function (_Component) {
         author_id: this.props.currentUser.id,
         notebook_id: this.props.defaultCreationNotebookId
       };
+      debugger;
       var that = this;
       this.props.createNote(blankNote).then(function (res) {
         if (that.props.selectedNotebookId === -1) {
@@ -4166,27 +4169,28 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
-var UserDropdown =
+var ConfirmDeleteNoteModal =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(UserDropdown, _React$Component);
+  _inherits(ConfirmDeleteNoteModal, _React$Component);
 
-  function UserDropdown(props) {
+  function ConfirmDeleteNoteModal(props) {
     var _this;
 
-    _classCallCheck(this, UserDropdown);
+    _classCallCheck(this, ConfirmDeleteNoteModal);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserDropdown).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ConfirmDeleteNoteModal).call(this, props));
     _this.deleteNote = _this.deleteNote.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
-  _createClass(UserDropdown, [{
+  _createClass(ConfirmDeleteNoteModal, [{
     key: "deleteNote",
     value: function deleteNote(e) {
-      var that = that;
+      var that = this;
       this.props.deleteNote(this.props.selectedNoteId).then(function (action) {
-        return that.props.history.push(that.props.path);
+        console.log("history change");
+        that.props.history.push(that.props.path);
       });
       this.props.closeUIElements();
     }
@@ -4226,10 +4230,10 @@ function (_React$Component) {
     }
   }]);
 
-  return UserDropdown;
+  return ConfirmDeleteNoteModal;
 }(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (UserDropdown);
+/* harmony default export */ __webpack_exports__["default"] = (ConfirmDeleteNoteModal);
 
 /***/ }),
 
@@ -4257,12 +4261,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  var path = "/app/notes";
+
+  if (ownProps.location.pathname.includes("notebooks")) {
+    path: ownProps.location.pathname.match(/app\/notebooks\/\d+/g)[0];
+  }
+
   return {
     modal: state.ui.dropdown,
     history: ownProps.history,
     noteTitle: state.entities.notes[state.ui.selectedNoteId].title,
     selectedNoteId: state.ui.selectedNoteId,
-    path: "/app/notes" // fix hardcoding above
+    path: path // fix hardcoding above
 
   };
 };
@@ -5651,12 +5661,13 @@ var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withR
 /*!************************************!*\
   !*** ./frontend/util/selectors.js ***!
   \************************************/
-/*! exports provided: currentUserNotes, selectNotesInNotebook, selectTagsForNoteId, findSelectedNotebookForNoteShow, findSelectedNotebook, findSelectedOrDefaultNotebook, findTagsForSelectedNote, findTaggingsForSelectedNote */
+/*! exports provided: currentUserNotes, currentUserNotebooks, selectNotesInNotebook, selectTagsForNoteId, findSelectedNotebookForNoteShow, findSelectedNotebook, findSelectedOrDefaultNotebook, findTagsForSelectedNote, findTaggingsForSelectedNote */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentUserNotes", function() { return currentUserNotes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentUserNotebooks", function() { return currentUserNotebooks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectNotesInNotebook", function() { return selectNotesInNotebook; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectTagsForNoteId", function() { return selectTagsForNoteId; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findSelectedNotebookForNoteShow", function() { return findSelectedNotebookForNoteShow; });
@@ -5679,6 +5690,16 @@ var currentUserNotes = function currentUserNotes(state) {
   }, {});
   return filteredNotes;
 };
+var currentUserNotebooks = function currentUserNotebooks(state) {
+  if (Object.keys(state.entities.notebooks).length === 0) {
+    return {};
+  }
+
+  var notebooks = state.entities.notebooks;
+  return lodash_pickby__WEBPACK_IMPORTED_MODULE_0___default()(notebooks, function (notebook, notebookId) {
+    return notebook.owner_id === state.session.id;
+  });
+};
 var selectNotesInNotebook = function selectNotesInNotebook(state, notebookId) {
   var notes = state.entities.notes;
   return lodash_pickby__WEBPACK_IMPORTED_MODULE_0___default()(notes, function (value, key) {
@@ -5687,7 +5708,7 @@ var selectNotesInNotebook = function selectNotesInNotebook(state, notebookId) {
 };
 var selectTagsForNoteId = function selectTagsForNoteId(state) {};
 var findSelectedNotebookForNoteShow = function findSelectedNotebookForNoteShow(state) {
-  if (state.ui.selectedNoteId && Object.keys(state.entities.notes).length > 0 && Object.keys(state.entities.notebooks).length > 0) {
+  if (state.ui.selectedNoteId && Object.keys(state.entities.notes).length > 0 && Object.keys(state.entities.notebooks).length > 0 && state.entities.notes[state.ui.selectedNoteId]) {
     return state.entities.notebooks[state.entities.notes[state.ui.selectedNoteId].notebook_id];
   } else {
     return null;
@@ -5700,7 +5721,8 @@ var findSelectedOrDefaultNotebook = function findSelectedOrDefaultNotebook(state
   var defaultNotebook = null;
 
   if (Object.keys(state.entities.notebooks).length > 0) {
-    defaultNotebook = state.entities.notebooks[Object.keys(state.entities.notebooks)[0]];
+    var notebooksArray = Object.values(state.entities.notebooks);
+    defaultNotebook = notebooksArray[notebooksArray.length - 1];
   }
 
   return findSelectedNotebook(state) || defaultNotebook;
