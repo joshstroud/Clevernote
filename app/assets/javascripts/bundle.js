@@ -3303,27 +3303,6 @@ var SplashHero = function SplashHero(props) {
 
 /***/ }),
 
-/***/ "./frontend/components/tags_index/tag_index_item.jsx":
-/*!***********************************************************!*\
-  !*** ./frontend/components/tags_index/tag_index_item.jsx ***!
-  \***********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var TagIndexItem = function TagIndexItem(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Tag Index Item");
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (TagIndexItem);
-
-/***/ }),
-
 /***/ "./frontend/components/tags_index/tags_index.jsx":
 /*!*******************************************************!*\
   !*** ./frontend/components/tags_index/tags_index.jsx ***!
@@ -3335,7 +3314,8 @@ var TagIndexItem = function TagIndexItem(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tag_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tag_index_item */ "./frontend/components/tags_index/tag_index_item.jsx");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3353,6 +3333,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -3418,6 +3399,8 @@ function (_Component) {
   }, {
     key: "renderTagCategories",
     value: function renderTagCategories() {
+      var _this = this;
+
       var sortedTags = this.sortTagsByFirstChar();
       var sortedTagKeys = this.sortTagKeysAlphabetically(sortedTags); // console.log(sortedTags);
       // console.log(sortedTagKeys);
@@ -3432,7 +3415,11 @@ function (_Component) {
             className: "tags-index-tag-row"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "tags-index-tag"
-          }, tag.name));
+          }, tag.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+            className: "tags-index-chevron-down",
+            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faChevronDown"],
+            onClick: _this.toggleNotebookList
+          })));
         });
 
         if (firstChar === "0") {

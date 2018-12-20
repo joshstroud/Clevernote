@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import TagIndexItem from "./tag_index_item";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 class TagsIndex extends Component {
   componentDidMount() {
@@ -62,7 +63,14 @@ class TagsIndex extends Component {
       const tagsForCategory = sortedTags[firstChar].map(tag => {
         return (
           <div className="tags-index-tag-row">
-            <div className="tags-index-tag">{tag.name}</div>
+            <div className="tags-index-tag">
+              {tag.name}
+              <FontAwesomeIcon
+                className="tags-index-chevron-down"
+                icon={faChevronDown}
+                onClick={this.toggleNotebookList}
+              />
+            </div>
           </div>
         );
       });
