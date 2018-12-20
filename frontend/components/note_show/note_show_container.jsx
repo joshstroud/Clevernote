@@ -10,8 +10,8 @@ import {
 } from "../../util/selectors";
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(findTagsForSelectedNote(state));
-  console.log(findTaggingsForSelectedNote(state));
+  // console.log(findTagsForSelectedNote(state));
+  // console.log(findTaggingsForSelectedNote(state));
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
     notebook: findSelectedNotebookForNoteShow(state),
@@ -24,7 +24,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     updateNote: note => dispatch(updateNote(note)),
-    openDropdown: component => dispatch(openDropdown(component))
+    openDropdown: (component, componentId) =>
+      dispatch(openDropdown(component, componentId))
   };
 };
 

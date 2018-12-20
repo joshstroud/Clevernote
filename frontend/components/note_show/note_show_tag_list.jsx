@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NoteShowTag from "./note_show_tag";
+import { selectTaggingFromTag } from "../../util/tag_util";
 
 class NoteShowTagList extends Component {
   renderTags() {
@@ -7,7 +8,17 @@ class NoteShowTagList extends Component {
       return null;
     }
     return Object.keys(this.props.tags).map(tagId => {
-      return <NoteShowTag key={tagId} tag={this.props.tags[tagId]} />;
+      return (
+        <NoteShowTag
+          key={tagId}
+          tag={this.props.tags[tagId]}
+          tagging={selectTaggingFromTag(
+            this.props.taggings,
+            this.props.tags[tagId]
+          )}
+          openDropdown={this.props.openDropdown}
+        />
+      );
     });
   }
 

@@ -996,7 +996,8 @@ function (_Component) {
         selectedNoteId: this.props.selectedNoteId
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_tag_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
         taggings: this.props.taggings,
-        tags: this.props.tags
+        tags: this.props.tags,
+        openDropdown: this.props.openDropdown
       }));
     }
   }]);
@@ -1029,8 +1030,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log(Object(_util_selectors__WEBPACK_IMPORTED_MODULE_4__["findTagsForSelectedNote"])(state));
-  console.log(Object(_util_selectors__WEBPACK_IMPORTED_MODULE_4__["findTaggingsForSelectedNote"])(state));
+  // console.log(findTagsForSelectedNote(state));
+  // console.log(findTaggingsForSelectedNote(state));
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
     notebook: Object(_util_selectors__WEBPACK_IMPORTED_MODULE_4__["findSelectedNotebookForNoteShow"])(state),
@@ -1045,8 +1046,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     updateNote: function updateNote(note) {
       return dispatch(Object(_actions_note_actions__WEBPACK_IMPORTED_MODULE_2__["updateNote"])(note));
     },
-    openDropdown: function openDropdown(component) {
-      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_3__["openDropdown"])(component));
+    openDropdown: function openDropdown(component, componentId) {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_3__["openDropdown"])(component, componentId));
     }
   };
 };
@@ -1456,17 +1457,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _ui_elements_dropdowns_note_show_tag_dropdown_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ui_elements/dropdowns/note_show_tag_dropdown_container */ "./frontend/components/ui_elements/dropdowns/note_show_tag_dropdown_container.jsx");
+
 
 
 
 
 var NoteShowTag = function NoteShowTag(_ref) {
-  var tag = _ref.tag;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  var tag = _ref.tag,
+      tagging = _ref.tagging,
+      openDropdown = _ref.openDropdown;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "note-show-tag-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "note-show-tag"
   }, tag.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
     className: "tag-chevron-down",
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faChevronDown"]
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faChevronDown"],
+    onClick: function onClick() {
+      openDropdown("note-show-tag", tagging.id);
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_elements_dropdowns_note_show_tag_dropdown_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    tagging: tagging
   }));
 };
 
@@ -1486,6 +1498,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _note_show_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./note_show_tag */ "./frontend/components/note_show/note_show_tag.jsx");
+/* harmony import */ var _util_tag_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/tag_util */ "./frontend/util/tag_util.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1503,6 +1516,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1530,7 +1544,9 @@ function (_Component) {
       return Object.keys(this.props.tags).map(function (tagId) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_tag__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: tagId,
-          tag: _this.props.tags[tagId]
+          tag: _this.props.tags[tagId],
+          tagging: Object(_util_tag_util__WEBPACK_IMPORTED_MODULE_2__["selectTaggingFromTag"])(_this.props.taggings, _this.props.tags[tagId]),
+          openDropdown: _this.props.openDropdown
         });
       });
     }
@@ -3593,6 +3609,140 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/ui_elements/dropdowns/note_show_tag_dropdown.jsx":
+/*!******************************************************************************!*\
+  !*** ./frontend/components/ui_elements/dropdowns/note_show_tag_dropdown.jsx ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _util_user_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../util/user_util */ "./frontend/util/user_util.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
+
+
+var NoteShowTagDropdown =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(NoteShowTagDropdown, _React$Component);
+
+  function NoteShowTagDropdown(props) {
+    var _this;
+
+    _classCallCheck(this, NoteShowTagDropdown);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NoteShowTagDropdown).call(this, props));
+    _this.removeTag = _this.removeTag.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(NoteShowTagDropdown, [{
+    key: "removeTag",
+    value: function removeTag(e) {
+      console.log("Remove tag");
+      this.props.closeUIElements();
+      this.props.deleteTagging(this.props.tagging.id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.props.dropdown === "note-show-tag" && this.props.tagging.id === this.props.selectedComponentId) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: "dropdown-background-relative"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: "dropdown-menu note-show-tag-relative-position",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          tabIndex: "0",
+          onBlur: this.props.closeUIElements,
+          ref: function ref(input) {
+            return input && input.focus();
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+          className: "note-show-settings-dropdown-row",
+          onClick: this.removeTag
+        }, "Remove"))));
+      } else {
+        return null;
+      }
+    }
+  }]);
+
+  return NoteShowTagDropdown;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (NoteShowTagDropdown);
+
+/***/ }),
+
+/***/ "./frontend/components/ui_elements/dropdowns/note_show_tag_dropdown_container.jsx":
+/*!****************************************************************************************!*\
+  !*** ./frontend/components/ui_elements/dropdowns/note_show_tag_dropdown_container.jsx ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var _actions_tag_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/tag_actions */ "./frontend/actions/tag_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _note_show_tag_dropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./note_show_tag_dropdown */ "./frontend/components/ui_elements/dropdowns/note_show_tag_dropdown.jsx");
+
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    dropdown: state.ui.dropdown,
+    selectedComponentId: state.ui.componentId,
+    tagging: ownProps.tagging
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    closeUIElements: function closeUIElements() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeUIElements"])());
+    },
+    deleteTagging: function deleteTagging(taggingId) {
+      return dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_2__["deleteTagging"])(taggingId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(_note_show_tag_dropdown__WEBPACK_IMPORTED_MODULE_5__["default"])));
+
+/***/ }),
+
 /***/ "./frontend/components/ui_elements/dropdowns/notebook_actions_dropdown.jsx":
 /*!*********************************************************************************!*\
   !*** ./frontend/components/ui_elements/dropdowns/notebook_actions_dropdown.jsx ***!
@@ -3646,7 +3796,6 @@ function (_React$Component) {
     key: "renameNotebook",
     value: function renameNotebook(e) {
       // console.log("Rename notebook action");
-      debugger;
       this.props.closeUIElements();
       this.props.openModal("rename-notebook");
     }
@@ -3664,7 +3813,7 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           className: "dropdown-background-relative"
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "dropdown-menu dropdown-relative-position",
+          className: "dropdown-menu note-show-dropdown-relative-position",
           onClick: function onClick(e) {
             return e.stopPropagation();
           },
@@ -5490,9 +5639,8 @@ var findTaggingsForSelectedNote = function findTaggingsForSelectedNote(state) {
   if (!state.ui.selectedNoteId) {
     return null;
   } // const currentSelectedNoteTags = findTagsForSelectedNote(state);
+  // console.log(`${state.ui.selectedNoteId}`)
 
-
-  console.log("".concat(state.ui.selectedNoteId));
 
   if (state.ui.selectedNoteId) {
     return lodash_pickby__WEBPACK_IMPORTED_MODULE_0___default()(state.entities.taggings, function (tagging, taggingId) {
@@ -5604,6 +5752,27 @@ var deleteTagging = function deleteTagging(tagId) {
     url: "/api/taggings/".concat(tagId),
     method: "DELETE"
   });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/tag_util.js":
+/*!***********************************!*\
+  !*** ./frontend/util/tag_util.js ***!
+  \***********************************/
+/*! exports provided: selectTaggingFromTag */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectTaggingFromTag", function() { return selectTaggingFromTag; });
+/* harmony import */ var lodash_pickby__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash.pickby */ "./node_modules/lodash.pickby/index.js");
+/* harmony import */ var lodash_pickby__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_pickby__WEBPACK_IMPORTED_MODULE_0__);
+
+var selectTaggingFromTag = function selectTaggingFromTag(taggings, tag) {
+  return Object.values(lodash_pickby__WEBPACK_IMPORTED_MODULE_0___default()(taggings, function (tagging, taggingId) {
+    return tag.id === tagging.tag_id;
+  }))[0];
 };
 
 /***/ }),

@@ -80,7 +80,7 @@ export const findTaggingsForSelectedNote = (state) => {
   }
 
   // const currentSelectedNoteTags = findTagsForSelectedNote(state);
-  console.log(`${state.ui.selectedNoteId}`)
+  // console.log(`${state.ui.selectedNoteId}`)
   if (state.ui.selectedNoteId) {
     return pickBy(state.entities.taggings, (tagging, taggingId) => {
       // const taggingHasCurrentTag = pickBy(currentSelectedNoteTags, (tag, tagId) => tag.id === tagging.tag_id).length > 0

@@ -11,7 +11,6 @@ class NotebookActionsDropdown extends React.Component {
 
   renameNotebook(e) {
     // console.log("Rename notebook action");
-    debugger;
     this.props.closeUIElements();
     this.props.openModal("rename-notebook");
   }
@@ -30,7 +29,7 @@ class NotebookActionsDropdown extends React.Component {
       return (
         <div className="dropdown-background-relative">
           <div
-            className="dropdown-menu dropdown-relative-position"
+            className="dropdown-menu note-show-dropdown-relative-position"
             onClick={e => e.stopPropagation()}
             tabIndex="0"
             onBlur={this.props.closeUIElements}

@@ -20,6 +20,7 @@ class NoteShow extends Component {
         <NoteShowTagList
           taggings={this.props.taggings}
           tags={this.props.tags}
+          openDropdown={this.props.openDropdown}
         />
       </section>
     );
