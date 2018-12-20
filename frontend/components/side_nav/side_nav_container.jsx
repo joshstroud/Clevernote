@@ -4,6 +4,7 @@ import SideNav from "./side_nav";
 import { createNote } from "../../actions/note_actions";
 import { openDropdown } from "../../actions/ui_actions";
 import { findSelectedOrDefaultNotebook } from "../../util/selectors";
+import { fetchNotebooks } from "../../actions/notebook_actions";
 
 const mapStateToProps = (state, ownProps) => {
   let defaultCreationNotebookId = null;
@@ -23,7 +24,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     createNote: note => dispatch(createNote(note)),
-    openDropdown: component => dispatch(openDropdown(component))
+    openDropdown: component => dispatch(openDropdown(component)),
+    fetchNotebooks: () => dispatch(fetchNotebooks())
   };
 };
 

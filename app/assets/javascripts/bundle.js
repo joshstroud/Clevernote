@@ -3010,6 +3010,11 @@ function (_Component) {
   }
 
   _createClass(SideNav, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchNotebooks();
+    }
+  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
       if (this.findSelectedCategory() !== prevState.selectedCategory) {
@@ -3238,6 +3243,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/note_actions */ "./frontend/actions/note_actions.js");
 /* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
 /* harmony import */ var _util_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/selectors */ "./frontend/util/selectors.js");
+/* harmony import */ var _actions_notebook_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/notebook_actions */ "./frontend/actions/notebook_actions.js");
+
 
 
 
@@ -3268,6 +3275,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     openDropdown: function openDropdown(component) {
       return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__["openDropdown"])(component));
+    },
+    fetchNotebooks: function fetchNotebooks() {
+      return dispatch(Object(_actions_notebook_actions__WEBPACK_IMPORTED_MODULE_6__["fetchNotebooks"])());
     }
   };
 };
@@ -3607,9 +3617,9 @@ function (_Component) {
         onClick: function onClick(e) {
           return _this2.handleTagDropdownClick(e, tag);
         }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_elements_dropdowns_tag_dropdown_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_elements_dropdowns_tag_dropdown_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
         tag: tag
-      }))));
+      }));
     }
   }, {
     key: "renderTagCategories",

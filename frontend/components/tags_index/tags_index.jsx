@@ -74,9 +74,9 @@ class TagsIndex extends Component {
               icon={faChevronDown}
               onClick={e => this.handleTagDropdownClick(e, tag)}
             />
-            <TagDropdownContainer tag={tag} />
           </div>
         </div>
+        <TagDropdownContainer tag={tag} />
       </div>
     );
   }

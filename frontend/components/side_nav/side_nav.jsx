@@ -31,6 +31,10 @@ class SideNav extends Component {
     this.toggleNotebookList = this.toggleNotebookList.bind(this);
   }
 
+  componentDidMount() {
+    this.props.fetchNotebooks();
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (this.findSelectedCategory() !== prevState.selectedCategory) {
       this.setState({ selectedCategory: this.findSelectedCategory() });
