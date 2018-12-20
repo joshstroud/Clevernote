@@ -62,14 +62,19 @@ class TagsIndex extends Component {
     const tagCategories = sortedTagKeys.map(firstChar => {
       const tagsForCategory = sortedTags[firstChar].map(tag => {
         return (
-          <div className="tags-index-tag-row">
-            <div className="tags-index-tag">
-              {tag.name}
-              <FontAwesomeIcon
-                className="tags-index-chevron-down"
-                icon={faChevronDown}
-                onClick={this.toggleNotebookList}
-              />
+          <div className="tags-index-tag-row-wrapper">
+            <div className="tags-index-tag-row">
+              <div className="tags-index-tag">
+                {tag.name}
+                <div className="tags-index-tag-count">
+                  ({tag.taggings_count})
+                </div>
+                <FontAwesomeIcon
+                  className="tags-index-chevron-down"
+                  icon={faChevronDown}
+                  onClick={this.toggleNotebookList}
+                />
+              </div>
             </div>
           </div>
         );

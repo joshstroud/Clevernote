@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.entities.users[state.session.id],
     history: ownProps.history,
     selectedNoteId: state.ui.selectedNoteId,
-    rootPath: "/app/notes"
+    rootPath: "/app/notes",
   };
 };
 

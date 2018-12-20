@@ -3412,14 +3412,18 @@ function (_Component) {
       var tagCategories = sortedTagKeys.map(function (firstChar) {
         var tagsForCategory = sortedTags[firstChar].map(function (tag) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "tags-index-tag-row-wrapper"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "tags-index-tag-row"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "tags-index-tag"
-          }, tag.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+          }, tag.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "tags-index-tag-count"
+          }, "(", tag.taggings_count, ")"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
             className: "tags-index-chevron-down",
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faChevronDown"],
             onClick: _this.toggleNotebookList
-          })));
+          }))));
         });
 
         if (firstChar === "0") {
