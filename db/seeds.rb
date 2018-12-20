@@ -66,7 +66,7 @@ Tagging.create!(tag_id: startups_tag.id, note_id: note.id)
 Tagging.create!(tag_id: writing_tag.id, note_id: note.id)
 Tagging.create!(tag_id: silicon_valley_tag.id, note_id: note.id)
 
-note = Note.create!(title: "\"I Have a Dream' by Martin Luther King\"", body: king_text, author_id: demo_user.id, notebook_id: third_notebook.id)
+note = Note.create!(title: "\"I Have a Dream\" by Martin Luther King", body: king_text, author_id: demo_user.id, notebook_id: third_notebook.id)
 
 Tagging.create!(tag_id: social_justice_tag.id, note_id: note.id)
 Tagging.create!(tag_id: uplifting_tag.id, note_id: note.id)
