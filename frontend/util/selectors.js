@@ -70,12 +70,12 @@ export const findSelectedOrDefaultNotebook = (state) => {
   return findSelectedNotebook(state) || defaultNotebook;
 }
 
-export const findTagsForSelectedNote = (state) => {
+export const findTagsForSelectedNote = (state, noteId = state.ui.selectedNoteId) => {
   if (!state.ui.selectedNoteId) {
-    return null;
+    return {};
   }
 
-  const taggingsForSelectedNote = findTaggingsForSelectedNote(state);
+  const taggingsForSelectedNote = findTaggingsForSelectedNote(state, noteId);
 
   if (Object.keys(taggingsForSelectedNote).length === 0) {
     return {};
@@ -94,19 +94,34 @@ export const findTagsForSelectedNote = (state) => {
   })
 }
 
-export const findTaggingsForSelectedNote = (state) => {
-  if (!state.ui.selectedNoteId) {
+export const findTaggingsForSelectedNote = (state, noteId = state.ui.selectedNoteId) => {
+  if (!noteId) {
     return null;
   }
 
   // const currentSelectedNoteTags = findTagsForSelectedNote(state);
-  // console.log(`${state.ui.selectedNoteId}`)
-  if (state.ui.selectedNoteId) {
+  // console.log(`${state.ui.selectedNoteItad}`)
+  if (noteId) {
     return pickBy(state.entities.taggings, (tagging, taggingId) => {
       // const taggingHasCurrentTag = pickBy(currentSelectedNoteTags, (tag, tagId) => tag.id === tagging.tag_id).length > 0
-      const taggingHasCurrentNote = tagging.note_id === state.ui.selectedNoteId
+      const taggingHasCurrentNote = tagging.note_id === noteId
       // console.log(`tagging note id: ${tagging.note_id}, ${taggingHasCurrentNote}`)
       return taggingHasCurrentNote
     })
   }
+}
+
+export const findNotesWithTagId = (state, tagId) => {
+  if (!state.entities.notes || !state.entities.tags || !state.entities.taggings) {
+    return {};
+  }
+
+  return pickBy(state.entities.notes, (note, noteId) => {
+
+    const noteTags = findTagsForSelectedNote(state, note.id);
+    // console.dir(Object.values(noteTags))
+    // console.log(`note.id: ${note.id}, match: ${Object.values(noteTags).some(noteTag => noteTag.id === tagId)}`);
+
+    return Object.values(noteTags).some(noteTag => noteTag.id === tagId);
+  })
 }

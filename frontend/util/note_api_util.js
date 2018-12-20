@@ -38,3 +38,10 @@ export const deleteNote = (noteId) => {
     method: "DELETE",
   });
 };
+
+export const fetchNotesForTag = (tagId) => {
+  return $.ajax({
+    url: `/api/tags/${tagId}`,
+    method: "GET"
+  });
+};

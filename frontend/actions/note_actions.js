@@ -12,6 +12,12 @@ export const receiveNotes = notes => {
   };
 };
 
+export const fetchNotesForTag = (tagId) => dispatch => {
+  return NoteApiUtil.fetchNotesForTag(tagId)
+    .then(notes => dispatch(receiveNotes(notes)));
+};
+
+
 export const fetchNotes = () => dispatch => {
   return NoteApiUtil.fetchNotes()
     .then(notes => dispatch(receiveNotes(notes)));

@@ -8,6 +8,8 @@ import { withRouter } from "react-router";
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    indexType: "all",
+
     notes: state.entities.notes,
     title: "All Notes",
     selectedNoteId: state.ui.selectedNoteId,

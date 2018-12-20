@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 class TagsIndex extends Component {
   componentDidMount() {
@@ -62,20 +63,25 @@ class TagsIndex extends Component {
     const tagCategories = sortedTagKeys.map(firstChar => {
       const tagsForCategory = sortedTags[firstChar].map(tag => {
         return (
-          <div className="tags-index-tag-row-wrapper">
-            <div className="tags-index-tag-row">
-              <div className="tags-index-tag">
-                {tag.name}
-                <div className="tags-index-tag-count">
-                  ({tag.taggings_count})
+          <div
+            className="tags-index-tag-row-wrapper"
+            key={`key-${firstChar}-${tag.id}`}
+          >
+            <Link to={`/app/tags/${tag.id}`}>
+              <div className="tags-index-tag-row">
+                <div className="tags-index-tag">
+                  {tag.name}
+                  <div className="tags-index-tag-count">
+                    ({tag.taggings_count})
+                  </div>
+                  <FontAwesomeIcon
+                    className="tags-index-chevron-down"
+                    icon={faChevronDown}
+                    onClick={this.toggleNotebookList}
+                  />
                 </div>
-                <FontAwesomeIcon
-                  className="tags-index-chevron-down"
-                  icon={faChevronDown}
-                  onClick={this.toggleNotebookList}
-                />
               </div>
-            </div>
+            </Link>
           </div>
         );
       });
@@ -87,7 +93,7 @@ class TagsIndex extends Component {
       }
 
       return (
-        <div className="tags-index-category">
+        <div className="tags-index-category" key={firstChar}>
           <div className="tags-index-category-header">{firstChar}</div>
           {tagsForCategory}
           <br />

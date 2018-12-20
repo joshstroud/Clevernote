@@ -1,11 +1,14 @@
 import React, { Component, createRef } from "react";
 import NotesIndexItem from "./notes_index_item";
 import { findDOMNode } from "react-dom";
-import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   sortNotesByLastUpdate,
   ALL_NOTES_NOTEBOOK
 } from "../../util/note_util";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 class NotesIndex extends Component {
   constructor(props) {
@@ -13,7 +16,12 @@ class NotesIndex extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchNotes();
+    if (this.props.indexType === "tag") {
+      this.props.fetchNotesForTag(this.props.selectedTagId);
+    } else {
+      this.props.fetchNotes();
+    }
+
     this.props.fetchNotebooks();
     this.props.fetchTags();
     this.props.fetchTaggings();
@@ -56,8 +64,6 @@ class NotesIndex extends Component {
       if (paramSelectedNoteId && this.props.notes[paramSelectedNoteId]) {
         this.props.selectNote(paramSelectedNoteId);
       } else if (mostRecentNote) {
-        this.props.history.push(`${this.props.path}/${mostRecentNote.id}`);
-      } else if (mostRecentNote && this.props.path.includes("/notebooks/")) {
         this.props.history.push(`${this.props.path}/${mostRecentNote.id}`);
       } else if (
         Object.keys(this.props.notes).length === 0 &&
@@ -113,6 +119,27 @@ class NotesIndex extends Component {
     return <div className="notes-index-items-wrapper">{noteIndexItems}</div>;
   }
 
+  renderTagName() {
+    if (
+      this.props.indexType !== "tag" ||
+      !this.props.tags ||
+      !this.props.tags[this.props.selectedTagId]
+    ) {
+      return null;
+    }
+
+    return (
+      <div className="notes-index-tag-wrapper">
+        <div className="notes-index-tag">
+          {this.props.tags[this.props.selectedTagId].name}
+          <Link to={"/app/notes"}>
+            <FontAwesomeIcon className="notes-index-tag-close" icon={faTimes} />
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     return (
       <section className="notes-index-wrapper">
@@ -123,6 +150,7 @@ class NotesIndex extends Component {
           <div id="notes-index-header-footer">
             <div>{this.renderNumberOfNotes()}</div>
           </div>
+          {this.renderTagName()}
         </header>
         {this.renderNoteIndexItems()}
       </section>

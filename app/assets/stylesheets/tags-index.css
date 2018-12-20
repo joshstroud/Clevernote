@@ -94,6 +94,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: rgb(51, 51, 51);
 }
 
 .tags-index-tag-count {
@@ -117,4 +118,27 @@
 
 .tags-index-tag:hover .tags-index-chevron-down {
   display: inline;
+}
+
+.notes-index-tag-wrapper {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-right: 18px;
+  padding-left: 25px;
+}
+
+.notes-index-tag {
+  background-color: #00a82d;
+  border-radius: 1em;
+  padding: 0 5px 0 10px;
+  color: #fff;
+  font-size: 12px;
+
+  font-weight: 400;
 }
