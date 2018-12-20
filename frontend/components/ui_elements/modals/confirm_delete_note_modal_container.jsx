@@ -8,7 +8,7 @@ import ConfirmDeleteNoteModal from "./confirm_delete_note_modal";
 const mapStateToProps = (state, ownProps) => {
   let path = "/app/notes";
   if (ownProps.location.pathname.includes("notebooks")) {
-    path: ownProps.location.pathname.match(/app\/notebooks\/\d+/g)[0];
+    path = `{ownProps.location.pathname.match(/app\/notebooks\/\d+/g)[0]}/notes`;
   }
   return {
     modal: state.ui.dropdown,

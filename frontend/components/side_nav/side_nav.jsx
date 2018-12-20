@@ -67,7 +67,6 @@ class SideNav extends Component {
       notebook_id: this.props.defaultCreationNotebookId
     };
 
-    debugger;
     const that = this;
     this.props.createNote(blankNote).then(res => {
       if (that.props.selectedNotebookId === -1) {

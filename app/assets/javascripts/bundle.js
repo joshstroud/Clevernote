@@ -2868,7 +2868,6 @@ function (_Component) {
         author_id: this.props.currentUser.id,
         notebook_id: this.props.defaultCreationNotebookId
       };
-      debugger;
       var that = this;
       this.props.createNote(blankNote).then(function (res) {
         if (that.props.selectedNotebookId === -1) {
@@ -4264,7 +4263,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   var path = "/app/notes";
 
   if (ownProps.location.pathname.includes("notebooks")) {
-    path: ownProps.location.pathname.match(/app\/notebooks\/\d+/g)[0];
+    path = "{ownProps.location.pathname.match(/app/notebooks/d+/g)[0]}/notes";
   }
 
   return {
