@@ -2,8 +2,15 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import TagDropdownContainer from "../ui_elements/dropdowns/tag_dropdown_container";
 
 class TagsIndex extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleTagDropdownClick = this.handleTagDropdownClick.bind(this);
+  }
+
   componentDidMount() {
     this.props.fetchTags();
     this.props.fetchTaggings();
@@ -50,6 +57,30 @@ class TagsIndex extends Component {
     return sortedTagKeys;
   }
 
+  renderTagCategory(firstChar, tag) {
+    return (
+      <div
+        className="tags-index-tag-row-wrapper"
+        key={`key-${firstChar}-${tag.id}`}
+      >
+        <div className="tags-index-tag-row">
+          <div className="tags-index-tag">
+            <Link to={`/app/tags/${tag.id}`} className="tags-index-tag-link">
+              {tag.name}
+              <div className="tags-index-tag-count">({tag.taggings_count})</div>
+            </Link>
+            <FontAwesomeIcon
+              className="tags-index-chevron-down"
+              icon={faChevronDown}
+              onClick={e => this.handleTagDropdownClick(e, tag)}
+            />
+            <TagDropdownContainer tag={tag} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   renderTagCategories() {
     const sortedTags = this.sortTagsByFirstChar();
     const sortedTagKeys = this.sortTagKeysAlphabetically(sortedTags);
@@ -62,28 +93,7 @@ class TagsIndex extends Component {
 
     const tagCategories = sortedTagKeys.map(firstChar => {
       const tagsForCategory = sortedTags[firstChar].map(tag => {
-        return (
-          <div
-            className="tags-index-tag-row-wrapper"
-            key={`key-${firstChar}-${tag.id}`}
-          >
-            <Link to={`/app/tags/${tag.id}`}>
-              <div className="tags-index-tag-row">
-                <div className="tags-index-tag">
-                  {tag.name}
-                  <div className="tags-index-tag-count">
-                    ({tag.taggings_count})
-                  </div>
-                  <FontAwesomeIcon
-                    className="tags-index-chevron-down"
-                    icon={faChevronDown}
-                    onClick={this.toggleNotebookList}
-                  />
-                </div>
-              </div>
-            </Link>
-          </div>
-        );
+        return this.renderTagCategory(firstChar, tag);
       });
 
       if (firstChar === "0") {
@@ -102,6 +112,11 @@ class TagsIndex extends Component {
     });
 
     return tagCategories;
+  }
+
+  handleTagDropdownClick(e, tag) {
+    e.preventDefault();
+    this.props.openDropdown("tags-index-delete-tag", tag.id);
   }
 
   render() {

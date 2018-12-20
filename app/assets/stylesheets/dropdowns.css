@@ -34,3 +34,11 @@
 .dropdown-menu:focus {
   outline: none;
 }
+
+.tags-index-delete-tag-dropdown {
+  position: absolute;
+  top: 0px;
+  left: 70px;
+  width: 168px;
+  z-index: 1000;
+}

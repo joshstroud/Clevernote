@@ -967,7 +967,7 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _notes_index_tagged_notes_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../notes_index/tagged_notes_index_container */ "./frontend/components/notes_index/tagged_notes_index_container.jsx");
+/* harmony import */ var _notes_index_tagged_notes_index_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../notes_index/tagged_notes_index_container */ "./frontend/components/notes_index/tagged_notes_index_container.jsx");
 /* harmony import */ var _note_show_note_show_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../note_show/note_show_container */ "./frontend/components/note_show/note_show_container.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1009,7 +1009,7 @@ function (_Component) {
     value: function render(props) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-notes-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_tagged_notes_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_note_show_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_tagged_notes_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_note_show_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
 
@@ -3495,6 +3495,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _ui_elements_dropdowns_tag_dropdown_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ui_elements/dropdowns/tag_dropdown_container */ "./frontend/components/ui_elements/dropdowns/tag_dropdown_container.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3505,13 +3506,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -3523,10 +3525,14 @@ var TagsIndex =
 function (_Component) {
   _inherits(TagsIndex, _Component);
 
-  function TagsIndex() {
+  function TagsIndex(props) {
+    var _this;
+
     _classCallCheck(this, TagsIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(TagsIndex).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TagsIndex).call(this, props));
+    _this.handleTagDropdownClick = _this.handleTagDropdownClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(TagsIndex, [{
@@ -3577,9 +3583,36 @@ function (_Component) {
       return sortedTagKeys;
     }
   }, {
+    key: "renderTagCategory",
+    value: function renderTagCategory(firstChar, tag) {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tags-index-tag-row-wrapper",
+        key: "key-".concat(firstChar, "-").concat(tag.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tags-index-tag-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tags-index-tag"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+        to: "/app/tags/".concat(tag.id),
+        className: "tags-index-tag-link"
+      }, tag.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tags-index-tag-count"
+      }, "(", tag.taggings_count, ")")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        className: "tags-index-chevron-down",
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faChevronDown"],
+        onClick: function onClick(e) {
+          return _this2.handleTagDropdownClick(e, tag);
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ui_elements_dropdowns_tag_dropdown_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        tag: tag
+      }))));
+    }
+  }, {
     key: "renderTagCategories",
     value: function renderTagCategories() {
-      var _this = this;
+      var _this3 = this;
 
       var sortedTags = this.sortTagsByFirstChar();
       var sortedTagKeys = this.sortTagKeysAlphabetically(sortedTags); // console.log(sortedTags);
@@ -3591,22 +3624,7 @@ function (_Component) {
 
       var tagCategories = sortedTagKeys.map(function (firstChar) {
         var tagsForCategory = sortedTags[firstChar].map(function (tag) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "tags-index-tag-row-wrapper",
-            key: "key-".concat(firstChar, "-").concat(tag.id)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-            to: "/app/tags/".concat(tag.id)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "tags-index-tag-row"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "tags-index-tag"
-          }, tag.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "tags-index-tag-count"
-          }, "(", tag.taggings_count, ")"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-            className: "tags-index-chevron-down",
-            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faChevronDown"],
-            onClick: _this.toggleNotebookList
-          })))));
+          return _this3.renderTagCategory(firstChar, tag);
         });
 
         if (firstChar === "0") {
@@ -3623,6 +3641,12 @@ function (_Component) {
         }, firstChar), tagsForCategory, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
       });
       return tagCategories;
+    }
+  }, {
+    key: "handleTagDropdownClick",
+    value: function handleTagDropdownClick(e, tag) {
+      e.preventDefault();
+      this.props.openDropdown("tags-index-delete-tag", tag.id);
     }
   }, {
     key: "render",
@@ -4378,6 +4402,166 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(_notebook_actions_dropdown__WEBPACK_IMPORTED_MODULE_5__["default"])));
+
+/***/ }),
+
+/***/ "./frontend/components/ui_elements/dropdowns/tag_dropdown.jsx":
+/*!********************************************************************!*\
+  !*** ./frontend/components/ui_elements/dropdowns/tag_dropdown.jsx ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _util_user_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../util/user_util */ "./frontend/util/user_util.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
+
+
+var TagDropdown =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(TagDropdown, _React$Component);
+
+  function TagDropdown(props) {
+    var _this;
+
+    _classCallCheck(this, TagDropdown);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TagDropdown).call(this, props));
+    _this.deleteTag = _this.deleteTag.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(TagDropdown, [{
+    key: "deleteTag",
+    value: function deleteTag(e) {
+      console.log("Delete tag action on tagId ,".concat(this.props.tag.id));
+      var that = this; // this.props
+      //   .deleteTag(this.props.selectedNoteId)
+      //   .then(action => that.props.history.push(that.props.path));
+
+      this.props.closeUIElements();
+      this.props.openModal("tags-index-delete-tag");
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.props.dropdown !== "tags-index-delete-tag" || this.props.selectedComponentId !== this.props.tag.id) {
+        return null;
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "dropdown-background-relative",
+        onClick: this.props.closeUIElements
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "dropdown-menu tags-index-delete-tag-dropdown",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        onBlur: this.props.closeUIElements,
+        tabIndex: "0",
+        ref: function ref(input) {
+          return input && input.focus();
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "note-show-settings-dropdown-row",
+        onClick: this.deleteTag
+      }, "Delete tag..."))));
+    }
+  }]);
+
+  return TagDropdown;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component); // in dropdown menu
+
+
+/* harmony default export */ __webpack_exports__["default"] = (TagDropdown);
+
+/***/ }),
+
+/***/ "./frontend/components/ui_elements/dropdowns/tag_dropdown_container.jsx":
+/*!******************************************************************************!*\
+  !*** ./frontend/components/ui_elements/dropdowns/tag_dropdown_container.jsx ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _actions_note_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../actions/note_actions */ "./frontend/actions/note_actions.js");
+/* harmony import */ var _tag_dropdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tag_dropdown */ "./frontend/components/ui_elements/dropdowns/tag_dropdown.jsx");
+
+
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    dropdown: state.ui.dropdown,
+    currentUser: state.entities.users[state.session.id],
+    history: ownProps.history,
+    rootPath: "/app/tags",
+    selectedComponentId: state.ui.componentId
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"])());
+    },
+    closeUIElements: function closeUIElements() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["closeUIElements"])());
+    },
+    deleteTag: function (_deleteTag) {
+      function deleteTag(_x) {
+        return _deleteTag.apply(this, arguments);
+      }
+
+      deleteTag.toString = function () {
+        return _deleteTag.toString();
+      };
+
+      return deleteTag;
+    }(function (tagId) {
+      return dispatch(deleteTag(tagId));
+    }),
+    openModal: function openModal(component, componentId) {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["openModal"])(component, componentId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(_tag_dropdown__WEBPACK_IMPORTED_MODULE_6__["default"])));
 
 /***/ }),
 
