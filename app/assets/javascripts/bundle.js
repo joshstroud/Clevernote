@@ -3428,7 +3428,11 @@ function (_Component) {
 
       var tagCategories = sortedTagKeys.map(function (firstChar) {
         var tagsForCategory = sortedTags[firstChar].map(function (tag) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, tag.name);
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "tags-index-tag-row"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "tags-index-tag"
+          }, tag.name));
         });
 
         if (firstChar === "0") {
@@ -3437,7 +3441,11 @@ function (_Component) {
           firstChar = "#";
         }
 
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, firstChar, tagsForCategory, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "tags-index-category"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "tags-index-category-header"
+        }, firstChar), tagsForCategory, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
       });
       return tagCategories;
     }

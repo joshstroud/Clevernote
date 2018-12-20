@@ -60,7 +60,11 @@ class TagsIndex extends Component {
 
     const tagCategories = sortedTagKeys.map(firstChar => {
       const tagsForCategory = sortedTags[firstChar].map(tag => {
-        return <div>{tag.name}</div>;
+        return (
+          <div className="tags-index-tag-row">
+            <div className="tags-index-tag">{tag.name}</div>
+          </div>
+        );
       });
 
       if (firstChar === "0") {
@@ -70,8 +74,8 @@ class TagsIndex extends Component {
       }
 
       return (
-        <div>
-          {firstChar}
+        <div className="tags-index-category">
+          <div className="tags-index-category-header">{firstChar}</div>
           {tagsForCategory}
           <br />
         </div>
