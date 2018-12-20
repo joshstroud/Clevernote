@@ -54,7 +54,7 @@
   color: rgb(226, 233, 246);
 }
 
-.side-nav-create-button-row {
+.side-nav-wrapper .side-nav-create-button-row {
   /* background-color: #008f26; */
   border-radius: 5px;
   padding: 0 6px;
