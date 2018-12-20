@@ -4,10 +4,10 @@ import React from "react";
 class ConfirmDeleteTagModal extends React.Component {
   constructor(props) {
     super(props);
-    this.deleteNote = this.deleteNote.bind(this);
+    this.deleteTag = this.deleteTag.bind(this);
   }
 
-  deleteNote(e) {
+  deleteTag(e) {
     this.props.deleteTag(this.props.tag.id);
     this.props.closeUIElements();
   }
@@ -42,7 +42,7 @@ class ConfirmDeleteTagModal extends React.Component {
         </div>
         <div className="modal-button-wrapper">
           <div className="modal-button-row">
-            <button className="modal-submit-button" onClick={this.deleteNote}>
+            <button className="modal-submit-button" onClick={this.deleteTag}>
               Delete
             </button>
             <button

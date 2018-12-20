@@ -437,7 +437,7 @@ var receiveDeleteTag = function receiveDeleteTag(tagId) {
 };
 var deleteTag = function deleteTag(tagId) {
   return function (dispatch) {
-    return _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteTagging"](tagId).then(function (tag) {
+    return _util_tag_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteTag"](tagId).then(function (tag) {
       return dispatch(receiveDeleteTag(tag.id));
     });
   };
@@ -4925,13 +4925,13 @@ function (_React$Component) {
     _classCallCheck(this, ConfirmDeleteTagModal);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ConfirmDeleteTagModal).call(this, props));
-    _this.deleteNote = _this.deleteNote.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.deleteTag = _this.deleteTag.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(ConfirmDeleteTagModal, [{
-    key: "deleteNote",
-    value: function deleteNote(e) {
+    key: "deleteTag",
+    value: function deleteTag(e) {
       this.props.deleteTag(this.props.tag.id);
       this.props.closeUIElements();
     }
@@ -4963,7 +4963,7 @@ function (_React$Component) {
         className: "modal-button-row"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "modal-submit-button",
-        onClick: this.deleteNote
+        onClick: this.deleteTag
       }, "Delete"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "modal-cancel-button",
         onClick: this.props.closeUIElements

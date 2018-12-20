@@ -49,7 +49,7 @@ export const receiveDeleteTag = tagId => {
 };
 
 export const deleteTag = (tagId) => dispatch => {
-  return TagApiUtil.deleteTagging(tagId)
+  return TagApiUtil.deleteTag(tagId)
     .then(tag => dispatch(receiveDeleteTag(tag.id)));
 };
 
