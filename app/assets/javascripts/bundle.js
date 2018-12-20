@@ -798,8 +798,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _all_notes_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./all_notes_page */ "./frontend/components/main_page/all_notes_page.jsx");
 /* harmony import */ var _notebooks_index_notebooks_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../notebooks_index/notebooks_index_container */ "./frontend/components/notebooks_index/notebooks_index_container.jsx");
-/* harmony import */ var _notebook_notes_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./notebook_notes_page */ "./frontend/components/main_page/notebook_notes_page.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _tags_index_tags_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../tags_index/tags_index_container */ "./frontend/components/tags_index/tags_index_container.jsx");
+/* harmony import */ var _notebook_notes_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./notebook_notes_page */ "./frontend/components/main_page/notebook_notes_page.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -824,6 +825,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var MainSection =
 /*#__PURE__*/
 function (_Component) {
@@ -840,24 +842,28 @@ function (_Component) {
     value: function render(props) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-section-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
         exact: true,
         path: "/app/notes",
         component: _all_notes_page__WEBPACK_IMPORTED_MODULE_1__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
         path: "/app/notes/:noteId",
         component: _all_notes_page__WEBPACK_IMPORTED_MODULE_1__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
         exact: true,
         path: "/app/notebooks",
         component: _notebooks_index_notebooks_index_container__WEBPACK_IMPORTED_MODULE_2__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
         path: "/app/notebooks/:notebookId/notes/:noteId",
-        component: _notebook_notes_page__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+        component: _notebook_notes_page__WEBPACK_IMPORTED_MODULE_4__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
         path: "/app/notebooks/:notebookId",
-        component: _notebook_notes_page__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Redirect"], {
+        component: _notebook_notes_page__WEBPACK_IMPORTED_MODULE_4__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
+        exact: true,
+        path: "/app/tags",
+        component: _tags_index_tags_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Redirect"], {
         to: "/app/notes"
       })));
     }
@@ -866,7 +872,7 @@ function (_Component) {
   return MainSection;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(MainSection));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["withRouter"])(MainSection));
 
 /***/ }),
 
@@ -2844,6 +2850,8 @@ function (_Component) {
         return "All Notes";
       } else if (path.includes("app/notebooks")) {
         return "Notebooks";
+      } else if (path.includes("app/tags")) {
+        return "Tags";
       }
     }
   }, {
@@ -3000,7 +3008,9 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
         fill: "#ccc",
         d: "M9 4h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9V4zM6 4h2v15H6V4zm5.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-4z"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Notebooks"))), this.renderNotebookList(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Notebooks"))), this.renderNotebookList(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
+        to: "/app/tags/"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.setSelected("Tags")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
@@ -3011,7 +3021,7 @@ function (_Component) {
         fill: "#ccc",
         id: "10a",
         d: "M10.265 9.005a2 2 0 1 0 3.47 0H18v9.5a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-9.5h4.265zM9.5 16a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm0-2a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm4.235-4.995H18l-4.982-4.606a1.5 1.5 0 0 0-2.036 0L6 9.005h4.265a2 2 0 0 1 3.47 0z"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Tags")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Tags"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.setSelected(null)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
@@ -3290,6 +3300,107 @@ var SplashHero = function SplashHero(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SplashHero);
+
+/***/ }),
+
+/***/ "./frontend/components/tags_index/tags_index.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/tags_index/tags_index.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var TagsIndex =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(TagsIndex, _Component);
+
+  function TagsIndex() {
+    _classCallCheck(this, TagsIndex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(TagsIndex).apply(this, arguments));
+  }
+
+  _createClass(TagsIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {// this.props.fetchTags();
+      // this.props.fetchTaggings();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "tags-index-wrapper"
+      }, "Here be tags");
+    }
+  }]);
+
+  return TagsIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (TagsIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/tags_index/tags_index_container.jsx":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/tags_index/tags_index_container.jsx ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _tags_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tags_index */ "./frontend/components/tags_index/tags_index.jsx");
+/* harmony import */ var _actions_tag_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/tag_actions */ "./frontend/actions/tag_actions.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    openDropdown: function openDropdown(component, componentId) {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__["openDropdown"])(component, componentId));
+    },
+    fetchTags: dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTags"])()),
+    fetchTaggings: dispatch(Object(_actions_tag_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTaggings"])())
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_tags_index__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
 /***/ }),
 

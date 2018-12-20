@@ -48,6 +48,8 @@ class SideNav extends Component {
       return "All Notes";
     } else if (path.includes("app/notebooks")) {
       return "Notebooks";
+    } else if (path.includes("app/tags")) {
+      return "Tags";
     }
   }
 
@@ -197,21 +199,23 @@ class SideNav extends Component {
             </Link>
           </div>
           {this.renderNotebookList()}
-          <div className={this.setSelected("Tags")}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="#ccc"
-                id="10a"
-                d="M10.265 9.005a2 2 0 1 0 3.47 0H18v9.5a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-9.5h4.265zM9.5 16a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm0-2a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm4.235-4.995H18l-4.982-4.606a1.5 1.5 0 0 0-2.036 0L6 9.005h4.265a2 2 0 0 1 3.47 0z"
-              />
-            </svg>
-            <span>Tags</span>
-          </div>
+          <Link to="/app/tags/">
+            <div className={this.setSelected("Tags")}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="#ccc"
+                  id="10a"
+                  d="M10.265 9.005a2 2 0 1 0 3.47 0H18v9.5a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.5-1.5v-9.5h4.265zM9.5 16a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm0-2a.5.5 0 1 0 0 1h5a.5.5 0 1 0 0-1h-5zm4.235-4.995H18l-4.982-4.606a1.5 1.5 0 0 0-2.036 0L6 9.005h4.265a2 2 0 0 1 3.47 0z"
+                />
+              </svg>
+              <span>Tags</span>
+            </div>
+          </Link>
           <div className={this.setSelected(null)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
