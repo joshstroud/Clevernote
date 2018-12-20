@@ -27,10 +27,11 @@ export const openDropdown = (component, componentId = null) => {
   }
 }
 
-export const openModal = (component) => {
+export const openModal = (component, componentId = null) => {
   return {
     type: OPEN_MODAL,
-    component
+    component,
+    componentId
   }
 }
 

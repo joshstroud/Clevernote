@@ -35,7 +35,8 @@ const ui = (state = defaultUIState, action) => {
       })
     case OPEN_MODAL:
       return merge({}, state, {
-        modal: action.component
+        modal: action.component,
+        componentId: action.componentId
       })
     case CLOSE_UI_ELEMENTS:
       return merge({}, state, {

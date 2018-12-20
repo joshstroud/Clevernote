@@ -9,13 +9,8 @@ class TagDropdown extends React.Component {
   }
 
   deleteTag(e) {
-    console.log(`Delete tag action on tagId ,${this.props.tag.id}`);
-    const that = this;
-    // this.props
-    //   .deleteTag(this.props.selectedNoteId)
-    //   .then(action => that.props.history.push(that.props.path));
     this.props.closeUIElements();
-    this.props.openModal("tags-index-delete-tag");
+    this.props.openModal("confirm-delete-tag", this.props.tag.id);
   }
 
   render() {

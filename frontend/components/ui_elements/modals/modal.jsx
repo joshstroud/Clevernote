@@ -2,6 +2,7 @@ import React from "react";
 import { closeUIElements } from "../../../actions/ui_actions";
 import { connect } from "react-redux";
 import ConfirmDeleteNoteModalContainer from "./confirm_delete_note_modal_container";
+import ConfirmDeleteTagModalContainer from "./confirm_delete_tag_modal_container";
 import RenameNotebookModalContainer from "./rename_notebook_modal_container";
 import CreateNotebookModalContainer from "./create_notebook_modal_container";
 
@@ -19,6 +20,9 @@ function Modal({ modal, closeUIElements }) {
       break;
     case "create-notebook":
       component = <CreateNotebookModalContainer />;
+      break;
+    case "confirm-delete-tag":
+      component = <ConfirmDeleteTagModalContainer />;
       break;
     default:
       return null;
