@@ -8,16 +8,17 @@ class NoteShowNav extends Component {
     super(props);
 
     this.showSettings = this.showSettings.bind(this);
+    this.closeFullScreen = this.closeFullScreen.bind(this);
   }
-
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.fullScreen && this.props.fullScreen) {
-  //     this.props.fetchNotebooks();
-  //   }
-  // }
 
   showSettings(e) {
     this.props.openDropdown("note-show-settings");
+  }
+
+  closeFullScreen() {
+    if (this.props.fullScreen) {
+      this.props.toggleFullScreen();
+    }
   }
 
   renderNotebookLink() {
@@ -27,6 +28,7 @@ class NoteShowNav extends Component {
         <Link
           className="note-show-notebook-title"
           to={`/app/notebooks/${this.props.notebook.id}`}
+          onClick={this.closeFullScreen}
         >
           {this.props.notebook.title}
         </Link>
