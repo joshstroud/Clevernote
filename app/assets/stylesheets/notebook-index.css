@@ -22,6 +22,7 @@
   width: 100%;
   min-height: 220px;
   padding: 0 30px;
+  cursor: default;
 }
 
 .notebook-index-header {

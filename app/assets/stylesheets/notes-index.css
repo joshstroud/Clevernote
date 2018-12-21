@@ -29,6 +29,7 @@
 }
 
 .notes-index-header {
+  cursor: default;
   display: block;
   align-items: center;
   border-right: 1px solid #e6e6e6;
