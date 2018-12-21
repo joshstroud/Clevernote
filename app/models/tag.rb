@@ -1,5 +1,5 @@
 class Tag < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :owner_id, presence: true
   validates :owner_id, uniqueness: { scope: :name }
 

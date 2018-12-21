@@ -11,13 +11,13 @@ if (user)
    user.destroy
 end
 
-demo_user = User.create(email: "Demo@demo.com", password: "password");
+demo_user = User.create!(email: "Demo@demo.com", password: "password");
 
 first_notebook = Notebook.create(title: "Example Notes", owner_id: demo_user.id)
 second_notebook = Notebook.create(title: "Amazing Photos", owner_id: demo_user.id)
 third_notebook = Notebook.create(title: "Thought-provoking Reads", owner_id: demo_user.id)
 
-funny_tag = Tag.create(owner_id: demo_user.id, name: "Funny")
+funny_tag = Tag.create!(owner_id: demo_user.id, name: "Funny")
 writing_tag = Tag.create(owner_id: demo_user.id, name: "Writing")
 startups_tag = Tag.create(owner_id: demo_user.id, name: "Startups")
 silicon_valley_tag = Tag.create(owner_id: demo_user.id, name: "Silicon Valley")
@@ -36,8 +36,6 @@ buzzfeed_tag = Tag.create(owner_id: demo_user.id, name: "BuzzFeed")
 adorable_tag = Tag.create(owner_id: demo_user.id, name: "Adorable")
 new_york_times_tag = Tag.create(owner_id: demo_user.id, name: "New York Times")
 social_justice_tag = Tag.create(owner_id: demo_user.id, name: "Social Justice")
-
-
 
 
 campbell_text = <<-HTML

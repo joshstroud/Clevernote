@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :tags,
     foreign_key: :owner_id,
     class_name: :Tag,
-    dependent: :destroy
+    dependent: :delete_all
   
   has_many :taggings,
     through: :tags,
