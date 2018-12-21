@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import NoteShow from "./note_show";
 import { updateNote } from "../../actions/note_actions";
 import { createTagging } from "../../actions/tag_actions";
-import { openDropdown } from "../../actions/ui_actions";
+import { openDropdown, toggleFullScreen } from "../../actions/ui_actions";
 import {
   findSelectedNotebookForNoteShow,
   findTagsForSelectedNote,
@@ -17,7 +17,8 @@ const mapStateToProps = (state, ownProps) => {
     notebook: findSelectedNotebookForNoteShow(state),
     tags: findTagsForSelectedNote(state),
     taggings: findTaggingsForSelectedNote(state),
-    selectedNoteId: state.ui.selectedNoteId
+    selectedNoteId: state.ui.selectedNoteId,
+    fullScreen: state.ui.fullScreen
   };
 };
 
@@ -28,7 +29,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(openDropdown(component, componentId)),
     createTagging: tagging => dispatch(createTagging(tagging)),
     fetchTags: () => dispatch(fetchTags()),
-    fetchTaggings: () => dispatch(fetchTaggings())
+    fetchTaggings: () => dispatch(fetchTaggings()),
+    toggleFullScreen: () => dispatch(toggleFullScreen())
   };
 };
 

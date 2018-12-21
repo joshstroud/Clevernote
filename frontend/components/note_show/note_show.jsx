@@ -5,14 +5,20 @@ import NoteShowTagList from "./note_show_tag_list";
 
 class NoteShow extends Component {
   render() {
+    let fullScreenClassName = "";
+    if (this.props.fullScreen) {
+      fullScreenClassName = " note-show-full-screen";
+    }
+
     return (
-      <section className="note-show-wrapper">
+      <section className={`note-show-wrapper${fullScreenClassName}`}>
         {/* Hardcode notebook data for now. Add real data and then pass in real data */}
         <NoteShowNav
           notebook={this.props.notebook}
           openDropdown={this.props.openDropdown}
           fetchNotebooks={this.props.fetchNotebooks}
           fullScreen={this.props.fullScreen}
+          toggleFullScreen={this.props.toggleFullScreen}
         />
         <NoteShowEditor
           note={this.props.note}

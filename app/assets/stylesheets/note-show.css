@@ -11,4 +11,15 @@
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   overflow: hidden;
+  transition: left 1s;
+}
+
+.note-show-full-screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  background: white;
 }

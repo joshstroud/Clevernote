@@ -21,7 +21,7 @@
 .note-show-editor-wrapper .note-show-quill .note-show-editing-area {
   height: calc(100% - 61px - 29px);
   line-height: 1.45 !important;
-  padding: 0 40px 0 40px;
+  padding: 0 0px 0 40px;
   margin-top: -20px;
 }
 
@@ -42,7 +42,6 @@
   /* border: 0; */
   position: relative;
   top: 70px;
-  ;
 }
 
 .ql-toolbar {
@@ -137,7 +136,6 @@
   color: #00a82d;
 }
 
-
 .note-show-editor-title {
   display: block;
   font-size: 34px;
@@ -149,7 +147,7 @@
   cursor: text;
   font-weight: 300;
   border: none;
-
+  margin-top: 1px;
 }
 
 .note-show-save-button {
@@ -162,7 +160,10 @@
   visibility: hidden;
 }
 
-/* .ql-editor .ql-video {
-  width: 800px;
-  height: 460px;
-} */
+.note-show-full-screen .note-show-quill {
+  width: 100%;
+}
+
+.note-show-full-screen .note-show-editing-area {
+  width: 100%;
+}

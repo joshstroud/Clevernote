@@ -10,11 +10,11 @@ class NoteShowNav extends Component {
     this.showSettings = this.showSettings.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    if (!prevProps.fullScreen && this.props.fullScreen) {
-      this.props.fetchNotebooks();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.fullScreen && this.props.fullScreen) {
+  //     this.props.fetchNotebooks();
+  //   }
+  // }
 
   showSettings(e) {
     this.props.openDropdown("note-show-settings");
@@ -40,7 +40,10 @@ class NoteShowNav extends Component {
     return (
       <header className="note-show-nav">
         <div className="note-show-left">
-          <button className="note-show-fullscreen-button">
+          <button
+            className="note-show-fullscreen-button"
+            onClick={this.props.toggleFullScreen}
+          >
             <svg
               width="20"
               height="20"

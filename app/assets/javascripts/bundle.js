@@ -505,7 +505,7 @@ var receiveTaggingErrors = function receiveTaggingErrors(errors) {
 /*!****************************************!*\
   !*** ./frontend/actions/ui_actions.js ***!
   \****************************************/
-/*! exports provided: SELECT_NOTE, OPEN_DROPDOWN, OPEN_MODAL, CLOSE_UI_ELEMENTS, SELECT_NOTEBOOK, START_LOADING_NOTE, END_LOADING_NOTE, OPEN_FULL_SCREEN, CLOSE_FULL_SCREEN, selectNote, selectNotebook, openDropdown, openModal, closeUIElements, startLoadingNote, endLoadingNote, openFullScreen, closeFullScreen */
+/*! exports provided: SELECT_NOTE, OPEN_DROPDOWN, OPEN_MODAL, CLOSE_UI_ELEMENTS, SELECT_NOTEBOOK, START_LOADING_NOTE, END_LOADING_NOTE, TOGGLE_FULL_SCREEN, selectNote, selectNotebook, openDropdown, openModal, closeUIElements, startLoadingNote, endLoadingNote, toggleFullScreen */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -517,8 +517,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SELECT_NOTEBOOK", function() { return SELECT_NOTEBOOK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "START_LOADING_NOTE", function() { return START_LOADING_NOTE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "END_LOADING_NOTE", function() { return END_LOADING_NOTE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OPEN_FULL_SCREEN", function() { return OPEN_FULL_SCREEN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLOSE_FULL_SCREEN", function() { return CLOSE_FULL_SCREEN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_FULL_SCREEN", function() { return TOGGLE_FULL_SCREEN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectNote", function() { return selectNote; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectNotebook", function() { return selectNotebook; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openDropdown", function() { return openDropdown; });
@@ -526,8 +525,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeUIElements", function() { return closeUIElements; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "startLoadingNote", function() { return startLoadingNote; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "endLoadingNote", function() { return endLoadingNote; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openFullScreen", function() { return openFullScreen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeFullScreen", function() { return closeFullScreen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleFullScreen", function() { return toggleFullScreen; });
 var SELECT_NOTE = "SELECT_NOTE";
 var OPEN_DROPDOWN = "OPEN_DROPDOWN";
 var OPEN_MODAL = "OPEN_MODAL";
@@ -535,8 +533,7 @@ var CLOSE_UI_ELEMENTS = "CLOSE_UI_ELEMENTS";
 var SELECT_NOTEBOOK = "SELECT_NOTEBOOK";
 var START_LOADING_NOTE = "START_LOADING_NOTE";
 var END_LOADING_NOTE = "END_LOADING_NOTE";
-var OPEN_FULL_SCREEN = "OPEN_FULL_SCREEN";
-var CLOSE_FULL_SCREEN = "CLOSE_FULL_SCREEN";
+var TOGGLE_FULL_SCREEN = "TOGGLE_FULL_SCREEN";
 var selectNote = function selectNote(noteId) {
   return {
     type: SELECT_NOTE,
@@ -580,14 +577,9 @@ var endLoadingNote = function endLoadingNote() {
     type: END_LOADING_NOTW
   };
 };
-var openFullScreen = function openFullScreen() {
+var toggleFullScreen = function toggleFullScreen() {
   return {
-    type: OPEN_FULL_SCREEN
-  };
-};
-var closeFullScreen = function closeFullScreen() {
-  return {
-    type: CLOSE_FULL_SCREEN
+    type: TOGGLE_FULL_SCREEN
   };
 };
 
@@ -1122,13 +1114,20 @@ function (_Component) {
   _createClass(NoteShow, [{
     key: "render",
     value: function render() {
+      var fullScreenClassName = "";
+
+      if (this.props.fullScreen) {
+        fullScreenClassName = " note-show-full-screen";
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "note-show-wrapper"
+        className: "note-show-wrapper".concat(fullScreenClassName)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
         notebook: this.props.notebook,
         openDropdown: this.props.openDropdown,
         fetchNotebooks: this.props.fetchNotebooks,
-        fullScreen: this.props.fullScreen
+        fullScreen: this.props.fullScreen,
+        toggleFullScreen: this.props.toggleFullScreen
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_show_editor__WEBPACK_IMPORTED_MODULE_2__["default"], {
         note: this.props.note,
         updateNote: this.props.updateNote,
@@ -1184,7 +1183,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     notebook: Object(_util_selectors__WEBPACK_IMPORTED_MODULE_5__["findSelectedNotebookForNoteShow"])(state),
     tags: Object(_util_selectors__WEBPACK_IMPORTED_MODULE_5__["findTagsForSelectedNote"])(state),
     taggings: Object(_util_selectors__WEBPACK_IMPORTED_MODULE_5__["findTaggingsForSelectedNote"])(state),
-    selectedNoteId: state.ui.selectedNoteId
+    selectedNoteId: state.ui.selectedNoteId,
+    fullScreen: state.ui.fullScreen
   };
 };
 
@@ -1224,7 +1224,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return fetchTaggings;
     }(function () {
       return dispatch(fetchTaggings());
-    })
+    }),
+    toggleFullScreen: function toggleFullScreen() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_4__["toggleFullScreen"])());
+    }
   };
 };
 
@@ -1538,16 +1541,14 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NoteShowNav).call(this, props));
     _this.showSettings = _this.showSettings.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
-  }
+  } // componentDidUpdate(prevProps) {
+  //   if (prevProps.fullScreen && this.props.fullScreen) {
+  //     this.props.fetchNotebooks();
+  //   }
+  // }
+
 
   _createClass(NoteShowNav, [{
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      if (!prevProps.fullScreen && this.props.fullScreen) {
-        this.props.fetchNotebooks();
-      }
-    }
-  }, {
     key: "showSettings",
     value: function showSettings(e) {
       this.props.openDropdown("note-show-settings");
@@ -1574,7 +1575,8 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "note-show-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "note-show-fullscreen-button"
+        className: "note-show-fullscreen-button",
+        onClick: this.props.toggleFullScreen
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
         width: "20",
         height: "20",
@@ -6002,7 +6004,7 @@ var defaultUIState = {
   selectedNoteId: null,
   selectedNotebookId: null,
   loadingNote: true,
-  fullScreen: true
+  fullScreen: false
 };
 
 var ui = function ui() {
@@ -6049,14 +6051,9 @@ var ui = function ui() {
         loadingNote: false
       });
 
-    case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_FULL_SCREEN"]:
+    case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["TOGGLE_FULL_SCREEN"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
-        fullScreen: true
-      });
-
-    case _actions_ui_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_FULL_SCREEN"]:
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
-        fullScreen: false
+        fullScreen: !state.fullScreen
       });
 
     default:
