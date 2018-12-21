@@ -9,18 +9,25 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :notes,
-    foreign_key: :author_id
+    foreign_key: :author_id,
+    dependent: :destroy
+
 
   has_many :notebooks,
-    foreign_key: :owner_id
+    foreign_key: :owner_id,
+    dependent: :destroy
+
 
   has_many :tags,
     foreign_key: :owner_id,
-    class_name: :Tag
+    class_name: :Tag,
+    dependent: :destroy
   
   has_many :taggings,
     through: :tags,
-    source: :taggings
+    source: :taggings,    
+    dependent: :destroy
+
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
