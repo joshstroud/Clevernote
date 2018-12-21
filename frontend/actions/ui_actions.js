@@ -5,6 +5,8 @@ export const CLOSE_UI_ELEMENTS = "CLOSE_UI_ELEMENTS";
 export const SELECT_NOTEBOOK = "SELECT_NOTEBOOK";
 export const START_LOADING_NOTE = "START_LOADING_NOTE";
 export const END_LOADING_NOTE = "END_LOADING_NOTE";
+export const OPEN_FULL_SCREEN = "OPEN_FULL_SCREEN"
+export const CLOSE_FULL_SCREEN = "CLOSE_FULL_SCREEN"
 
 export const selectNote = (noteId) => {
   return {
@@ -47,9 +49,22 @@ export const startLoadingNote = () => {
   }
 }
 
-export const EndLoadingNote = () => {
+export const endLoadingNote = () => {
   return {
-    type: endLoadingNote
+    type: END_LOADING_NOTW
+
+  }
+}
+
+export const openFullScreen = () => {
+  return {
+    type: OPEN_FULL_SCREEN
+  }
+}
+
+export const closeFullScreen = () => {
+  return {
+    type: CLOSE_FULL_SCREEN
 
   }
 }

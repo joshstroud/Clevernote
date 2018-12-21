@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import NoteShowSettingsDropdownContainer from "../ui_elements/dropdowns/note_show_settings_dropdown_container";
 import { Link } from "react-router-dom";
+import { fetchNotebooks } from "../../actions/notebook_actions";
 
 class NoteShowNav extends Component {
   constructor(props) {
     super(props);
 
     this.showSettings = this.showSettings.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.fullScreen && this.props.fullScreen) {
+      this.props.fetchNotebooks();
+    }
   }
 
   showSettings(e) {

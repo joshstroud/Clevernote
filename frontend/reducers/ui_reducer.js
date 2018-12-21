@@ -5,7 +5,9 @@ import {
   OPEN_MODAL,
   CLOSE_UI_ELEMENTS,
   START_LOADING_NOTE,
-  END_LOADING_NOTE
+  END_LOADING_NOTE,
+  OPEN_FULL_SCREEN,
+  CLOSE_FULL_SCREEN
 } from '../actions/ui_actions';
 
 import merge from 'lodash/merge';
@@ -13,7 +15,8 @@ import merge from 'lodash/merge';
 const defaultUIState = {
   selectedNoteId: null,
   selectedNotebookId: null,
-  loading_note: true
+  loadingNote: true,
+  fullScreen: true
 };
 
 const ui = (state = defaultUIState, action) => {
@@ -45,11 +48,19 @@ const ui = (state = defaultUIState, action) => {
       })
     case START_LOADING_NOTE:
       return merge({}, state, {
-        loading_note: true
+        loadingNote: true
       })
     case END_LOADING_NOTE:
       return merge({}, state, {
-        loading_note: false
+        loadingNote: false
+      })
+    case OPEN_FULL_SCREEN:
+      return merge({}, state, {
+        fullScreen: true
+      })
+    case CLOSE_FULL_SCREEN:
+      return merge({}, state, {
+        fullScreen: false
       })
     default:
       return state;

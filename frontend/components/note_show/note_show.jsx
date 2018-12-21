@@ -11,11 +11,15 @@ class NoteShow extends Component {
         <NoteShowNav
           notebook={this.props.notebook}
           openDropdown={this.props.openDropdown}
+          fetchNotebooks={this.props.fetchNotebooks}
+          fullScreen={this.props.fullScreen}
         />
         <NoteShowEditor
           note={this.props.note}
           updateNote={this.props.updateNote}
           selectedNoteId={this.props.selectedNoteId}
+          fetchNotes={this.props.fetchNotes}
+          fullScreen={this.props.fullScreen}
         />
         <NoteShowTagList
           taggings={this.props.taggings}

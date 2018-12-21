@@ -41,6 +41,12 @@
   color: #aaaaaa;
 }
 
+.session-form-logo {
+  width: 250px;
+  padding-bottom: 4px;
+  padding-left: 7px;
+}
+
 .tagline {
   color: #333333;
   font-size: 16px;
@@ -49,6 +55,7 @@
   font-weight: 400;
   margin-bottom: 44px;
   margin-top: 7px;
+  padding-left: 7px;
 }
 
 .text-input {
