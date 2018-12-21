@@ -132,10 +132,3 @@ table {
 a {
   text-decoration: none;
 }
-
-div,
-p,
-h1,
-section {
-  cursor: default;
-}
