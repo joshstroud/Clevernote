@@ -29,7 +29,7 @@ const SplashFooter = props => {
         <a href="http://appacademy.io"> App Academy</a>, a prestigious
         full-stack web development program with a 3% acceptance rate. Josh built
         this application in 10 days using Ruby on Rails, Javascript, React,
-        HTML5, and CSS.
+        HTML5, and&nbsp;CSS.
         <br />
         <br />
         Thanks to his training as a product design engineer at UC Berkeley and
