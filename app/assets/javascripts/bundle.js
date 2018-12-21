@@ -1125,7 +1125,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   // console.log(findTagsForSelectedNote(state));
-  // console.log(findTaggingsForSelectedNote(state));
+  console.dir(Object(_util_selectors__WEBPACK_IMPORTED_MODULE_5__["findSelectedNotebookForNoteShow"])(state));
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
     notebook: Object(_util_selectors__WEBPACK_IMPORTED_MODULE_5__["findSelectedNotebookForNoteShow"])(state),
@@ -1490,10 +1490,12 @@ function (_Component) {
   }, {
     key: "renderNotebookLink",
     value: function renderNotebookLink() {
+      console.log(this.props.notebook);
+
       if (this.props.notebook) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           className: "note-show-notebook-title",
-          to: "/app/notebook/".concat(this.props.notebook.id)
+          to: "/app/notebooks/".concat(this.props.notebook.id)
         }, this.props.notebook.title);
       } else {
         return null;

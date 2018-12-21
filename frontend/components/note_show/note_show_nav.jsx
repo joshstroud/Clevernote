@@ -14,11 +14,12 @@ class NoteShowNav extends Component {
   }
 
   renderNotebookLink() {
+    console.log(this.props.notebook);
     if (this.props.notebook) {
       return (
         <Link
           className="note-show-notebook-title"
-          to={`/app/notebook/${this.props.notebook.id}`}
+          to={`/app/notebooks/${this.props.notebook.id}`}
         >
           {this.props.notebook.title}
         </Link>
