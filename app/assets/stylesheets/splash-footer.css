@@ -79,15 +79,16 @@
 }
 
 .splash-footer-body a {
-  color: #333
+  color: #222;
+  font-weight: 600;
 }
 
 .splash-footer-body a:visited {
-  color: #333
+  color: #222;
 }
 
 .splash-footer-body a:hover {
-  color: #666;
+  color: #000;
   transition: .1s border ease-in-out,
     .1s color ease-in-out;
 }
