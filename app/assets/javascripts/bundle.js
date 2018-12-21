@@ -4393,7 +4393,7 @@ function (_React$Component) {
     value: function renameNotebook(e) {
       // console.log("Rename notebook action");
       this.props.closeUIElements();
-      this.props.openModal("rename-notebook");
+      this.props.openModal("rename-notebook", this.props.selectedComponentId);
     }
   }, {
     key: "deleteNotebook",
@@ -4477,8 +4477,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     deleteNotebook: function deleteNotebook(notebookId) {
       return dispatch(Object(_actions_notebook_actions__WEBPACK_IMPORTED_MODULE_4__["deleteNotebook"])(notebookId));
     },
-    openModal: function openModal(component) {
-      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["openModal"])(component));
+    openModal: function openModal(component, componentId) {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_1__["openModal"])(component, componentId));
     }
   };
 };
@@ -5508,6 +5508,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  console.dir(state.entities.notebooks[state.ui.componentId]);
   return {
     modal: state.ui.dropdown,
     notebook: state.entities.notebooks[state.ui.componentId]

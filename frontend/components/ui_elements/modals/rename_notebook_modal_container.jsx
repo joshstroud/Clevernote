@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 import RenameNotebookModal from "./rename_notebook_modal";
 
 const mapStateToProps = (state, ownProps) => {
+  console.dir(state.entities.notebooks[state.ui.componentId]);
   return {
     modal: state.ui.dropdown,
     notebook: state.entities.notebooks[state.ui.componentId]

@@ -17,7 +17,8 @@ const mapDispatchToProps = dispatch => {
   return {
     closeUIElements: () => dispatch(closeUIElements()),
     deleteNotebook: notebookId => dispatch(deleteNotebook(notebookId)),
-    openModal: component => dispatch(openModal(component))
+    openModal: (component, componentId) =>
+      dispatch(openModal(component, componentId))
   };
 };
 
