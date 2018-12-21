@@ -11,7 +11,6 @@ import {
 
 const mapStateToProps = (state, ownProps) => {
   // console.log(findTagsForSelectedNote(state));
-  console.log(state.ui.fullScreen);
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
     notebook: findSelectedNotebookForNoteShow(state),

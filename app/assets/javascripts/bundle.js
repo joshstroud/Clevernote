@@ -1185,7 +1185,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   // console.log(findTagsForSelectedNote(state));
-  console.log(state.ui.fullScreen);
   return {
     note: state.entities.notes[state.ui.selectedNoteId],
     notebook: Object(_util_selectors__WEBPACK_IMPORTED_MODULE_5__["findSelectedNotebookForNoteShow"])(state),
@@ -4942,7 +4941,7 @@ function (_React$Component) {
     value: function deleteNote(e) {
       var that = this;
       this.props.deleteNote(this.props.selectedNoteId).then(function (action) {
-        console.log("history change");
+        // console.log("history change");
         that.props.history.push(that.props.path);
       });
       this.props.closeUIElements();
@@ -4965,8 +4964,7 @@ function (_React$Component) {
         onClick: this.props.closeUIElements
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
         id: "hover-darken",
-        fill: "#b3b3b3",
-        d: "M7.728 6.314l4.95-4.95L11.263-.05 6.313 4.9 1.365-.05-.05 1.364l4.95 4.95-4.95 4.95 1.414 1.414 4.95-4.95 4.95 4.95 1.414-1.415-4.95-4.95z"
+        fill: "#b3b3b3"
       }))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "modal-message"
       }, this.props.noteTitle, " will be deleted."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {

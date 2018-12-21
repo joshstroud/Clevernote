@@ -10,7 +10,7 @@ class ConfirmDeleteNoteModal extends React.Component {
   deleteNote(e) {
     const that = this;
     this.props.deleteNote(this.props.selectedNoteId).then(action => {
-      console.log("history change");
+      // console.log("history change");
       that.props.history.push(that.props.path);
     });
     this.props.closeUIElements();
@@ -31,11 +31,7 @@ class ConfirmDeleteNoteModal extends React.Component {
                 className="modal-close"
                 onClick={this.props.closeUIElements}
               >
-                <path
-                  id="hover-darken"
-                  fill="#b3b3b3"
-                  d="M7.728 6.314l4.95-4.95L11.263-.05 6.313 4.9 1.365-.05-.05 1.364l4.95 4.95-4.95 4.95 1.414 1.414 4.95-4.95 4.95 4.95 1.414-1.415-4.95-4.95z"
-                />
+                <path id="hover-darken" fill="#b3b3b3" />
               </svg>
             </div>
           </div>
