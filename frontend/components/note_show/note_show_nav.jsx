@@ -22,7 +22,6 @@ class NoteShowNav extends Component {
   }
 
   renderNotebookLink() {
-    console.log(this.props.notebook);
     if (this.props.notebook) {
       return (
         <Link

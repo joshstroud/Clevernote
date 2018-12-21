@@ -6,7 +6,8 @@ import {
   CLOSE_UI_ELEMENTS,
   START_LOADING_NOTE,
   END_LOADING_NOTE,
-  TOGGLE_FULL_SCREEN
+  TOGGLE_FULL_SCREEN,
+  SIGN_IN_DEMO_USER
 } from '../actions/ui_actions';
 
 import merge from 'lodash/merge';
@@ -15,7 +16,8 @@ const defaultUIState = {
   selectedNoteId: null,
   selectedNotebookId: null,
   loadingNote: true,
-  fullScreen: false
+  fullScreen: false,
+  signInDemoUser: false
 };
 
 const ui = (state = defaultUIState, action) => {
@@ -23,12 +25,14 @@ const ui = (state = defaultUIState, action) => {
   switch (action.type) {
     case SELECT_NOTE:
       return merge({}, state, {
-        selectedNoteId: action.noteId
+        selectedNoteId: action.noteId,
+        signInDemoUser: false
       })
     case SELECT_NOTEBOOK:
       return merge({},
         state, {
-          selectedNotebookId: action.notebookId
+          selectedNotebookId: action.notebookId,
+          signInDemoUser: false
         })
     case OPEN_DROPDOWN:
       return merge({}, state, {
@@ -56,6 +60,10 @@ const ui = (state = defaultUIState, action) => {
     case TOGGLE_FULL_SCREEN:
       return merge({}, state, {
         fullScreen: !state.fullScreen
+      })
+    case SIGN_IN_DEMO_USER:
+      return merge({}, state, {
+        signInDemoUser: true
       })
     default:
       return state;

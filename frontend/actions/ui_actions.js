@@ -6,6 +6,7 @@ export const SELECT_NOTEBOOK = "SELECT_NOTEBOOK";
 export const START_LOADING_NOTE = "START_LOADING_NOTE";
 export const END_LOADING_NOTE = "END_LOADING_NOTE";
 export const TOGGLE_FULL_SCREEN = "TOGGLE_FULL_SCREEN"
+export const SIGN_IN_DEMO_USER = "SIGN_IN_DEMO_USER"
 
 export const selectNote = (noteId) => {
   return {
@@ -58,5 +59,11 @@ export const endLoadingNote = () => {
 export const toggleFullScreen = () => {
   return {
     type: TOGGLE_FULL_SCREEN
+  }
+}
+
+export const signInDemoUser = () => {
+  return {
+    type: SIGN_IN_DEMO_USER
   }
 }

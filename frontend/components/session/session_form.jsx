@@ -22,6 +22,16 @@ class SessionForm extends React.Component {
       });
   }
 
+  componentWillReceiveProps() {
+    if (
+      this.props.formType === "Sign In" &&
+      this.props.signInDemoUser &&
+      this.state.demoLoginAnimationInterval === null
+    ) {
+      this.animateDemoLogin();
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = {
@@ -73,12 +83,17 @@ class SessionForm extends React.Component {
     // };
     // this.props.processForm(user);
 
-    this.setState({
-      demoLoginAnimationInterval: window.setInterval(
-        this.animateDemoLogin.bind(this),
-        90
-      )
-    });
+    if (this.props.formType === "Continue") {
+      this.props.signInDemoUser();
+      this.props.history.push("/app/login/");
+    } else {
+      this.setState({
+        demoLoginAnimationInterval: window.setInterval(
+          this.animateDemoLogin.bind(this),
+          90
+        )
+      });
+    }
   }
 
   animateDemoLogin() {
@@ -86,10 +101,7 @@ class SessionForm extends React.Component {
       this.state.email === "demo@demo.com" &&
       this.state.password === "password"
     ) {
-      const user = {
-        email: "Demo@demo.com",
-        password: "password"
-      };
+      const user = { email: "Demo@demo.com", password: "password" };
       clearInterval(this.state.demoLoginAnimationInterval);
       this.props.processForm(user);
     } else {
@@ -116,6 +128,8 @@ class SessionForm extends React.Component {
   renderDemoLoginButton() {
     let demoLoginButton = null;
 
+    // if (this.props.formType === "Sign In") {
+    // if (true) {
     if (this.props.formType === "Sign In") {
       demoLoginButton = (
         <div>
