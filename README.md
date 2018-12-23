@@ -6,6 +6,8 @@ Clevernote is an Evernote clone created with React, Redux, Rails, and PostgreSQL
 
 ![Splash Page](https://github.com/joshstroud/Clevernote/blob/master/readme-files/splash-page.png?raw=true "Splash Page")
 
+![Note Creation Demo](https://github.com/joshstroud/Clevernote/blob/master/readme-files/notes-demo.gif?raw=true "Note Creation Demo")
+
 ## Features
 
 - Secure user authentication
@@ -42,8 +44,6 @@ The frontend of this project focused on using reusable React components. By sket
 ### Creating a note
 
 Clevernote features a rich text editor where users can edit and save notes.
-
-![Note Creation Demo](https://github.com/joshstroud/Clevernote/blob/master/readme-files/notes-demo.gif?raw=true "Note Creation Demo")
 
 I chose to integrate an existing rich text editor library called [Quill](https://quilljs.com/). By carefully reading the docs, reading the examples, and experimenting, I implemented a full-featured editor with a style that matches the original Evernote editor.
 
